@@ -16,29 +16,18 @@
 
   function show(n, push) {
     n = Math.max(0, Math.min(total - 1, n));
-    if (slides[i]) slides[i].classList.remove("is-active");
+    const prev = slides[i] && slides[i].classList.contains("is-active") ? slides[i] : null;
+    if (prev) prev.classList.remove("is-active");
     i = n;
     const el = slides[i];
     el.classList.add("is-active");
+    document.dispatchEvent(new CustomEvent("slide", { detail: { el: el, prev: prev, index: i } }));
     document.body.className = "mood-" + (el.dataset.mood || "quiet");
     bar.style.width = ((i + 1) / total * 100) + "%";
     counter.textContent = (i + 1) + " / " + total;
     const note = el.querySelector(".note");
     notes.innerHTML = "<h4>Заметки ведущего</h4>" + (note ? note.innerHTML : "<p>Без заметок.</p>");
-    el.querySelectorAll("[data-count]").forEach(count);
     if (push !== false) history.replaceState(null, "", "#" + (i + 1));
-  }
-
-  function count(el) {
-    if (el.dataset.done) return;
-    el.dataset.done = "1";
-    const to = parseFloat(el.dataset.count), suffix = el.dataset.suffix || "";
-    const t0 = performance.now(), dur = 1200;
-    (function tick(t) {
-      const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
-      el.textContent = Math.round(to * e) + suffix;
-      if (k < 1) requestAnimationFrame(tick);
-    })(t0);
   }
 
   function next() { show(i + 1); }
