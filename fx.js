@@ -10,13 +10,13 @@
   let W, H, stars = [], warp = 0;
   function resize() { W = sky.width = innerWidth; H = sky.height = innerHeight; }
   function seed() {
-    stars = Array.from({ length: 220 }, () => ({ x: (Math.random() - .5) * 2, y: (Math.random() - .5) * 2, z: Math.random() * .9 + .1, tw: Math.random() * 6.28 }));
+    stars = Array.from({ length: 520 }, () => ({ x: (Math.random() - .5) * 2, y: (Math.random() - .5) * 2, z: Math.random() * .9 + .1, tw: Math.random() * 6.28 }));
   }
   function draw(t) {
     g.clearRect(0, 0, W, H);
     const cx = W / 2, cy = H / 2;
     for (const s of stars) {
-      const sp = .00035 + warp * .02;
+      const sp = (s.z < .3 ? .0009 : .00035) + warp * .02;
       s.z -= sp; if (s.z <= .05) { s.z = 1; s.x = (Math.random() - .5) * 2; s.y = (Math.random() - .5) * 2; }
       const k = 1 / s.z, px = cx + s.x * k * cx * .9, py = cy + s.y * k * cy * .9;
       if (px < 0 || px > W || py < 0 || py > H) continue;

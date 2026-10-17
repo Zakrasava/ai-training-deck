@@ -52,24 +52,27 @@
     const lampMat = (hex, i) => new THREE.MeshBasicMaterial({ color: new THREE.Color(hex).multiplyScalar(i), side: THREE.DoubleSide });
     const addLamp = (w, h, hex, i, pos, rot) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), lampMat(hex, i)); m.position.copy(pos); m.lookAt(0, 0, 0); if (rot) m.rotateZ(rot); studio.add(m); };
     addLamp(14, 5, 0x3d7bff, 1.6, new THREE.Vector3(-8, 7, 6));
-    addLamp(3, 12, 0xeaf3ff, 2.2, new THREE.Vector3(7, 5, 7), .4);
+    addLamp(3, 12, 0xeaf3ff, 1.1, new THREE.Vector3(7, 5, 7), .4);
     addLamp(16, 4, 0x1b3ec9, 1.2, new THREE.Vector3(0, -8, -4));
     addLamp(6, 6, 0x6ccbff, 1.0, new THREE.Vector3(9, -3, 3));
     studio.add(new THREE.Mesh(new THREE.SphereGeometry(40, 16, 16), new THREE.MeshBasicMaterial({ color: 0x020510, side: THREE.BackSide })));
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(studio, .02).texture;
 
-    const key = new THREE.DirectionalLight(0xdbe9ff, 1.3); key.position.set(-6, 9, 8); scene.add(key);
+    const key = new THREE.DirectionalLight(0xeaf3ff, 1.35); key.position.set(-6, 9, 8); scene.add(key);
     const rim = new THREE.DirectionalLight(0x4f86ff, 3.5); rim.position.set(8, -5, -4); scene.add(rim);
     const rim2 = new THREE.DirectionalLight(0x6ccbff, 2.0); rim2.position.set(-8, -2, -6); scene.add(rim2);
     const fill = new THREE.PointLight(0x6ccbff, 1.4, 40, 2); fill.position.set(0, -6, 6); scene.add(fill);
     scene.add(new THREE.AmbientLight(0x0b1a44, .6));
 
+    /* матовое голубое стекло, как клавиши на странице «Карьера» */
     const glass = new THREE.MeshPhysicalMaterial({
-      color: 0x0a2170, metalness: .05, roughness: .2,
-      clearcoat: 1, clearcoatRoughness: .12, envMapIntensity: 1.1, specularIntensity: 1, specularColor: new THREE.Color(0x9fc4ff),
-      emissive: 0x08258c, emissiveIntensity: .32, sheen: .4, sheenColor: new THREE.Color(0x6ccbff)
+      color: 0x3a7cf2, metalness: 0, roughness: .34,
+      clearcoat: .9, clearcoatRoughness: .3, envMapIntensity: .75, specularIntensity: .7, specularColor: new THREE.Color(0xdfeeff),
+      emissive: 0x1a46c0, emissiveIntensity: .3, sheen: 1, sheenRoughness: .5, sheenColor: new THREE.Color(0x9fd0ff),
+      transparent: true, opacity: .96
     });
+    const glassFar = glass.clone(); glassFar.opacity = .55; glassFar.emissiveIntensity = .18;
 
     const rays = new THREE.Group(); scene.add(rays);
     for (let i = 0; i < 7; i++) {
@@ -83,11 +86,13 @@
     const group = new THREE.Group(); scene.add(group);
     const items = spec.map((s, i) => {
       const size = s.size || 2.4;
-      const mesh = new THREE.Mesh(new RoundedBoxGeometry(size, size, size * .62, 6, size * .22), glass);
-      const cap = new THREE.Mesh(new THREE.PlaneGeometry(size * .98, size * .98), new THREE.MeshBasicMaterial({ map: label(s.text, s.big), transparent: true, depthWrite: false }));
-      cap.position.z = size * .31 + .012; cap.renderOrder = 2; mesh.add(cap);
+      const mesh = new THREE.Mesh(new RoundedBoxGeometry(size, size, size * .66, 7, size * .26), s.far ? glassFar : glass);
+      if (s.text) {
+        const cap = new THREE.Mesh(new THREE.PlaneGeometry(size * .98, size * .98), new THREE.MeshBasicMaterial({ map: label(s.text, s.big), transparent: true, depthWrite: false, opacity: s.far ? .5 : 1 }));
+        cap.position.z = size * .33 + .012; cap.renderOrder = 2; mesh.add(cap);
+      }
       const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, transparent: true, opacity: .9, blending: THREE.AdditiveBlending, depthWrite: false }));
-      glow.scale.set(size * 3.2, size * 3.2, 1); glow.position.z = -size * .6; mesh.add(glow);
+      glow.scale.set(size * 3.4, size * 3.4, 1); glow.position.z = -size * .6; glow.material.opacity = s.far ? .35 : .9; mesh.add(glow);
       const base = new THREE.Vector3(s.x, s.y, s.z || 0);
       const rot = new THREE.Euler(s.rx == null ? -.35 : s.rx, s.ry == null ? .5 : s.ry, s.rz == null ? -.12 : s.rz);
       mesh.position.copy(base); mesh.rotation.copy(rot);
@@ -109,7 +114,7 @@
         const fy = u.base.y + Math.sin(t * u.speed + u.phase) * .32;
         m.position.set(u.from.x + (fx - u.from.x) * k, u.from.y + (fy - u.from.y) * k, u.from.z + (u.base.z - u.from.z) * k);
         m.rotation.x = u.rot.x + Math.sin(t * .35 + u.phase) * .16 + my * .25 + (1 - k) * 2.2;
-        m.rotation.y = u.rot.y + t * .09 + mx * .35 + (1 - k) * 3.0;
+        m.rotation.y = u.rot.y + Math.sin(t * .3 + u.phase) * .12 + mx * .35 + (1 - k) * 3.0;
         m.rotation.z = u.rot.z + Math.sin(t * .25 + u.phase) * .06;
         u.glow.material.opacity = .55 + .35 * Math.sin(t * 1.1 + u.phase);
       });
@@ -129,7 +134,13 @@
   const mounts = [];
   document.querySelectorAll("canvas.cubes3d").forEach(c => {
     let spec = []; try { spec = JSON.parse(c.dataset.cubes || "[]"); } catch (e) { console.error("cubes json", e); }
-    mounts.push({ el: c.closest(".slide"), m: mountCubes(c, spec) });
+    const near = spec.filter(s => !s.far), far = spec.filter(s => s.far);
+    if (far.length) {
+      const b = document.createElement("canvas"); b.className = "cubes3d cubes3d--far"; b.width = 1600; b.height = 900; b.setAttribute("aria-hidden", "true");
+      c.parentNode.insertBefore(b, c);
+      mounts.push({ el: c.closest(".slide"), m: mountCubes(b, far) });
+    }
+    mounts.push({ el: c.closest(".slide"), m: mountCubes(c, near) });
   });
   function sync() { mounts.forEach(x => x.m.setActive(x.el.classList.contains("is-active"))); }
   document.addEventListener("slide", sync); sync();

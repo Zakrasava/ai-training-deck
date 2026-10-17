@@ -10,6 +10,7 @@
 </head>
 <body class="mood-hero">
 <div class="backdrop"></div>
+<div class="streaks" aria-hidden="true"></div>
 <div class="grain"></div>
 
 <main class="deck" aria-live="polite">
@@ -18,16 +19,10 @@
 <section class="slide" data-mood="hero">
   <div class="stage">
     <div class="hero">
-      <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[
-        {"text":"Контекст","x":-7.6,"y":3.1,"z":-1.5,"size":2.2,"ry":0.55,"rx":-0.3},
-        {"text":"Память","x":-6.4,"y":-3.4,"z":0,"size":1.8,"ry":0.9,"rx":-0.2},
-        {"text":"Навык","x":2.0,"y":4.6,"z":-4,"size":1.5,"ry":0.3,"rx":-0.5},
-        {"text":"Проект","x":7.2,"y":2.9,"z":-2,"size":1.9,"ry":-0.6,"rx":-0.25},
-        {"text":"Агент","x":6.4,"y":-3.3,"z":0,"size":2.3,"ry":-0.45,"rx":-0.3}
-      ]'></canvas>
+      <canvas class="portal" width="1600" height="900" aria-hidden="true"></canvas>
       <div class="hero__title">
-        <p class="kicker fly from-up" data-delay="900">Три встречи · от первого вопроса до собственного агента</p>
-        <h1 class="display fly from-deep" data-delay="400">ИИ как новый <span class="tail">сотрудник</span></h1>
+        <h1 class="display fly from-deep" data-delay="500">ИИ как новый <span class="tail">сотрудник</span></h1>
+        <p class="lead fly" data-delay="1200">Три встречи: от первого вопроса до собственного агента</p>
       </div>
       <div class="horizon" aria-hidden="true"></div>
     </div>
@@ -39,10 +34,11 @@
 <section class="slide" data-mood="section">
   <div class="stage">
     <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[
-      {"text":"Чат","x":-5.6,"y":1.2,"z":0,"size":1.9,"ry":0.35,"rx":-0.25},
-      {"text":"Проект","x":-1.9,"y":1.4,"z":0,"size":1.9,"ry":0.15,"rx":-0.25},
-      {"text":"Агент","x":1.9,"y":1.6,"z":0,"size":1.9,"ry":-0.15,"rx":-0.25},
-      {"text":"Ваш","x":5.6,"y":1.9,"z":0,"size":2.3,"ry":-0.35,"rx":-0.25,"big":true}
+      {"text":"Чат","x":-5.6,"y":1.2,"z":0,"size":1.9,"ry":0.22,"rx":-0.18},
+      {"text":"Проект","x":-1.9,"y":1.4,"z":0,"size":1.9,"ry":0.08,"rx":-0.18},
+      {"text":"Агент","x":1.9,"y":1.6,"z":0,"size":1.9,"ry":-0.08,"rx":-0.18},
+      {"text":"Ваш","x":5.6,"y":1.9,"z":0,"size":2.3,"ry":-0.22,"rx":-0.18,"big":true},
+      {"x":-9.5,"y":4.2,"z":-6,"size":2.6,"ry":0.8,"far":true},{"x":9.8,"y":-3.8,"z":-7,"size":3.0,"ry":-0.7,"far":true},{"x":-8.6,"y":-4.4,"z":-9,"size":2.2,"ry":0.4,"far":true}
     ]'></canvas>
     <div style="position:absolute; left:110px; right:110px; bottom:110px; z-index:2">
       <p class="kicker fly" data-delay="1500">Чем закончится курс</p>
@@ -57,10 +53,10 @@
   <div class="stage">
     <p class="kicker">Правило номер ноль</p>
     <h2 class="h-slide">Не бойтесь с ним разговаривать. <span class="tail">Понимание приходит в процессе</span></h2>
-    <div class="row mt compact" style="grid-template-columns: 1.1fr 1fr; gap:50px; align-items:start">
-      <div class="stack" style="gap:14px">
+    <div class="row compact" style="grid-template-columns: 1.1fr 1fr; gap:50px; align-items:start; margin-top:30px">
+      <div class="stack" style="gap:12px">
         <div class="card fly from-left"><h3>Говорите как с человеком</h3><p>Не ищите «правильный промпт». Опишите ситуацию словами, как коллеге: что случилось, что нужно, к какому сроку. Переспросите, если непонятно. Это нормально.</p></div>
-        <div class="card fly from-left"><h3>Глупых вопросов нет</h3><p>«Что такое токен?», «Почему ты так ответил?», «Объясни проще». ИИ не устанет и не осудит. Половина из вас в опроснике написала «нет времени разбираться» или «не знаю, как сформулировать». Разбираться не нужно, нужно спрашивать.</p></div>
+        <div class="card fly from-left"><h3>Глупых вопросов нет</h3><p>«Что такое токен?», «Почему ты так ответил?», «Объясни проще». ИИ не устанет и не осудит. Половина из вас написала в опроснике «нет времени разбираться». Разбираться не нужно, нужно спрашивать.</p></div>
         <div class="card card--glow fly from-left"><h3>Заведите чат «Объясни мне»</h3><p>Отдельный чат для всего непонятного: термин из письма, кнопка в программе, фраза из этой презентации. Через месяц это ваш личный учебник.</p></div>
       </div>
       <div class="phone sm fly from-right">
@@ -72,6 +68,7 @@
         </div>
       </div>
     </div>
+    <div class="ask fly" style="margin-top:18px"><i>?</i>Напишите в чат: какой вопрос про ИИ вы стеснялись задать. Разберём прямо сейчас</div>
     <div class="note"><p>Главная мысль курса по словам Кирилла: не бояться. Показать свой чат «Объясни мне» или завести его на учебном аккаунте прямо в эфире за 30 секунд.</p></div>
   </div>
 </section>
@@ -108,6 +105,7 @@
     <p class="kicker">Что вы написали в опроснике · 23 ответа, без имён</p>
     <h2 class="h-slide">Вы уже пользуетесь ИИ. <span class="tail">Мешают не технологии, а время и формулировки</span></h2>
     <div class="row mt compact" style="grid-template-columns: 1fr 1fr 1.2fr; gap:28px; align-items:start">
+      <div class="stack" style="gap:16px">
       <div class="card fly from-left">
         <h3>Кто вы</h3>
         <div class="row cols-2" style="gap:10px; margin-top:6px">
@@ -115,6 +113,8 @@
           <div><div class="big-num" style="font-size:64px" data-count="12">0</div><p>работают только с телефона</p></div>
         </div>
         <p style="margin-top:10px">ChatGPT у большинства, у шести ещё Claude. Платный аккаунт у девяти, бесплатный у семи, у троих нет.</p>
+      </div>
+      <div class="ask fly" style="margin-top:0; font-size:19px"><i>?</i>У кого iiko, r_keeper или 1С? Напишите в чат: на встрече 2 возьмём вашу выгрузку</div>
       </div>
       <div class="card fly">
         <h3>Что мешает</h3>
@@ -174,7 +174,7 @@
 <section class="slide" data-mood="section">
   <div class="stage">
     <div class="split">
-      <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[{"text":"Досье","x":4.6,"y":0.2,"z":0,"size":4.2,"ry":-0.5,"rx":-0.3,"big":true}]'></canvas>
+      <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[{"x":-8.8,"y":4.0,"z":-7,"size":2.6,"ry":0.9,"far":true},{"x":-6.5,"y":-4.6,"z":-9,"size":2.0,"ry":0.3,"far":true},{"x":9.6,"y":-4.2,"z":-8,"size":2.4,"ry":-0.6,"far":true},{"text":"Досье","x":4.6,"y":0.2,"z":0,"size":4.2,"ry":-0.3,"rx":-0.22,"big":true}]'></canvas>
       <div>
         <p class="n fly" data-delay="1200">Часть первая</p>
         <h2 class="display sm fly" data-delay="1350">Новый <span class="tail">сотрудник</span></h2>
@@ -192,18 +192,18 @@
       <div class="card card--bad fly from-left">
         <h3>Бросили «с места в карьер»</h3>
         <div class="chat" style="margin-top:14px">
-          <div class="msg me fly" data-delay="900">Напиши ответ на жалобу гостя</div>
-          <div class="msg ai fly" data-delay="1500">Уважаемый клиент! Благодарим за обратную связь. Нам искренне жаль, что ваш опыт не оправдал ожиданий. Мы всегда стремимся к совершенству и обязательно учтём ваши пожелания в нашей дальнейшей работе…</div>
+          <div class="msg me fly" data-delay="900">Напиши поставщику: задержали поставку</div>
+          <div class="msg ai fly" data-delay="1500">Уважаемые партнёры! Выражаем обеспокоенность в связи с задержкой поставки. Надеемся на понимание и просим в кратчайшие сроки предоставить информацию о статусе заказа. С уважением…</div>
         </div>
-        <p style="margin-top:18px">Три абзаца вежливости, ни одного факта. Средний ответ для среднего человека.</p>
+        <p style="margin-top:18px">Вежливо, длинно, без договора, сроков и последствий. Такое письмо можно не отправлять.</p>
       </div>
       <div class="card card--glow fly from-right">
         <h3>Дали досье и инструкции</h3>
         <div class="chat" style="margin-top:14px">
-          <div class="msg me fly" data-delay="2300">Напиши ответ на жалобу гостя</div>
-          <div class="msg ai fly" data-delay="2900">Марина, спасибо, что написали. Суп должен был прийти горячим за 12 минут, у нас этого не случилось. Ужин на двоих за наш счёт в любой день на этой неделе: назовите дату, столик будет ваш. Управляющий «Берега», Ильдар.</div>
+          <div class="msg me fly" data-delay="2300">Напиши поставщику: задержали поставку</div>
+          <div class="msg ai fly" data-delay="2900">Андрей, добрый день. По договору № 14 поставка должна была прийти 14 октября, сегодня 18‑е. Прошу до 12:00 завтра подтвердить дату отгрузки. По п. 6.2 с 19 октября начисляется неустойка 0,1% в день, пока удерживать не будем. Ильдар, управляющий.</div>
         </div>
-        <p style="margin-top:18px">Имя, факт, компенсация из правил, подпись. Можно отправлять.</p>
+        <p style="margin-top:18px">Имя, номер договора, срок, пункт о неустойке, одна просьба. Можно отправлять.</p>
       </div>
     </div>
     <div class="note"><p>Метафора из вашего аудио: новый работник, которому либо ничего не объяснили, либо дали инструкции. Оба ответа написаны заранее на учебном аккаунте, в эфире не генерируем.</p></div>
@@ -222,6 +222,7 @@
       <div class="card fly"><h3>Что нельзя</h3><p>«Не придумывай цифры и имена. Не обещай сроки. Если не хватает данных, задай вопрос. Юридические выводы помечай как черновик».</p></div>
       <div class="card card--glow fly from-right"><h3>Хороший результат</h3><p>«Письмо на половину экрана. Три варианта на выбор. Таблица с колонками: позиция, цена, срок». То, что вы примете с первого раза.</p></div>
     </div>
+    <div class="ask fly"><i>?</i>Что из шести вы не смогли бы объяснить стажёру за минуту? Это и есть то, что надо записать</div>
     <div class="note"><p>Через десять минут впишем это в настройки за один шаг. Пусть пока прикидывают свои ответы.</p></div>
   </div>
 </section>
@@ -230,7 +231,7 @@
 <section class="slide" data-mood="section">
   <div class="stage">
     <div class="split">
-      <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[{"text":"7","x":4.8,"y":0.3,"z":0,"size":4.4,"ry":-0.45,"rx":-0.3,"big":true}]'></canvas>
+      <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[{"x":-8.8,"y":4.0,"z":-7,"size":2.6,"ry":0.9,"far":true},{"x":-6.5,"y":-4.6,"z":-9,"size":2.0,"ry":0.3,"far":true},{"x":9.6,"y":-4.2,"z":-8,"size":2.4,"ry":-0.6,"far":true},{"text":"7","x":4.8,"y":0.3,"z":0,"size":4.4,"ry":-0.3,"rx":-0.22,"big":true}]'></canvas>
       <div>
         <p class="n fly" data-delay="1200">Часть вторая · 30 минут живого экрана</p>
         <h2 class="display sm fly" data-delay="1350">Семь <span class="tail">настроек</span></h2>
@@ -288,7 +289,7 @@
         <small>Промпт есть в конспекте после встречи. Переписывать с экрана не нужно.</small>
       </div>
     </div>
-    <div class="note"><p>Живой экран: вставить промпт, ответить на три‑четыре вопроса вслух, остальное заранее. Вставить итог. Показать разницу «до и после» на вопросе про холодный суп.</p></div>
+    <div class="note"><p>Живой экран: вставить промпт, ответить на три‑четыре вопроса вслух, остальное заранее. Вставить итог. Показать разницу «до и после» на письме поставщику.</p></div>
   </div>
 </section>
 
@@ -309,7 +310,7 @@
       <div class="win fly from-right" data-steps='[{"sel":".m3","t":800,"cls":"gone"},{"sel":".m5","t":900,"cls":"on"}]'>
         <div class="win__bar"><i></i><i></i><i></i><span>Настройки → Персонализация → Память</span></div>
         <div class="win__body">
-          <div class="win__row m1"><span>Управляет тремя ресторанами в Казани</span><small>факт</small></div>
+          <div class="win__row m1"><span>Управляет тремя ресторанами</span><small>факт</small></div>
           <div class="win__row m2"><span>Предпочитает короткие ответы без вступлений</span><small>факт</small></div>
           <div class="win__row m3"><span>Планирует отпуск в сентябре</span><small>удалить</small></div>
           <div class="win__row m4"><span>Пишет арендаторам на английском</span><small>факт</small></div>
@@ -340,11 +341,12 @@
           <div class="win__row p1"><span>Инструкция проекта</span><small>5 пунктов · 900 знаков</small></div>
           <div class="win__row p2"><span>Файлы</span><small>стандарт ответа · меню · правила компенсаций</small></div>
           <div class="win__row p3"><span>Память проекта</span><small>только внутри проекта</small></div>
-          <div class="win__row p4"><span>Новый чат: «Гость жалуется на холодный суп…»</span><small>ответ за 8 секунд</small></div>
+          <div class="win__row p4"><span>Новый чат: «Отзыв на 3 звезды, ждали счёт…»</span><small>ответ за 8 секунд</small></div>
         </div>
       </div>
     </div>
-    <div class="note"><p>Живой экран: учебный проект с тремя файлами, вопрос про холодный суп внутри проекта и вне его. В ответе из проекта компенсация из файла правил.</p></div>
+    <div class="ask fly"><i>?</i>Назовите тему, по которой вы отвечаете на одни и те же вопросы каждую неделю. Это ваш первый проект</div>
+    <div class="note"><p>Живой экран: учебный проект с тремя файлами, отзыв про долгий счёт внутри проекта и вне его. В ответе из проекта компенсация из файла правил.</p></div>
   </div>
 </section>
 
@@ -441,7 +443,8 @@
         </div>
       </div>
     </div>
-    <p class="sub fly" style="font-size:21px; margin-top:24px">Файл правил пишется один раз на тип задачи: презентации, расчёты, письма. Любая папка с этим файлом — ваш обученный сотрудник.</p>
+    <p class="sub fly" style="font-size:20px; margin-top:18px">Файл правил пишется один раз на тип задачи. Любая папка с ним — ваш обученный сотрудник.</p>
+    <div class="ask fly" style="margin-top:14px"><i>?</i>Пока агенты работают: для какого типа задач вы написали бы такой файл правил первым?</div>
     <div class="note"><p>Живой экран: две пустые папки в проводнике, в «Б» один файл правил. Открыть Codex в каждой, один и тот же запрос, запустить. Вернуться к этому слайду в 17:40 (адрес #18) и открыть оба index.html рядом. Папку «Б» прогнать дома дважды.</p></div>
   </div>
 </section>
@@ -450,7 +453,7 @@
 <section class="slide" data-mood="section">
   <div class="stage">
     <div class="split">
-      <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[{"text":"5","x":4.8,"y":0.3,"z":0,"size":4.4,"ry":-0.45,"rx":-0.3,"big":true}]'></canvas>
+      <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[{"x":-8.8,"y":4.0,"z":-7,"size":2.6,"ry":0.9,"far":true},{"x":-6.5,"y":-4.6,"z":-9,"size":2.0,"ry":0.3,"far":true},{"x":9.6,"y":-4.2,"z":-8,"size":2.4,"ry":-0.6,"far":true},{"text":"5","x":4.8,"y":0.3,"z":0,"size":4.4,"ry":-0.3,"rx":-0.22,"big":true}]'></canvas>
       <div>
         <p class="n fly" data-delay="1200">Часть третья · 30 минут</p>
         <h2 class="display sm fly" data-delay="1350">Пять способов <span class="tail">решать задачи</span></h2>
@@ -466,7 +469,7 @@
     <p class="kicker">Способ А · Быстрый диалог с телефона</p>
     <div class="row" style="grid-template-columns: 1fr 460px; gap:70px; align-items:center">
       <div>
-        <h2 class="h-slide narrow">Отзыв гостя и письмо арендатору. <span class="tail">Две минуты, без компьютера</span></h2>
+        <h2 class="h-slide narrow">Отзыв гостя и письмо арендатору. <span class="tail">Две минуты, по дороге</span></h2>
         <div class="stack mt">
           <p class="sub fly">Фото отзыва или голос вместо текста. Инструкции и проект уже знают, кто вы и как у вас принято.</p>
           <p class="sub fly"><b style="color:var(--ice); font-weight:500">Проверка.</b> Нет обещаний, которых нет в правилах. Даты и суммы совпадают с вашими. Одна просьба в конце.</p>
@@ -476,8 +479,8 @@
       <div class="phone fly from-right">
         <div class="chat">
           <div class="msg me fly" data-delay="1200">📷 скриншот отзыва</div>
-          <div class="msg me fly" data-delay="1700">Ответь от лица управляющего, коротко, компенсация по нашим правилам</div>
-          <div class="msg ai fly" data-delay="2600">Марина, спасибо, что написали. Суп должен был прийти горячим за 12 минут, у нас этого не случилось. Ужин на двоих за наш счёт в любой день на этой неделе. Ильдар, управляющий «Берега».</div>
+          <div class="msg me fly" data-delay="1700">Отзыв на 3 звезды: вкусно, но счёт ждали 25 минут. Ответь от управляющего, коротко, по нашим правилам</div>
+          <div class="msg ai fly" data-delay="2600">Марина, спасибо за честный отзыв и за «вкусно». Счёт за 25 минут — наша ошибка, разобрали со сменой. Приходите в будни: десерт за наш счёт, скажите администратору «отзыв от 17 октября». Ильдар, управляющий.</div>
           <div class="msg me fly" data-delay="3600">Отправляю 👍</div>
         </div>
       </div>
@@ -585,12 +588,13 @@
 <section class="slide" data-mood="section">
   <div class="stage">
     <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[
-      {"text":"Чат","x":-5.6,"y":2.4,"z":0,"size":1.7,"ry":0.35,"rx":-0.25},
-      {"text":"Проект","x":-1.9,"y":2.5,"z":0,"size":1.7,"ry":0.15,"rx":-0.25},
-      {"text":"Агент","x":1.9,"y":2.6,"z":0,"size":1.7,"ry":-0.15,"rx":-0.25},
-      {"text":"Ваш","x":5.6,"y":2.8,"z":0,"size":2.0,"ry":-0.35,"rx":-0.25,"big":true}
+      {"text":"Чат","x":-5.6,"y":3.5,"z":0,"size":1.5,"ry":0.22,"rx":-0.18},
+      {"text":"Проект","x":-1.9,"y":3.6,"z":0,"size":1.5,"ry":0.08,"rx":-0.18},
+      {"text":"Агент","x":1.9,"y":3.7,"z":0,"size":1.5,"ry":-0.08,"rx":-0.18},
+      {"text":"Ваш","x":5.6,"y":3.8,"z":0,"size":1.8,"ry":-0.22,"rx":-0.18,"big":true},
+      {"x":-9.8,"y":-1.5,"z":-7,"size":2.8,"ry":0.8,"far":true},{"x":10.2,"y":4.6,"z":-8,"size":2.4,"ry":-0.7,"far":true}
     ]'></canvas>
-    <div style="position:absolute; left:110px; right:110px; bottom:96px; z-index:2">
+    <div style="position:absolute; left:110px; right:110px; bottom:70px; z-index:2">
       <h2 class="h-slide fly" data-delay="1300">С каждой ступенью у ИИ больше прав. <span class="tail">И больше ответственности у вас</span></h2>
       <div class="row cols-4 mt" style="gap:22px">
         <div class="card card--quiet fly" data-delay="1700"><h3 style="font-size:22px">Сегодня · чат</h3><p style="font-size:18px">Права: читает то, что прислали.<br>Риск: выдумки, утечка через вставленное.<br>Цена: подписка.</p></div>
@@ -598,6 +602,7 @@
         <div class="card card--quiet fly" data-delay="2000"><h3 style="font-size:22px">Встреча 3 · агент на компьютере</h3><p style="font-size:18px">Права: папка проекта, запуск программ.<br>Риск: тронет не те файлы, поэтому копия и подтверждение.<br>Цена: подписка или ключ.</p></div>
         <div class="card card--glow fly" data-delay="2150"><h3 style="font-size:22px">Ваш агент · по расписанию и из Telegram</h3><p style="font-size:18px">Права: работает без вас.<br>Риск: ошибка повторяется каждую неделю, поэтому отчёт после запуска.<br>Цена: ключ, иногда сервер.</p></div>
       </div>
+      <div class="ask fly" data-delay="2400" style="margin-top:16px"><i>?</i>На какую ступень вы готовы пустить ИИ уже сейчас, а на какую пока нет? Почему?</div>
     </div>
     <div class="note"><p>Агента не надо писать, он уже есть. Надо уметь выдать права и проверить результат. Про GitHub: это место, где лежит и хранит историю всё, что собирает агент. Заведём после второй встречи.</p></div>
   </div>
@@ -670,12 +675,7 @@
 <!-- 26. Финал -->
 <section class="slide" data-mood="hero">
   <div class="stage">
-    <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[
-      {"text":"Чат","x":-7.0,"y":1.8,"z":-1,"size":2.2,"ry":0.6},
-      {"text":"Проект","x":-6.4,"y":-2.8,"z":0,"size":1.8,"ry":0.9},
-      {"text":"Агент","x":6.8,"y":2.2,"z":-1,"size":2.2,"ry":-0.5},
-      {"text":"Telegram","x":6.4,"y":-2.6,"z":0.5,"size":2.0,"ry":-0.4}
-    ]'></canvas>
+    <canvas class="portal" width="1600" height="900" aria-hidden="true"></canvas>
     <div class="section">
       <div>
         <h2 class="display fly from-deep" data-delay="400">Вопросы</h2>
@@ -711,5 +711,6 @@
 <script src="assets/vendor/RoundedBoxGeometry.classic.js"></script>
 <script src="assets/vendor/RoomEnvironment.classic.js"></script>
 <script src="cubes.js"></script>
+<script src="portal.js"></script>
 </body>
 </html>

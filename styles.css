@@ -52,10 +52,10 @@ button { font: inherit; }
 .backdrop::before { width: 1100px; height: 1100px; left: 50%; top: 40%;
   transform: translate(-50%,-50%) scale(1);
   background: radial-gradient(closest-side, rgba(27,61,160,.55), rgba(13,28,68,.35) 45%, rgba(5,7,11,0) 72%); }
-.backdrop::after { width: 700px; height: 700px; right: -180px; bottom: -220px; opacity: .7;
-  background: radial-gradient(closest-side, rgba(60,120,255,.35), rgba(5,7,11,0) 70%); }
+.backdrop::after { width: 1600px; height: 520px; left: 50%; bottom: -260px; transform: translateX(-50%); opacity: .75;
+  background: radial-gradient(closest-side, rgba(60,120,255,.32), rgba(5,7,11,0) 72%); }
 body.mood-quiet .backdrop::before { transform: translate(-50%,-30%) scale(.75); opacity: .55; }
-body.mood-quiet .backdrop::after { opacity: .35; }
+body.mood-quiet .backdrop::after { opacity: .45; }
 body.mood-hero .backdrop::before { transform: translate(-50%,-50%) scale(1.15); opacity: 1; }
 body.mood-section .backdrop::before { transform: translate(-50%,-60%) scale(1.05); opacity: .9; }
 .grain { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .045; mix-blend-mode: overlay;
@@ -376,3 +376,20 @@ h1, h2, h3, p { margin: 0; }
 .split .n { margin-bottom: 10px; }
 .split .lead { margin-top: 24px; }
 .compact .win__body { padding: 16px 18px; gap: 10px; } .compact .win__row { padding: 11px 14px; font-size: 19px; }
+
+/* ======== v4: горизонтальные лучи фона, портал, размытые дальние кубы ======== */
+.streaks { position: fixed; inset: -10% -20%; z-index: 1; pointer-events: none; opacity: .5; mix-blend-mode: screen;
+  background:
+    linear-gradient(180deg, transparent 0 18%, rgba(70,130,255,.10) 19%, transparent 20.5%, transparent 31%, rgba(90,150,255,.12) 32%, transparent 33.6%, transparent 55%, rgba(60,120,255,.09) 56%, transparent 57.4%, transparent 73%, rgba(110,170,255,.14) 74%, transparent 75.8%, transparent 88%, rgba(60,120,255,.08) 89%, transparent 90%);
+  filter: blur(14px); transform: skewY(-3deg) translateX(0); animation: streakDrift 26s ease-in-out infinite alternate; }
+@keyframes streakDrift { to { transform: skewY(-3deg) translateX(-4%); } }
+body.mood-quiet .streaks { opacity: .22; }
+canvas.portal { position: absolute; inset: 0; width: 1600px; height: 900px; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s var(--ease); }
+.slide.is-active canvas.portal { opacity: 1; }
+.cubes3d--far { filter: blur(7px); opacity: 0; transition: opacity 1.4s var(--ease) .1s; }
+.slide.is-active .cubes3d--far { opacity: .85; }
+.ask { display: inline-flex; align-items: center; gap: 14px; margin-top: 26px; padding: 12px 20px 12px 14px; border-radius: 999px;
+  background: rgba(47,99,245,.14); border: 1px solid rgba(120,160,255,.4); color: var(--ice); font-size: 21px; }
+.ask i { font-style: normal; width: 34px; height: 34px; border-radius: 50%; background: var(--blue); display: inline-grid; place-items: center; font-weight: 600; font-size: 18px; color: #fff; box-shadow: 0 0 18px rgba(47,99,245,.9); flex: none; }
+.hero__title .display { font-size: 150px; }
+.hero__title .lead { color: var(--text); font-weight: 400; }
