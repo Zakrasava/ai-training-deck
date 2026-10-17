@@ -2,13 +2,9 @@ import type { ReactNode } from "react";
 import { motion } from "motion/react";
 import { Group, Item, Kicker, H, Sub, Strong, Card, CardTitle, CardText, Bullets, Ask, Win, Chat, Phone, Prompt, Counter, Bars, Chips, rise, fromLeft, fromRight, fromDeep, pop } from "@/deck/primitives";
 import { Cubes } from "@/fx/Cubes";
-import { Lamp } from "@/fx/Lamp";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import { HeroRays, SectionMesh, NeuroBack, FinalGrain } from "@/fx/Shaders";
 import { Particles } from "@/components/ui/particles";
-import { Meteors } from "@/components/ui/meteors";
 import { BorderBeam } from "@/components/ui/border-beam";
-import { Spotlight } from "@/components/ui/spotlight-new";
-import { Vortex } from "@/components/ui/vortex";
 
 export type Slide = { mood: "hero" | "section" | "quiet"; notes: string; render: () => ReactNode };
 
@@ -17,7 +13,7 @@ const Pad = ({ children, className = "" }: { children: ReactNode; className?: st
 );
 const Section = ({ n, title, tail, lead, cube, children }: { n: string; title: string; tail: string; lead?: string; cube: string; children?: ReactNode }) => (
   <>
-    <Vortex containerClassName="absolute inset-0 opacity-40" className="w-full h-full" backgroundColor="transparent" particleCount={320} baseHue={215} rangeY={400} baseSpeed={.1} rangeSpeed={.6} baseRadius={.6} rangeRadius={1.6} />
+    <div className="absolute inset-0 overflow-hidden opacity-60"><SectionMesh /></div>
     <Cubes spec={[{ x: -8.8, y: 4, z: -7, size: 2.6, ry: .9, far: true }, { x: -6.5, y: -4.6, z: -9, size: 2, ry: .3, far: true }, { x: 9.6, y: -4.2, z: -8, size: 2.4, ry: -.6, far: true }, { text: cube, x: 4.8, y: .3, size: 4.4, ry: -.3, rx: -.22, big: true }]} />
     <Pad className="grid grid-cols-2 items-center">
       <Group delay={1.1}>
@@ -34,11 +30,11 @@ export const slides: Slide[] = [
   /* 1. Титул */
   { mood: "hero", notes: "Пауза 20–30 секунд, пока подключаются. Проверить, что видно экран. Ничего не читать вслух.", render: () => (
     <>
-      <Particles className="absolute inset-0" quantity={160} color="#9fc4ff" ease={60} size={.5} staticity={40} />
-      <Lamp width={900} top={330} color="#6ccbff" />
-      <Meteors number={12} className="opacity-70" />
+      <div className="absolute inset-0 overflow-hidden"><HeroRays /></div>
+      <div className="absolute inset-0" style={{ background: "radial-gradient(70% 60% at 50% 55%, rgba(5,7,11,.72), rgba(5,7,11,.15) 70%)" }} />
+      <Particles className="absolute inset-0" quantity={90} color="#cfe3ff" ease={60} size={.4} staticity={50} />
       <div className="absolute inset-0 grid place-items-center text-center">
-        <div style={{ marginTop: 150 }}>
+        <div style={{ marginTop: 20 }}>
           <h1 className="font-extralight tracking-[-.025em] leading-[1.02] text-[150px]">
             {["ИИ", "как", "новый", "сотрудник"].map((w, k) => (
               <motion.span key={k} initial={{ opacity: 0, y: 40, filter: "blur(14px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ delay: .5 + k * .18, duration: .9, ease: [.22, .61, .2, 1] }} className={"inline-block mr-[.25em] " + (k === 3 ? "tail" : "")}>{w}</motion.span>
@@ -53,7 +49,7 @@ export const slides: Slide[] = [
   /* 2. Обещание */
   { mood: "section", notes: "Главная мысль курса. Кубы — четыре ступени: чат, проект, агент, ваш агент.", render: () => (
     <>
-      <BackgroundBeams className="opacity-60" />
+      <div className="absolute inset-0 overflow-hidden opacity-60"><SectionMesh /></div>
       <Cubes spec={[
         { text: "Чат", x: -5.6, y: 1.2, size: 1.9, ry: .22, rx: -.18 }, { text: "Проект", x: -1.9, y: 1.4, size: 1.9, ry: .08, rx: -.18 },
         { text: "Агент", x: 1.9, y: 1.6, size: 1.9, ry: -.08, rx: -.18 }, { text: "Ваш", x: 5.6, y: 1.9, size: 2.3, ry: -.22, rx: -.18, big: true },
@@ -87,7 +83,6 @@ export const slides: Slide[] = [
               { text: "Запомнил: объяснять просто, без жаргона." }]} />
           </Phone>
         </div>
-        <Ask className="mt-[14px]">Напишите в чат: какой вопрос про ИИ вы стеснялись задать. Разберём прямо сейчас</Ask>
       </Group>
     </Pad>
   ) },
@@ -474,7 +469,7 @@ export const slides: Slide[] = [
   /* 25. Карта ступеней */
   { mood: "section", notes: "Агента не надо писать, он уже есть. Про GitHub: место, где лежит и хранит историю всё, что собирает агент.", render: () => (
     <>
-      <BackgroundBeams className="opacity-50" />
+      <div className="absolute inset-0 overflow-hidden opacity-55"><NeuroBack /></div>
       <Cubes spec={[{ text: "Чат", x: -5.6, y: 3.5, size: 1.5, ry: .22, rx: -.18 }, { text: "Проект", x: -1.9, y: 3.6, size: 1.5, ry: .08, rx: -.18 }, { text: "Агент", x: 1.9, y: 3.7, size: 1.5, ry: -.08, rx: -.18 }, { text: "Ваш", x: 5.6, y: 3.8, size: 1.8, ry: -.22, rx: -.18, big: true }, { x: -9.8, y: -1.5, z: -7, size: 2.8, ry: .8, far: true }, { x: 10.2, y: 4.6, z: -8, size: 2.4, ry: -.7, far: true }]} />
       <div className="absolute left-[110px] right-[110px] bottom-[70px]">
         <Group delay={1.2}>
@@ -545,12 +540,11 @@ export const slides: Slide[] = [
   /* 29. Финал */
   { mood: "hero", notes: "Резерв 8 минут. Если вопросов нет, показать обезличенное поручение домашнему агенту и готовый файл.", render: () => (
     <>
-      <Spotlight translateY={-320} width={620} height={1300} smallWidth={260} duration={8} xOffset={120} />
-      <Particles className="absolute inset-0" quantity={120} color="#9fc4ff" ease={60} size={.5} staticity={40} />
-      <Lamp width={820} top={300} color="#6ccbff" />
+      <div className="absolute inset-0 overflow-hidden opacity-70"><FinalGrain /></div>
+      <div className="absolute inset-0" style={{ background: "radial-gradient(55% 45% at 50% 50%, rgba(5,7,11,.7), rgba(5,7,11,.1) 70%)" }} />
       <div className="absolute inset-0 grid place-items-center text-center">
         <Group delay={.5}>
-          <motion.h2 variants={fromDeep} className="text-[132px] font-extralight tracking-[-.025em] leading-[1]" style={{ marginTop: 110 }}>Вопросы</motion.h2>
+          <motion.h2 variants={fromDeep} className="text-[132px] font-extralight tracking-[-.025em] leading-[1]">Вопросы</motion.h2>
           <Sub className="mt-[22px] text-[30px] text-fog">Что из семи настроек вы сделаете первым делом сегодня вечером?</Sub>
         </Group>
       </div>

@@ -36,7 +36,7 @@ export const Sub = ({ children, className }: { children: ReactNode; className?: 
 export const Strong = ({ children }: { children: ReactNode }) => <b className="font-medium text-ice">{children}</b>;
 
 /* ---------- карточка со свечением по курсору ---------- */
-export const Card = ({ children, className, hi, bad, v = rise, glow = true }: { children: ReactNode; className?: string; hi?: boolean; bad?: boolean; v?: Variants; glow?: boolean }) => (
+export const Card = ({ children, className, hi, bad, v = rise, glow = false }: { children: ReactNode; className?: string; hi?: boolean; bad?: boolean; v?: Variants; glow?: boolean }) => (
   <motion.div variants={v} className={cn("relative rounded-[22px] p-[30px_32px]", hi ? "glass-hi" : "glass", bad && "glass-bad", className)}>
     {glow && <GlowingEffect spread={46} glow proximity={120} inactiveZone={0.05} borderWidth={1.5} disabled={false} />}
     <div className="relative">{children}</div>
