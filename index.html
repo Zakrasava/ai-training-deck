@@ -18,23 +18,18 @@
 <section class="slide" data-mood="hero">
   <div class="stage">
     <div class="hero">
-      <div class="cubes" aria-hidden="true">
-        <div class="cube" style="--w:160px; left:150px; top:170px; --t:13s; --d:-2s; --i:0"><i>Контекст</i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="cube" style="--w:120px; left:150px; top:600px; --t:17s; --d:-6s; --i:1"><i>Память</i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="cube" style="--w:140px; right:150px; top:120px; --t:15s; --d:-9s; --i:2"><i>Проект</i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="cube" style="--w:180px; right:140px; top:560px; --t:19s; --d:-4s; --i:3"><i>Агент</i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="cube" style="--w:100px; left:700px; top:60px; --t:12s; --d:-1s; --i:4"><i>Навык</i><i></i><i></i><i></i><i></i><i></i></div>
-      </div>
+      <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[
+        {"text":"Контекст","x":-7.6,"y":3.1,"z":-1.5,"size":2.2,"ry":0.55,"rx":-0.3},
+        {"text":"Память","x":-6.4,"y":-3.4,"z":0,"size":1.8,"ry":0.9,"rx":-0.2},
+        {"text":"Навык","x":2.0,"y":4.6,"z":-4,"size":1.5,"ry":0.3,"rx":-0.5},
+        {"text":"Проект","x":7.2,"y":2.9,"z":-2,"size":1.9,"ry":-0.6,"rx":-0.25},
+        {"text":"Агент","x":6.4,"y":-3.3,"z":0,"size":2.3,"ry":-0.45,"rx":-0.3}
+      ]'></canvas>
       <div class="hero__title">
         <p class="kicker enter">Корпоративное обучение · встреча 1 из 3</p>
         <h1 class="display enter">ИИ как новый <span class="tail">сотрудник</span></h1>
-        <p class="lead enter" style="margin:28px auto 0; max-width:900px">Аккаунт, настройки и способы работы: что сделать сегодня, чтобы завтра ИИ понимал вашу компанию, а не отвечал «в среднем по интернету»</p>
       </div>
-      <div class="hero__meta">
-        <span><b>19 октября</b> · 16:30–18:00 МСК</span>
-        <span>Ведёт <b>Кирилл</b></span>
-        <span>90 минут · смотреть можно с телефона</span>
-      </div>
+      <div class="horizon" aria-hidden="true"></div>
     </div>
     <div class="note"><p>Пауза на титуле 20–30 секунд, пока подключаются. Проверить, что видно экран, а не камеру. Не читать подзаголовок вслух.</p></div>
   </div>
@@ -497,6 +492,12 @@
 <!-- 24. Финал -->
 <section class="slide" data-mood="hero">
   <div class="stage">
+    <canvas class="cubes3d" width="1600" height="900" aria-hidden="true" data-cubes='[
+      {"text":"Чат","x":-7.0,"y":1.8,"z":-1,"size":2.2,"ry":0.6},
+      {"text":"Проект","x":-6.4,"y":-2.8,"z":0,"size":1.8,"ry":0.9},
+      {"text":"Агент","x":6.8,"y":2.2,"z":-1,"size":2.2,"ry":-0.5},
+      {"text":"Telegram","x":6.4,"y":-2.6,"z":0.5,"size":2.0,"ry":-0.4}
+    ]'></canvas>
     <div class="section">
       <div>
         <h2 class="display">Вопросы</h2>
@@ -532,5 +533,9 @@
 </div>
 
 <script src="deck.js"></script>
+<script src="assets/vendor/three.min.js"></script>
+<script src="assets/vendor/RoundedBoxGeometry.classic.js"></script>
+<script src="assets/vendor/RoomEnvironment.classic.js"></script>
+<script src="cubes.js"></script>
 </body>
 </html>

@@ -166,8 +166,15 @@ h1, h2, h3, p { margin: 0; }
   background: rgba(47,99,245,.10); border: 1px solid rgba(120,160,255,.3); }
 .prompt small { display: block; margin-top: 10px; font-size: 17px; color: var(--muted); }
 
-/* ---------- титул: стеклянные кубы ---------- */
-.hero { display: grid; grid-template-rows: 1fr auto; height: 100%; }
+/* ---------- титул: стеклянные кубы (WebGL) ---------- */
+.cubes3d { position: absolute; inset: 0; width: 1600px; height: 900px; z-index: 1; pointer-events: none; opacity: 0; transition: opacity 1.4s var(--ease) .2s; }
+.slide.is-active .cubes3d { opacity: 1; }
+.horizon { position: absolute; left: 50%; bottom: -120px; width: 1400px; height: 300px; transform: translateX(-50%); z-index: 0; pointer-events: none;
+  background: radial-gradient(50% 60% at 50% 100%, rgba(80,140,255,.55), rgba(30,70,200,.25) 40%, rgba(5,7,11,0) 70%); filter: blur(18px); }
+.hero .hero__title { position: relative; z-index: 2; }
+.hero__title .display { font-size: 136px; }
+
+.hero { display: grid; place-items: center; height: 100%; position: relative; }
 .hero__title { align-self: center; text-align: center; position: relative; z-index: 2; }
 .hero__title .display { font-size: 124px; }
 .hero__meta { display: flex; justify-content: center; gap: 44px; font-size: 22px; color: var(--muted); }
