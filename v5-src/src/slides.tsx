@@ -2,7 +2,8 @@ import type { ReactNode } from "react";
 import { motion } from "motion/react";
 import { Group, Item, Kicker, H, Sub, Strong, Card, CardTitle, CardText, Bullets, Ask, Win, Chat, Phone, Prompt, Counter, Bars, Chips, rise, fromLeft, fromRight, fromDeep, pop } from "@/deck/primitives";
 import { Cubes } from "@/fx/Cubes";
-import { HeroRays, SectionMesh, NeuroBack, FinalGrain } from "@/fx/Shaders";
+import { SectionMesh, NeuroBack, FinalGrain } from "@/fx/Shaders";
+import { LiquidSculpture } from "@/sculpture/LiquidSculpture";
 import { Particles } from "@/components/ui/particles";
 import { BorderBeam } from "@/components/ui/border-beam";
 
@@ -28,20 +29,22 @@ const Section = ({ n, title, tail, lead, cube, children }: { n: string; title: s
 
 export const slides: Slide[] = [
   /* 1. Титул */
-  { mood: "hero", notes: "Пауза 20–30 секунд, пока подключаются. Проверить, что видно экран. Ничего не читать вслух.", render: () => (
+  { mood: "hero", notes: "Пауза 20–30 секунд, пока подключаются. Поводить мышью по скульптуре: она растекается и собирается обратно. Ничего не читать вслух.", render: () => (
     <>
-      <div className="absolute inset-0 overflow-hidden"><HeroRays /></div>
-      <div className="absolute inset-0" style={{ background: "radial-gradient(70% 60% at 50% 55%, rgba(5,7,11,.72), rgba(5,7,11,.15) 70%)" }} />
-      <Particles className="absolute inset-0" quantity={90} color="#cfe3ff" ease={60} size={.4} staticity={50} />
-      <div className="absolute inset-0 grid place-items-center text-center">
-        <div style={{ marginTop: 20 }}>
-          <h1 className="font-extralight tracking-[-.025em] leading-[1.02] text-[150px]">
-            {["ИИ", "как", "новый", "сотрудник"].map((w, k) => (
-              <motion.span key={k} initial={{ opacity: 0, y: 40, filter: "blur(14px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ delay: .5 + k * .18, duration: .9, ease: [.22, .61, .2, 1] }} className={"inline-block mr-[.25em] " + (k === 3 ? "tail" : "")}>{w}</motion.span>
+      <LiquidSculpture band={{ top: 30, bottom: 600 }} scale={1.0} />
+      <div className="absolute left-[110px] right-[110px] bottom-[84px] grid items-end gap-[60px] pointer-events-none" style={{ gridTemplateColumns: "1.6fr 1fr" }}>
+        <div>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: .62 }} transition={{ delay: 1.2, duration: .8 }} className="flex items-center gap-[12px] text-[13px] tracking-[.12em] uppercase mb-[18px]"><i className="w-[28px] h-[1px] bg-current opacity-70" />Корпоративное обучение · три встречи</motion.p>
+          <h1 className="font-medium tracking-[-.045em] leading-[.92] text-[112px]">
+            {["ИИ как новый", "сотрудник"].map((w, k) => (
+              <motion.span key={k} initial={{ opacity: 0, y: 40, filter: "blur(14px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ delay: .6 + k * .2, duration: .9, ease: [.22, .61, .2, 1] }} className={"block " + (k === 1 ? "font-extralight italic text-ice" : "")}>{w}</motion.span>
             ))}
           </h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6, duration: .8 }} className="mt-[30px] text-[28px] text-fog">Три встречи: от первого вопроса до собственного агента</motion.p>
         </div>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4, duration: .8 }} className="justify-self-end max-w-[400px] pb-[10px]">
+          <p className="text-[19px] leading-[1.5] text-fog">От первого вопроса до собственного агента. Ничего писать не придётся: всё уже написано, мы научимся это включать.</p>
+          <p className="mt-[22px] flex items-center gap-[10px] text-[11px] tracking-[.14em] uppercase opacity-50"><i className="w-[6px] h-[6px] rounded-full bg-current animate-pulse" />Проведите по форме</p>
+        </motion.div>
       </div>
     </>
   ) },
