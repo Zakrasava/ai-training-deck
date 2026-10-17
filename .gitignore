@@ -1,3 +1,6 @@
 preview/
+preview-v5/
+v5-src/node_modules/
+v5-src/dist/
 .DS_Store
 Thumbs.db
