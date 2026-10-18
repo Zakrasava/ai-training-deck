@@ -155,19 +155,27 @@ export const Win = ({ title, rows, steps = [], className, v = fromRight }: { tit
 };
 
 /* ---------- чат и телефон ---------- */
-export const Chat = ({ msgs, className, start = 0.9, gap = 0.6 }: { msgs: { me?: boolean; text: ReactNode; file?: boolean }[]; className?: string; start?: number; gap?: number }) => (
-  <div className={cn("grid gap-[10px]", className)}>
+export const Chat = ({ msgs, className, start = 0.9, gap = 0.6, compact = false }: { msgs: { me?: boolean; text: ReactNode; file?: boolean }[]; className?: string; start?: number; gap?: number; compact?: boolean }) => (
+  <div className={cn("grid", compact ? "gap-[8px]" : "gap-[10px]", className)}>
     {msgs.map((m, k) => (
       <motion.div key={k} initial={{ opacity: 0, y: 14, scale: .98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: start + k * gap, type: "spring", stiffness: 200, damping: 22 }}
-        className={cn("max-w-[86%] px-[16px] py-[12px] rounded-[16px] text-[18px] leading-[1.38]", m.me ? "justify-self-end bg-blue text-white rounded-br-[6px]" : "justify-self-start bg-paper border border-line text-ink rounded-bl-[6px]", m.file && "flex items-center gap-[12px]")}>
+        className={cn("max-w-[86%] rounded-[16px] leading-[1.35]", compact ? "px-[12px] py-[8px] text-[15px]" : "px-[16px] py-[12px] text-[18px]", m.me ? "justify-self-end bg-blue text-white rounded-br-[6px]" : "justify-self-start bg-paper border border-line text-ink rounded-bl-[6px]", m.file && "flex items-center gap-[12px]")}>
         {m.file && <i className="not-italic w-[34px] h-[34px] rounded-[8px] bg-ink text-white grid place-items-center text-[12px] font-semibold">XLS</i>}{m.text}
       </motion.div>
     ))}
   </div>
 );
-export const Phone = ({ children, className, v = fromRight }: { children: ReactNode; className?: string; v?: Variants }) => (
-  <motion.div variants={v} className={cn("w-[440px] rounded-[36px] p-[16px_12px] bg-white border border-line window", className)} style={{ boxShadow: "inset 0 0 0 6px #eef0f5, 0 30px 60px -30px rgba(15,23,42,.25)" }}>
-    <div className="px-[8px] py-[12px]">{children}</div>
+/* Телефон целиком: строка состояния, шапка приложения, лента, поле ввода */
+export const Phone = ({ children, className, v = fromRight, app = "ChatGPT", model = "Думающая модель" }: { children: ReactNode; className?: string; v?: Variants; app?: string; model?: string }) => (
+  <motion.div variants={v} className={cn("w-[440px] rounded-[44px] p-[10px] bg-ink", className)} style={{ boxShadow: "0 40px 80px -36px rgba(15,23,42,.55), inset 0 0 0 2px rgba(255,255,255,.08)" }}>
+    <div className="relative rounded-[36px] bg-white overflow-hidden">
+      <div className="flex items-center justify-between px-[26px] pt-[12px] text-[13px] font-medium text-ink"><span>16:31</span><span className="absolute left-1/2 top-[8px] -translate-x-1/2 w-[112px] h-[30px] rounded-full bg-ink" /><span className="flex items-center gap-[5px]"><i className="w-[16px] h-[10px] border border-ink rounded-[3px] relative after:content-[''] after:absolute after:inset-[2px] after:bg-ink after:rounded-[1px]" /></span></div>
+      <div className="flex items-center justify-between px-[18px] pt-[14px] pb-[10px] border-b border-line">
+        <span className="text-[20px] text-mute">≡</span><span className="text-center leading-[1.1]"><b className="block text-[16px] font-semibold text-ink">{app}</b><small className="text-[12px] text-mute">{model}</small></span><span className="w-[28px] h-[28px] rounded-full bg-paper border border-line" />
+      </div>
+      <div className="px-[12px] py-[12px] min-h-[200px]">{children}</div>
+      <div className="mx-[14px] mb-[14px] flex items-center gap-[10px] px-[14px] py-[10px] rounded-full bg-paper border border-line text-[15px] text-mute"><span className="flex-1">Спросите что‑нибудь</span><span className="w-[28px] h-[28px] rounded-full bg-ink text-white grid place-items-center text-[14px]">↑</span></div>
+    </div>
   </motion.div>
 );
 
