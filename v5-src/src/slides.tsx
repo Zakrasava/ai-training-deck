@@ -3,11 +3,11 @@ import { motion } from "motion/react";
 import { Group, Item, Kicker, H, Sub, Strong, Card, CardTitle, CardText, Bullets, Ask, Win, Chat, Phone, Prompt, Counter, Bars, Steps, Frame, Icon, rise, fromLeft, fromRight, fromDeep, pop } from "@/deck/primitives";
 import { cn } from "@/lib/utils";
 import { MessageCircle, HelpCircle, BookOpen, Users, FileText, Smartphone, Monitor, Laptop, KeyRound, CreditCard, UserCog, AlertTriangle, ListChecks, Ban, ClipboardList, Building2, Globe, PenLine, CheckCircle2, GitBranch, Timer, Search, Layers, ShieldCheck, BarChart3, Wallet, FolderOpen, Folder, Server, Wrench, Repeat, Lock, Sparkles, Scale, type LucideIcon } from "lucide-react";
-import logoOpenAI from "@/assets/logos/openai.svg";
-import logoClaude from "@/assets/logos/claude.svg";
-import logoGithub from "@/assets/logos/github.svg";
-import logoTelegram from "@/assets/logos/telegram.svg";
-import logoGemini from "@/assets/logos/googlegemini.svg";
+import logoOpenAI from "@/assets/logos/openai.svg?raw";
+import logoClaude from "@/assets/logos/claude.svg?raw";
+import logoGithub from "@/assets/logos/github.svg?raw";
+import logoTelegram from "@/assets/logos/telegram.svg?raw";
+import logoGemini from "@/assets/logos/googlegemini.svg?raw";
 import shotGithub from "@/assets/shots/github-repo.png";
 import shotPages from "@/assets/shots/pages-deck.png";
 
@@ -45,9 +45,10 @@ const Discuss = ({ q, hints, notes }: { q: string; hints: string[]; notes?: stri
     </Group>
   </Pad>
 );
-/* Монохромный логотип через маску */
+/* Монохромный логотип: встроенный SVG, цвет из currentColor */
+const svgMono = (raw: string) => raw.replace(/<title>.*?<\/title>/, "").replace(/\sfill="[^"]*"/g, "").replace("<svg", '<svg fill="currentColor"');
 const Logo = ({ src, size = 26, className }: { src: string; size?: number; className?: string }) => (
-  <i className={cn("inline-block shrink-0 bg-ink", className)} style={{ width: size, height: size, WebkitMaskImage: `url(${src})`, maskImage: `url(${src})`, WebkitMaskSize: "contain", maskSize: "contain", WebkitMaskRepeat: "no-repeat", maskRepeat: "no-repeat", WebkitMaskPosition: "center", maskPosition: "center" }} aria-hidden />
+  <i className={cn("inline-grid place-items-center shrink-0 text-ink [&>svg]:w-full [&>svg]:h-full", className)} style={{ width: size, height: size }} aria-hidden dangerouslySetInnerHTML={{ __html: svgMono(src) }} />
 );
 const LogoRow = ({ items, className }: { items: [string, string][]; className?: string }) => (
   <div className={cn("flex flex-wrap items-center gap-[10px]", className)}>
