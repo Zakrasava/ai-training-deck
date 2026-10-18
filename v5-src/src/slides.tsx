@@ -10,6 +10,13 @@ import logoTelegram from "@/assets/logos/telegram.svg?raw";
 import logoGemini from "@/assets/logos/googlegemini.svg?raw";
 import shotGithub from "@/assets/shots/github-repo.png";
 import shotPages from "@/assets/shots/pages-deck.png";
+import shotMemory from "@/assets/shots/chatgpt-memory.png";
+import shotInstrRow from "@/assets/shots/chatgpt-instructions-row.png";
+import shotInstrForm from "@/assets/shots/chatgpt-instructions-form.png";
+import shotProject from "@/assets/shots/chatgpt-project.png";
+import shotClaudeInstr from "@/assets/shots/claude-instructions.png";
+import shotClaudeMemory from "@/assets/shots/claude-memory.png";
+import shotClaudeProjects from "@/assets/shots/claude-projects.png";
 
 export type Slide = { mood: "hero" | "section" | "quiet"; notes: string; render: () => ReactNode };
 
@@ -56,16 +63,16 @@ const LogoRow = ({ items, className }: { items: [string, string][]; className?: 
   </div>
 );
 /* Скриншот в рамке */
-const Shot = ({ src, caption, v = fromRight, className }: { src: string; caption?: string; v?: typeof rise; className?: string }) => (
+const Shot = ({ src, caption, v = fromRight, className, h = 230 }: { src: string; caption?: string; v?: typeof rise; className?: string; h?: number | string }) => (
   <motion.figure variants={v} className={cn("m-0", className)}>
-    <img src={src} alt="" className="block w-full h-[230px] object-cover object-top rounded-[12px] border border-line window" />
+    <img src={src} alt="" className="block w-full object-cover object-top rounded-[12px] border border-line window" style={{ height: h }} />
     {caption && <figcaption className="mt-[10px] text-[15px] text-mute">{caption}</figcaption>}
   </motion.figure>
 );
 /* Дерево папок проектов */
 const TreeRow = ({ depth = 0, icon, name, meta, hi }: { depth?: number; icon: LucideIcon; name: string; meta?: string; hi?: boolean }) => (
-  <Item className={cn("flex items-center gap-[12px] py-[9px] pr-[14px] rounded-[9px] text-[20px]", hi ? "bg-blue/8 text-ink" : "text-body")} style={{ paddingLeft: 14 + depth * 34 }}>
-    <Icon icon={icon} size={32} className={hi ? "border-blue/40" : ""} /><span className={hi ? "font-medium" : ""}>{name}</span>{meta && <small className="ml-auto text-[15px] text-mute">{meta}</small>}
+  <Item className={cn("flex items-center gap-[10px] py-[4px] pr-[12px] rounded-[8px] text-[17px]", hi ? "bg-blue/8 text-ink" : "text-body")} style={{ paddingLeft: 14 + depth * 30 }}>
+    <Icon icon={icon} size={28} className={hi ? "border-blue/40" : ""} /><span className={hi ? "font-medium" : ""}>{name}</span>{meta && <small className="ml-auto text-[15px] text-mute">{meta}</small>}
   </Item>
 );
 const Term = ({ children }: { children: ReactNode }) => <span className="text-mute">({children})</span>;
@@ -269,10 +276,13 @@ export const slides: Slide[] = [
           <div className="grid gap-[14px]">
             <Item className="flex flex-wrap items-center gap-[10px] text-[18px] text-mute">{[[logoOpenAI, "ChatGPT"], ["", "Настройки"], ["", "Персонализация"], ["", "Пользовательские инструкции"]].map(([l, t], k) => <span key={k} className="contents">{k > 0 && <em className="not-italic opacity-60">→</em>}<b className="inline-flex items-center gap-[8px] font-medium text-ink px-[12px] py-[6px] rounded-[9px] bg-white border border-line">{l && <Logo src={l} size={16} />}{t}</b></span>)}</Item>
             <Item className="flex flex-wrap items-center gap-[10px] text-[18px] text-mute">{[[logoClaude, "Claude"], ["", "Settings"], ["", "Profile"], ["", "Preferences"]].map(([l, t], k) => <span key={k} className="contents">{k > 0 && <em className="not-italic opacity-60">→</em>}<b className="inline-flex items-center gap-[8px] font-medium text-ink px-[12px] py-[6px] rounded-[9px] bg-white border border-line">{l && <Logo src={l} size={16} />}{t}</b></span>)}</Item>
-            <Sub className="mt-[10px]">Вставляете промпт в обычный чат. Он задаёт десять вопросов, по одному, и не принимает расплывчатых ответов.</Sub>
-            <Sub>В конце получаете текст на 400–600 знаков от первого лица и вставляете его в поле инструкций. С этой минуты каждый новый чат знает, с кем говорит.</Sub>
+            <Sub className="mt-[4px] text-[21px]">Вставляете промпт в обычный чат. Он задаёт десять вопросов, по одному. Итог на 400–600 знаков от первого лица вставляете в поле инструкций. С этой минуты каждый новый чат знает, с кем говорит.</Sub>
+            <Prompt v={fromLeft} className="text-[17px] px-[20px] py-[14px]" text="Помоги составить мои личные инструкции для ИИ. Задай мне по одному вопросу: роль, компания, страна и правила, для кого я пишу, стиль ответов, что мне не нужно, как критиковать мои тексты, «ты» или «вы», любимый формат ответа, типовые задачи. Дождись ответа на каждый. Потом собери текст от первого лица на 400–600 знаков, без воды." note="Промпт есть в конспекте после встречи. Переписывать с экрана не нужно." />
           </div>
-          <Prompt v={fromRight} text="Помоги составить мои личные инструкции для ИИ. Задай мне по одному вопросу: роль, компания, страна и правила, для кого я пишу, стиль ответов, что мне не нужно, как критиковать мои тексты, «ты» или «вы», любимый формат ответа, типовые задачи. Дождись ответа на каждый. Потом собери текст от первого лица на 400–600 знаков, без воды." note="Промпт есть в конспекте после встречи. Переписывать с экрана не нужно." />
+          <div className="grid gap-[12px]">
+            <Shot src={shotInstrForm} h={300} caption="ChatGPT → Настройки → Персонализация → Пользовательские инструкции. Реальный экран, 18 октября 2026" />
+            <Shot src={shotClaudeInstr} h={118} caption="Claude → Settings → Account → Instructions for Claude: то же поле, другое название" />
+          </div>
         </Two>
       </Group>
     </Pad>
@@ -286,12 +296,15 @@ export const slides: Slide[] = [
         <H tail="вторую нет">У ИИ две памяти. Одну вы видите,</H>
         <Two cols="1.05fr 1fr">
           <div className="grid gap-[12px]">
-            <Sub><Strong>Сохранённые воспоминания</Strong> <Term>ChatGPT: Персонализация → Память → Управление; Claude: Settings → Memory</Term>. Список того, что ИИ записал о вас. Можно открыть, прочитать и удалить любую строку.</Sub>
-            <Sub><Strong>История чатов как память</Strong> <Term>переключатель «Учитывать историю чатов»</Term>. Профиль, который строится из всех разговоров. Посмотреть нельзя, только выключить. Если чаты были про всё подряд, он мешает.</Sub>
+            <Sub><Strong>Сводка памяти</Strong> <Term>ChatGPT: Персонализация → Память → Управление; Claude: Settings → Memory</Term>. То, что ИИ записал о вас. Можно открыть, прочитать и удалить любую строку.</Sub>
+            <Sub><Strong>Включить память</Strong> и <Strong>Учитывать мой стиль письма</Strong> <Term>переключатели там же</Term>. Профиль строится из всех чатов, файлов и подключённых приложений. Посмотреть целиком нельзя, только выключить. Если чаты были про всё подряд, он мешает.</Sub>
             <Sub><Strong>Временный чат</Strong>. Не попадает ни в историю, ни в память. Для разового и чувствительного.</Sub>
             <Item className="mt-[8px] rounded-[12px] px-[18px] py-[14px] border border-warn/40 bg-white text-[18px] leading-[1.4] text-body"><b className="font-semibold text-warn">Сноска.</b> Переписка с ИИ не защищена как тайна переписки. Паспортные данные, договоры с реквизитами и зарплаты в облачный чат не вставляем: обезличиваем («Арендатор А», «объект на улице Б»). Для таких документов есть локальные модели, которые работают на вашем компьютере и ничего не отправляют наружу.</Item>
           </div>
-          <Win title="Настройки → Персонализация → Память" rows={[{ id: "m1", label: "Управляет тремя ресторанами", meta: "воспоминание" }, { id: "m2", label: "Предпочитает короткие ответы без вступлений", meta: "воспоминание" }, { id: "m3", label: "Планирует отпуск в сентябре", meta: "удалить" }, { id: "m4", label: "Пишет арендаторам на английском", meta: "воспоминание" }, { id: "m5", label: "Учитывать историю чатов", toggle: true, on: true }]} steps={[{ sel: "m3", t: 900, gone: true }, { sel: "m5", t: 1000, on: false }]} />
+          <div className="grid gap-[12px]">
+            <Shot src={shotMemory} h={290} caption="ChatGPT → Настройки → Персонализация: «Включить память», «Сводка памяти → Управление», «Учитывать мой стиль письма». Реальный экран, 18 октября 2026" />
+            <Shot src={shotClaudeMemory} h={170} caption="Claude → Settings → Memory: «Search and reference chats», «Generate memory from chats». Те же два переключателя" />
+          </div>
         </Two>
       </Group>
     </Pad>
@@ -309,11 +322,15 @@ export const slides: Slide[] = [
             <Sub>На компьютере <Term>desktop-приложение, Codex, Claude Code</Term> проект это обычная папка. Заводите одну папку «Проекты», в ней подпапку на каждую тему и в каждой файл правил <Term>AGENTS.md или CLAUDE.md</Term>: что это за задача, как у вас принято, что проверить.</Sub>
             <Sub>Для большой задачи файл правил задаёт этапы: сначала ТЗ, потом дизайн, потом безопасность, потом сборка. На каждом этапе можно звать разную модель: сильную с поиском для ТЗ, модель для кода для сборки.</Sub>
           </div>
-          <Card v={fromRight} className="p-[14px_14px]">
-            <Group delay={.9} className="grid gap-[4px]">
+          <div className="grid gap-[12px]">
+          <div className="grid grid-cols-2 gap-[12px]">
+            <Shot src={shotProject} h={128} caption="ChatGPT → Проекты → «Отзывы гостей»: «Чаты» и «Источники»" />
+            <Shot src={shotClaudeProjects} h={128} caption="Claude → Projects: материалы, инструкции и чаты в одном месте" />
+          </div>
+          <Card v={fromRight} className="p-[10px_12px] [&_[data-row]]:py-[6px]">
+            <Group delay={.9} className="grid gap-[2px]">
               <TreeRow icon={Folder} name="Проекты" meta="одна папка на всё" />
-              <TreeRow depth={1} icon={FileText} name="ПРАВИЛА.md" meta="общее вводное" hi />
-              <TreeRow depth={1} icon={FolderOpen} name="отзывы-гостей" />
+                            <TreeRow depth={1} icon={FolderOpen} name="отзывы-гостей" />
               <TreeRow depth={2} icon={FileText} name="AGENTS.md" meta="стандарт ответа, компенсации" />
               <TreeRow depth={1} icon={FolderOpen} name="аренда-дубай" />
               <TreeRow depth={2} icon={FileText} name="AGENTS.md" meta="шаблоны писем, английский" />
@@ -321,6 +338,7 @@ export const slides: Slide[] = [
               <TreeRow depth={2} icon={FileText} name="AGENTS.md" meta="этапы: ТЗ → дизайн → сборка → проверка цифр" hi />
             </Group>
           </Card>
+          </div>
         </Two>
         <Ask>Какая задача у вас повторяется каждую неделю? Это ваша первая подпапка</Ask>
       </Group>
