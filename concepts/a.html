@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Концепт A · Кино</title>
+<style>
+@font-face{font-family:Onest;font-weight:200 700;src:url(fonts/onest-cyr.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:200 700;src:url(fonts/onest-lat.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122}
+:root{--bg:#000;--fg:#fff;--dim:#8a8a8e;--line:#232326;--glow:#3b7bff}
+*{box-sizing:border-box;margin:0}
+body{background:#141416;font-family:Onest,system-ui,sans-serif;color:var(--fg);-webkit-font-smoothing:antialiased;padding:40px 0}
+.label{width:1920px;margin:0 auto 10px;font-size:14px;color:#9a9a9e}
+.slide{position:relative;width:1920px;height:1080px;margin:0 auto 60px;background:var(--bg);overflow:hidden}
+/* титул */
+.orb{position:absolute;right:-120px;top:50%;transform:translateY(-50%);width:1040px;height:1040px;border-radius:50%;
+ background:radial-gradient(circle at 38% 35%,#ffffff 0,#dfe9ff 6%,#7ea6ff 22%,#1d3fb4 48%,#070b1c 70%,#000 76%);
+ box-shadow:0 0 220px 40px rgba(59,123,255,.25)}
+.orb:after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 70% 75%,rgba(255,255,255,.18),transparent 40%)}
+.t1{position:absolute;left:140px;bottom:150px;max-width:1150px}
+.t1 .k{font-size:24px;color:var(--dim);margin-bottom:34px;font-weight:400}
+.t1 h1{font-size:196px;line-height:.9;letter-spacing:-.05em;font-weight:600}
+.t1 h1 em{font-style:normal;font-weight:200;color:#c9d6ff}
+.t1 p{margin-top:44px;font-size:30px;line-height:1.35;color:#c7c7cc;max-width:900px;font-weight:300}
+/* раздел: повестка */
+.agenda{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 140px}
+.agenda .k{font-size:24px;color:var(--dim);margin-bottom:28px}
+.agenda h2{font-size:156px;line-height:.92;letter-spacing:-.045em;font-weight:600}
+.agenda h2 span{display:block;font-weight:200;color:#c9d6ff}
+.agenda ol{list-style:none;justify-self:end;width:640px}
+.agenda li{font-size:44px;font-weight:300;color:#59595e;padding:22px 0;border-top:1px solid var(--line);letter-spacing:-.02em}
+.agenda li:last-child{border-bottom:1px solid var(--line)}
+.agenda li.on{color:#fff;font-weight:500}
+.agenda li.on:before{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--glow);box-shadow:0 0 24px var(--glow);margin-right:22px;vertical-align:middle}
+/* контент: шесть вещей */
+.six{position:absolute;inset:0;padding:100px 140px}
+.six h2{font-size:82px;line-height:1;letter-spacing:-.04em;font-weight:600;max-width:1400px}
+.six h2 span{font-weight:200;color:#c9d6ff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 70px;margin-top:64px}
+.cell{padding:26px 0 28px;border-top:1px solid var(--line)}
+.cell b{display:block;font-size:30px;font-weight:500;margin-bottom:14px}
+.cell p{font-size:21px;line-height:1.4;color:#a1a1a6;font-weight:300}
+.cell.hi b{color:#fff}.cell.hi{border-top-color:var(--glow)}
+.foot{position:absolute;left:140px;bottom:56px;font-size:24px;color:#c9d6ff;font-weight:300}
+</style>
+</head>
+<body>
+<div class="label">Концепт A · «Кино» · слайд 1: титул</div>
+<section class="slide">
+  <div class="orb"></div>
+  <div class="t1">
+    <div class="k">Корпоративное обучение, три встречи</div>
+    <h1>ИИ как<br>новый <em>сотрудник</em></h1>
+    <p>От первого вопроса до собственного агента. Ничего писать не придётся: всё уже написано, мы научимся это включать.</p>
+  </div>
+</section>
+
+<div class="label">Концепт A · слайд 2: раздел «Семь настроек»</div>
+<section class="slide">
+  <div class="agenda">
+    <div>
+      <div class="k">Часть вторая, 30 минут живого экрана</div>
+      <h2>Семь<span>настроек</span></h2>
+    </div>
+    <ol>
+      <li class="on">Модель</li><li>Личные инструкции</li><li>Память</li><li>Проекты</li><li>Гигиена чатов</li><li>Где работать</li><li>Чем платить</li>
+    </ol>
+  </div>
+</section>
+
+<div class="label">Концепт A · слайд 3: «Шесть вещей»</div>
+<section class="slide">
+  <div class="six">
+    <h2>Шесть вещей, которые ИИ должен знать <span>до первого вопроса</span></h2>
+    <div class="grid">
+      <div class="cell"><b>Кто вы</b><p>«Управляющий сетью из трёх ресторанов в Казани, подчиняюсь собственнику, в команде 60 человек».</p></div>
+      <div class="cell"><b>Компания</b><p>«Холдинг: рестораны, покупка земли под застройку, агентство недвижимости в Дубае». Без цифр, которые нельзя разглашать.</p></div>
+      <div class="cell"><b>Страна и правила</b><p>«Работаем по законам РФ и ОАЭ, цены в рублях и дирхамах, НДС считаем отдельно». Для Дубая и Казани ответы разные.</p></div>
+      <div class="cell"><b>Стиль</b><p>«Коротко, по делу, на «вы», без восклицательных знаков, таблица вместо абзаца, если данных больше трёх строк».</p></div>
+      <div class="cell"><b>Что нельзя</b><p>«Не придумывай цифры и имена. Не обещай сроки. Если не хватает данных, задай вопрос. Юридические выводы помечай как черновик».</p></div>
+      <div class="cell hi"><b>Хороший результат</b><p>«Письмо на половину экрана. Три варианта на выбор. Таблица с колонками: позиция, цена, срок». То, что вы примете с первого раза.</p></div>
+    </div>
+    <div class="foot">Что из шести вы не смогли бы объяснить стажёру за минуту? Это и надо записать.</div>
+  </div>
+</section>
+</body>
+</html>

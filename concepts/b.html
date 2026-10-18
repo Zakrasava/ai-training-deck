@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Концепт B · Инженерный</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:Onest;font-weight:200 700;src:url(fonts/onest-cyr.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:200 700;src:url(fonts/onest-lat.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122}
+:root{--bg:#0b0c10;--panel:#111318;--line:#23262e;--fg:#ecedef;--mute:#8b8f98;--acc:#7aa2ff;--warm:#ffd27a}
+*{box-sizing:border-box;margin:0}
+body{background:#17181c;font-family:"Inter Tight",Onest,system-ui,sans-serif;color:var(--fg);-webkit-font-smoothing:antialiased;padding:40px 0}
+.label{width:1920px;margin:0 auto 10px;font-size:14px;color:#9a9a9e}
+.slide{position:relative;width:1920px;height:1080px;margin:0 auto 60px;background:var(--bg);overflow:hidden;
+ background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:120px 120px;background-position:-1px -1px}
+.slide:before{content:"";position:absolute;inset:0;background:radial-gradient(900px 600px at 70% 30%,rgba(122,162,255,.14),transparent 60%),linear-gradient(180deg,rgba(11,12,16,.2),rgba(11,12,16,.85))}
+.wrap{position:absolute;inset:0;padding:110px 120px}
+.k{font-size:20px;color:var(--mute);font-weight:400;display:flex;align-items:center;gap:12px}
+.k i{width:8px;height:8px;border-radius:2px;background:var(--acc);display:inline-block}
+/* титул */
+.t1 h1{margin-top:28px;font-size:124px;line-height:.95;letter-spacing:-.045em;font-weight:600;max-width:1000px}
+.t1 h1 span{color:var(--mute);font-weight:400}
+.t1 p{margin-top:34px;font-size:26px;line-height:1.4;color:#b5b8c0;max-width:720px;font-weight:300}
+.win{position:absolute;right:120px;top:200px;width:720px;border:1px solid var(--line);border-radius:14px;background:var(--panel);box-shadow:0 40px 120px -40px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.02) inset}
+.win .bar{display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid var(--line);font-size:14px;color:var(--mute)}
+.win .bar i{width:10px;height:10px;border-radius:50%;background:#2a2e38}
+.win .bar span{margin-left:8px}
+.msg{margin:18px 20px;padding:14px 16px;border-radius:12px;font-size:17px;line-height:1.4;max-width:520px;border:1px solid var(--line);background:#14171d;color:#d7dae0}
+.msg.me{margin-left:auto;background:#1b2a4d;border-color:#2b3f73;color:#e9eefc}
+.win .meta{margin:0 20px 18px;font-size:13px;color:var(--mute)}
+/* раздел */
+.rail{position:absolute;inset:0;display:grid;grid-template-columns:760px 1fr;gap:120px;padding:110px 120px;align-items:start}
+.rail h2{font-size:132px;line-height:.95;letter-spacing:-.045em;font-weight:600;margin-top:24px}
+.rail h2 span{display:block;color:var(--mute);font-weight:400}
+.rail p{margin-top:36px;font-size:24px;line-height:1.45;color:#b5b8c0;font-weight:300;max-width:620px}
+.steps{list-style:none;margin-top:72px}
+.steps li{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:20px;padding:20px 0;border-top:1px solid var(--line);font-size:30px;font-weight:400;color:#d7dae0}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps li small{font-size:18px;color:var(--mute);font-variant-numeric:tabular-nums}
+.steps li em{font-style:normal;font-size:16px;color:var(--mute)}
+.steps li.on{color:#fff}.steps li.on small{color:var(--acc)}
+/* контент: панели */
+.six h2{margin-top:28px;font-size:84px;line-height:1;letter-spacing:-.04em;font-weight:600;max-width:1300px}
+.six h2 span{color:var(--mute);font-weight:400}
+.panels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:64px}
+.p{border:1px solid var(--line);border-radius:12px;background:rgba(17,19,24,.9);padding:26px 28px 30px;min-height:250px}
+.p .ic{width:36px;height:36px;border-radius:8px;border:1px solid var(--line);display:grid;place-items:center;color:var(--acc);margin-bottom:22px;background:#0f1116}
+.p b{display:block;font-size:26px;font-weight:500;margin-bottom:10px}
+.p p{font-size:19px;line-height:1.45;color:#aeb2bb;font-weight:300}
+.p.hi{border-color:rgba(122,162,255,.55);box-shadow:0 0 0 1px rgba(122,162,255,.15) inset}
+.ask{margin-top:28px;font-size:20px;color:var(--warm)}
+</style>
+</head>
+<body>
+<div class="label">Концепт B · «Инженерный» · слайд 1: титул</div>
+<section class="slide">
+  <div class="wrap t1">
+    <div class="k"><i></i>Корпоративное обучение, три встречи</div>
+    <h1>ИИ как новый <span>сотрудник</span></h1>
+    <p>От первого вопроса до собственного агента. Ничего писать не придётся: всё уже написано, мы научимся это включать.</p>
+  </div>
+  <div class="win">
+    <div class="bar"><i></i><i></i><i></i><span>Новый чат</span></div>
+    <div class="msg me">Напиши поставщику: задержали поставку</div>
+    <div class="msg">Андрей, добрый день. По договору № 14 поставка должна была прийти 14 октября, сегодня 18‑е. Прошу до 12:00 завтра подтвердить дату отгрузки. По п. 6.2 с 19 октября начисляется неустойка 0,1% в день, пока удерживать не будем. Ильдар, управляющий.</div>
+    <div class="meta">Думающая модель · инструкции и проект «Закупки» подключены</div>
+  </div>
+</section>
+
+<div class="label">Концепт B · слайд 2: раздел «Семь настроек»</div>
+<section class="slide">
+  <div class="rail">
+    <div>
+      <div class="k"><i></i>Часть вторая, 30 минут живого экрана</div>
+      <h2>Семь<span>настроек</span></h2>
+      <p>Каждую включаем вместе на учебном аккаунте и возвращаемся к слайду. После седьмой ИИ знает вашу компанию.</p>
+    </div>
+    <ol class="steps">
+      <li class="on"><small>01</small>Модель<em>3 мин</em></li>
+      <li><small>02</small>Личные инструкции<em>6 мин</em></li>
+      <li><small>03</small>Память<em>4 мин</em></li>
+      <li><small>04</small>Проекты<em>4 мин</em></li>
+      <li><small>05</small>Гигиена чатов<em>2 мин</em></li>
+      <li><small>06</small>Где работать<em>2 мин</em></li>
+      <li><small>07</small>Чем платить<em>4 мин</em></li>
+    </ol>
+  </div>
+</section>
+
+<div class="label">Концепт B · слайд 3: «Шесть вещей»</div>
+<section class="slide">
+  <div class="wrap six">
+    <div class="k"><i></i>Досье стажёра</div>
+    <h2>Шесть вещей, которые ИИ должен знать <span>до первого вопроса</span></h2>
+    <div class="panels">
+      <div class="p"><div class="ic">◎</div><b>Кто вы</b><p>«Управляющий сетью из трёх ресторанов в Казани, подчиняюсь собственнику, в команде 60 человек».</p></div>
+      <div class="p"><div class="ic">▣</div><b>Компания</b><p>«Холдинг: рестораны, покупка земли под застройку, агентство недвижимости в Дубае». Без цифр, которые нельзя разглашать.</p></div>
+      <div class="p"><div class="ic">◍</div><b>Страна и правила</b><p>«Работаем по законам РФ и ОАЭ, цены в рублях и дирхамах, НДС считаем отдельно». Для Дубая и Казани ответы разные.</p></div>
+      <div class="p"><div class="ic">✎</div><b>Стиль</b><p>«Коротко, по делу, на «вы», без восклицательных знаков, таблица вместо абзаца, если данных больше трёх строк».</p></div>
+      <div class="p"><div class="ic">⊘</div><b>Что нельзя</b><p>«Не придумывай цифры и имена. Не обещай сроки. Если не хватает данных, задай вопрос. Юридические выводы помечай как черновик».</p></div>
+      <div class="p hi"><div class="ic">✓</div><b>Хороший результат</b><p>«Письмо на половину экрана. Три варианта на выбор. Таблица с колонками: позиция, цена, срок». То, что вы примете с первого раза.</p></div>
+    </div>
+    <div class="ask">Что из шести вы не смогли бы объяснить стажёру за минуту? Это и надо записать.</div>
+  </div>
+</section>
+</body>
+</html>
