@@ -30,11 +30,24 @@ export const Bleed = ({ children, className, style }: { children?: ReactNode; cl
 export const Kicker = ({ children, className }: { children: ReactNode; className?: string }) => (
   <motion.p variants={rise} className={cn("flex items-center gap-[12px] text-[20px] text-mute mb-[22px]", className)}><i className="w-[8px] h-[8px] rounded-[2px] bg-blue shrink-0" />{children}</motion.p>
 );
+/* Заголовок: слова вылетают по одному снизу */
+const wordV: Variants = { hidden: { opacity: 0, y: "0.6em", rotate: 2, filter: "blur(6px)" }, show: { opacity: 1, y: 0, rotate: 0, filter: "blur(0px)", transition: { type: "spring", stiffness: 170, damping: 22 } } };
+const Words = ({ text, className }: { text: string; className?: string }) => (
+  <>{text.split(" ").map((w, k) => <motion.span key={k} variants={wordV} className={cn("inline-block", className)} style={{ marginRight: "0.24em" }}>{w}</motion.span>)}</>
+);
 export const H = ({ children, tail, className, size = 64 }: { children: ReactNode; tail?: ReactNode; className?: string; size?: number }) => (
-  <motion.h2 variants={rise} className={cn("font-semibold tracking-[-.035em] leading-[1.02] max-w-[1180px] text-ink", className)} style={{ fontSize: size }}>
-    {children}{tail ? <> <span className="tail">{tail}</span></> : null}
+  <motion.h2 variants={{ hidden: {}, show: { transition: { staggerChildren: 0.045 } } }} className={cn("font-semibold tracking-[-.035em] leading-[1.02] max-w-[1180px] text-ink", className)} style={{ fontSize: size }}>
+    {typeof children === "string" ? <Words text={children} /> : <motion.span variants={wordV} className="inline-block">{children}</motion.span>}
+    {tail ? (typeof tail === "string" ? <Words text={tail} className="tail" /> : <motion.span variants={wordV} className="inline-block tail">{tail}</motion.span>) : null}
   </motion.h2>
 );
+/* Обратный отсчёт для пауз */
+export const Countdown = ({ seconds = 300, className }: { seconds?: number; className?: string }) => {
+  const [t, setT] = useState(seconds);
+  useEffect(() => { const id = window.setInterval(() => setT(v => (v > 0 ? v - 1 : 0)), 1000); return () => clearInterval(id); }, []);
+  const m = Math.floor(t / 60), sec = t % 60;
+  return <motion.div variants={rise} className={cn("tabular-nums font-semibold tracking-[-.04em] text-ink", className)}>{m}:{String(sec).padStart(2, "0")}</motion.div>;
+};
 export const Sub = ({ children, className }: { children: ReactNode; className?: string }) => (
   <motion.p variants={rise} className={cn("text-[24px] font-normal text-body leading-[1.42]", className)}>{children}</motion.p>
 );
@@ -158,7 +171,7 @@ export const Win = ({ title, rows, steps = [], className, v = fromRight }: { tit
 export const Chat = ({ msgs, className, start = 0.9, gap = 0.6, compact = false }: { msgs: { me?: boolean; text: ReactNode; file?: boolean }[]; className?: string; start?: number; gap?: number; compact?: boolean }) => (
   <div className={cn("grid", compact ? "gap-[8px]" : "gap-[10px]", className)}>
     {msgs.map((m, k) => (
-      <motion.div key={k} initial={{ opacity: 0, y: 14, scale: .98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: start + k * gap, type: "spring", stiffness: 200, damping: 22 }}
+      <motion.div key={k} initial={{ opacity: 0, x: m.me ? 70 : -70, y: 16, scale: .9, rotate: m.me ? 2 : -2 }} animate={{ opacity: 1, x: 0, y: 0, scale: 1, rotate: 0 }} transition={{ delay: start + k * gap, type: "spring", stiffness: 260, damping: 20 }}
         className={cn("max-w-[86%] rounded-[16px] leading-[1.35]", compact ? "px-[12px] py-[8px] text-[15px]" : "px-[16px] py-[12px] text-[18px]", m.me ? "justify-self-end bg-blue text-white rounded-br-[6px]" : "justify-self-start bg-paper border border-line text-ink rounded-bl-[6px]", m.file && "flex items-center gap-[12px]")}>
         {m.file && <i className="not-italic w-[34px] h-[34px] rounded-[8px] bg-ink text-white grid place-items-center text-[12px] font-semibold">XLS</i>}{m.text}
       </motion.div>
@@ -180,6 +193,12 @@ export const Phone = ({ children, className, v = fromRight, app = "ChatGPT", mod
 );
 
 /* ---------- промпт с набором текста ---------- */
+/* Подсветка области на скриншоте: пульсирующая рамка */
+export const Mark = ({ at, delay = 1.2 }: { at: [number, number, number, number]; delay?: number }) => (
+  <motion.span className="absolute rounded-[8px] border-2 border-blue pointer-events-none" style={{ left: `${at[0]}%`, top: `${at[1]}%`, width: `${at[2]}%`, height: `${at[3]}%` }}
+    initial={{ opacity: 0, scale: 1.25 }} animate={{ opacity: 1, scale: 1, boxShadow: ["0 0 0 0 rgba(47,99,245,.45)", "0 0 0 14px rgba(47,99,245,0)"] }}
+    transition={{ opacity: { delay, duration: .4 }, scale: { delay, type: "spring", stiffness: 200, damping: 16 }, boxShadow: { delay: delay + .4, duration: 1.6, repeat: Infinity, ease: "easeOut" } }} />
+);
 export const Prompt = ({ text, note, className, delay = 0.6, speed = 14, v = fromLeft }: { text: string; note?: ReactNode; className?: string; delay?: number; speed?: number; v?: Variants }) => {
   const [n, setN] = useState(0);
   useEffect(() => {

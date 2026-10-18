@@ -1,6 +1,6 @@
 import type { ReactNode, CSSProperties } from "react";
 import { motion } from "motion/react";
-import { Group, Item, Kicker, H, Sub, Strong, Card, CardTitle, CardText, Bullets, Ask, Win, Chat, Phone, Prompt, Counter, Bars, Steps, Frame, Icon, rise, fromLeft, fromRight, fromDeep, pop } from "@/deck/primitives";
+import { Group, Item, Kicker, H, Sub, Strong, Card, CardTitle, CardText, Bullets, Ask, Win, Chat, Phone, Prompt, Counter, Bars, Steps, Frame, Icon, Mark, Countdown, rise, fromLeft, fromRight, fromDeep, pop } from "@/deck/primitives";
 import { cn } from "@/lib/utils";
 import { MessageCircle, HelpCircle, BookOpen, Users, FileText, Smartphone, Monitor, Laptop, KeyRound, CreditCard, UserCog, AlertTriangle, ListChecks, Ban, ClipboardList, Building2, Globe, PenLine, CheckCircle2, GitBranch, Timer, Search, Layers, ShieldCheck, BarChart3, Wallet, FolderOpen, Folder, Server, Wrench, Repeat, Lock, Sparkles, Scale, type LucideIcon } from "lucide-react";
 import logoOpenAI from "@/assets/logos/openai.svg?raw";
@@ -17,6 +17,14 @@ import shotProject from "@/assets/shots/chatgpt-project.png";
 import shotClaudeInstr from "@/assets/shots/claude-instructions.png";
 import shotClaudeMemory from "@/assets/shots/claude-memory.png";
 import shotClaudeProjects from "@/assets/shots/claude-projects.png";
+import shotModels from "@/assets/shots/chatgpt-models.png";
+import shotReasoning from "@/assets/shots/chatgpt-reasoning.png";
+import shotInstrFilled from "@/assets/shots/chatgpt-instructions-filled.png";
+import shotTempChat from "@/assets/shots/chatgpt-temp-chat.png";
+import shotBefore from "@/assets/shots/chatgpt-answer-before.png";
+import shotAfter from "@/assets/shots/chatgpt-answer-after.png";
+import shotExplorerProjects from "@/assets/shots/explorer-projects.png";
+import shotExplorerDemo from "@/assets/shots/explorer-demo.png";
 
 export type Slide = { mood: "hero" | "section" | "quiet"; notes: string; render: () => ReactNode };
 
@@ -28,12 +36,13 @@ const Pad = ({ children, className = "", style }: { children: ReactNode; classNa
 const Two = ({ children, cols = "1fr 1.05fr", className = "" }: { children: ReactNode; cols?: string; className?: string }) => (
   <div className={cn("grid items-start gap-[56px] mt-[40px]", className)} style={{ gridTemplateColumns: cols }}>{children}</div>
 );
-const Section = ({ n, title, tail, lead, steps }: { n: string; title: string; tail: string; lead?: string; steps?: [string, string][] }) => (
+const Section = ({ n, title, tail, lead, steps, shots }: { n: string; title: string; tail: string; lead?: string; steps?: [string, string][]; shots?: [string, string][] }) => (
   <Pad className="grid items-start gap-[110px]" style={{ gridTemplateColumns: "1fr 600px" }}>
     <Group delay={.15}>
       <Kicker>{n}</Kicker>
       <H size={104} tail={tail}>{title}</H>
       {lead && <Sub className="mt-[30px] max-w-[640px] text-[25px]">{lead}</Sub>}
+      {shots && <div className="grid gap-[12px] mt-[36px] max-w-[640px]" style={{ gridTemplateColumns: `repeat(${shots.length}, 1fr)` }}>{shots.map(([src, c]) => <Shot key={src} src={src} h={118} v={rise} caption={c} />)}</div>}
     </Group>
     {steps && <Group delay={.5} className="mt-[52px]"><Steps items={steps} /></Group>}
   </Pad>
@@ -44,6 +53,7 @@ const Discuss = ({ q, hints, notes }: { q: string; hints: string[]; notes?: stri
     <Group delay={.1}>
       <Kicker>Пауза, пять минут</Kicker>
       <H size={104} tail="обсудим">Давайте</H>
+      <Countdown className="mt-[18px] text-[64px] text-blue" />
       <Sub className="mt-[28px] text-[28px] max-w-[640px]">{q}</Sub>
       {notes && <Sub className="mt-[16px] text-[20px] text-mute max-w-[640px]">{notes}</Sub>}
     </Group>
@@ -63,9 +73,9 @@ const LogoRow = ({ items, className }: { items: [string, string][]; className?: 
   </div>
 );
 /* Скриншот в рамке */
-const Shot = ({ src, caption, v = fromRight, className, h = 230 }: { src: string; caption?: string; v?: typeof rise; className?: string; h?: number | string }) => (
+const Shot = ({ src, caption, v = fromRight, className, h = 230, mark, pos = "top" }: { src: string; caption?: string; v?: typeof rise; className?: string; h?: number | string; mark?: [number, number, number, number]; pos?: "top" | "center" }) => (
   <motion.figure variants={v} className={cn("m-0", className)}>
-    <img src={src} alt="" className="block w-full object-cover object-top rounded-[12px] border border-line window" style={{ height: h }} />
+    <span className="relative block"><img src={src} alt="" className={cn("block w-full object-cover rounded-[12px] border border-line window", pos === "top" ? "object-top" : "object-center")} style={{ height: h }} />{mark && <Mark at={mark} />}</span>
     {caption && <figcaption className="mt-[10px] text-[15px] text-mute">{caption}</figcaption>}
   </motion.figure>
 );
@@ -80,12 +90,12 @@ const Term = ({ children }: { children: ReactNode }) => <span className="text-mu
 export const slides: Slide[] = [
   /* 1. Титул */
   { mood: "hero", notes: "Пауза 20–30 секунд, пока подключаются. В окне справа печатается коммерческое предложение по одной фразе: это результат сегодняшних настроек. Ничего не читать вслух.", render: () => (
-    <Pad className="grid items-center gap-[90px]" style={{ gridTemplateColumns: "1fr 680px" }}>
+    <Pad className="grid items-center gap-[60px]" style={{ gridTemplateColumns: "1fr 560px" }}>
       <Group delay={.2}>
-        <Kicker>Корпоративное обучение работе с ИИ</Kicker>
-        <motion.h1 variants={rise} className="font-semibold tracking-[-.045em] leading-[.95] text-[118px] text-ink">ИИ как новый <span className="tail">сотрудник</span></motion.h1>
-        <Sub className="mt-[36px] max-w-[700px] text-[26px]">От первого вопроса до собственного агента. Ничего писать не придётся: всё уже написано, мы научимся это настраивать и включать.</Sub>
-        <Item className="mt-[34px]"><LogoRow items={[[logoOpenAI, "ChatGPT"], [logoClaude, "Claude"], [logoOpenAI, "Codex"], [logoGemini, "Gemini"], [logoGithub, "GitHub"], [logoTelegram, "Telegram"]]} /></Item>
+        <Kicker>Корпоративное обучение работе с ИИ, встреча первая</Kicker>
+        <H size={96} className="leading-[.95] tracking-[-.045em]" tail="вместо рутины">Свой ИИ‑агент</H>
+        <Sub className="mt-[36px] max-w-[700px] text-[26px]">От первого вопроса до агента, который работает по вашим правилам. Ничего писать не придётся: всё уже написано, мы научимся это настраивать и включать.</Sub>
+        <Item className="mt-[30px]"><LogoRow items={[[logoOpenAI, "ChatGPT"], [logoClaude, "Claude"], [logoOpenAI, "Codex"], [logoGithub, "GitHub"], [logoTelegram, "Telegram"]]} /></Item>
       </Group>
       <Frame title="Новый чат" meta="Думающая модель, личные инструкции и проект «Закупки» подключены">
         <Chat start={1.4} gap={1.1} msgs={[{ me: true, text: "Напиши поставщику: задержали поставку" }, { text: "Андрей, добрый день. По договору № 14 поставка должна была прийти 14 октября, сегодня 18‑е. Прошу до 12:00 завтра подтвердить дату отгрузки. По п. 6.2 с 19 октября начисляется неустойка 0,1% в день, пока удерживать не будем. Ильдар, управляющий." }]} />
@@ -187,9 +197,9 @@ export const slides: Slide[] = [
     <Discuss q="Что из этого списка у вас болит сильнее всего? Назовите одну задачу, которую вы делаете руками каждую неделю." notes="Я записываю. К концу встречи у каждой задачи будет способ, а у вас — домашнее задание из одной строки." hints={["Отчёт, который собирается из нескольких таблиц", "Письмо, которое вы пишете по одному и тому же шаблону", "Документ, который приходится читать целиком ради трёх цифр", "Вопрос, на который вы отвечаете коллегам по десять раз"]} />
   ) },
 
-  /* 7. Раздел: новый сотрудник */
-  { mood: "section", notes: "Аналогия: новый сотрудник в команде, не стажёр. У него есть вводное: что за компания, чем занимается, за что он отвечает. ИИ нужно то же самое, один раз.", render: () => (
-    <Section n="Часть первая" title="Новый" tail="сотрудник" lead="Когда к вам выходит новый человек, у него есть вводное: что за компания, чем она занимается, за что он отвечает и как здесь принято. ИИ нужно то же самое. Вводное пишется один раз, дальше он учитывает его в каждом ответе." steps={[["Один запрос, два ответа", "3 мин"], ["Что входит во вводное", "3 мин"], ["Вводное пишет сам ИИ", "в настройках, через 10 минут"]]} />
+  /* 7. Раздел: вводное */
+  { mood: "section", notes: "Вводное: одна страница о том, кто вы и как у вас принято. Пишется один раз, читается перед каждым ответом. Это первый шаг к агенту.", render: () => (
+    <Section n="Часть первая" title="Вводное" tail="для ИИ" lead="Без вводного ИИ отвечает «вообще», как любому человеку в мире. Одна страница о том, кто вы и как у вас принято, пишется один раз и читается перед каждым ответом. С неё начинается любой агент." steps={[["Один запрос, два ответа", "3 мин"], ["Шесть строк вводного", "3 мин"], ["Вводное пишет сам ИИ", "в настройках, через 10 минут"]]} shots={[[shotBefore, "Ответ без вводного: шаблон «[Название компании]»"], [shotInstrFilled, "Вводное в поле инструкций ChatGPT"]]} />
   ) },
 
   /* 8. До / после */
@@ -199,15 +209,15 @@ export const slides: Slide[] = [
         <Kicker>Один и тот же запрос</Kicker>
         <H tail="что ИИ знает о вас">Один запрос, два ответа. Разница только в том,</H>
         <div className="grid grid-cols-2 gap-[28px] mt-[48px]">
-          <Card v={fromLeft} bad>
+          <Card v={fromLeft} bad className="p-[20px_22px]">
             <CardTitle icon={Ban}>Без вводного</CardTitle>
-            <Chat start={.9} gap={.6} msgs={[{ me: true, text: "Подготовь коммерческое предложение на поставку продуктов" }, { text: "Коммерческое предложение. Уважаемые партнёры! Компания [название] предлагает поставку продуктов питания высокого качества по конкурентным ценам. Мы гарантируем индивидуальный подход… [Цены] [Условия] [Контакты]" }]} />
-            <CardText className="mt-[18px]">Шаблон «для всех»: квадратные скобки, общие слова, ни одной вашей цифры. Так отвечает любой ИИ любому человеку без настроек.</CardText>
+            <Shot src={shotBefore} h={330} v={fromLeft} mark={[2, 44, 60, 12]} caption="Настоящий ответ ChatGPT, временный чат без персонализации, 18 октября 2026" />
+            <CardText className="mt-[14px] text-[18px]">Шаблон «для всех»: «[Название компании]», «Уважаемые партнёры!», ассортимент из воздуха. Так отвечает любой ИИ любому человеку без настроек.</CardText>
           </Card>
-          <Card v={fromRight} hi>
+          <Card v={fromRight} hi className="p-[20px_22px]">
             <CardTitle icon={ClipboardList}>С вводным</CardTitle>
-            <Chat start={2.3} gap={.6} msgs={[{ me: true, text: "Подготовь коммерческое предложение на поставку продуктов" }, { text: "Собрал КП от сети из трёх ресторанов в Казани по вашему стандарту: таблица «позиция, объём в месяц, цена с НДС отдельно», условия оплаты 50/50, срок ответа. Чего не хватает: ассортимент и объёмы по позициям. Пришлите список, и я заполню таблицу. Три варианта тона в конце." }]} />
-            <CardText className="mt-[18px]">Знает, кто вы и как у вас принято, берёт вашу структуру и валюту, спрашивает недостающее вместо выдумки. Настройки профиля учитываются в каждом ответе, не только в этом.</CardText>
+            <Shot src={shotAfter} h={330} mark={[2, 10, 96, 30]} caption="Тот же запрос плюс шесть строк вводного. Настоящий ответ, 18 октября 2026" />
+            <CardText className="mt-[14px] text-[18px]">Знает, кто вы и как у вас принято: ваша структура, валюта, вопросы о недостающем вместо выдумки. Вводное в настройках работает так в каждом ответе.</CardText>
           </Card>
         </div>
       </Group>
@@ -215,36 +225,33 @@ export const slides: Slide[] = [
   ) },
 
   /* 9. Вводное на одну страницу */
-  { mood: "quiet", notes: "Главное: компактность. Каждое слово вводного ИИ читает при каждом ответе. Лишнее путает и тратит токены. Поле персонализации ограничено по длине.", render: () => (
+  { mood: "quiet", notes: "Главное: компактность. Каждое слово вводного ИИ читает при каждом ответе. Лишнее путает и тратит токены. Справа настоящее поле ChatGPT с примером.", render: () => (
     <Pad>
       <Group>
-        <Kicker>Что входит во вводное</Kicker>
+        <Kicker>Шесть строк вводного</Kicker>
         <H tail="и помещается в одно поле настроек">Шесть строк, которые читаются перед каждым ответом</H>
-        <Two cols="1.15fr 1fr" className="mt-[40px]">
-          <div className="grid grid-cols-2 gap-[12px] [&_h3]:text-[22px] [&_h3]:mb-[6px] [&_p]:text-[17px]">
-            {[[UserCog, "Кто вы", "«Управляющий сетью из трёх ресторанов в Казани». Имя по желанию."], [Building2, "Компания", "«Холдинг: рестораны, земля под застройку, недвижимость в Дубае». Без цифр, которые нельзя разглашать."], [Globe, "Страна и правила", "«Законы РФ и ОАЭ, рубли и дирхамы, НДС отдельно»."], [PenLine, "Стиль", "«Коротко, на «вы», без восклицаний. Таблица, если данных больше трёх строк»."], [Ban, "Что нельзя", "«Не выдумывай цифры и имена. Не хватает данных — спроси»."], [CheckCircle2, "Хороший результат", "«Письмо на половину экрана. Три варианта на выбор»."]].map(([I, t, d], k) => (
-              <Card key={k} v={k % 2 ? fromRight : fromLeft} hi={k === 5} className="p-[16px_20px]"><CardTitle icon={I as LucideIcon}>{t as string}</CardTitle><CardText>{d as string}</CardText></Card>
-            ))}
+        <Two cols="1fr 1fr" className="mt-[34px] gap-[60px]">
+          <div>
+            <ol className="m-0 p-0 list-none">
+              {[[UserCog, "Кто вы", "управляющий сетью из трёх ресторанов в Казани, в команде 60 человек"], [Building2, "Компания", "холдинг: рестораны, земля под застройку, недвижимость в Дубае"], [Globe, "Страна и правила", "законы РФ и ОАЭ, рубли и дирхамы, НДС отдельно"], [PenLine, "Стиль", "коротко, на «вы», без восклицаний; таблица, если данных больше трёх строк"], [Ban, "Что нельзя", "не выдумывай цифры и имена; не хватает данных — спроси"], [CheckCircle2, "Хороший результат", "письмо на половину экрана, три варианта на выбор"]].map(([I, t, d], k) => (
+                <motion.li key={k} variants={fromLeft} className="grid items-center gap-[14px] py-[6px] border-t border-line" style={{ gridTemplateColumns: "36px 180px 1fr" }}>
+                  <Icon icon={I as LucideIcon} size={32} /><b className="text-[20px] font-medium text-ink">{t as string}</b><span className="text-[17px] text-body leading-[1.3]">{d as string}</span>
+                </motion.li>
+              ))}
+              <motion.li variants={fromLeft} className="border-t border-line" />
+            </ol>
+            <Sub className="mt-[10px] text-[17px]">Короче — лучше. Каждое слово вводного ИИ перечитывает перед каждым ответом: чем больше текста, тем больше токенов <Term>единица оплаты и объёма</Term> и тем легче ему запутаться. 400–600 знаков помещаются в поле и работают.</Sub>
           </div>
-          <div className="grid gap-[14px]">
-            <Card v={fromRight} className="p-[22px_26px]">
-              <CardTitle icon={Scale}>Короче — лучше</CardTitle>
-              <CardText className="text-[19px]">Каждое слово вводного ИИ перечитывает перед каждым ответом. Чем больше вводных, тем больше токенов <Term>единица оплаты и объёма текста</Term> и тем легче ему запутаться. Шесть строк, 400–600 знаков: это и помещается в поле настроек, и работает.</CardText>
-            </Card>
-            <Card v={fromRight} className="p-[22px_26px]">
-              <CardTitle icon={Repeat}>Один раз, навсегда</CardTitle>
-              <CardText className="text-[19px]">Вводное живёт в настройках аккаунта <Term>ChatGPT: Персонализация, Claude: Profile</Term>. Через десять минут мы впишем его туда одним шагом, и каждый новый чат будет его знать.</CardText>
-            </Card>
-          </div>
+          <Shot src={shotInstrFilled} h={320} mark={[1, 26, 98, 50]} caption="Так вводное выглядит в поле ChatGPT → Настройки → Персонализация → Пользовательские инструкции. Реальный экран, 18 октября 2026" />
         </Two>
-        <Ask>Что вы объясняете каждому новому сотруднику в первый день? Это и есть ваше вводное</Ask>
+        <Ask className="mt-[8px] text-[19px]">Что из шести строк вы объяснили бы новому коллеге в первый день? Это и есть ваше вводное</Ask>
       </Group>
     </Pad>
   ) },
 
   /* 10. Раздел: настройки */
   { mood: "section", notes: "Переключиться в браузер с учебным аккаунтом. Возвращаться к слайду после каждой настройки. Названия пунктов меню по состоянию на 18 октября, могут меняться.", render: () => (
-    <Section n="Часть вторая, 30 минут живого экрана" title="Семь" tail="настроек" lead="Каждую включаем вместе на учебном аккаунте и возвращаемся к слайду. После седьмой ИИ знает ваш принцип работы." steps={[["Модель", "3 мин"], ["Личные инструкции", "6 мин"], ["Память", "4 мин"], ["Проекты", "4 мин"], ["Гигиена чатов", "2 мин"], ["Где работать", "2 мин"], ["Подписка и ключ API", "4 мин"]]} />
+    <Section n="Часть вторая, 30 минут живого экрана" title="Семь" tail="настроек" lead="Каждую включаем вместе на учебном аккаунте и возвращаемся к слайду. После седьмой ИИ знает ваш принцип работы." steps={[["Модель", "3 мин"], ["Личные инструкции", "6 мин"], ["Память", "4 мин"], ["Проекты", "4 мин"], ["Гигиена чатов", "2 мин"], ["Где работать", "2 мин"], ["Подписка и ключ API", "4 мин"]]} shots={[[shotModels, "Выбор модели"], [shotMemory, "Память"], [shotProject, "Проект"]]} />
   ) },
 
   /* 11. Модель */
@@ -252,15 +259,18 @@ export const slides: Slide[] = [
     <Pad>
       <Group>
         <Kicker>Настройка 1 из 7 · Модель</Kicker>
-        <H tail="а не «Авто»">Выбирайте думающую модель,</H>
+        <H tail="а не то, что стоит по умолчанию">Выбирайте модель и уровень рассуждения,</H>
         <Two cols="1fr 1.1fr">
           <div className="grid gap-[14px]">
-            <Sub>«Авто» сам решает, кому отдать ваш вопрос. Сложный запрос может уйти слабой модели, и вы об этом не узнаете.</Sub>
-            <Sub>Думающая <Term>reasoning</Term> модель на несколько секунд медленнее. Зато считает, сверяет и реже выдумывает.</Sub>
-            <Sub>Названия моделей меняются каждые пару месяцев. Запомните принцип, а не имя. Переключатель в ChatGPT и в Claude в одном и том же месте: под полем ввода.</Sub>
-            <Item className="mt-[6px]"><LogoRow items={[[logoOpenAI, "ChatGPT: меню модели"], [logoClaude, "Claude: меню модели"]]} /></Item>
+            <Sub className="text-[21px]">Два переключателя под полем ввода: какая модель отвечает и сколько она думает <Term>уровень усилий рассуждения, reasoning</Term>. По умолчанию сервис экономит: сложный запрос может уйти слабой модели или быстрому режиму, и вы об этом не узнаете.</Sub>
+            <Sub className="text-[21px]">Высокий уровень рассуждения на несколько секунд медленнее. Зато модель считает, сверяет и реже выдумывает. Для писем хватит среднего, для цифр и документов ставьте высокий.</Sub>
+            <Sub className="text-[21px]">Названия моделей меняются каждые пару месяцев. Запомните принцип, а не имя. В Claude переключатель там же, под полем ввода.</Sub>
+            <Item className="mt-[6px]"><LogoRow items={[[logoOpenAI, "ChatGPT"], [logoClaude, "Claude"]]} /></Item>
           </div>
-          <Win title="Выбор модели в начале чата" rows={[{ id: "r1", label: "Авто", meta: "сервис выбирает сам", on: true }, { id: "r2", label: "Думающая модель", meta: "рассуждает перед ответом" }, { id: "r3", label: "Быстрая", meta: "короткие ответы" }, { id: "r4", label: "Показать дополнительные модели", meta: "в настройках" }]} steps={[{ sel: "r2", t: 700, on: true, off: true }]} />
+          <div className="grid gap-[14px]">
+            <Shot src={shotModels} h={150} mark={[52, 46, 32, 50]} caption="ChatGPT: меню моделей под полем ввода. Реальный экран, 18 октября 2026" />
+            <Shot src={shotReasoning} h={150} mark={[52, 46, 32, 50]} caption="Там же: «Уровень усилий рассуждения», ползунок до Extra High" />
+          </div>
         </Two>
       </Group>
     </Pad>
@@ -302,8 +312,11 @@ export const slides: Slide[] = [
             <Item className="mt-[8px] rounded-[12px] px-[18px] py-[14px] border border-warn/40 bg-white text-[18px] leading-[1.4] text-body"><b className="font-semibold text-warn">Сноска.</b> Переписка с ИИ не защищена как тайна переписки. Паспортные данные, договоры с реквизитами и зарплаты в облачный чат не вставляем: обезличиваем («Арендатор А», «объект на улице Б»). Для таких документов есть локальные модели, которые работают на вашем компьютере и ничего не отправляют наружу.</Item>
           </div>
           <div className="grid gap-[12px]">
-            <Shot src={shotMemory} h={290} caption="ChatGPT → Настройки → Персонализация: «Включить память», «Сводка памяти → Управление», «Учитывать мой стиль письма». Реальный экран, 18 октября 2026" />
-            <Shot src={shotClaudeMemory} h={170} caption="Claude → Settings → Memory: «Search and reference chats», «Generate memory from chats». Те же два переключателя" />
+            <Shot src={shotMemory} h={250} mark={[77, 35, 16, 16]} caption="ChatGPT → Настройки → Персонализация: «Включить память», «Сводка памяти → Управление», «Учитывать мой стиль письма». Реальный экран, 18 октября 2026" />
+            <div className="grid grid-cols-2 gap-[12px]">
+              <Shot src={shotClaudeMemory} h={150} caption="Claude → Settings → Memory: те же два переключателя" />
+              <Shot src={shotTempChat} h={150} pos="center" caption="ChatGPT: временный чат, не попадает в историю и память" />
+            </div>
           </div>
         </Two>
       </Group>
@@ -324,20 +337,10 @@ export const slides: Slide[] = [
           </div>
           <div className="grid gap-[12px]">
           <div className="grid grid-cols-2 gap-[12px]">
-            <Shot src={shotProject} h={128} caption="ChatGPT → Проекты → «Отзывы гостей»: «Чаты» и «Источники»" />
+            <Shot src={shotProject} h={128} mark={[18, 56, 18, 12]} caption="ChatGPT → Проекты → «Отзывы гостей»: «Чаты» и «Источники»" />
             <Shot src={shotClaudeProjects} h={128} caption="Claude → Projects: материалы, инструкции и чаты в одном месте" />
           </div>
-          <Card v={fromRight} className="p-[10px_12px] [&_[data-row]]:py-[6px]">
-            <Group delay={.9} className="grid gap-[2px]">
-              <TreeRow icon={Folder} name="Проекты" meta="одна папка на всё" />
-                            <TreeRow depth={1} icon={FolderOpen} name="отзывы-гостей" />
-              <TreeRow depth={2} icon={FileText} name="AGENTS.md" meta="стандарт ответа, компенсации" />
-              <TreeRow depth={1} icon={FolderOpen} name="аренда-дубай" />
-              <TreeRow depth={2} icon={FileText} name="AGENTS.md" meta="шаблоны писем, английский" />
-              <TreeRow depth={1} icon={FolderOpen} name="презентация-участка" />
-              <TreeRow depth={2} icon={FileText} name="AGENTS.md" meta="этапы: ТЗ → дизайн → сборка → проверка цифр" hi />
-            </Group>
-          </Card>
+          <Shot src={shotExplorerProjects} h={200} mark={[2, 55, 24, 10]} caption="Та же папка «Проекты» в Проводнике: подпапки на темы, в каждой свой AGENTS.md. Реальный экран, 18 октября 2026" />
           </div>
         </Two>
         <Ask>Какая задача у вас повторяется каждую неделю? Это ваша первая подпапка</Ask>
@@ -351,12 +354,15 @@ export const slides: Slide[] = [
       <Group>
         <Kicker className="mb-[14px]">Доказательство: запускаем сейчас, результат через 30 минут</Kicker>
         <H tail="Разница — в одном файле с правилами">Одна задача, две пустые папки.</H>
-        <Prompt v={rise} className="mt-[20px] text-[19px] px-[22px] py-[14px]" text="Подготовь HTML-презентацию земельного участка 2,4 га под коттеджный посёлок для инвестора: расположение, коммуникации, экономика, этапы. Данные вымышленные, 8 слайдов." delay={.5} speed={12} />
+        <div className="grid gap-[20px] mt-[18px] items-start" style={{ gridTemplateColumns: "1fr 440px" }}>
+          <Prompt v={rise} className="text-[19px] px-[22px] py-[14px]" text="Подготовь HTML-презентацию земельного участка 2,4 га под коттеджный посёлок для инвестора: расположение, коммуникации, экономика, этапы. Данные вымышленные, 8 слайдов." delay={.5} speed={12} />
+          <Shot src={shotExplorerDemo} h={108} mark={[2, 70, 20, 14]} caption="Папки demo-A и demo-B в Проводнике, 18 октября 2026" />
+        </div>
         <div className="grid grid-cols-2 gap-[28px] mt-[18px] [&_[data-id]]:py-[11px] [&_[data-id]]:text-[19px]">
           <Win v={fromLeft} title="Папка «А»: пустая" rows={[{ id: "a1", label: "Агент читает задачу", meta: "правил нет, берёт свои шаблоны" }, { id: "a2", label: "Через 10 минут: index.html", meta: "8 слайдов, стандартный вид" }]} steps={[{ sel: "a1", t: 3200, on: true }, { sel: "a2", t: 1200, on: true }]} />
           <Win v={fromRight} title="Папка «Б»: внутри мой файл правил" rows={[{ id: "b0", label: "AGENTS.md, одна страница", meta: "мой стиль, структура, что проверить" }, { id: "b1", label: "Агент читает правила, потом задачу", meta: "работает по моим правилам" }, { id: "b2", label: "Через 10 минут: index.html", meta: "мой стиль, моя логика, цифры сверены" }]} steps={[{ sel: "b0", t: 2600, on: true }, { sel: "b1", t: 900, on: true }, { sel: "b2", t: 1200, on: true }]} />
         </div>
-        <Sub className="mt-[14px] text-[19px]">Файл правил пишется один раз на тип задачи. Любая папка с ним — ваш настроенный сотрудник.</Sub>
+        <Sub className="mt-[14px] text-[19px]">Файл правил пишется один раз на тип задачи. Любая папка с ним работает по вашим правилам.</Sub>
         <Ask className="mt-[10px] text-[19px]">Пока агенты работают: для какой задачи вы написали бы такой файл первым?</Ask>
       </Group>
     </Pad>
