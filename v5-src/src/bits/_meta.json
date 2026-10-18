@@ -1,0 +1,489 @@
+{
+ "Aurora": {
+  "deps": [],
+  "desc": "A soft, calm aurora that flows across the top of the page and drifts toward the cursor."
+ },
+ "SoftAurora": {
+  "deps": [],
+  "desc": "Soft aurora borealis shader with 3D Perlin noise and cosine gradient palettes."
+ },
+ "Silk": {
+  "deps": [],
+  "desc": "Flowing satin folds with glossy highlights that turn toward the cursor and ripple on click."
+ },
+ "Prism": {
+  "deps": [],
+  "desc": "Rotating prism of glowing spectral light with configurable shape, colors and motion."
+ },
+ "Galaxy": {
+  "deps": [],
+  "desc": "Endless flight through a twinkling starfield with warp jumps, cursor repulsion and star palettes."
+ },
+ "DarkVeil": {
+  "deps": [],
+  "desc": "A silky veil of light that drifts in the dark and bends around the cursor."
+ },
+ "Beams": {
+  "deps": [],
+  "desc": "Glossy ribbons that ripple in the dark and catch the light, which follows your cursor."
+ },
+ "LightRays": {
+  "deps": [],
+  "desc": "Volumetric light rays from any edge, with source glow and haze. The cursor steers the beam and casts a shadow."
+ },
+ "Threads": {
+  "deps": [],
+  "desc": "Flowing threads that fray apart and part around the cursor, from fine silk to contour lines."
+ },
+ "Plasma": {
+  "deps": [],
+  "desc": "Folds of satin light twisting slowly through the dark, turning to follow the cursor."
+ },
+ "PlasmaWave": {
+  "deps": [],
+  "desc": "Two ribbons of plasma curling through each other, with soft glow and white-hot cores."
+ },
+ "LiquidChrome": {
+  "deps": [],
+  "desc": "Soft ribbons of liquid chrome that swirl through a dark pool, ripple under the cursor and catch the light as it moves."
+ },
+ "LiquidEther": {
+  "deps": [],
+  "desc": "A glowing liquid that swirls under the cursor, colored by how fast it flows."
+ },
+ "Hyperspeed": {
+  "deps": [
+   "three@^0.180.0"
+  ],
+  "desc": "Night highway of glowing light trails on a winding road that warps into hyperspace while you hold."
+ },
+ "Iridescence": {
+  "deps": [],
+  "desc": "Liquid iridescent surface with shifting folds that you can stir with the cursor."
+ },
+ "Lightning": {
+  "deps": [],
+  "desc": "Crackling, branching lightning that bends toward the cursor and strikes wherever you click."
+ },
+ "FloatingLines": {
+  "deps": [],
+  "desc": "Ribbons of fine glowing lines that drift in waves, part around the cursor and curl when clicked."
+ },
+ "GridScan": {
+  "deps": [],
+  "desc": "A 3D grid room swept by a scanning light that follows your view."
+ },
+ "LightPillar": {
+  "deps": [],
+  "desc": "A swirling pillar of light that ignites on load, leans toward the cursor and surges on click."
+ },
+ "Lightfall": {
+  "deps": [],
+  "desc": "Streaks of light falling down a curved tunnel, bending around the cursor and stretching into warp trails on hold."
+ },
+ "Grainient": {
+  "deps": [],
+  "desc": "Flowing grainy gradients you can stir with the cursor."
+ },
+ "Dither": {
+  "deps": [],
+  "desc": "Retro dithered waves with Bayer, halftone, line and noise patterns, palettes and cursor trails."
+ },
+ "FaultyTerminal": {
+  "deps": [],
+  "desc": "A flickering CRT terminal of glowing glyphs, with phosphor trails under the cursor and glitches on click."
+ },
+ "RippleGrid": {
+  "deps": [],
+  "desc": "A crisp grid that ripples like water, bending and lighting up as waves pass through it."
+ },
+ "Waves": {
+  "deps": [],
+  "desc": "Dense flowing lines that sway like silk, bend around the cursor and spring back into place."
+ },
+ "PixelBlast": {
+  "deps": [],
+  "desc": "Dithered pixel clouds that drift, shimmer and light up under the cursor, with ripples, shapes and a perspective floor."
+ },
+ "LaserFlow": {
+  "deps": [],
+  "desc": "A beam of light that splashes onto your content and pours over its corners."
+ },
+ "ColorBends": {
+  "deps": [
+   "three@^0.180.0"
+  ],
+  "desc": "Vibrant color bends with smooth flowing animation."
+ },
+ "Topography": {
+  "deps": [],
+  "desc": "A 3D landscape drawn in glowing contour lines that rises under the cursor, with light pulses on click."
+ },
+ "Strands": {
+  "deps": [],
+  "desc": "Spectral strands that twist inside a frosted glass orb and swell into a smooth bulge where they come together, like the new Siri."
+ },
+ "GhostFibers": {
+  "deps": [],
+  "desc": "Layered ribbons of fine glowing fibers that twist, fold and drift through soft depth of field."
+ },
+ "FluxLines": {
+  "deps": [],
+  "desc": "Glowing flux lines tracing a churning magnetic fluid. The cursor magnet reveals and curls them."
+ },
+ "SideRays": {
+  "deps": [],
+  "desc": "Shafts of light that fan in from a corner or side, shimmer slowly and lean toward the cursor."
+ },
+ "LightTunnel": {
+  "deps": [],
+  "desc": "A swirling fibre-optic tunnel where comets of light race into depth, steered by the cursor."
+ },
+ "ElasticMesh": {
+  "deps": [],
+  "desc": "Turns text or any logo into a puffy inflated shape you can press, poke and stretch like jelly."
+ },
+ "Orb": {
+  "deps": [],
+  "desc": "A glowing ring of swirling color that breathes, trails an orbiting light and reaches toward the cursor."
+ },
+ "Particles": {
+  "deps": [],
+  "desc": "A drifting 3D field of particles with glow, twinkle, constellation lines and cursor interaction."
+ },
+ "DotGrid": {
+  "deps": [],
+  "desc": "A springy dot grid that the cursor flicks and drags through like jelly, with click shockwaves."
+ },
+ "Balatro": {
+  "deps": [],
+  "desc": "The swirling Balatro paint shader, with crisp pixels, a cursor that stirs the paint and click whirlpools."
+ },
+ "PrismaticBurst": {
+  "deps": [],
+  "desc": "A burst of prismatic light rays that leans toward the cursor and sends a wave of light outward on click."
+ },
+ "MagicRings": {
+  "deps": [],
+  "desc": "Glowing rings that pulse outward in a wave, swell toward the cursor and flare on click."
+ },
+ "GradientBlinds": {
+  "deps": [],
+  "desc": "Satin gradient blinds lit by a spotlight that follows the cursor, swaying and turning toward the light."
+ },
+ "MoltenMetal": {
+  "deps": [],
+  "desc": "Swirling caustic filaments with white-hot cores that heat up under the cursor and flare on click."
+ },
+ "Ferrofluid": {
+  "deps": [],
+  "desc": "A glossy sea of magnetic fluid where swells of spikes roll in and the cursor raises a crown."
+ },
+ "Antigravity": {
+  "deps": [],
+  "desc": "A field of particles that lifts into a glowing ring around the cursor and bursts outward on click."
+ },
+ "Ballpit": {
+  "deps": [],
+  "desc": "A soft-lit pit of physics balls you can shove with the cursor, grab, throw and blast apart."
+ },
+ "MetaBalls": {
+  "deps": [],
+  "desc": "Liquid metaballs that merge, stretch and pinch apart, with a cursor blob that pushes through them."
+ },
+ "LineWaves": {
+  "deps": [],
+  "desc": "Fine lines that flow in silky waves while a band of light drifts through them."
+ },
+ "GradientWaves": {
+  "deps": [],
+  "desc": "Lit satin waves rolling in from a hazy horizon, with a light that follows the cursor and swells on click."
+ },
+ "ShapeWaves": {
+  "deps": [
+   "vgpu@^0.3.1"
+  ],
+  "desc": "A field of triangles, circles and squares that brighten and grow along rolling waves."
+ },
+ "PatternWaves": {
+  "deps": [
+   "ogl@^1.0.11"
+  ],
+  "desc": "A lit halftone surface of dots, lines or glyphs that moves like draped silk."
+ },
+ "DotField": {
+  "deps": [],
+  "desc": "A gradient dot field seen through a lens that follows the cursor, magnifying, pinching or swirling the dots."
+ },
+ "DriftWall": {
+  "deps": [],
+  "desc": "An endless perspective wall of tiles drifting past, lifting on hover."
+ },
+ "CursorGrid": {
+  "deps": [],
+  "desc": "A crisp grid whose cells light up and fade behind the cursor, with grid styles, tiles and click pulses."
+ },
+ "WebThreads": {
+  "deps": [],
+  "desc": "Glowing threads woven through luminous pinch points that light up under the cursor and carry light on click."
+ },
+ "Noise": {
+  "deps": [],
+  "desc": "Film grain overlay for photos and pages, from fine 35mm grain to dust, paper and TV static."
+ },
+ "AcidSquares": {
+  "deps": [],
+  "desc": "A rolling field of glossy squares that ripples under two drifting colored lights."
+ },
+ "SpotlightCard": {
+  "deps": [],
+  "desc": "Card lit by a soft spotlight that follows the pointer, catches its edge and reaches nearby cards."
+ },
+ "ElectricBorder": {
+  "deps": [],
+  "desc": "Wraps any element in crackling strands of current that surge near the cursor and leap off in sparks."
+ },
+ "StarBorder": {
+  "deps": [],
+  "desc": "A twinkling star that travels the exact outline of any button, pill or card, trailing light and stardust."
+ },
+ "BorderGlow": {
+  "deps": [],
+  "desc": "Glowing mesh-gradient border that follows cursor direction and intensifies near edges."
+ },
+ "MagicBento": {
+  "deps": [
+   "@hugeicons/react@^1.1.10",
+   "@hugeicons/core-free-icons@^4.3.3"
+  ],
+  "desc": "A bento grid of feature cards with live artwork, edge light that follows the cursor and a click wave."
+ },
+ "GlassSurface": {
+  "deps": [],
+  "desc": "Apple-style liquid glass that bends what is behind it, in a rounded panel or any logo shape."
+ },
+ "HoloCard": {
+  "deps": [],
+  "desc": "Collectible trading card with a real holographic foil and glitter that sparkles as it tilts."
+ },
+ "PixelCard": {
+  "deps": [],
+  "desc": "A card that fills with twinkling pixels on hover, rippling out from the center or the cursor."
+ },
+ "TiltedCard": {
+  "deps": [],
+  "desc": "A 3D card that tilts toward the cursor, with glare, a soft shadow, floating layers and a flip side."
+ },
+ "ChromaGrid": {
+  "deps": [],
+  "desc": "A grid of grayscale photo cards where a spotlight follows the cursor and brings back color."
+ },
+ "GlareHover": {
+  "deps": [],
+  "desc": "A glossy light streak that sweeps across any element in the direction the cursor moves."
+ },
+ "ReflectiveCard": {
+  "deps": [
+   "@hugeicons/react@^1.1.10",
+   "@hugeicons/core-free-icons@^4.3.3"
+  ],
+  "desc": "A metal ID card that reflects your camera or a looping video and catches the light as it tilts."
+ },
+ "CrystalizedBall": {
+  "deps": [
+   "ogl@^1.0.11"
+  ],
+  "desc": "A glass ball with a crackling electric rim and glowing dust that swirls with the cursor."
+ },
+ "SplitText": {
+  "deps": [
+   "gsap@^3.13.0",
+   "@gsap/react@^2.1.2"
+  ],
+  "desc": "Splits text into characters / words for staggered entrance animation."
+ },
+ "BlurText": {
+  "deps": [
+   "motion@^12.23.12"
+  ],
+  "desc": "Text starts blurred then crisply resolves for a soft-focus reveal effect."
+ },
+ "DecryptedText": {
+  "deps": [
+   "motion@^12.23.12"
+  ],
+  "desc": "Hacker-style decryption cycling random glyphs until resolving to real text."
+ },
+ "ShinyText": {
+  "deps": [],
+  "desc": "A sheen of light that sweeps across text, from soft bands to chrome-like reflections."
+ },
+ "GradientText": {
+  "deps": [],
+  "desc": "Living gradients inside your text: a sliding sweep, a drifting mesh or a swinging conic fan."
+ },
+ "TextPressure": {
+  "deps": [],
+  "desc": "Characters scale / warp interactively based on pointer pressure zone."
+ },
+ "ScrambledText": {
+  "deps": [
+   "gsap@^3.13.0"
+  ],
+  "desc": "Detects cursor position and applies a distortion effect to text."
+ },
+ "TrueFocus": {
+  "deps": [
+   "motion@^12.23.12"
+  ],
+  "desc": "Applies dynamic blur / clarity based over a series of words in order."
+ },
+ "VariableProximity": {
+  "deps": [],
+  "desc": "Letter styling changes continuously with pointer distance mapping."
+ },
+ "DepthText": {
+  "deps": [],
+  "desc": "Layered extruded type with parallax that shifts against the pointer."
+ },
+ "StrokeText": {
+  "deps": [
+   "gsap@^3.13.0"
+  ],
+  "desc": "Outlined letterforms draw themselves on, then flood with fill."
+ },
+ "TechText": {
+  "deps": [],
+  "desc": "A wordmark whose letters turn into dashed vector paths under the cursor."
+ },
+ "MaskedHeading": {
+  "deps": [
+   "gsap@^3.13.0"
+  ],
+  "desc": "A headline with a drifting colour mesh or image showing through, revealed word by word."
+ },
+ "WarpText": {
+  "deps": [
+   "ogl@^1.0.11"
+  ],
+  "desc": "WebGL warp that bends and refracts the text around the pointer."
+ },
+ "ParticleText": {
+  "deps": [],
+  "desc": "Text assembles from drifting particles that scatter and reform on demand."
+ },
+ "Shuffle": {
+  "deps": [
+   "gsap@^3.13.0",
+   "@gsap/react@^2.1.2"
+  ],
+  "desc": "Animated text reveal where characters shuffle before settling."
+ },
+ "GlitchText": {
+  "deps": [],
+  "desc": "RGB split and distortion glitch effect with jitter effects."
+ },
+ "FuzzyText": {
+  "deps": [],
+  "desc": "Vibrating fuzzy text with controllable hover intensity."
+ },
+ "LetterGlitch": {
+  "deps": [],
+  "desc": "A calm field of letters that flicker, scramble and glitch in color, stirred by the cursor and torn by clicks."
+ },
+ "TextType": {
+  "deps": [
+   "gsap@^3.13.0"
+  ],
+  "desc": "Typewriter effect with blinking cursor and adjustable typing cadence."
+ },
+ "CircularText": {
+  "deps": [
+   "motion@^12.23.12"
+  ],
+  "desc": "Layouts characters around a circle with optional rotation animation."
+ },
+ "FoldText": {
+  "deps": [
+   "gsap@^3.13.0"
+  ],
+  "desc": "Lines unfold into place like creased paper opening flat."
+ },
+ "EchoText": {
+  "deps": [],
+  "desc": "Ghosted copies trail behind the text and settle into a single word."
+ },
+ "SplitFlapText": {
+  "deps": [],
+  "desc": "Mechanical split-flap departure board that clacks through to each new phrase."
+ },
+ "CountUp": {
+  "deps": [
+   "motion@^12.23.12"
+  ],
+  "desc": "Animated number counter supporting formatting and decimals."
+ },
+ "Counter": {
+  "deps": [],
+  "desc": "An odometer-style number whose digits roll to every new value, with currency, separators and locales."
+ },
+ "Stepper": {
+  "deps": [
+   "@hugeicons/react@^1.1.10",
+   "@hugeicons/core-free-icons@^4.3.3"
+  ],
+  "desc": "A multi-step flow with a gliding step indicator, spring transitions and horizontal or vertical layouts."
+ },
+ "Dock": {
+  "deps": [
+   "react-dom@^19.0.0"
+  ],
+  "desc": "macOS style dock with smooth magnification, launch bounce, badges and context menus."
+ },
+ "Cubes": {
+  "deps": [],
+  "desc": "A grid of outlined 3D cubes that turn to face the cursor, spin when swept and ripple on click."
+ },
+ "Magnet": {
+  "deps": [],
+  "desc": "Elements magnetically ease toward the cursor then settle back with spring physics."
+ },
+ "ClickSpark": {
+  "deps": [],
+  "desc": "Bursts of sparks at every click, as dashes, comets, dots or stars, that can spill around buttons."
+ },
+ "Stack": {
+  "deps": [
+   "motion@^12.23.12"
+  ],
+  "desc": "Pile of cards you can drag, flick or click through, with thrown cards tucking underneath."
+ },
+ "CardSwap": {
+  "deps": [
+   "@hugeicons/react@^1.1.10",
+   "@hugeicons/core-free-icons@^4.3.3"
+  ],
+  "desc": "A 3D stack of cards that sends the front card to the back on a timer, or when you fling it."
+ },
+ "AnimatedList": {
+  "deps": [
+   "@hugeicons/react@^1.1.10",
+   "@hugeicons/core-free-icons@^4.3.3"
+  ],
+  "desc": "A scrolling list whose rows spring into view, with a gliding selection and arrow keys."
+ },
+ "LogoLoop": {
+  "deps": [],
+  "desc": "Continuously looping marquee of brand or tech logos with seamless repeat and hover pause."
+ },
+ "GradualBlur": {
+  "deps": [],
+  "desc": "Progressive edge blur for headers, footers, captions and carousels, with an optional fade to color that hides at the ends of a scroll."
+ },
+ "ElectricLogo": {
+  "deps": [
+   "ogl@^1.0.11"
+  ],
+  "desc": "Turns any logo into a living lightning outline, with arcs that leap off its edges."
+ }
+}
