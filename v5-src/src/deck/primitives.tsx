@@ -35,10 +35,11 @@ const wordV: Variants = { hidden: { opacity: 0, y: "0.6em", rotate: 2, filter: "
 const Words = ({ text, className }: { text: string; className?: string }) => (
   <>{text.split(" ").map((w, k) => <motion.span key={k} variants={wordV} className={cn("inline-block", className)} style={{ marginRight: "0.24em" }}>{w}</motion.span>)}</>
 );
+/* Заголовок: главная мысль чёрным, хвост отдельной строкой, светлее и чуть меньше */
 export const H = ({ children, tail, className, size = 64 }: { children: ReactNode; tail?: ReactNode; className?: string; size?: number }) => (
-  <motion.h2 variants={{ hidden: {}, show: { transition: { staggerChildren: 0.045 } } }} className={cn("font-semibold tracking-[-.035em] leading-[1.02] max-w-[1180px] text-ink", className)} style={{ fontSize: size }}>
-    {typeof children === "string" ? <Words text={children} /> : <motion.span variants={wordV} className="inline-block">{children}</motion.span>}
-    {tail ? (typeof tail === "string" ? <Words text={tail} className="tail" /> : <motion.span variants={wordV} className="inline-block tail">{tail}</motion.span>) : null}
+  <motion.h2 variants={{ hidden: {}, show: { transition: { staggerChildren: 0.045 } } }} className={cn("font-semibold tracking-[-.035em] leading-[1.04] max-w-[1200px] text-ink", className)} style={{ fontSize: size, ["textWrap" as string]: "balance" }}>
+    <span className="block">{typeof children === "string" ? <Words text={children} /> : <motion.span variants={wordV} className="inline-block">{children}</motion.span>}</span>
+    {tail ? <span className="block tail mt-[6px]" style={{ fontSize: Math.round(size * .78) }}>{typeof tail === "string" ? <Words text={tail} /> : <motion.span variants={wordV} className="inline-block">{tail}</motion.span>}</span> : null}
   </motion.h2>
 );
 /* Обратный отсчёт для пауз */

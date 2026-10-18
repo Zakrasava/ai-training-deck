@@ -31,7 +31,8 @@ body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-
 :focus-visible { outline: 2px solid var(--color-sky); outline-offset: 3px; }
 
 /* хвост заголовка уходит в серый */
-.tail { color: #7b84a0; font-weight: 400; }
+.tail { color: #7b84a0; font-weight: 400; letter-spacing: -.025em; }
+.menu-line { display:block; width: 22px; height: 2px; background: currentColor; border-radius: 2px; }
 
 .grad { color: var(--color-blue); }
 
