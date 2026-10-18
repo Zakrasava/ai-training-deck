@@ -1,5 +1,9 @@
 import { motion, type Variants, useMotionValue, animate, useInView } from "motion/react";
-import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
+
+/* Повторный заход на слайд: без вступительных анимаций. Значение задаёт App по истории показа. */
+export const InstantCtx = createContext(false);
+export const useInstant = () => useContext(InstantCtx);
 import { cn } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
 
@@ -14,9 +18,10 @@ export const fromRight: Variants = { hidden: { opacity: 0, x: 36 }, show: { opac
 export const fromDeep: Variants = { hidden: { opacity: 0, scale: .94 }, show: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 120, damping: 18 } } };
 export const pop: Variants = { hidden: { opacity: 0, scale: .92 }, show: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 220, damping: 18 } } };
 
-export const Group = ({ children, className, delay = 0, style }: { children: ReactNode; className?: string; delay?: number; style?: CSSProperties }) => (
-  <motion.div variants={{ hidden: {}, show: { transition: { staggerChildren: 0.09, delayChildren: delay } } }} initial="hidden" animate="show" className={className} style={style}>{children}</motion.div>
-);
+export const Group = ({ children, className, delay = 0, style }: { children: ReactNode; className?: string; delay?: number; style?: CSSProperties }) => {
+  const instant = useInstant();
+  return <motion.div variants={{ hidden: {}, show: { transition: { staggerChildren: 0.09, delayChildren: delay } } }} initial={instant ? "show" : "hidden"} animate="show" className={className} style={style}>{children}</motion.div>;
+};
 export const Item = ({ children, className, v = rise, style }: { children: ReactNode; className?: string; v?: Variants; style?: CSSProperties }) => (
   <motion.div variants={v} className={className} style={style}>{children}</motion.div>
 );
@@ -112,10 +117,17 @@ export const Frame = ({ title, meta, children, className, v = fromRight }: { tit
 /* ---------- окно интерфейса с живым курсором ---------- */
 export type Step = { sel: string; t?: number; on?: boolean; gone?: boolean; off?: boolean };
 export const Win = ({ title, rows, steps = [], className, v = fromRight }: { title: string; rows: { id: string; label: ReactNode; meta?: ReactNode; on?: boolean; toggle?: boolean }[]; steps?: Step[]; className?: string; v?: Variants }) => {
-  const [state, setState] = useState<Record<string, { on?: boolean; gone?: boolean }>>(() => Object.fromEntries(rows.map(r => [r.id, { on: !!r.on }])));
+  const instant = useInstant();
+  const applyAll = () => {
+    const n: Record<string, { on?: boolean; gone?: boolean }> = Object.fromEntries(rows.map(r => [r.id, { on: !!r.on }]));
+    steps.forEach((s) => { if (s.off) Object.keys(n).forEach(k => n[k] = { ...n[k], on: false }); n[s.sel] = { ...n[s.sel], on: s.on ?? n[s.sel]?.on, gone: s.gone ?? n[s.sel]?.gone }; });
+    return n;
+  };
+  const [state, setState] = useState<Record<string, { on?: boolean; gone?: boolean }>>(() => instant ? applyAll() : Object.fromEntries(rows.map(r => [r.id, { on: !!r.on }])));
   const [cur, setCur] = useState<{ x: number; y: number; show: boolean; click: boolean }>({ x: 60, y: 90, show: false, click: false });
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if (instant) return;
     const timers: number[] = [];
     let t = 1100;
     steps.forEach((s) => {
@@ -169,16 +181,19 @@ export const Win = ({ title, rows, steps = [], className, v = fromRight }: { tit
 };
 
 /* ---------- чат и телефон ---------- */
-export const Chat = ({ msgs, className, start = 0.9, gap = 0.6, compact = false }: { msgs: { me?: boolean; text: ReactNode; file?: boolean }[]; className?: string; start?: number; gap?: number; compact?: boolean }) => (
+export const Chat = ({ msgs, className, start = 0.9, gap = 0.6, compact = false }: { msgs: { me?: boolean; text: ReactNode; file?: boolean }[]; className?: string; start?: number; gap?: number; compact?: boolean }) => {
+  const instant = useInstant();
+  return (
   <div className={cn("grid", compact ? "gap-[8px]" : "gap-[10px]", className)}>
     {msgs.map((m, k) => (
-      <motion.div key={k} initial={{ opacity: 0, x: m.me ? 70 : -70, y: 16, scale: .9, rotate: m.me ? 2 : -2 }} animate={{ opacity: 1, x: 0, y: 0, scale: 1, rotate: 0 }} transition={{ delay: start + k * gap, type: "spring", stiffness: 260, damping: 20 }}
+      <motion.div key={k} initial={instant ? false : { opacity: 0, x: m.me ? 70 : -70, y: 16, scale: .9, rotate: m.me ? 2 : -2 }} animate={{ opacity: 1, x: 0, y: 0, scale: 1, rotate: 0 }} transition={{ delay: start + k * gap, type: "spring", stiffness: 260, damping: 20 }}
         className={cn("max-w-[86%] rounded-[16px] leading-[1.35]", compact ? "px-[12px] py-[8px] text-[15px]" : "px-[16px] py-[12px] text-[18px]", m.me ? "justify-self-end bg-blue text-white rounded-br-[6px]" : "justify-self-start bg-paper border border-line text-ink rounded-bl-[6px]", m.file && "flex items-center gap-[12px]")}>
         {m.file && <i className="not-italic w-[34px] h-[34px] rounded-[8px] bg-ink text-white grid place-items-center text-[12px] font-semibold">XLS</i>}{m.text}
       </motion.div>
     ))}
   </div>
-);
+  );
+};
 /* Телефон целиком: строка состояния, шапка приложения, лента, поле ввода */
 export const Phone = ({ children, className, v = fromRight, app = "ChatGPT", model = "Думающая модель", placeholder = "Спросите что‑нибудь" }: { children: ReactNode; className?: string; v?: Variants; app?: string; model?: string; placeholder?: string }) => (
   <motion.div variants={v} className={cn("w-[440px] rounded-[44px] p-[10px] bg-ink", className)} style={{ boxShadow: "0 40px 80px -36px rgba(15,23,42,.55), inset 0 0 0 2px rgba(255,255,255,.08)" }}>
@@ -201,11 +216,13 @@ export const Mark = ({ at, delay = 1.2 }: { at: [number, number, number, number]
     transition={{ opacity: { delay, duration: .4 }, scale: { delay, type: "spring", stiffness: 200, damping: 16 }, boxShadow: { delay: delay + .4, duration: 1.6, repeat: Infinity, ease: "easeOut" } }} />
 );
 export const Prompt = ({ text, note, className, delay = 0.6, speed = 14, v = fromLeft }: { text: string; note?: ReactNode; className?: string; delay?: number; speed?: number; v?: Variants }) => {
-  const [n, setN] = useState(0);
+  const instant = useInstant();
+  const [n, setN] = useState(instant ? text.length : 0);
   useEffect(() => {
+    if (instant) { setN(text.length); return; }
     let k = 0; const start = window.setTimeout(function tick() { k++; setN(k); if (k < text.length) window.setTimeout(tick, speed + (",.".includes(text[k - 1]) ? 110 : 0)); }, delay * 1000);
     return () => clearTimeout(start);
-  }, [text]);
+  }, [text, instant]);
   return (
     <motion.div variants={v} className={cn("rounded-[14px] px-[26px] py-[22px] text-[22px] leading-[1.45] text-ink bg-blue/6 border border-blue/25", className)}>
       <span className="whitespace-pre-wrap">{text.slice(0, n)}</span>{n < text.length && <span className="text-blue animate-pulse">▍</span>}
@@ -216,22 +233,26 @@ export const Prompt = ({ text, note, className, delay = 0.6, speed = 14, v = fro
 
 /* ---------- счётчик и столбики ---------- */
 export const Counter = ({ to, suffix = "", className, delay = .5 }: { to: number; suffix?: string; className?: string; delay?: number }) => {
-  const mv = useMotionValue(0); const [v, setV] = useState(0); const ref = useRef<HTMLSpanElement>(null); const inView = useInView(ref);
-  useEffect(() => { if (!inView) return; const c = animate(mv, to, { duration: 1.3, delay, ease: [0.2, 1, 0.3, 1], onUpdate: (x) => setV(Math.round(x)) }); return () => c.stop(); }, [inView, to]);
+  const instant = useInstant();
+  const mv = useMotionValue(instant ? to : 0); const [v, setV] = useState(instant ? to : 0); const ref = useRef<HTMLSpanElement>(null); const inView = useInView(ref);
+  useEffect(() => { if (!inView || instant) return; const c = animate(mv, to, { duration: 1.3, delay, ease: [0.2, 1, 0.3, 1], onUpdate: (x) => setV(Math.round(x)) }); return () => c.stop(); }, [inView, to, instant]);
   return <span ref={ref} className={cn("font-semibold tracking-[-.04em] text-ink tabular-nums", className)}>{v}{suffix}</span>;
 };
-export const Bars = ({ data, height = 200, className }: { data: { v: number; label: string; val: string; dim?: boolean }[]; height?: number; className?: string }) => (
+export const Bars = ({ data, height = 200, className }: { data: { v: number; label: string; val: string; dim?: boolean }[]; height?: number; className?: string }) => {
+  const instant = useInstant();
+  return (
   <div className={cn("flex items-end gap-[18px]", className)} style={{ height }}>
     {data.map((d, k) => (
       <div key={k} className="relative flex-1 h-full flex items-end">
-        <motion.div initial={{ height: 0 }} animate={{ height: `${d.v}%` }} transition={{ delay: .5 + k * .12, duration: 1.1, ease: [0.2, 1, 0.3, 1] }} className={cn("w-full relative rounded-t-[8px] rounded-b-[3px]", d.dim ? "bg-line" : "bg-blue")}>
+        <motion.div initial={instant ? false : { height: 0 }} animate={{ height: `${d.v}%` }} transition={{ delay: .5 + k * .12, duration: 1.1, ease: [0.2, 1, 0.3, 1] }} className={cn("w-full relative rounded-t-[8px] rounded-b-[3px]", d.dim ? "bg-line" : "bg-blue")}>
           <b className="absolute left-0 right-0 -top-[32px] text-center text-[20px] font-semibold text-ink tabular-nums">{d.val}</b>
           <span className="absolute left-0 right-0 -bottom-[30px] text-center text-[15px] text-mute whitespace-nowrap">{d.label}</span>
         </motion.div>
       </div>
     ))}
   </div>
-);
+  );
+};
 
 export const Chips = ({ items, on = 0 }: { items: string[]; on?: number }) => (
   <div className="flex flex-wrap gap-[10px]">

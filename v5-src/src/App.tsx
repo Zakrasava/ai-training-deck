@@ -1,13 +1,23 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useDeck, useScale } from "@/deck/useDeck";
+import { InstantCtx } from "@/deck/primitives";
 import { slides } from "@/slides";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+declare const __NOTES__: boolean;
+const NOTES = typeof __NOTES__ !== "undefined" && __NOTES__;
 
 export default function App() {
   const total = slides.length;
   const { i, dir, next, prev, go, notes, setNotes, help, setHelp } = useDeck(total);
   const { s, bx, by } = useScale();
   const slide = slides[i];
+  // слайд, который уже показывали, открывается сразу собранным: возврат к демо, прыжки через меню
+  const seen = useRef(new Set<number>());
+  const prevI = useRef<number | null>(null);
+  if (prevI.current !== null && prevI.current !== i) seen.current.add(prevI.current);
+  prevI.current = i;
+  const instant = seen.current.has(i);
   const [hud, setHud] = useState(true);
   const [menu, setMenu] = useState(false);
   useEffect(() => {
@@ -35,10 +45,13 @@ export default function App() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 * dir }}
             transition={{ duration: .4, ease: [.22, .61, .2, 1] }}>
-            {slide.render()}
+            <InstantCtx.Provider value={instant}>{slide.render()}</InstantCtx.Provider>
           </motion.section>
         </AnimatePresence>
       </div>
+
+      {/* телефон в портретной ориентации: сцена 16:9 станет полоской, подсказать повернуть */}
+      <div className="portrait-hint">Поверните телефон горизонтально</div>
 
       {/* навигация по краям */}
       <button aria-label="Назад" onClick={prev} className="fixed left-0 top-[64px] bottom-[48px] w-[16%] cursor-pointer opacity-0" />
@@ -73,14 +86,14 @@ export default function App() {
         <motion.div className="absolute left-0 top-0 h-[2px] bg-blue" animate={{ width: `${((i + 1) / total) * 100}%` }} transition={{ duration: .5 }} />
         <div className="flex items-center gap-[6px]"><button onClick={prev} className="px-[8px] py-[6px] rounded-[8px] hover:bg-ink/5 hover:text-ink cursor-pointer">←</button><span className="tabular-nums">{i + 1} / {total}</span><button onClick={next} className="px-[8px] py-[6px] rounded-[8px] hover:bg-ink/5 hover:text-ink cursor-pointer">→</button></div>
         <div className="flex items-center gap-[6px]">
-          <button onClick={() => setNotes(v => !v)} className="px-[8px] py-[6px] rounded-[8px] hover:bg-ink/5 hover:text-ink cursor-pointer">Заметки (N)</button>
+          {NOTES && <button onClick={() => setNotes(v => !v)} className="px-[8px] py-[6px] rounded-[8px] hover:bg-ink/5 hover:text-ink cursor-pointer">Заметки (N)</button>}
           <button onClick={() => { if (!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }} className="px-[8px] py-[6px] rounded-[8px] hover:bg-ink/5 hover:text-ink cursor-pointer">Во весь экран (F)</button>
           <button onClick={() => setHelp(v => !v)} className="px-[8px] py-[6px] rounded-[8px] hover:bg-ink/5 hover:text-ink cursor-pointer">?</button>
         </div>
       </div>
 
       <AnimatePresence>
-        {notes && (
+        {notes && NOTES && (
           <motion.aside initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }} className="fixed right-[16px] bottom-[56px] w-[440px] max-h-[60vh] overflow-auto px-[20px] py-[18px] rounded-[14px] text-[15px] leading-[1.45] text-body bg-white border border-line window">
             <h4 className="m-0 mb-[8px] text-[13px] font-medium text-mute">Заметки ведущего</h4>
             <p className="m-0">{slide.notes || "Без заметок."}</p>
@@ -90,7 +103,7 @@ export default function App() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setHelp(false)} className="fixed inset-0 grid place-items-center" style={{ background: "rgba(15,23,42,.35)", backdropFilter: "blur(6px)" }}>
             <div className="w-[520px] px-[32px] py-[28px] rounded-[16px] text-[16px] text-body bg-white border border-line window">
               <p className="my-[8px]"><kbd className="kbd">→</kbd> <kbd className="kbd">пробел</kbd> следующий слайд, <kbd className="kbd">←</kbd> предыдущий</p>
-              <p className="my-[8px]"><kbd className="kbd">M</kbd> список слайдов, <kbd className="kbd">N</kbd> заметки ведущего, <kbd className="kbd">F</kbd> полный экран</p>
+              <p className="my-[8px]"><kbd className="kbd">M</kbd> список слайдов, {NOTES && <><kbd className="kbd">N</kbd> заметки ведущего, </>}<kbd className="kbd">F</kbd> полный экран</p>
               <p className="my-[8px]">Клик по краю экрана, свайп на телефоне. Номер слайда в адресе: #8 откроет восьмой.</p>
             </div>
           </motion.div>

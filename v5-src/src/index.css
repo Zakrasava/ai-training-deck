@@ -45,4 +45,8 @@ body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+.portrait-hint { display: none; }
+@media (orientation: portrait) and (max-width: 760px) {
+  .portrait-hint { display: grid; position: fixed; left: 0; right: 0; top: 0; z-index: 50; pointer-events: none; padding: 12px 16px; place-items: center; font-size: 15px; color: var(--color-ink); background: rgba(255,255,255,.94); border-bottom: 1px solid var(--color-line); }
+}
 .kbd { display: inline-block; min-width: 28px; text-align: center; padding: 3px 8px; border-radius: 6px; background: var(--color-paper); border: 1px solid var(--color-line); color: var(--color-ink); }
