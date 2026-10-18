@@ -180,7 +180,7 @@ export const Chat = ({ msgs, className, start = 0.9, gap = 0.6, compact = false 
   </div>
 );
 /* Телефон целиком: строка состояния, шапка приложения, лента, поле ввода */
-export const Phone = ({ children, className, v = fromRight, app = "ChatGPT", model = "Думающая модель" }: { children: ReactNode; className?: string; v?: Variants; app?: string; model?: string }) => (
+export const Phone = ({ children, className, v = fromRight, app = "ChatGPT", model = "Думающая модель", placeholder = "Спросите что‑нибудь" }: { children: ReactNode; className?: string; v?: Variants; app?: string; model?: string; placeholder?: string }) => (
   <motion.div variants={v} className={cn("w-[440px] rounded-[44px] p-[10px] bg-ink", className)} style={{ boxShadow: "0 40px 80px -36px rgba(15,23,42,.55), inset 0 0 0 2px rgba(255,255,255,.08)" }}>
     <div className="relative rounded-[36px] bg-white overflow-hidden">
       <div className="flex items-center justify-between px-[26px] pt-[12px] text-[13px] font-medium text-ink"><span>16:31</span><span className="absolute left-1/2 top-[8px] -translate-x-1/2 w-[112px] h-[30px] rounded-full bg-ink" /><span className="flex items-center gap-[5px]"><i className="w-[16px] h-[10px] border border-ink rounded-[3px] relative after:content-[''] after:absolute after:inset-[2px] after:bg-ink after:rounded-[1px]" /></span></div>
@@ -188,7 +188,7 @@ export const Phone = ({ children, className, v = fromRight, app = "ChatGPT", mod
         <span className="text-[20px] text-mute">≡</span><span className="text-center leading-[1.1]"><b className="block text-[16px] font-semibold text-ink">{app}</b><small className="text-[12px] text-mute">{model}</small></span><span className="w-[28px] h-[28px] rounded-full bg-paper border border-line" />
       </div>
       <div className="px-[12px] py-[12px] min-h-[200px]">{children}</div>
-      <div className="mx-[14px] mb-[14px] flex items-center gap-[10px] px-[14px] py-[10px] rounded-full bg-paper border border-line text-[15px] text-mute"><span className="flex-1">Спросите что‑нибудь</span><span className="w-[28px] h-[28px] rounded-full bg-ink text-white grid place-items-center text-[14px]">↑</span></div>
+      <div className="mx-[14px] mb-[14px] flex items-center gap-[10px] px-[14px] py-[10px] rounded-full bg-paper border border-line text-[15px] text-mute"><span className="flex-1">{placeholder}</span><span className="w-[28px] h-[28px] rounded-full bg-ink text-white grid place-items-center text-[14px]">↑</span></div>
     </div>
   </motion.div>
 );
