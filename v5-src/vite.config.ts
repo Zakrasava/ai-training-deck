@@ -8,5 +8,5 @@ export default defineConfig({
   base: "./",
   plugins: [react(), tailwindcss()],
   resolve: { alias: { "@": path.resolve(__dirname, "src") } },
-  build: { outDir: "../v7", emptyOutDir: true, target: "es2020", chunkSizeWarningLimit: 1200, rollupOptions: { input: { main: path.resolve(__dirname, "index.html") } } },
+  build: { outDir: "../v8", emptyOutDir: true, target: "es2020", chunkSizeWarningLimit: 1200, rollupOptions: { input: { main: path.resolve(__dirname, "index.html") } } },
 });
