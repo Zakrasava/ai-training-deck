@@ -1,0 +1,1 @@
+import{i as e,t}from"./react-sySUN5R7.js";import{r as n,u as r}from"./react-DmEgdCa0.js";import{A as i}from"./single-value-CGNrUQCs.js";var a=e(t(),1);function o(e){let t=r(()=>i(e)),{isStatic:o}=(0,a.useContext)(n);if(o){let[,n]=(0,a.useState)(e);(0,a.useEffect)(()=>t.on(`change`,n),[])}return t}export{o as t};

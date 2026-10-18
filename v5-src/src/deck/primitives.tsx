@@ -2,6 +2,7 @@ import { motion, type Variants, useMotionValue, animate, useInView } from "motio
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import type { LucideIcon } from "lucide-react";
 
 /* ---------- хореография появления ---------- */
 export const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.11, delayChildren: 0.15 } } };
@@ -19,6 +20,11 @@ export const Group = ({ children, className, delay = 0, style }: { children: Rea
 );
 export const Item = ({ children, className, v = rise, style }: { children: ReactNode; className?: string; v?: Variants; style?: CSSProperties }) => (
   <motion.div variants={v} className={className} style={style}>{children}</motion.div>
+);
+
+/* ---------- фон навылет: выходит за сцену до краёв окна ---------- */
+export const Bleed = ({ children, className, style }: { children?: ReactNode; className?: string; style?: CSSProperties }) => (
+  <div className={cn("absolute overflow-hidden pointer-events-none", className)} style={{ left: "calc(-1 * var(--bx, 0px))", right: "calc(-1 * var(--bx, 0px))", top: "calc(-1 * var(--by, 0px))", bottom: "calc(-1 * var(--by, 0px))", ...style }}>{children}</div>
 );
 
 /* ---------- типографика ---------- */
@@ -42,7 +48,14 @@ export const Card = ({ children, className, hi, bad, v = rise, glow = false }: {
     <div className="relative">{children}</div>
   </motion.div>
 );
-export const CardTitle = ({ children }: { children: ReactNode }) => <h3 className="text-[27px] font-normal leading-[1.2] mb-[12px]">{children}</h3>;
+export const Icon = ({ icon: I, size = 44, className }: { icon: LucideIcon; size?: number; className?: string }) => (
+  <span className={cn("inline-grid place-items-center rounded-[12px] shrink-0 text-sky", className)} style={{ width: size, height: size, background: "linear-gradient(180deg, rgba(47,99,245,.28), rgba(47,99,245,.08))", border: "1px solid rgba(120,160,255,.35)", boxShadow: "0 8px 24px -12px rgba(47,99,245,.9), inset 0 1px 0 rgba(255,255,255,.12)" }}>
+    <I size={Math.round(size * .5)} strokeWidth={1.6} />
+  </span>
+);
+export const CardTitle = ({ children, icon }: { children: ReactNode; icon?: LucideIcon }) => (
+  <h3 className="flex items-center gap-[14px] text-[27px] font-normal leading-[1.2] mb-[12px]">{icon && <Icon icon={icon} size={42} />}<span>{children}</span></h3>
+);
 export const CardText = ({ children, className }: { children: ReactNode; className?: string }) => <p className={cn("text-[21px] text-fog font-light leading-[1.4]", className)}>{children}</p>;
 export const Bullets = ({ items }: { items: ReactNode[] }) => (
   <ul className="m-0 p-0 list-none">

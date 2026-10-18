@@ -3,13 +3,16 @@ import { useDeck, useScale } from "@/deck/useDeck";
 import { slides } from "@/slides";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { ShootingStars } from "@/components/ui/shooting-stars";
+import { prefetchBits } from "@/fx/Bits";
+import { useEffect } from "react";
 
 export default function App() {
   const total = slides.length;
   const { i, dir, next, prev, notes, setNotes, help, setHelp } = useDeck(total);
-  const s = useScale();
+  const { s, bx, by } = useScale();
   const slide = slides[i];
   const mood = slide.mood;
+  useEffect(() => { prefetchBits(); }, []);
 
   return (
     <div className="fixed inset-0 bg-ink text-[#edf1f7]">
@@ -22,9 +25,9 @@ export default function App() {
       <ShootingStars minSpeed={14} maxSpeed={32} minDelay={900} maxDelay={3400} starColor="#9fc4ff" trailColor="#2f63f5" starWidth={14} starHeight={1.5} className="opacity-80" />
 
       {/* сцена 1600×900 */}
-      <div className="absolute left-1/2 top-1/2 w-[1600px] h-[900px]" style={{ transform: `translate(-50%,-50%) scale(${s})` }}>
+      <div className="absolute left-1/2 top-1/2 w-[1600px] h-[900px]" style={{ transform: `translate(-50%,-50%) scale(${s})`, ["--bx" as string]: `${bx}px`, ["--by" as string]: `${by}px` }}>
         <AnimatePresence mode="wait" custom={dir}>
-          <motion.section key={i} className="absolute inset-0 overflow-hidden"
+          <motion.section key={i} className="absolute inset-0"
             initial={{ opacity: 0, x: 80 * dir, scale: .985, filter: "blur(10px)" }}
             animate={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, x: -80 * dir, scale: 1.01, filter: "blur(10px)" }}

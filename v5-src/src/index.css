@@ -33,6 +33,10 @@ body { margin: 0; background: var(--color-ink); color: #edf1f7; font-family: var
 /* заголовок с хвостом, уходящим в серый, как на сайте-референсе */
 .tail { background: linear-gradient(90deg, #edf1f7 0%, #edf1f7 30%, rgba(237,241,247,.38) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
+/* акцентное слово: живой градиент */
+.grad { background: linear-gradient(90deg, #6ccbff, #ddebff 30%, #2f63f5 55%, #6ccbff 80%, #ddebff); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradslide 7s linear infinite; }
+@keyframes gradslide { from { background-position: 0% 50%; } to { background-position: 300% 50%; } }
+
 .glass {
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
   border: 1px solid rgba(255,255,255,.09);

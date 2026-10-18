@@ -56,10 +56,14 @@ export function useDeck(total: number) {
 }
 
 export function useScale(w = 1600, h = 900) {
-  const [s, setS] = useState(1);
+  const [v, setV] = useState({ s: 1, bx: 0, by: 0 });
   useEffect(() => {
-    const fit = () => setS(Math.min(innerWidth / w, innerHeight / h));
+    const fit = () => {
+      const s = Math.min(innerWidth / w, innerHeight / h);
+      // запас, на который фон выходит за сцену, чтобы заполнить окно любых пропорций
+      setV({ s, bx: Math.max(0, (innerWidth / s - w) / 2), by: Math.max(0, (innerHeight / s - h) / 2) });
+    };
     fit(); addEventListener("resize", fit); return () => removeEventListener("resize", fit);
   }, [w, h]);
-  return s;
+  return v;
 }
