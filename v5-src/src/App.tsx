@@ -1,12 +1,20 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useDeck, useScale } from "@/deck/useDeck";
 import { slides } from "@/slides";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const total = slides.length;
   const { i, dir, next, prev, notes, setNotes, help, setHelp } = useDeck(total);
   const { s, bx, by } = useScale();
   const slide = slides[i];
+  const [hud, setHud] = useState(true);
+  useEffect(() => {
+    let t = window.setTimeout(() => setHud(false), 2500);
+    const wake = () => { setHud(true); clearTimeout(t); t = window.setTimeout(() => setHud(false), 2500); };
+    addEventListener("mousemove", wake); addEventListener("keydown", wake); addEventListener("touchstart", wake, { passive: true });
+    return () => { clearTimeout(t); removeEventListener("mousemove", wake); removeEventListener("keydown", wake); removeEventListener("touchstart", wake); };
+  }, []);
 
   return (
     <div className="fixed inset-0 bg-paper text-ink gridbg">
@@ -31,7 +39,7 @@ export default function App() {
       <button aria-label="Вперёд" onClick={next} className="fixed right-0 top-0 bottom-[48px] w-[16%] cursor-pointer opacity-0" />
 
       {/* HUD */}
-      <div className="fixed left-0 right-0 bottom-0 flex items-center justify-between px-[18px] pt-[10px] pb-[12px] text-[13px] text-mute">
+      <div className="fixed left-0 right-0 bottom-0 flex items-center justify-between px-[18px] pt-[10px] pb-[12px] text-[12px] text-mute/70 transition-opacity duration-500" style={{ opacity: hud || notes || help ? 1 : 0 }}>
         <motion.div className="absolute left-0 top-0 h-[2px] bg-blue" animate={{ width: `${((i + 1) / total) * 100}%` }} transition={{ duration: .5 }} />
         <div className="flex items-center gap-[6px]"><button onClick={prev} className="px-[8px] py-[6px] rounded-[8px] hover:bg-ink/5 hover:text-ink cursor-pointer">←</button><span className="tabular-nums">{i + 1} / {total}</span><button onClick={next} className="px-[8px] py-[6px] rounded-[8px] hover:bg-ink/5 hover:text-ink cursor-pointer">→</button></div>
         <div className="flex items-center gap-[6px]">

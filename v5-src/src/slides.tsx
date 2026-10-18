@@ -1,6 +1,6 @@
 import type { ReactNode, CSSProperties } from "react";
 import { motion } from "motion/react";
-import { Group, Item, Kicker, H, Sub, Strong, Card, CardTitle, CardText, Bullets, Win, Chat, Phone, Prompt, Counter, Bars, Steps, Frame, Icon, Mark, Ask, rise, fromLeft, fromRight, fromDeep, pop } from "@/deck/primitives";
+import { Group, Item, Kicker, H, Sub, Strong, Card, CardTitle, CardText, Bullets, Win, Chat, Phone, Prompt, Counter, Bars, Steps, Frame, Icon, Ask, rise, fromLeft, fromRight, fromDeep, pop } from "@/deck/primitives";
 import { cn } from "@/lib/utils";
 import { MessageCircle, HelpCircle, BookOpen, Users, FileText, Smartphone, Monitor, Laptop, KeyRound, CreditCard, UserCog, AlertTriangle, ListChecks, Ban, ClipboardList, Building2, Globe, PenLine, CheckCircle2, GitBranch, Timer, Search, Layers, ShieldCheck, BarChart3, Wallet, FolderOpen, Folder, Server, Wrench, Repeat, Lock, Sparkles, Scale, type LucideIcon } from "lucide-react";
 import logoOpenAI from "@/assets/logos/openai.svg?raw";
@@ -32,7 +32,7 @@ export type Slide = { mood: "hero" | "section" | "quiet"; notes: string; render:
 
 /* ---------- локальные примитивы ---------- */
 const Pad = ({ children, className = "", style }: { children: ReactNode; className?: string; style?: CSSProperties }) => (
-  <div className={"absolute inset-0 px-[110px] pt-[84px] pb-[96px] " + className} style={style}>{children}</div>
+  <div className={"absolute inset-0 px-[110px] pt-[60px] pb-[84px] " + className} style={style}>{children}</div>
 );
 /* Правило: на уровне заголовка ничего не стоит. Заголовок на всю ширину, ниже две колонки. */
 const Two = ({ children, cols = "1fr 1.05fr", className = "" }: { children: ReactNode; cols?: string; className?: string }) => (
@@ -74,9 +74,9 @@ const LogoRow = ({ items, className }: { items: [string, string][]; className?: 
   </div>
 );
 /* Скриншот в рамке */
-const Shot = ({ src, caption, v = fromRight, className, h = 230, mark, pos = "top" }: { src: string; caption?: string; v?: typeof rise; className?: string; h?: number | string; mark?: [number, number, number, number]; pos?: "top" | "center" }) => (
+const Shot = ({ src, caption, v = fromRight, className, h = 230, light = false }: { src: string; caption?: string; v?: typeof rise; className?: string; h?: number | string; light?: boolean; mark?: unknown; pos?: unknown }) => (
   <motion.figure variants={v} className={cn("m-0", className)}>
-    <span className="relative block"><img src={src} alt="" className={cn("block w-full object-cover rounded-[12px] border border-line window", pos === "top" ? "object-top" : "object-center")} style={{ height: h }} />{mark && <Mark at={mark} />}</span>
+    <span className={cn("relative block rounded-[12px] border border-line window overflow-hidden", light ? "bg-white" : "bg-[#121418]")} style={{ height: h }}><img src={src} alt="" className="block w-full h-full object-contain" /></span>
     {caption && <figcaption className="mt-[10px] text-[15px] text-mute">{caption}</figcaption>}
   </motion.figure>
 );
@@ -119,51 +119,11 @@ export const slides: Slide[] = [
     </Pad>
   ) },
 
-  /* 2. Правило ноль */
-  { mood: "quiet", notes: "Главная мысль по словам Кирилла: не бояться. Показать свой чат «Объясни мне» или завести его в эфире за 30 секунд.", render: () => (
-    <Pad>
-      <Group>
-        <Kicker>Правило номер ноль</Kicker>
-        <H tail="Понимание приходит в процессе">Не бойтесь с ним разговаривать.</H>
-        <Two cols="1fr 1.05fr" className="mt-[36px] gap-[50px]">
-          <div className="grid gap-[10px] [&_h3]:text-[23px] [&_h3]:mb-[6px] [&_p]:text-[18px]">
-            <Card v={fromLeft} className="p-[18px_22px]"><CardTitle icon={MessageCircle}>Говорите как с человеком</CardTitle><CardText>Не ищите «правильный промпт» <Term>запрос</Term>. Опишите ситуацию словами, как коллеге: что случилось, что нужно, к какому сроку. Переспросите, если непонятно. Это нормально.</CardText></Card>
-            <Card v={fromLeft} className="p-[18px_22px]"><CardTitle icon={HelpCircle}>Глупых вопросов нет</CardTitle><CardText>«Что такое токен?», «Почему ты так ответил?», «Объясни проще». ИИ не устанет и не осудит. Половина из вас написала в опроснике «нет времени разбираться». Разбираться не нужно, нужно спрашивать.</CardText></Card>
-            <Card v={fromLeft} hi className="p-[18px_22px]"><CardTitle icon={BookOpen}>Заведите чат «Объясни мне»</CardTitle><CardText>Отдельный чат для всего непонятного: термин из письма, кнопка в программе, фраза из этой презентации. Через месяц это ваш личный учебник.</CardText></Card>
-          </div>
-          <div className="grid gap-[12px]">
-            <Shot src={shotContext} h={290} mark={[1, 50, 98, 46]} caption="Настоящий ответ ChatGPT на вопрос «что значит контекст», объясни просто. Временный чат, 18 октября 2026" />
-            <Sub className="text-[19px]">Один вопрос, одно простое объяснение. Так работает чат «Объясни мне»: спросить проще, чем разбираться самому.</Sub>
-          </div>
-        </Two>
-      </Group>
-    </Pad>
-  ) },
-
-  /* 3. Как я работаю */
-  { mood: "quiet", notes: "Один обезличенный скриншот рабочего экрана, 20 секунд. Назвать холдинг: рестораны, земля, Дубай. Не говорить, что курс собрали агенты.", render: () => (
-    <Pad>
-      <Group>
-        <Kicker>Как я работаю</Kicker>
-        <H tail="и правила вместо повторений">В работе у меня два агента</H>
-        <div className="mt-[48px]">
-          <Flow nodes={[{ icon: UserCog, title: "Я ставлю задачу", text: "одной фразой: в терминале, в чате или из Telegram" }, { logo: logoClaude, title: "Claude Code делает", text: "тексты, таблицы, код, презентации" }, { logo: logoOpenAI, title: "Codex проверяет", text: "спорит и возвращает с замечаниями" }, { logo: logoGithub, title: "GitHub хранит", text: "правила, историю изменений, результат" }, { logo: logoTelegram, title: "Telegram присылает", text: "файл и отчёт: что сделано, что не смог", hi: true }]} />
-        </div>
-        <div className="grid grid-cols-3 gap-[24px] mt-[36px]">
-          <Sub className="text-[20px]"><Strong>Правила вместо повторений.</Strong> В каждой папке файл AGENTS.md: как у меня принято и что проверить. Агент читает его первым, поэтому я не объясняю одно и то же каждое утро.</Sub>
-          <Sub className="text-[20px]"><Strong>Я принимаю результат.</Strong> Не пишу код и не слежу за процессом: ставлю задачу и смотрю, что получилось. Если не так, правлю правила, а не переделываю руками.</Sub>
-          <Sub className="text-[20px]"><Strong>Это умеет не программист.</Strong> Всё, что на схеме, уже написано другими. Моя работа — правильно настроить и включить. Этому и учимся.</Sub>
-        </div>
-        <Item className="mt-[28px]"><LogoRow items={[[logoClaude, "Claude Code"], [logoOpenAI, "Codex"], [logoGithub, "GitHub"], [logoTelegram, "Telegram"]]} /></Item>
-      </Group>
-    </Pad>
-  ) },
-
-  /* 4. Опросник */
+  /* 2. Опросник */
   { mood: "quiet", notes: "Данные опросника агрегированы, имён нет. Спросить: у кого iiko или r_keeper, у кого 1С.", render: () => (
     <Pad>
       <Group>
-        <Kicker>Что вы написали в опроснике: 31 ответ, без имён</Kicker>
+        <Kicker>С чего начнём: что вы уже используете · опросник, 31 ответ, без имён</Kicker>
         <H tail="время и формулировки">Вы уже пользуетесь ИИ. Мешают не технологии, а</H>
         <div className="grid mt-[36px] gap-[24px] items-stretch" style={{ gridTemplateColumns: "1fr 1fr 1.2fr" }}>
           <Card v={fromLeft} className="p-[22px_24px]">
@@ -189,202 +149,16 @@ export const slides: Slide[] = [
     </Pad>
   ) },
 
-  /* 5. Обсуждение 1 */
+  /* 3. Обсуждение 1 */
   { mood: "quiet", notes: "Первая пауза. Разогнать разговор: пусть два‑три человека назовут задачу. Записывать в чат встречи: вернёмся к ним в части про способы.", render: () => (
     <Discuss q="Что из этого списка у вас болит сильнее всего? Назовите одну задачу, которую вы делаете руками каждую неделю." notes="Я записываю. К концу встречи у каждой задачи будет способ, а у вас — домашнее задание из одной строки." hints={["Отчёт, который собирается из нескольких таблиц", "Письмо, которое вы пишете по одному и тому же шаблону", "Документ, который приходится читать целиком ради трёх цифр", "Вопрос, на который вы отвечаете коллегам по десять раз"]} />
   ) },
 
-  /* 6. Раздел: вводное */
-  { mood: "section", notes: "Вводное: одна страница о том, кто вы и как у вас принято. Пишется один раз, читается перед каждым ответом. Это первый шаг к агенту.", render: () => (
-    <Section n="Часть первая" title="Вводное" tail="для ИИ" lead="Без вводного ИИ отвечает «вообще», как любому человеку в мире. Одна страница о том, кто вы и как у вас принято, пишется один раз и читается перед каждым ответом. С неё начинается любой агент." steps={[["Один запрос, два ответа", "3 мин"], ["Шесть строк вводного", "3 мин"], ["Вводное пишет сам ИИ", "в настройках, через 10 минут"]]} shots={[[shotBefore, "Ответ без вводного: шаблон «[Название компании]»"], [shotInstrFilled, "Вводное в поле инструкций ChatGPT"]]} />
-  ) },
-
-  /* 7. До / после */
-  { mood: "quiet", notes: "Оба ответа подготовлены заранее. Мысль: без вводного ИИ отвечает «вообще», с вводным учитывает профиль в каждом ответе, сам ищет шаблоны и структуру.", render: () => (
-    <Pad>
-      <Group>
-        <Kicker>Один и тот же запрос</Kicker>
-        <H tail="что ИИ знает о вас">Один запрос, два ответа. Разница только в том,</H>
-        <div className="grid grid-cols-2 gap-[28px] mt-[48px]">
-          <Card v={fromLeft} bad className="p-[20px_22px]">
-            <CardTitle icon={Ban}>Без вводного</CardTitle>
-            <Shot src={shotBefore} h={330} v={fromLeft} mark={[2, 44, 60, 12]} caption="Настоящий ответ ChatGPT, временный чат без персонализации, 18 октября 2026" />
-            <CardText className="mt-[14px] text-[18px]">Шаблон «для всех»: «[Название компании]», «Уважаемые партнёры!», ассортимент из воздуха. Так отвечает любой ИИ любому человеку без настроек.</CardText>
-          </Card>
-          <Card v={fromRight} hi className="p-[20px_22px]">
-            <CardTitle icon={ClipboardList}>С вводным</CardTitle>
-            <Shot src={shotAfter} h={330} mark={[2, 10, 96, 30]} caption="Тот же запрос плюс шесть строк вводного. Настоящий ответ, 18 октября 2026" />
-            <CardText className="mt-[14px] text-[18px]">Знает, кто вы и как у вас принято: ваша структура, валюта, вопросы о недостающем вместо выдумки. Вводное в настройках работает так в каждом ответе.</CardText>
-          </Card>
-        </div>
-      </Group>
-    </Pad>
-  ) },
-
-  /* 8. Вводное на одну страницу */
-  { mood: "quiet", notes: "Главное: компактность. Каждое слово вводного ИИ читает при каждом ответе. Лишнее путает и тратит токены. Справа настоящее поле ChatGPT с примером.", render: () => (
-    <Pad>
-      <Group>
-        <Kicker>Шесть строк вводного</Kicker>
-        <H tail="и помещается в одно поле настроек">Шесть строк, которые читаются перед каждым ответом</H>
-        <Two cols="1fr 1fr" className="mt-[34px] gap-[60px]">
-          <div>
-            <ol className="m-0 p-0 list-none">
-              {[[UserCog, "Кто вы", "управляющий сетью из трёх ресторанов в Казани, в команде 60 человек"], [Building2, "Компания", "холдинг: рестораны, земля под застройку, недвижимость в Дубае"], [Globe, "Страна и правила", "законы РФ и ОАЭ, рубли и дирхамы, НДС отдельно"], [PenLine, "Стиль", "коротко, на «вы», без восклицаний; таблица, если данных больше трёх строк"], [Ban, "Что нельзя", "не выдумывай цифры и имена; не хватает данных — спроси"], [CheckCircle2, "Хороший результат", "письмо на половину экрана, три варианта на выбор"]].map(([I, t, d], k) => (
-                <motion.li key={k} variants={fromLeft} className="grid items-center gap-[14px] py-[6px] border-t border-line" style={{ gridTemplateColumns: "36px 180px 1fr" }}>
-                  <Icon icon={I as LucideIcon} size={32} /><b className="text-[20px] font-medium text-ink">{t as string}</b><span className="text-[17px] text-body leading-[1.3]">{d as string}</span>
-                </motion.li>
-              ))}
-              <motion.li variants={fromLeft} className="border-t border-line" />
-            </ol>
-            <Sub className="mt-[10px] text-[17px]">Короче — лучше. Каждое слово вводного ИИ перечитывает перед каждым ответом: чем больше текста, тем больше токенов <Term>единица оплаты и объёма</Term> и тем легче ему запутаться. 400–600 знаков помещаются в поле и работают.</Sub>
-          </div>
-          <Shot src={shotInstrFilled} h={320} mark={[1, 26, 98, 50]} caption="Так вводное выглядит в поле ChatGPT → Настройки → Персонализация → Пользовательские инструкции. Реальный экран, 18 октября 2026" />
-        </Two>
-        <Ask className="mt-[8px] text-[19px]">Что из шести строк вы объяснили бы новому коллеге в первый день? Это и есть ваше вводное</Ask>
-      </Group>
-    </Pad>
-  ) },
-
-  /* 9. Раздел: настройки */
-  { mood: "section", notes: "Переключиться в браузер с учебным аккаунтом. Возвращаться к слайду после каждой настройки. Названия пунктов меню по состоянию на 18 октября, могут меняться.", render: () => (
-    <Section n="Часть вторая, 30 минут живого экрана" title="Семь" tail="настроек" lead="Каждую включаем вместе на учебном аккаунте и возвращаемся к слайду. После седьмой ИИ знает ваш принцип работы." steps={[["Модель", "3 мин"], ["Личные инструкции", "6 мин"], ["Память", "4 мин"], ["Проекты", "4 мин"], ["Гигиена чатов", "2 мин"], ["Где работать", "2 мин"], ["Подписка и ключ API", "4 мин"]]} shots={[[shotModels, "Выбор модели"], [shotMemory, "Память"], [shotProject, "Проект"]]} />
-  ) },
-
-  /* 10. Модель */
-  { mood: "quiet", notes: "Живой экран: новый чат, меню модели, выбрать думающую. В Claude аналог: выбор модели в том же меню под полем ввода.", render: () => (
-    <Pad>
-      <Group>
-        <Kicker>Настройка 1 из 7 · Модель</Kicker>
-        <H tail="а не то, что стоит по умолчанию">Выбирайте модель и уровень рассуждения,</H>
-        <Two cols="1fr 1.1fr">
-          <div className="grid gap-[14px]">
-            <Sub className="text-[21px]">Два переключателя под полем ввода: какая модель отвечает и сколько она думает <Term>уровень усилий рассуждения, reasoning</Term>. По умолчанию сервис экономит: сложный запрос может уйти слабой модели или быстрому режиму, и вы об этом не узнаете.</Sub>
-            <Sub className="text-[21px]">Высокий уровень рассуждения на несколько секунд медленнее. Зато модель считает, сверяет и реже выдумывает. Для писем хватит среднего, для цифр и документов ставьте высокий.</Sub>
-            <Sub className="text-[21px]">Названия моделей меняются каждые пару месяцев. Запомните принцип, а не имя. В Claude переключатель там же, под полем ввода.</Sub>
-            <Item className="mt-[6px]"><LogoRow items={[[logoOpenAI, "ChatGPT"], [logoClaude, "Claude"]]} /></Item>
-          </div>
-          <div className="grid gap-[14px]">
-            <Shot src={shotModels} h={150} mark={[52, 46, 32, 50]} caption="ChatGPT: меню моделей под полем ввода. Реальный экран, 18 октября 2026" />
-            <Shot src={shotReasoning} h={150} mark={[52, 46, 32, 50]} caption="Там же: «Уровень усилий рассуждения», ползунок до Extra High" />
-          </div>
-        </Two>
-      </Group>
-    </Pad>
-  ) },
-
-  /* 11. Личные инструкции */
-  { mood: "quiet", notes: "Живой экран: вставить промпт, ответить на три вопроса вслух, остальное заранее. Показать «до и после» на КП или письме поставщику.", render: () => (
-    <Pad>
-      <Group>
-        <Kicker>Настройка 2 из 7 · Личные инструкции</Kicker>
-        <H tail="Вы отвечаете на вопросы">Вводное пишет сам ИИ.</H>
-        <Two cols="1fr 1.1fr">
-          <div className="grid gap-[14px]">
-            <Item className="flex flex-wrap items-center gap-[10px] text-[18px] text-mute">{[[logoOpenAI, "ChatGPT"], ["", "Настройки"], ["", "Персонализация"], ["", "Пользовательские инструкции"]].map(([l, t], k) => <span key={k} className="contents">{k > 0 && <em className="not-italic opacity-60">→</em>}<b className="inline-flex items-center gap-[8px] font-medium text-ink px-[12px] py-[6px] rounded-[9px] bg-white border border-line">{l && <Logo src={l} size={16} />}{t}</b></span>)}</Item>
-            <Item className="flex flex-wrap items-center gap-[10px] text-[18px] text-mute">{[[logoClaude, "Claude"], ["", "Settings"], ["", "Profile"], ["", "Preferences"]].map(([l, t], k) => <span key={k} className="contents">{k > 0 && <em className="not-italic opacity-60">→</em>}<b className="inline-flex items-center gap-[8px] font-medium text-ink px-[12px] py-[6px] rounded-[9px] bg-white border border-line">{l && <Logo src={l} size={16} />}{t}</b></span>)}</Item>
-            <Sub className="mt-[4px] text-[21px]">Вставляете промпт в обычный чат. Он задаёт десять вопросов, по одному. Итог на 400–600 знаков от первого лица вставляете в поле инструкций. С этой минуты каждый новый чат знает, с кем говорит.</Sub>
-            <Prompt v={fromLeft} className="text-[17px] px-[20px] py-[14px]" text="Помоги составить мои личные инструкции для ИИ. Задай мне по одному вопросу: роль, компания, страна и правила, для кого я пишу, стиль ответов, что мне не нужно, как критиковать мои тексты, «ты» или «вы», любимый формат ответа, типовые задачи. Дождись ответа на каждый. Потом собери текст от первого лица на 400–600 знаков, без воды." note="Промпт есть в конспекте после встречи. Переписывать с экрана не нужно." />
-          </div>
-          <div className="grid gap-[12px]">
-            <Shot src={shotInstrForm} h={300} caption="ChatGPT → Настройки → Персонализация → Пользовательские инструкции. Реальный экран, 18 октября 2026" />
-            <Shot src={shotClaudeInstr} h={118} caption="Claude → Settings → Account → Instructions for Claude: то же поле, другое название" />
-          </div>
-        </Two>
-      </Group>
-    </Pad>
-  ) },
-
-  /* 12. Память */
-  { mood: "quiet", notes: "Живой экран: Настройки → Персонализация → Память: открыть «Управление памятью», удалить одну строку, показать переключатель «Учитывать историю чатов», открыть временный чат. В Claude: Settings → Memory.", render: () => (
-    <Pad>
-      <Group>
-        <Kicker>Настройка 3 из 7 · Память</Kicker>
-        <H tail="вторую нет">У ИИ две памяти. Одну вы видите,</H>
-        <Two cols="1.05fr 1fr">
-          <div className="grid gap-[12px]">
-            <Sub><Strong>Сводка памяти</Strong> <Term>ChatGPT: Персонализация → Память → Управление; Claude: Settings → Memory</Term>. То, что ИИ записал о вас. Можно открыть, прочитать и удалить любую строку.</Sub>
-            <Sub><Strong>Включить память</Strong> и <Strong>Учитывать мой стиль письма</Strong> <Term>переключатели там же</Term>. Профиль строится из всех чатов, файлов и подключённых приложений. Посмотреть целиком нельзя, только выключить. Если чаты были про всё подряд, он мешает.</Sub>
-            <Sub><Strong>Временный чат</Strong>. Не попадает ни в историю, ни в память. Для разового и чувствительного.</Sub>
-            <Item className="mt-[8px] rounded-[12px] px-[18px] py-[14px] border border-warn/40 bg-white text-[18px] leading-[1.4] text-body"><b className="font-semibold text-warn">Сноска.</b> Переписка с ИИ не защищена как тайна переписки. Паспортные данные, договоры с реквизитами и зарплаты в облачный чат не вставляем: обезличиваем («Арендатор А», «объект на улице Б»). Для таких документов есть локальные модели, которые работают на вашем компьютере и ничего не отправляют наружу.</Item>
-          </div>
-          <div className="grid gap-[12px]">
-            <Shot src={shotMemory} h={250} mark={[77, 35, 16, 16]} caption="ChatGPT → Настройки → Персонализация: «Включить память», «Сводка памяти → Управление», «Учитывать мой стиль письма». Реальный экран, 18 октября 2026" />
-            <div className="grid grid-cols-2 gap-[12px]">
-              <Shot src={shotClaudeMemory} h={150} caption="Claude → Settings → Memory: те же два переключателя" />
-              <Shot src={shotTempChat} h={150} pos="center" caption="ChatGPT: временный чат, не попадает в историю и память" />
-            </div>
-          </div>
-        </Two>
-      </Group>
-    </Pad>
-  ) },
-
-  /* 13. Проекты */
-  { mood: "quiet", notes: "Живой экран: проводник с папкой «Проекты», внутри подпапки с файлом правил. Открыть один файл правил. В веб-версии показать «Проект» с файлами и инструкцией как простой вариант.", render: () => (
-    <Pad>
-      <Group>
-        <Kicker>Настройка 4 из 7 · Проекты</Kicker>
-        <H tail="а не разговор">Проект — это рабочее место: ИИ помнит задачу,</H>
-        <Two cols="1fr 1fr">
-          <div className="grid gap-[12px]">
-            <Sub>В веб-версии <Term>ChatGPT и Claude: «Проекты»</Term> это папка с файлами и инструкцией: любой чат внутри неё видит их без напоминаний. Хватит для писем, отзывов и КП.</Sub>
-            <Sub>На компьютере <Term>desktop-приложение, Codex, Claude Code</Term> проект это обычная папка. Заводите одну папку «Проекты», в ней подпапку на каждую тему и в каждой файл правил <Term>AGENTS.md или CLAUDE.md</Term>: что это за задача, как у вас принято, что проверить.</Sub>
-            <Sub>Для большой задачи файл правил задаёт этапы: сначала ТЗ, потом дизайн, потом безопасность, потом сборка. На каждом этапе можно звать разную модель: сильную с поиском для ТЗ, модель для кода для сборки.</Sub>
-          </div>
-          <div className="grid gap-[12px]">
-          <div className="grid grid-cols-2 gap-[12px]">
-            <Shot src={shotProject} h={128} mark={[18, 56, 18, 12]} caption="ChatGPT → Проекты → «Отзывы гостей»: «Чаты» и «Источники»" />
-            <Shot src={shotClaudeProjects} h={128} caption="Claude → Projects: материалы, инструкции и чаты в одном месте" />
-          </div>
-          <Shot src={shotExplorerProjects} h={200} mark={[2, 55, 24, 10]} caption="Та же папка «Проекты» в Проводнике: подпапки на темы, в каждой свой AGENTS.md. Реальный экран, 18 октября 2026" />
-          </div>
-        </Two>
-        <Ask>Какая задача у вас повторяется каждую неделю? Это ваша первая подпапка</Ask>
-      </Group>
-    </Pad>
-  ) },
-
-  /* 14. Две папки */
-  { mood: "quiet", notes: "Живой экран: две пустые папки в проводнике, в «Б» один файл правил. Открыть Codex в каждой, один запрос, запустить. Вернуться к результату через 30 минут.", render: () => (
-    <Pad className="pt-[64px]">
-      <Group>
-        <Kicker className="mb-[14px]">Доказательство: запускаем сейчас, результат через 30 минут</Kicker>
-        <H tail="Разница — в одном файле с правилами">Одна задача, две пустые папки.</H>
-        <div className="grid gap-[20px] mt-[18px] items-start" style={{ gridTemplateColumns: "1fr 440px" }}>
-          <Prompt v={rise} className="text-[19px] px-[22px] py-[14px]" text="Подготовь HTML-презентацию земельного участка 2,4 га под коттеджный посёлок для инвестора: расположение, коммуникации, экономика, этапы. Данные вымышленные, 8 слайдов." delay={.5} speed={12} />
-          <Shot src={shotExplorerDemo} h={108} mark={[2, 70, 20, 14]} caption="Папки demo-A и demo-B в Проводнике, 18 октября 2026" />
-        </div>
-        <div className="grid grid-cols-2 gap-[28px] mt-[18px] [&_[data-id]]:py-[11px] [&_[data-id]]:text-[19px]">
-          <Win v={fromLeft} title="Папка «А»: пустая" rows={[{ id: "a1", label: "Агент читает задачу", meta: "правил нет, берёт свои шаблоны" }, { id: "a2", label: "Через 10 минут: index.html", meta: "8 слайдов, стандартный вид" }]} steps={[{ sel: "a1", t: 3200, on: true }, { sel: "a2", t: 1200, on: true }]} />
-          <Win v={fromRight} title="Папка «Б»: внутри мой файл правил" rows={[{ id: "b0", label: "AGENTS.md, одна страница", meta: "мой стиль, структура, что проверить" }, { id: "b1", label: "Агент читает правила, потом задачу", meta: "работает по моим правилам" }, { id: "b2", label: "Через 10 минут: index.html", meta: "мой стиль, моя логика, цифры сверены" }]} steps={[{ sel: "b0", t: 2600, on: true }, { sel: "b1", t: 900, on: true }, { sel: "b2", t: 1200, on: true }]} />
-        </div>
-        <Sub className="mt-[14px] text-[19px]">Файл правил пишется один раз на тип задачи. Любая папка с ним работает по вашим правилам.</Sub>
-        <Ask className="mt-[10px] text-[19px]">Пока агенты работают: для какой задачи вы написали бы такой файл первым?</Ask>
-      </Group>
-    </Pad>
-  ) },
-
-  /* 15. Гигиена чатов */
-  { mood: "quiet", notes: "Показать: новый чат на новую задачу; в проекте итог одного чата передаётся новому коротким резюме. Про токены не углубляться.", render: () => (
-    <Pad>
-      <Group>
-        <Kicker>Настройка 5 из 7 · Гигиена чатов</Kicker>
-        <H tail="это не обсуждается">Новая тема — новый чат,</H>
-        <div className="grid grid-cols-3 gap-[24px] mt-[48px]">
-          <Card v={fromLeft}><CardTitle icon={HelpCircle}>Почему</CardTitle><CardText>При каждом вопросе ИИ перечитывает весь чат <Term>контекст</Term>. Сорок сообщений про аренду, а потом вопрос про меню: он ищет связь, которой нет, и начинает выдумывать. Переполненный контекст — главная причина ложных ответов.</CardText></Card>
-          <Card hi><CardTitle icon={Timer}>Задача решена — чат закрыт</CardTitle><CardText>Даже маленькая: прочитать документ, переделать письмо. Сделали, отправили, закрыли. Понадобится снова — найдёте поиском за три секунды. Новая задача всегда с чистого листа.</CardText></Card>
-          <Card v={fromRight}><CardTitle icon={GitBranch}>В проекте: итог в новый чат</CardTitle><CardText>Концепт, референсы и споры живут в одном чате. Когда решение принято, попросите короткое резюме и начните новый чат с него. Мусор от отвергнутых идей не поедет дальше.</CardText></Card>
-        </div>
-      </Group>
-    </Pad>
-  ) },
-
-  /* 16. Где работать */
+  /* 4. Где работать */
   { mood: "quiet", notes: "Телефон: быстрые задачи. Веб-версия: документы и глубокая переписка, чаты синхронны с телефоном. Desktop-приложение и Codex: большие задачи, агенты, скрипты. Показать свой телефон или скриншот приложения.", render: () => (
     <Pad>
       <Group>
-        <Kicker>Настройка 6 из 7 · Где работать</Kicker>
+        <Kicker>Режимы работы</Kicker>
         <H tail="Аккаунт один, чаты общие">Три окна под разные задачи.</H>
         <div className="grid grid-cols-3 gap-[20px] mt-[32px] [&_li]:text-[17px] [&_li]:mt-[5px] [&_h3]:text-[23px] [&_h3]:mb-[8px]">
           <Card v={fromLeft}><CardTitle icon={Smartphone}>Приложение на телефоне</CardTitle><Bullets items={["Быстрые задачи: ответить на отзыв, перевести, разобрать фото документа", "Голосом по дороге", "Все чаты из браузера уже здесь"]} /><CardText className="mt-[12px] text-[17px]">Вводное и проекты работают и тут, поэтому ответы сразу «ваши».</CardText><Item className="mt-[12px]"><LogoRow items={[[logoOpenAI, "ChatGPT"], [logoClaude, "Claude"]]} /></Item></Card>
@@ -399,11 +173,11 @@ export const slides: Slide[] = [
     </Pad>
   ) },
 
-  /* 17. Подписка и ключ API */
+  /* 5. Подписка и ключ API */
   { mood: "quiet", notes: "Цены и названия тарифов не называть. Что такое API вообще: у 1С и Контур.Диадока тоже есть API. Показать страницу ключей на учебном аккаунте, ключ не раскрывать.", render: () => (
     <Pad>
       <Group>
-        <Kicker>Настройка 7 из 7 · Подписка и ключ API</Kicker>
+        <Kicker>Как это устроено · подписка и ключ API</Kicker>
         <H tail="ключ — для программ">Подписка — доступ для человека,</H>
         <div className="grid grid-cols-2 gap-[28px] mt-[48px]">
           <Card v={fromLeft} hi><CardTitle icon={CreditCard}>Подписка</CardTitle><CardText className="text-[19px]">Фиксированная сумма в месяц. Вы сами работаете в чате, приложении и проектах: один аккаунт, один человек. Некоторые агенты <Term>Codex, Claude Code</Term> тоже умеют работать по вашей подписке.</CardText></Card>
@@ -422,9 +196,235 @@ export const slides: Slide[] = [
     </Pad>
   ) },
 
+  /* 6. Как я работаю */
+  { mood: "quiet", notes: "Один обезличенный скриншот рабочего экрана, 20 секунд. Назвать холдинг: рестораны, земля, Дубай. Не говорить, что курс собрали агенты.", render: () => (
+    <Pad>
+      <Group>
+        <Kicker>Как это выглядит у меня</Kicker>
+        <H tail="и правила вместо повторений">В работе у меня два агента</H>
+        <div className="mt-[48px]">
+          <Flow nodes={[{ icon: UserCog, title: "Я ставлю задачу", text: "одной фразой: в терминале, в чате или из Telegram" }, { logo: logoClaude, title: "Claude Code делает", text: "тексты, таблицы, код, презентации" }, { logo: logoOpenAI, title: "Codex проверяет", text: "спорит и возвращает с замечаниями" }, { logo: logoGithub, title: "GitHub хранит", text: "правила, историю изменений, результат" }, { logo: logoTelegram, title: "Telegram присылает", text: "файл и отчёт: что сделано, что не смог", hi: true }]} />
+        </div>
+        <div className="grid grid-cols-3 gap-[24px] mt-[36px]">
+          <Sub className="text-[20px]"><Strong>Правила вместо повторений.</Strong> В каждой папке файл AGENTS.md: как у меня принято и что проверить. Агент читает его первым, поэтому я не объясняю одно и то же каждое утро.</Sub>
+          <Sub className="text-[20px]"><Strong>Я принимаю результат.</Strong> Не пишу код и не слежу за процессом: ставлю задачу и смотрю, что получилось. Если не так, правлю правила, а не переделываю руками.</Sub>
+          <Sub className="text-[20px]"><Strong>Это умеет не программист.</Strong> Всё, что на схеме, уже написано другими. Моя работа — правильно настроить и включить. Этому и учимся.</Sub>
+        </div>
+        <Item className="mt-[28px]"><LogoRow items={[[logoClaude, "Claude Code"], [logoOpenAI, "Codex"], [logoGithub, "GitHub"], [logoTelegram, "Telegram"]]} /></Item>
+      </Group>
+    </Pad>
+  ) },
+
+  /* 7. Правило ноль */
+  { mood: "quiet", notes: "Переход от «как это устроено» к настройкам: сначала правило ноль. Показать свой чат «Объясни мне» или завести его в эфире за 30 секунд.", render: () => (
+    <Pad>
+      <Group>
+        <Kicker>Правило номер ноль, с него начинается всё остальное</Kicker>
+        <H tail="Понимание приходит в процессе">Не бойтесь с ним разговаривать.</H>
+        <Two cols="1fr 1.05fr" className="mt-[36px] gap-[50px]">
+          <div className="grid gap-[10px] [&_h3]:text-[23px] [&_h3]:mb-[6px] [&_p]:text-[18px]">
+            <Card v={fromLeft} className="p-[18px_22px]"><CardTitle icon={MessageCircle}>Говорите как с человеком</CardTitle><CardText>Не ищите «правильный промпт» <Term>запрос</Term>. Опишите ситуацию словами, как коллеге: что случилось, что нужно, к какому сроку. Переспросите, если непонятно. Это нормально.</CardText></Card>
+            <Card v={fromLeft} className="p-[18px_22px]"><CardTitle icon={HelpCircle}>Глупых вопросов нет</CardTitle><CardText>«Что такое токен?», «Почему ты так ответил?», «Объясни проще». ИИ не устанет и не осудит. Половина из вас написала в опроснике «нет времени разбираться». Разбираться не нужно, нужно спрашивать.</CardText></Card>
+            <Card v={fromLeft} hi className="p-[18px_22px]"><CardTitle icon={BookOpen}>Заведите чат «Объясни мне»</CardTitle><CardText>Отдельный чат для всего непонятного: термин из письма, кнопка в программе, фраза из этой презентации. Через месяц это ваш личный учебник.</CardText></Card>
+          </div>
+          <div className="grid gap-[12px]">
+            <Shot src={shotContext} h={290} caption="Настоящий ответ ChatGPT на вопрос «что значит контекст», объясни просто. Временный чат, 18 октября 2026" />
+            <Sub className="text-[19px]">Один вопрос, одно простое объяснение. Так работает чат «Объясни мне»: спросить проще, чем разбираться самому.</Sub>
+          </div>
+        </Two>
+      </Group>
+    </Pad>
+  ) },
+
+  /* 8. Раздел: вводное */
+  { mood: "section", notes: "Вводное: одна страница о том, кто вы и как у вас принято. Пишется один раз, читается перед каждым ответом. Это первый шаг к агенту.", render: () => (
+    <Section n="Часть первая" title="Вводное" tail="для ИИ" lead="Без вводного ИИ отвечает «вообще», как любому человеку в мире. Одна страница о том, кто вы и как у вас принято, пишется один раз и читается перед каждым ответом. С неё начинается любой агент." steps={[["Один запрос, два ответа", "3 мин"], ["Шесть строк вводного", "3 мин"], ["Вводное пишет сам ИИ", "в настройках, через 10 минут"]]} shots={[[shotBefore, "Ответ без вводного: шаблон «[Название компании]»"], [shotInstrFilled, "Вводное в поле инструкций ChatGPT"]]} />
+  ) },
+
+  /* 9. До / после */
+  { mood: "quiet", notes: "Оба ответа подготовлены заранее. Мысль: без вводного ИИ отвечает «вообще», с вводным учитывает профиль в каждом ответе, сам ищет шаблоны и структуру.", render: () => (
+    <Pad>
+      <Group>
+        <Kicker>Один и тот же запрос</Kicker>
+        <H tail="что ИИ знает о вас">Один запрос, два ответа. Разница только в том,</H>
+        <div className="grid grid-cols-2 gap-[28px] mt-[48px]">
+          <Card v={fromLeft} bad className="p-[20px_22px]">
+            <CardTitle icon={Ban}>Без вводного</CardTitle>
+            <Shot src={shotBefore} h={330} v={fromLeft} caption="Настоящий ответ ChatGPT, временный чат без персонализации, 18 октября 2026" />
+            <CardText className="mt-[14px] text-[18px]">Шаблон «для всех»: «[Название компании]», «Уважаемые партнёры!», ассортимент из воздуха. Так отвечает любой ИИ любому человеку без настроек.</CardText>
+          </Card>
+          <Card v={fromRight} hi className="p-[20px_22px]">
+            <CardTitle icon={ClipboardList}>С вводным</CardTitle>
+            <Shot src={shotAfter} h={330} caption="Тот же запрос плюс шесть строк вводного. Настоящий ответ, 18 октября 2026" />
+            <CardText className="mt-[14px] text-[18px]">Знает, кто вы и как у вас принято: ваша структура, валюта, вопросы о недостающем вместо выдумки. Вводное в настройках работает так в каждом ответе.</CardText>
+          </Card>
+        </div>
+      </Group>
+    </Pad>
+  ) },
+
+  /* 10. Вводное на одну страницу */
+  { mood: "quiet", notes: "Главное: компактность. Каждое слово вводного ИИ читает при каждом ответе. Лишнее путает и тратит токены. Справа настоящее поле ChatGPT с примером.", render: () => (
+    <Pad>
+      <Group>
+        <Kicker>Шесть строк вводного</Kicker>
+        <H tail="и помещается в одно поле настроек">Шесть строк, которые читаются перед каждым ответом</H>
+        <Two cols="1fr 1fr" className="mt-[34px] gap-[60px]">
+          <div>
+            <ol className="m-0 p-0 list-none">
+              {[[UserCog, "Кто вы", "управляющий сетью из трёх ресторанов в Казани, в команде 60 человек"], [Building2, "Компания", "холдинг: рестораны, земля под застройку, недвижимость в Дубае"], [Globe, "Страна и правила", "законы РФ и ОАЭ, рубли и дирхамы, НДС отдельно"], [PenLine, "Стиль", "коротко, на «вы», без восклицаний; таблица, если данных больше трёх строк"], [Ban, "Что нельзя", "не выдумывай цифры и имена; не хватает данных — спроси"], [CheckCircle2, "Хороший результат", "письмо на половину экрана, три варианта на выбор"]].map(([I, t, d], k) => (
+                <motion.li key={k} variants={fromLeft} className="grid items-center gap-[14px] py-[6px] border-t border-line" style={{ gridTemplateColumns: "36px 180px 1fr" }}>
+                  <Icon icon={I as LucideIcon} size={32} /><b className="text-[20px] font-medium text-ink">{t as string}</b><span className="text-[17px] text-body leading-[1.3]">{d as string}</span>
+                </motion.li>
+              ))}
+              <motion.li variants={fromLeft} className="border-t border-line" />
+            </ol>
+            <Sub className="mt-[10px] text-[17px]">Короче — лучше. Каждое слово вводного ИИ перечитывает перед каждым ответом: чем больше текста, тем больше токенов <Term>единица оплаты и объёма</Term> и тем легче ему запутаться. 400–600 знаков помещаются в поле и работают.</Sub>
+          </div>
+          <Shot src={shotInstrFilled} h={320} caption="Так вводное выглядит в поле ChatGPT → Настройки → Персонализация → Пользовательские инструкции. Реальный экран, 18 октября 2026" />
+        </Two>
+        <Ask className="mt-[8px] text-[19px]">Что из шести строк вы объяснили бы новому коллеге в первый день? Это и есть ваше вводное</Ask>
+      </Group>
+    </Pad>
+  ) },
+
+  /* 11. Раздел: настройки */
+  { mood: "section", notes: "Переключиться в браузер с учебным аккаунтом. Возвращаться к слайду после каждой настройки. Названия пунктов меню по состоянию на 18 октября, могут меняться.", render: () => (
+    <Section n="Часть вторая, 25 минут живого экрана" title="Пять" tail="настроек" lead="Каждую включаем вместе на учебном аккаунте и возвращаемся к слайду. После пятой ИИ знает ваш принцип работы, а между четвёртой и пятой запустим агента." steps={[["Модель и уровень рассуждения", "3 мин"], ["Личные инструкции", "6 мин"], ["Память", "4 мин"], ["Проекты", "4 мин"], ["Запуск демо «две папки»", "6 мин"], ["Гигиена чатов", "2 мин"]]} shots={[[shotModels, "Выбор модели"], [shotMemory, "Память"], [shotProject, "Проект"]]} />
+  ) },
+
+  /* 12. Модель */
+  { mood: "quiet", notes: "Живой экран: новый чат, меню модели, выбрать думающую. В Claude аналог: выбор модели в том же меню под полем ввода.", render: () => (
+    <Pad>
+      <Group>
+        <Kicker>Настройка 1 из 5 · Модель</Kicker>
+        <H tail="а не то, что стоит по умолчанию">Выбирайте модель и уровень рассуждения,</H>
+        <Two cols="1fr 1.1fr">
+          <div className="grid gap-[14px]">
+            <Sub className="text-[21px]">Два переключателя под полем ввода: какая модель отвечает и сколько она думает <Term>уровень усилий рассуждения, reasoning</Term>. По умолчанию сервис экономит: сложный запрос может уйти слабой модели или быстрому режиму, и вы об этом не узнаете.</Sub>
+            <Sub className="text-[21px]">Высокий уровень рассуждения на несколько секунд медленнее. Зато модель считает, сверяет и реже выдумывает. Для писем хватит среднего, для цифр и документов ставьте высокий.</Sub>
+            <Sub className="text-[21px]">Названия моделей меняются каждые пару месяцев. Запомните принцип, а не имя. В Claude переключатель там же, под полем ввода.</Sub>
+            <Item className="mt-[6px]"><LogoRow items={[[logoOpenAI, "ChatGPT"], [logoClaude, "Claude"]]} /></Item>
+          </div>
+          <div className="grid gap-[14px]">
+            <Shot src={shotModels} h={150} caption="ChatGPT: меню моделей под полем ввода. Реальный экран, 18 октября 2026" />
+            <Shot src={shotReasoning} h={150} caption="Там же: «Уровень усилий рассуждения», ползунок до Extra High" />
+          </div>
+        </Two>
+      </Group>
+    </Pad>
+  ) },
+
+  /* 13. Личные инструкции */
+  { mood: "quiet", notes: "Живой экран: вставить промпт, ответить на три вопроса вслух, остальное заранее. Показать «до и после» на КП или письме поставщику.", render: () => (
+    <Pad>
+      <Group>
+        <Kicker>Настройка 2 из 5 · Личные инструкции</Kicker>
+        <H tail="Вы отвечаете на вопросы">Вводное пишет сам ИИ.</H>
+        <Two cols="1fr 1.1fr">
+          <div className="grid gap-[14px]">
+            <Item className="flex flex-wrap items-center gap-[10px] text-[18px] text-mute">{[[logoOpenAI, "ChatGPT"], ["", "Настройки"], ["", "Персонализация"], ["", "Пользовательские инструкции"]].map(([l, t], k) => <span key={k} className="contents">{k > 0 && <em className="not-italic opacity-60">→</em>}<b className="inline-flex items-center gap-[8px] font-medium text-ink px-[12px] py-[6px] rounded-[9px] bg-white border border-line">{l && <Logo src={l} size={16} />}{t}</b></span>)}</Item>
+            <Item className="flex flex-wrap items-center gap-[10px] text-[18px] text-mute">{[[logoClaude, "Claude"], ["", "Settings"], ["", "Profile"], ["", "Preferences"]].map(([l, t], k) => <span key={k} className="contents">{k > 0 && <em className="not-italic opacity-60">→</em>}<b className="inline-flex items-center gap-[8px] font-medium text-ink px-[12px] py-[6px] rounded-[9px] bg-white border border-line">{l && <Logo src={l} size={16} />}{t}</b></span>)}</Item>
+            <Sub className="mt-[4px] text-[21px]">Вставляете промпт в обычный чат. Он задаёт десять вопросов, по одному. Итог на 400–600 знаков от первого лица вставляете в поле инструкций. С этой минуты каждый новый чат знает, с кем говорит.</Sub>
+            <Prompt v={fromLeft} className="text-[17px] px-[20px] py-[14px]" text="Помоги составить мои личные инструкции для ИИ. Задай мне по одному вопросу: роль, компания, страна и правила, для кого я пишу, стиль ответов, что мне не нужно, как критиковать мои тексты, «ты» или «вы», любимый формат ответа, типовые задачи. Дождись ответа на каждый. Потом собери текст от первого лица на 400–600 знаков, без воды." note="Промпт есть в конспекте после встречи. Переписывать с экрана не нужно." />
+          </div>
+          <div className="grid gap-[12px]">
+            <Shot src={shotInstrForm} h={300} caption="ChatGPT → Настройки → Персонализация → Пользовательские инструкции. Реальный экран, 18 октября 2026" />
+            <Shot src={shotClaudeInstr} h={118} caption="Claude → Settings → Account → Instructions for Claude: то же поле, другое название" />
+          </div>
+        </Two>
+      </Group>
+    </Pad>
+  ) },
+
+  /* 14. Память */
+  { mood: "quiet", notes: "Живой экран: Настройки → Персонализация → Память: открыть «Управление памятью», удалить одну строку, показать переключатель «Учитывать историю чатов», открыть временный чат. В Claude: Settings → Memory.", render: () => (
+    <Pad>
+      <Group>
+        <Kicker>Настройка 3 из 5 · Память</Kicker>
+        <H tail="вторую нет">У ИИ две памяти. Одну вы видите,</H>
+        <Two cols="1.05fr 1fr">
+          <div className="grid gap-[12px]">
+            <Sub><Strong>Сводка памяти</Strong> <Term>ChatGPT: Персонализация → Память → Управление; Claude: Settings → Memory</Term>. То, что ИИ записал о вас. Можно открыть, прочитать и удалить любую строку.</Sub>
+            <Sub><Strong>Включить память</Strong> и <Strong>Учитывать мой стиль письма</Strong> <Term>переключатели там же</Term>. Профиль строится из всех чатов, файлов и подключённых приложений. Посмотреть целиком нельзя, только выключить. Если чаты были про всё подряд, он мешает.</Sub>
+            <Sub><Strong>Временный чат</Strong>. Не попадает ни в историю, ни в память. Для разового и чувствительного.</Sub>
+            <Item className="mt-[8px] rounded-[12px] px-[18px] py-[14px] border border-warn/40 bg-white text-[18px] leading-[1.4] text-body"><b className="font-semibold text-warn">Сноска.</b> Переписка с ИИ не защищена как тайна переписки. Паспортные данные, договоры с реквизитами и зарплаты в облачный чат не вставляем: обезличиваем («Арендатор А», «объект на улице Б»). Для таких документов есть локальные модели, которые работают на вашем компьютере и ничего не отправляют наружу.</Item>
+          </div>
+          <div className="grid gap-[12px]">
+            <Shot src={shotMemory} h={250} caption="ChatGPT → Настройки → Персонализация: «Включить память», «Сводка памяти → Управление», «Учитывать мой стиль письма». Реальный экран, 18 октября 2026" />
+            <div className="grid grid-cols-2 gap-[12px]">
+              <Shot src={shotClaudeMemory} h={150} caption="Claude → Settings → Memory: те же два переключателя" />
+              <Shot src={shotTempChat} h={150} caption="ChatGPT: временный чат, не попадает в историю и память" />
+            </div>
+          </div>
+        </Two>
+      </Group>
+    </Pad>
+  ) },
+
+  /* 15. Проекты */
+  { mood: "quiet", notes: "Живой экран: проводник с папкой «Проекты», внутри подпапки с файлом правил. Открыть один файл правил. В веб-версии показать «Проект» с файлами и инструкцией как простой вариант.", render: () => (
+    <Pad>
+      <Group>
+        <Kicker>Настройка 4 из 5 · Проекты</Kicker>
+        <H tail="а не разговор">Проект — это рабочее место: ИИ помнит задачу,</H>
+        <Two cols="1fr 1fr">
+          <div className="grid gap-[12px]">
+            <Sub>В веб-версии <Term>ChatGPT и Claude: «Проекты»</Term> это папка с файлами и инструкцией: любой чат внутри неё видит их без напоминаний. Хватит для писем, отзывов и КП.</Sub>
+            <Sub>На компьютере <Term>desktop-приложение, Codex, Claude Code</Term> проект это обычная папка. Заводите одну папку «Проекты», в ней подпапку на каждую тему и в каждой файл правил <Term>AGENTS.md или CLAUDE.md</Term>: что это за задача, как у вас принято, что проверить.</Sub>
+            <Sub>Для большой задачи файл правил задаёт этапы: сначала ТЗ, потом дизайн, потом безопасность, потом сборка. На каждом этапе можно звать разную модель: сильную с поиском для ТЗ, модель для кода для сборки.</Sub>
+          </div>
+          <div className="grid gap-[12px]">
+          <div className="grid grid-cols-2 gap-[12px]">
+            <Shot src={shotProject} h={128} caption="ChatGPT → Проекты → «Отзывы гостей»: «Чаты» и «Источники»" />
+            <Shot src={shotClaudeProjects} h={128} caption="Claude → Projects: материалы, инструкции и чаты в одном месте" />
+          </div>
+          <Shot light src={shotExplorerProjects} h={200} caption="Та же папка «Проекты» в Проводнике: подпапки на темы, в каждой свой AGENTS.md. Реальный экран, 18 октября 2026" />
+          </div>
+        </Two>
+        <Ask>Какая задача у вас повторяется каждую неделю? Это ваша первая подпапка</Ask>
+      </Group>
+    </Pad>
+  ) },
+
+  /* 16. Две папки */
+  { mood: "quiet", notes: "Живой экран: две пустые папки в проводнике, в «Б» один файл правил. Открыть Codex в каждой, один запрос, запустить. Вернуться к результату через 30 минут.", render: () => (
+    <Pad className="pt-[64px]">
+      <Group>
+        <Kicker className="mb-[14px]">Доказательство: запускаем сейчас, результат через 30 минут</Kicker>
+        <H tail="Разница — в одном файле с правилами">Одна задача, две пустые папки.</H>
+        <div className="grid gap-[20px] mt-[18px] items-start" style={{ gridTemplateColumns: "1fr 440px" }}>
+          <Prompt v={rise} className="text-[19px] px-[22px] py-[14px]" text="Подготовь HTML-презентацию земельного участка 2,4 га под коттеджный посёлок для инвестора: расположение, коммуникации, экономика, этапы. Данные вымышленные, 8 слайдов." delay={.5} speed={12} />
+          <Shot light src={shotExplorerDemo} h={108} caption="Папки demo-A и demo-B в Проводнике, 18 октября 2026" />
+        </div>
+        <div className="grid grid-cols-2 gap-[28px] mt-[18px] [&_[data-id]]:py-[11px] [&_[data-id]]:text-[19px]">
+          <Win v={fromLeft} title="Папка «А»: пустая" rows={[{ id: "a1", label: "Агент читает задачу", meta: "правил нет, берёт свои шаблоны" }, { id: "a2", label: "Через 10 минут: index.html", meta: "8 слайдов, стандартный вид" }]} steps={[{ sel: "a1", t: 3200, on: true }, { sel: "a2", t: 1200, on: true }]} />
+          <Win v={fromRight} title="Папка «Б»: внутри мой файл правил" rows={[{ id: "b0", label: "AGENTS.md, одна страница", meta: "мой стиль, структура, что проверить" }, { id: "b1", label: "Агент читает правила, потом задачу", meta: "работает по моим правилам" }, { id: "b2", label: "Через 10 минут: index.html", meta: "мой стиль, моя логика, цифры сверены" }]} steps={[{ sel: "b0", t: 2600, on: true }, { sel: "b1", t: 900, on: true }, { sel: "b2", t: 1200, on: true }]} />
+        </div>
+        <Sub className="mt-[14px] text-[19px]">Файл правил пишется один раз на тип задачи. Любая папка с ним работает по вашим правилам.</Sub>
+        <Ask className="mt-[10px] text-[19px]">Пока агенты работают: для какой задачи вы написали бы такой файл первым?</Ask>
+      </Group>
+    </Pad>
+  ) },
+
+  /* 17. Гигиена чатов */
+  { mood: "quiet", notes: "Показать: новый чат на новую задачу; в проекте итог одного чата передаётся новому коротким резюме. Про токены не углубляться.", render: () => (
+    <Pad>
+      <Group>
+        <Kicker>Настройка 5 из 5 · Гигиена чатов</Kicker>
+        <H tail="это не обсуждается">Новая тема — новый чат,</H>
+        <div className="grid grid-cols-3 gap-[24px] mt-[48px]">
+          <Card v={fromLeft}><CardTitle icon={HelpCircle}>Почему</CardTitle><CardText>При каждом вопросе ИИ перечитывает весь чат <Term>контекст</Term>. Сорок сообщений про аренду, а потом вопрос про меню: он ищет связь, которой нет, и начинает выдумывать. Переполненный контекст — главная причина ложных ответов.</CardText></Card>
+          <Card hi><CardTitle icon={Timer}>Задача решена — чат закрыт</CardTitle><CardText>Даже маленькая: прочитать документ, переделать письмо. Сделали, отправили, закрыли. Понадобится снова — найдёте поиском за три секунды. Новая задача всегда с чистого листа.</CardText></Card>
+          <Card v={fromRight}><CardTitle icon={GitBranch}>В проекте: итог в новый чат</CardTitle><CardText>Концепт, референсы и споры живут в одном чате. Когда решение принято, попросите короткое резюме и начните новый чат с него. Мусор от отвергнутых идей не поедет дальше.</CardText></Card>
+        </div>
+      </Group>
+    </Pad>
+  ) },
+
   /* 18. Обсуждение 2 */
   { mood: "quiet", notes: "Вторая пауза после настроек. Спросить, что удивило, что уже включили на своём телефоне прямо сейчас.", render: () => (
-    <Discuss q="Какая из семи настроек удивила? Что вы включите на своём аккаунте сегодня вечером первым делом?" notes="Можно прямо сейчас, с телефона: настройки, персонализация." hints={["Думающая модель вместо «Авто»", "Вводное: кто вы и как у вас принято", "Память: посмотреть, что он уже о вас записал", "Новый чат на новую задачу"]} />
+    <Discuss q="Какая из пяти настроек удивила? Что вы включите на своём аккаунте сегодня вечером первым делом?" notes="Можно прямо сейчас, с телефона: настройки, персонализация." hints={["Думающая модель вместо «Авто»", "Вводное: кто вы и как у вас принято", "Память: посмотреть, что он уже о вас записал", "Новый чат на новую задачу"]} />
   ) },
 
   /* 19. Раздел: способы */
@@ -578,8 +578,8 @@ export const slides: Slide[] = [
             <Item className="mt-[6px]"><LogoRow items={[[logoGithub, "github.com/Zakrasava/ai-training-deck"], [logoGithub, "GitHub Pages"]]} /></Item>
           </div>
           <div className="grid gap-[12px]">
-            <Shot src={shotGithub} caption="Репозиторий этой презентации: файлы, история изменений, 18 октября 2026" />
-            <Shot src={shotPages} caption="Опубликованная страница: открывается по адресу у любого участника" />
+            <Shot light src={shotGithub} caption="Репозиторий этой презентации: файлы, история изменений, 18 октября 2026" />
+            <Shot light src={shotPages} caption="Опубликованная страница: открывается по адресу у любого участника" />
           </div>
         </Two>
       </Group>
