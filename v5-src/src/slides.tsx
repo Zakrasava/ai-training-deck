@@ -1,81 +1,58 @@
-import type { ReactNode } from "react";
+import type { ReactNode, CSSProperties } from "react";
 import { motion } from "motion/react";
-import { Group, Item, Kicker, H, Sub, Strong, Card, CardTitle, CardText, Bullets, Ask, Win, Chat, Phone, Prompt, Counter, Bars, Chips, Bleed, rise, fromLeft, fromRight, fromDeep, pop } from "@/deck/primitives";
-import { Cubes } from "@/fx/Cubes";
-import { NeuroBack } from "@/fx/Shaders";
-import { SilkBack, ThreadsBack, DotGridBack, LaserBack } from "@/fx/Bits";
+import { Group, Item, Kicker, H, Sub, Strong, Card, CardTitle, CardText, Bullets, Ask, Win, Chat, Phone, Prompt, Counter, Bars, Chips, Steps, Frame, rise, fromLeft, fromRight, fromDeep, pop } from "@/deck/primitives";
 import { MessageCircle, HelpCircle, BookOpen, Users, FileText, Smartphone, Monitor, Laptop, KeyRound, CreditCard, UserCog, AlertTriangle, ListChecks, Ban, ClipboardList, Building2, Globe, PenLine, CheckCircle2, GitBranch, Timer, Search, Layers, ShieldCheck, BarChart3, Wallet, FolderOpen } from "lucide-react";
-import { LiquidSculpture } from "@/sculpture/LiquidSculpture";
-import { Particles } from "@/components/ui/particles";
-import { BorderBeam } from "@/components/ui/border-beam";
 
 export type Slide = { mood: "hero" | "section" | "quiet"; notes: string; render: () => ReactNode };
 
-const Pad = ({ children, className = "" }: { children: ReactNode; className?: string }) => (
-  <div className={"absolute inset-0 px-[110px] pt-[88px] pb-[96px] " + className}>{children}</div>
+const Pad = ({ children, className = "", style }: { children: ReactNode; className?: string; style?: CSSProperties }) => (
+  <div className={"absolute inset-0 px-[110px] pt-[84px] pb-[96px] " + className} style={style}>{children}</div>
 );
-const Shade = () => <Bleed style={{ background: "linear-gradient(90deg, rgba(5,7,11,.78), rgba(5,7,11,.35) 50%, rgba(5,7,11,.05))" }} />;
-const Section = ({ n, title, tail, lead, cube, children, rot = .35 }: { n: string; title: string; tail: string; lead?: string; cube: string; children?: ReactNode; rot?: number }) => (
-  <>
-    <Bleed className="opacity-70"><SilkBack rotation={rot} /></Bleed>
-    <Shade />
-    <Cubes spec={[{ x: -8.8, y: 4, z: -7, size: 2.6, ry: .9, far: true }, { x: -6.5, y: -4.6, z: -9, size: 2, ry: .3, far: true }, { x: 9.6, y: -4.2, z: -8, size: 2.4, ry: -.6, far: true }, { text: cube, x: 4.8, y: .3, size: 4.4, ry: -.3, rx: -.22, big: true }]} />
-    <Pad className="grid grid-cols-2 items-center">
-      <Group delay={1.1}>
-        <Kicker>{n}</Kicker>
-        <H size={92}>{title}<span className="tail"> {tail}</span></H>
-        {lead && <Sub className="mt-[24px] max-w-[640px] text-[28px] text-fog">{lead}</Sub>}
-        {children}
-      </Group>
-    </Pad>
-  </>
+const Section = ({ n, title, tail, lead, steps, children }: { n: string; title: string; tail: string; lead?: string; steps?: [string, string][]; children?: ReactNode }) => (
+  <Pad className="grid items-start gap-[110px]" style={{ gridTemplateColumns: "1fr 600px" }}>
+    <Group delay={.15}>
+      <Kicker>{n}</Kicker>
+      <H size={104} tail={tail}>{title}</H>
+      {lead && <Sub className="mt-[30px] max-w-[640px] text-[25px]">{lead}</Sub>}
+      {children}
+    </Group>
+    {steps && <Group delay={.5} className="mt-[52px]"><Steps items={steps} /></Group>}
+  </Pad>
 );
 
 export const slides: Slide[] = [
   /* 1. Титул */
-  { mood: "hero", notes: "Пауза 20–30 секунд, пока подключаются. Поводить мышью по скульптуре: она растекается и собирается обратно. Ничего не читать вслух.", render: () => (
-    <>
-      <Bleed style={{ background: "radial-gradient(60% 60% at 50% 45%, rgba(13,28,68,.55), rgba(5,7,11,0) 70%)" }} />
-      <LiquidSculpture band={{ top: 30, bottom: 600 }} scale={1.0} />
-      <div className="absolute left-[110px] right-[110px] bottom-[84px] grid items-end gap-[60px] pointer-events-none" style={{ gridTemplateColumns: "1.6fr 1fr" }}>
-        <div>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: .62 }} transition={{ delay: 1.2, duration: .8 }} className="flex items-center gap-[12px] text-[13px] tracking-[.12em] uppercase mb-[18px]"><i className="w-[28px] h-[1px] bg-current opacity-70" />Корпоративное обучение · три встречи</motion.p>
-          <h1 className="font-medium tracking-[-.045em] leading-[.92] text-[112px]">
-            {["ИИ как новый", "сотрудник"].map((w, k) => (
-              <motion.span key={k} initial={{ opacity: 0, y: 40, filter: "blur(14px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ delay: .6 + k * .2, duration: .9, ease: [.22, .61, .2, 1] }} className={"block " + (k === 1 ? "font-extralight italic text-ice" : "")}>{w}</motion.span>
-            ))}
-          </h1>
-        </div>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4, duration: .8 }} className="justify-self-end max-w-[400px] pb-[10px]">
-          <p className="text-[19px] leading-[1.5] text-fog">От первого вопроса до собственного агента. Ничего писать не придётся: всё уже написано, мы научимся это включать.</p>
-          <p className="mt-[22px] flex items-center gap-[10px] text-[11px] tracking-[.14em] uppercase opacity-50"><i className="w-[6px] h-[6px] rounded-full bg-current animate-pulse" />Проведите по форме</p>
-        </motion.div>
-      </div>
-    </>
+  { mood: "hero", notes: "Пауза 20–30 секунд, пока подключаются. В окне справа печатается письмо поставщику: это и есть результат первой встречи. Ничего не читать вслух.", render: () => (
+    <Pad className="grid items-center gap-[90px]" style={{ gridTemplateColumns: "1fr 680px" }}>
+      <Group delay={.2}>
+        <Kicker>Корпоративное обучение, три встречи</Kicker>
+        <motion.h1 variants={rise} className="font-semibold tracking-[-.045em] leading-[.95] text-[118px] text-ink">ИИ как новый <span className="tail">сотрудник</span></motion.h1>
+        <Sub className="mt-[36px] max-w-[700px] text-[26px]">От первого вопроса до собственного агента. Ничего писать не придётся: всё уже написано, мы научимся это включать.</Sub>
+      </Group>
+      <Frame title="Новый чат" meta="Думающая модель, личные инструкции и проект «Закупки» подключены">
+        <Chat start={1.4} gap={1.1} msgs={[{ me: true, text: "Напиши поставщику: задержали поставку" }, { text: "Андрей, добрый день. По договору № 14 поставка должна была прийти 14 октября, сегодня 18‑е. Прошу до 12:00 завтра подтвердить дату отгрузки. По п. 6.2 с 19 октября начисляется неустойка 0,1% в день, пока удерживать не будем. Ильдар, управляющий." }]} />
+      </Frame>
+    </Pad>
   ) },
 
   /* 2. Обещание */
-  { mood: "section", notes: "Главная мысль курса. Кубы — четыре ступени: чат, проект, агент, ваш агент.", render: () => (
-    <>
-      <Bleed className="opacity-70"><SilkBack rotation={-.4} speed={2.4} /></Bleed>
-      <Bleed style={{ background: "linear-gradient(0deg, rgba(5,7,11,.85), rgba(5,7,11,.3) 45%, rgba(5,7,11,0))" }} />
-      <Cubes spec={[
-        { text: "Чат", x: -5.6, y: 1.2, size: 1.9, ry: .22, rx: -.18 }, { text: "Проект", x: -1.9, y: 1.4, size: 1.9, ry: .08, rx: -.18 },
-        { text: "Агент", x: 1.9, y: 1.6, size: 1.9, ry: -.08, rx: -.18 }, { text: "Ваш", x: 5.6, y: 1.9, size: 2.3, ry: -.22, rx: -.18, big: true },
-        { x: -9.5, y: 4.2, z: -6, size: 2.6, ry: .8, far: true }, { x: 9.8, y: -3.8, z: -7, size: 3, ry: -.7, far: true }, { x: -8.6, y: -4.4, z: -9, size: 2.2, ry: .4, far: true }]} />
-      <div className="absolute left-[110px] right-[110px] bottom-[110px]">
-        <Group delay={1.4}>
-          <Kicker>Чем закончится курс</Kicker>
-          <motion.h2 variants={rise} className="text-[54px] font-extralight tracking-[-.02em] leading-[1.1] max-w-[1200px]">Через три встречи у каждого из вас будет <b className="font-medium grad">собственный ИИ‑агент</b>, который берёт на себя вашу рутину. <span className="text-sky">Писать код не придётся: всё уже написано. Мы научимся это включать.</span></motion.h2>
-        </Group>
-      </div>
-    </>
+  { mood: "section", notes: "Главная мысль курса. Четыре ступени: чат, проект, агент, ваш агент.", render: () => (
+    <Pad>
+      <Group>
+        <Kicker>Чем закончится курс</Kicker>
+        <motion.h2 variants={rise} className="text-[62px] font-semibold tracking-[-.035em] leading-[1.05] max-w-[1320px] text-ink">Через три встречи у каждого из вас будет <span className="grad">собственный ИИ‑агент</span>, который берёт на себя вашу рутину.</motion.h2>
+        <Sub className="mt-[22px] text-[27px] max-w-[1000px]">Писать код не придётся: всё уже написано. Мы научимся это включать.</Sub>
+        <div className="grid grid-cols-4 gap-[16px] mt-[64px]">
+          {[["Чат", "сегодня", "Вопросы без страха и семь настроек, после которых ИИ знает вашу компанию."], ["Проект", "встреча 2", "Рабочее место стажёра: файлы, инструкция, память. Ассистент для отдела."], ["Агент", "встреча 3", "Готовый агент на вашем компьютере. Его не пишут, его включают."], ["Ваш агент", "после курса", "Под вашу задачу, по расписанию, с отчётом в Telegram."]].map(([t, w, d], k) => (
+            <Card key={k} hi={k === 3} v={k % 2 ? rise : fromDeep} className="p-[24px_26px]"><small className="block text-[16px] text-mute tabular-nums mb-[14px]">0{k + 1} · {w}</small><CardTitle>{t}</CardTitle><CardText className="text-[19px]">{d}</CardText></Card>
+          ))}
+        </div>
+      </Group>
+    </Pad>
   ) },
 
   /* 3. Правило ноль */
   { mood: "quiet", notes: "Главная мысль по словам Кирилла: не бояться. Показать свой чат «Объясни мне» или завести его в эфире за 30 секунд.", render: () => (
-    <>
-    <Bleed className="opacity-45"><ThreadsBack /></Bleed>
     <Pad>
       <Group>
         <Kicker>Правило номер ноль</Kicker>
@@ -96,17 +73,16 @@ export const slides: Slide[] = [
         </div>
       </Group>
     </Pad>
-    </>
   ) },
 
   /* 4. Кто ведёт */
   { mood: "quiet", notes: "Один обезличенный скриншот рабочего экрана, 20 секунд. Назвать холдинг: рестораны, земля, Дубай.", render: () => (
     <Pad>
       <Group>
-        <Kicker>Откуда это всё</Kicker>
-        <H tail="два агента, и этот курс собрали они">У меня нет ассистента. У меня</H>
+        <Kicker>Как я работаю</Kicker>
+        <H tail="и правила вместо повторений">В работе у меня два агента</H>
         <div className="grid grid-cols-3 gap-[28px] mt-[64px]">
-          <Card v={fromLeft}><CardTitle icon={Users}>Один пишет, второй спорит</CardTitle><CardText>Первый агент делает работу: тексты, таблицы, код. Второй проверяет и возвращает с замечаниями. Я ставлю задачу и принимаю результат. Презентация, которую вы видите, собрана так.</CardText></Card>
+          <Card v={fromLeft}><CardTitle icon={Users}>Один пишет, второй спорит</CardTitle><CardText>Первый агент делает работу: тексты, таблицы, код. Второй проверяет и возвращает с замечаниями. Я ставлю задачу и принимаю результат.</CardText></Card>
           <Card><CardTitle icon={FileText}>Правила вместо повторений</CardTitle><CardText>В каждом проекте лежит файл с правилами и паспорт задачи. Агент читает их первым. Поэтому мне не нужно объяснять одно и то же каждое утро. Этому научимся на встрече 2.</CardText></Card>
           <Card v={fromRight} hi><CardTitle icon={Smartphone}>Пульт в телефоне</CardTitle><CardText>Пишу в Telegram «собери отчёт по выручке за неделю», домашний компьютер делает и присылает файл. Это встреча 3, и это умеет не программист, а тот, кто правильно настроил.</CardText></Card>
         </div>
@@ -137,10 +113,10 @@ export const slides: Slide[] = [
             <Bars height={130} className="my-[30px] mb-[44px] mx-[6px]" data={[{ v: 100, val: "11", label: "время" }, { v: 55, val: "6", label: "слова" }, { v: 27, val: "3", label: "доступ", dim: true }, { v: 9, val: "1", label: "данные", dim: true }]} />
             <CardText className="text-[19px]">Про память ИИ впервые слышат пятеро, про своих ассистентов — восемь. Агентов пробовали двое. На вопрос «что такое агент» самый частый ответ: «хочу разобраться».</CardText>
           </Card>
-          <Card v={fromRight} hi className="p-[22px_24px]">
+          <Card v={fromRight} hi className="p-[20px_22px] [&_li]:text-[17px] [&_li]:mt-[4px] [&_li]:leading-[1.32]">
             <CardTitle icon={ListChecks}>Что хотите поручить</CardTitle>
             <Bullets items={["Сводки выручки, отчёты руководству, сведение данных из нескольких юрлиц", "Презентации: участки для инвесторов, меню, объекты по шаблону", "Ответы на отзывы и сообщения гостей по скриптам", "Письма поставщикам, разбор коммерческих предложений и цен", "ТТК, себестоимость, подбор рецептур под фуд-кост", "Договоры, бизнес-план и финмодель участка, поиск персонала"]} />
-            <CardText className="mt-[12px] text-[19px]">Всё это будет в курсе. Сегодня: отзывы, КП, выручка. Презентация участка соберётся через час на ваших глазах.</CardText>
+            <CardText className="mt-[10px] text-[17px]">Всё это будет в курсе. Сегодня: отзывы, КП, выручка. Презентация участка соберётся через час на ваших глазах.</CardText>
           </Card>
         </div>
       </Group>
@@ -160,20 +136,20 @@ export const slides: Slide[] = [
             ["Встреча 3 · Стажёр получает инструменты", "Агент на вашем компьютере разбирает файлы и собирает маленькое приложение по ТЗ, которое вы надиктовали. Готовые агенты по расписанию и из Telegram.", "Сможете сами: поручить агенту задачу, проверить и запустить по расписанию.", false],
           ].map(([t, p, s, now], k) => (
             <Item key={k} v={k === 0 ? fromLeft : k === 2 ? fromRight : rise} className="relative pt-[26px]">
-              <i className={"absolute left-0 top-0 w-[14px] h-[14px] rounded-full " + (now ? "bg-white" : "bg-sky")} style={{ boxShadow: "0 0 18px rgba(108,203,255,.9)" }} />
+              <i className={"absolute left-0 top-0 w-[12px] h-[12px] rounded-[3px] " + (now ? "bg-blue" : "bg-line")} />
               <h3 className="text-[30px] font-normal mb-[10px]">{t as string}</h3>
               <p className="text-[21px] text-fog font-light">{p as string}</p>
-              <p className="text-[21px] text-ice font-light mt-[14px]"><b className="font-medium grad">Сможете сами:</b>{(s as string).replace("Сможете сами:", "")}</p>
+              <p className="text-[21px] text-ice font-light mt-[14px]"><b className="font-semibold grad">Сможете сами:</b>{(s as string).replace("Сможете сами:", "")}</p>
             </Item>
           ))}
         </div>
-        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: .4, duration: 1.4, ease: [.22, .61, .2, 1] }} className="origin-left h-[2px] mt-[64px]" style={{ background: "linear-gradient(90deg, rgba(47,99,245,.15), rgba(108,203,255,.95))", boxShadow: "0 0 14px rgba(108,203,255,.6)" }} />
+        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: .4, duration: 1.4, ease: [.22, .61, .2, 1] }} className="origin-left h-[2px] mt-[64px] bg-blue" />
       </Group>
     </Pad>
   ) },
 
   /* 7. Раздел */
-  { mood: "section", notes: "", render: () => <Section rot={.2} n="Часть первая" title="Новый" tail="сотрудник" cube="Досье" lead="Завтра к вам выходит умный стажёр. Он читал весь интернет, но не знает про вас ничего. Что вы скажете ему в первый день?" /> },
+  { mood: "section", notes: "", render: () => <Section n="Часть первая" title="Новый" tail="сотрудник" lead="Завтра к вам выходит умный стажёр. Он читал весь интернет, но не знает про вас ничего. Что вы скажете ему в первый день?" steps={[["Один стажёр, два ответа", "4 мин"], ["Шесть вещей в досье", "2 мин"]]} /> },
 
   /* 8. До / после */
   { mood: "quiet", notes: "Метафора из аудио Кирилла: новый работник, которому либо ничего не объяснили, либо дали инструкции. Оба ответа подготовлены заранее.", render: () => (
@@ -216,9 +192,7 @@ export const slides: Slide[] = [
 
   /* 10. Раздел: настройки */
   { mood: "section", notes: "Переключиться в браузер с учебным аккаунтом. Возвращаться к слайду после каждой настройки.", render: () => (
-    <Section rot={.9} n="Часть вторая · 30 минут живого экрана" title="Семь" tail="настроек" cube="7">
-      <Item className="mt-[26px] max-w-[700px]"><Chips items={["Модель", "Личные инструкции", "Память", "Проекты", "Гигиена чатов", "Где работать", "Чем платить"]} /></Item>
-    </Section>
+    <Section n="Часть вторая, 30 минут живого экрана" title="Семь" tail="настроек" lead="Каждую включаем вместе на учебном аккаунте и возвращаемся к слайду. После седьмой ИИ знает вашу компанию." steps={[["Модель", "3 мин"], ["Личные инструкции", "6 мин"], ["Память", "4 мин"], ["Проекты", "4 мин"], ["Гигиена чатов", "2 мин"], ["Где работать", "2 мин"], ["Чем платить", "4 мин"]]} />
   ) },
 
   /* 11. Модель */
@@ -249,7 +223,7 @@ export const slides: Slide[] = [
         <div className="grid items-start gap-[60px]" style={{ gridTemplateColumns: "1fr 1.1fr" }}>
           <div>
             <H tail="Вы отвечаете на вопросы" className="max-w-[900px]">Досье пишет сам ИИ.</H>
-            <Item className="flex items-center gap-[10px] mt-[44px] mb-[18px] text-[19px] text-mute">{["Настройки", "Персонализация", "Инструкции"].map((t, k) => <span key={k} className="contents">{k > 0 && <em className="not-italic opacity-60">→</em>}<b className="font-medium text-fog px-[12px] py-[6px] rounded-[10px]" style={{ background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.08)" }}>{t}</b></span>)}</Item>
+            <Item className="flex items-center gap-[10px] mt-[44px] mb-[18px] text-[19px] text-mute">{["Настройки", "Персонализация", "Инструкции"].map((t, k) => <span key={k} className="contents">{k > 0 && <em className="not-italic opacity-60">→</em>}<b className="font-medium text-fog px-[12px] py-[6px] rounded-[10px]" style={{ background: "#fff", border: "1px solid #dfe3ea" }}>{t}</b></span>)}</Item>
             <div className="grid gap-[14px]">
               <Sub>Вставляете промпт в обычный чат. Он задаёт десять вопросов, по одному, и не принимает расплывчатых ответов.</Sub>
               <Sub>В конце получаете текст на 400–600 знаков от первого лица и вставляете его в поле инструкций.</Sub>
@@ -274,7 +248,7 @@ export const slides: Slide[] = [
               <Sub><Strong>Сохранённые факты.</Strong> Список того, что ИИ записал о вас. Можно открыть, прочитать и удалить любую строку.</Sub>
               <Sub><Strong>Скрытый профиль.</Strong> Строится из всей истории чатов. Посмотреть нельзя, только выключить. Если чаты были про всё подряд, он мешает.</Sub>
               <Sub><Strong>Временный чат.</Strong> Не попадает ни в историю, ни в память. Для разового и чувствительного.</Sub>
-              <Sub className="text-[#ffb86b]">Переписка с ИИ не защищена как тайна переписки. Паспортные данные, договоры с реквизитами и зарплаты туда не вставляем. Обезличиваем: «Арендатор А», «объект на улице Б».</Sub>
+              <Sub className="text-warn">Переписка с ИИ не защищена как тайна переписки. Паспортные данные, договоры с реквизитами и зарплаты туда не вставляем. Обезличиваем: «Арендатор А», «объект на улице Б».</Sub>
             </div>
           </div>
           <Win title="Настройки → Персонализация → Память" rows={[{ id: "m1", label: "Управляет тремя ресторанами", meta: "факт" }, { id: "m2", label: "Предпочитает короткие ответы без вступлений", meta: "факт" }, { id: "m3", label: "Планирует отпуск в сентябре", meta: "удалить" }, { id: "m4", label: "Пишет арендаторам на английском", meta: "факт" }, { id: "m5", label: "Использовать историю чатов для ответов", toggle: true, on: true }]} steps={[{ sel: "m3", t: 900, gone: true }, { sel: "m5", t: 1000, on: false }]} />
@@ -351,8 +325,6 @@ export const slides: Slide[] = [
 
   /* 18. Две папки */
   { mood: "quiet", notes: "Живой экран: две пустые папки в проводнике, в «Б» один файл правил. Открыть Codex в каждой, один запрос, запустить. Вернуться в 17:40 (адрес #18).", render: () => (
-    <>
-    <Bleed className="opacity-60"><DotGridBack /></Bleed>
     <Pad className="pt-[64px]">
       <Group>
         <Kicker className="mb-[14px]">Доказательство · запускаем сейчас, результат через 30 минут</Kicker>
@@ -366,11 +338,10 @@ export const slides: Slide[] = [
         <Ask className="mt-[10px] text-[19px]">Пока агенты работают: для какого типа задач вы написали бы такой файл правил первым?</Ask>
       </Group>
     </Pad>
-    </>
   ) },
 
   /* 19. Раздел: способы */
-  { mood: "section", notes: "", render: () => <Section rot={-.6} n="Часть третья · 30 минут" title="Пять способов" tail="решать задачи" cube="5" lead="Каждый способ — своя задача, свой вход и своя проверка результата. Все примеры вымышленные, задачи ваши: ресторан, участок, объект в Дубае." /> },
+  { mood: "section", notes: "", render: () => <Section n="Часть третья, 30 минут" title="Пять способов" tail="решать задачи" lead="Каждый способ — своя задача, свой вход и своя проверка результата. Все примеры вымышленные, задачи ваши: ресторан, участок, объект в Дубае." steps={[["Быстрый диалог с телефона", "4 мин"], ["Готовый промпт плюс документ", "5 мин"], ["Поиск с источниками", "4 мин"], ["Таблица и вывод для руководителя", "4 мин"], ["ИИ спрашивает первым", "3 мин"]]} /> },
 
   /* 20. А */
   { mood: "quiet", notes: "Зеркало телефона или ролик 40 секунд. Письмо арендатору — готовым результатом.", render: () => (
@@ -402,16 +373,15 @@ export const slides: Slide[] = [
         <H tail="«разбери»">Коммерческое предложение разбирается одним словом:</H>
         <div className="grid items-start gap-[50px] mt-[44px]" style={{ gridTemplateColumns: "1fr 1.15fr" }}>
           <Prompt text="Разбери приложенное коммерческое предложение. Сначала таблица: позиция, цена, срок, условия оплаты, гарантия. Потом три главных риска для нас как заказчика и три вопроса поставщику. В конце одна рекомендация: брать, торговаться или отказаться. Если данных нет, пиши «не указано», не додумывай." delay={.6} speed={12} note="Шаблон лежит в проекте «Закупки». Есть версии для договоров аренды и смет." />
-          <motion.div variants={fromRight} className="relative rounded-[20px] overflow-hidden" style={{ border: "1px solid rgba(255,255,255,.14)", background: "linear-gradient(180deg,#0f141d,#0a0e15)" }}>
-            <BorderBeam size={220} duration={8} colorFrom="#6ccbff" colorTo="#2f63f5" />
-            <div className="px-[18px] py-[14px] text-[17px] text-mute" style={{ borderBottom: "1px solid rgba(255,255,255,.08)" }}>Ответ · КП на оборудование для кухни, 2 страницы</div>
+          <motion.div variants={fromRight} className="relative rounded-[14px] overflow-hidden bg-white border border-line window">
+            <div className="px-[18px] py-[14px] text-[17px] text-mute" style={{ borderBottom: "1px solid #dfe3ea" }}>Ответ · КП на оборудование для кухни, 2 страницы</div>
             <div className="p-[22px_24px]">
               <table className="w-full border-collapse text-[19px]">
-                <thead><tr>{["Позиция", "Цена", "Срок", "Оплата", "Гарантия"].map(h => <th key={h} className="text-left font-normal text-[16px] text-mute px-[12px] py-[10px]" style={{ borderBottom: "1px solid rgba(255,255,255,.08)" }}>{h}</th>)}</tr></thead>
+                <thead><tr>{["Позиция", "Цена", "Срок", "Оплата", "Гарантия"].map(h => <th key={h} className="text-left font-normal text-[16px] text-mute px-[12px] py-[10px]" style={{ borderBottom: "1px solid #dfe3ea" }}>{h}</th>)}</tr></thead>
                 <tbody>
                   {[["Пароконвектомат", "486 000 ₽", "21 день", "50 / 50", "не указано"], ["Холодильный стол", "128 000 ₽", "не указано", "50 / 50", "12 мес."], ["Монтаж", "не указано", "3 дня", "не указано", "—"]].map((r, i) => (
                     <motion.tr key={i} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 3.6 + i * .3 }}>
-                      {r.map((c, j) => <td key={j} className={"px-[12px] py-[10px] font-light " + (c === "не указано" ? "text-[#ffb86b]" : j ? "text-ice" : "text-fog")} style={{ borderBottom: "1px solid rgba(255,255,255,.08)" }}>{c}</td>)}
+                      {r.map((c, j) => <td key={j} className={"px-[12px] py-[10px] font-light " + (c === "не указано" ? "text-warn" : j ? "text-ice" : "text-fog")} style={{ borderBottom: "1px solid #dfe3ea" }}>{c}</td>)}
                     </motion.tr>
                   ))}
                 </tbody>
@@ -484,20 +454,18 @@ export const slides: Slide[] = [
   /* 25. Карта ступеней */
   { mood: "section", notes: "Агента не надо писать, он уже есть. Про GitHub: место, где лежит и хранит историю всё, что собирает агент.", render: () => (
     <>
-      <Bleed className="opacity-55"><NeuroBack /></Bleed>
-      <Bleed style={{ background: "linear-gradient(0deg, rgba(5,7,11,.9), rgba(5,7,11,.4) 40%, rgba(5,7,11,0))" }} />
-      <Cubes spec={[{ text: "Чат", x: -5.6, y: 3.5, size: 1.5, ry: .22, rx: -.18 }, { text: "Проект", x: -1.9, y: 3.6, size: 1.5, ry: .08, rx: -.18 }, { text: "Агент", x: 1.9, y: 3.7, size: 1.5, ry: -.08, rx: -.18 }, { text: "Ваш", x: 5.6, y: 3.8, size: 1.8, ry: -.22, rx: -.18, big: true }, { x: -9.8, y: -1.5, z: -7, size: 2.8, ry: .8, far: true }, { x: 10.2, y: 4.6, z: -8, size: 2.4, ry: -.7, far: true }]} />
-      <div className="absolute left-[110px] right-[110px] bottom-[70px]">
-        <Group delay={1.2}>
+      <Pad>
+        <Group>
+          <Kicker>Карта курса</Kicker>
           <H tail="И больше ответственности у вас">С каждой ступенью у ИИ больше прав.</H>
-          <div className="grid grid-cols-4 gap-[22px] mt-[44px]">
+          <div className="grid grid-cols-4 gap-[16px] mt-[56px]">
             {[["Сегодня · чат", "Права: читает то, что прислали.", "Риск: выдумки, утечка через вставленное.", "Цена: подписка.", false], ["Встреча 2 · проект и ассистент", "Права: ваши файлы, почта и календарь на чтение.", "Риск: устаревшие файлы.", "Цена: подписка.", false], ["Встреча 3 · агент на компьютере", "Права: папка проекта, запуск программ.", "Риск: тронет не те файлы, поэтому копия и подтверждение.", "Цена: подписка или ключ.", false], ["Ваш агент · по расписанию и из Telegram", "Права: работает без вас.", "Риск: ошибка повторяется каждую неделю, поэтому отчёт после запуска.", "Цена: ключ, иногда сервер.", true]].map(([t, a, b, c, hi], k) => (
               <Card key={k} hi={hi as boolean} className="p-[22px_24px]"><h3 className="text-[22px] mb-[8px]">{t as string}</h3><CardText className="text-[18px]">{a as string}<br />{b as string}<br />{c as string}</CardText></Card>
             ))}
           </div>
           <Ask className="mt-[16px]">На какую ступень вы готовы пустить ИИ уже сейчас, а на какую пока нет? Почему?</Ask>
         </Group>
-      </div>
+      </Pad>
     </>
   ) },
 
@@ -530,7 +498,7 @@ export const slides: Slide[] = [
         <H tail="до собственного агента">Двенадцать слов, которых хватит</H>
         <div className="grid grid-cols-4 gap-[16px_22px] mt-[64px]">
           {[["Модель", "«Мозг» сервиса. Думающая считает дольше и точнее."], ["Контекст", "Всё, что модель видит сейчас: чат, файлы, инструкции."], ["Токен", "Единица счёта текста, три‑четыре символа. За них платят по ключу."], ["Инструкция", "Правила, которые читаются перед каждым ответом. Личные и проектные."], ["Проект", "Папка с файлами, инструкцией и памятью. Рабочее место."], ["Память", "Факты о вас между чатами. Видимая и скрытая."], ["Ассистент", "Настроенный чат с ролью и базой знаний, которым пользуются коллеги."], ["Агент", "Модель плюс доступ к папкам и программам. Делает шаги сам."], ["Папка проекта", "Границы, внутри которых работает агент. Снаружи не видит."], ["Ключ API", "Строка для доступа программы к модели. Показывается один раз."], ["Подключение", "Доступ модели к почте, календарю, диску. Сначала только чтение."], ["Навык", "Сохранённая процедура: «делаю пять раз в неделю, значит навык»."]].map(([b, s], k) => (
-            <Item key={k} v={pop} className="rounded-[16px] px-[22px] py-[20px]" style={{ border: "1px solid rgba(255,255,255,.08)", background: "rgba(255,255,255,.025)" }}><b className="block text-[24px] font-medium mb-[6px]">{b}</b><span className="text-[18px] text-fog font-light leading-[1.35]">{s}</span></Item>
+            <Item key={k} v={pop} className="rounded-[12px] px-[22px] py-[20px] panel"><b className="block text-[24px] font-medium mb-[6px]">{b}</b><span className="text-[18px] text-fog font-light leading-[1.35]">{s}</span></Item>
           ))}
         </div>
       </Group>
@@ -555,15 +523,11 @@ export const slides: Slide[] = [
 
   /* 29. Финал */
   { mood: "hero", notes: "Резерв 8 минут. Если вопросов нет, показать обезличенное поручение домашнему агенту и готовый файл.", render: () => (
-    <>
-      <Bleed className="opacity-95"><LaserBack /></Bleed>
-      <Bleed style={{ background: "radial-gradient(45% 40% at 50% 52%, rgba(5,7,11,.72), rgba(5,7,11,0) 70%)" }} />
-      <div className="absolute inset-0 grid place-items-center text-center">
-        <Group delay={.5}>
-          <motion.h2 variants={fromDeep} className="text-[132px] font-extralight tracking-[-.025em] leading-[1]">Вопросы</motion.h2>
-          <Sub className="mt-[22px] text-[30px] text-fog">Что из семи настроек вы сделаете первым делом сегодня вечером?</Sub>
-        </Group>
-      </div>
-    </>
+    <Pad className="grid place-items-center text-center">
+      <Group delay={.3}>
+        <motion.h2 variants={rise} className="text-[168px] font-semibold tracking-[-.05em] leading-[1] text-ink">Вопросы</motion.h2>
+        <Sub className="mt-[24px] text-[30px]">Что из семи настроек вы сделаете первым делом сегодня вечером?</Sub>
+      </Group>
+    </Pad>
   ) },
 ];
