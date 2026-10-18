@@ -81,9 +81,9 @@ export const Bullets = ({ items }: { items: ReactNode[] }) => (
 /* ---------- нумерованная повестка раздела ---------- */
 export const Steps = ({ items, on = 0 }: { items: [string, string][]; on?: number }) => (
   <ol className="m-0 p-0 list-none">
-    {items.map(([t, m], k) => (
-      <motion.li key={k} variants={rise} className={cn("grid items-center gap-[20px] py-[18px] border-t border-line text-[28px]", k === on ? "text-ink font-medium" : "text-body")} style={{ gridTemplateColumns: "64px 1fr auto" }}>
-        <small className={cn("text-[17px] tabular-nums", k === on ? "text-blue" : "text-mute")}>{String(k + 1).padStart(2, "0")}</small><span>{t}</span><em className="not-italic text-[16px] text-mute">{m}</em>
+    {items.map(([t], k) => (
+      <motion.li key={k} variants={rise} className={cn("grid items-center gap-[20px] py-[18px] border-t border-line text-[28px]", k === on ? "text-ink font-medium" : "text-body")} style={{ gridTemplateColumns: "64px 1fr" }}>
+        <small className={cn("text-[17px] tabular-nums", k === on ? "text-blue" : "text-mute")}>{String(k + 1).padStart(2, "0")}</small><span>{t}</span>
       </motion.li>
     ))}
     <motion.li variants={rise} className="border-t border-line" />

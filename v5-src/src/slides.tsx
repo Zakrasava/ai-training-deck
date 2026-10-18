@@ -20,13 +20,11 @@ import shotClaudeProjects from "@/assets/shots/claude-projects.png";
 import shotModels from "@/assets/shots/chatgpt-models.png";
 import shotReasoning from "@/assets/shots/chatgpt-reasoning.png";
 import shotInstrFilled from "@/assets/shots/chatgpt-instructions-filled.png";
-import shotTempChat from "@/assets/shots/chatgpt-temp-chat.png";
 import shotBefore from "@/assets/shots/chatgpt-answer-before.png";
 import shotAfter from "@/assets/shots/chatgpt-answer-after.png";
 import shotExplorerProjects from "@/assets/shots/explorer-projects.png";
 import shotExplorerDemo from "@/assets/shots/explorer-demo.png";
 import shotContext from "@/assets/shots/chatgpt-context.png";
-import shotWebHome from "@/assets/shots/chatgpt-web-home.png";
 
 export type Slide = { mood: "hero" | "section" | "quiet"; notes: string; render: () => ReactNode };
 
@@ -76,8 +74,8 @@ const LogoRow = ({ items, className }: { items: [string, string][]; className?: 
 /* Скриншот в рамке */
 const Shot = ({ src, caption, v = fromRight, className, h = 230, light = false }: { src: string; caption?: string; v?: typeof rise; className?: string; h?: number | string; light?: boolean; mark?: unknown; pos?: unknown }) => (
   <motion.figure variants={v} className={cn("m-0", className)}>
+    {caption && <figcaption className="mb-[8px] flex items-center gap-[10px] text-[17px] font-medium text-ink leading-[1.2]"><i className="w-[8px] h-[8px] rounded-[2px] bg-blue shrink-0" />{caption}</figcaption>}
     <span className={cn("relative block rounded-[12px] border border-line window overflow-hidden", light ? "bg-white" : "bg-[#121418]")} style={{ height: h }}><img src={src} alt="" className="block w-full h-full object-contain" /></span>
-    {caption && <figcaption className="mt-[10px] text-[15px] text-mute">{caption}</figcaption>}
   </motion.figure>
 );
 /* Дерево папок проектов */
@@ -165,10 +163,9 @@ export const slides: Slide[] = [
           <Card hi><CardTitle icon={Monitor}>Веб-версия в браузере</CardTitle><Bullets items={["Документы, таблицы, длинная переписка", "Все настройки, проекты и файлы", "Редактор текста рядом с чатом"]} /><CardText className="mt-[12px] text-[17px]">Основное окно сегодняшней встречи. Новые функции появляются здесь первыми.</CardText><Item className="mt-[12px]"><LogoRow items={[[logoOpenAI, "chatgpt.com"], [logoClaude, "claude.ai"]]} /></Item></Card>
           <Card v={fromRight}><CardTitle icon={Laptop}>Desktop-приложение</CardTitle><Bullets items={["Видит ваши папки и окна, когда вы разрешите", "Здесь живут агенты: Codex, Claude Code", "Большие задачи: разработка, скрипты, автоматизация"]} /><CardText className="mt-[12px] text-[17px]">Отсюда один шаг до собственного агента.</CardText><Item className="mt-[12px]"><LogoRow items={[[logoOpenAI, "Codex"], [logoClaude, "Claude Code"]]} /></Item></Card>
         </div>
-        <Two cols="1fr 1.4fr" className="mt-[16px] items-start gap-[20px]">
-          <Shot src={shotWebHome} h={118} caption="Веб-версия chatgpt.com: временный чат. Реальный экран, 18 октября 2026" />
-          <Card v={fromRight} className="p-[14px_20px] [&_h3]:text-[21px] [&_h3]:mb-[4px]"><CardTitle icon={Globe}>Четвёртое окно: расширение для браузера</CardTitle><CardText className="text-[16px]">Claude in Chrome и ChatGPT для Chrome ставятся как обычное расширение <Term>browser extension</Term> и включаются одной кнопкой. ИИ видит открытые вкладки и действует на сайтах за вас: заполняет формы, собирает данные, сравнивает. Так эта презентация снимала скриншоты в моём браузере.</CardText><Item className="mt-[8px]"><LogoRow items={[[logoClaude, "Claude in Chrome"], [logoOpenAI, "ChatGPT для Chrome"], [logoOpenAI, "Atlas, браузер OpenAI"]]} /></Item></Card>
-        </Two>
+        <div className="mt-[18px]">
+          <Card v={fromRight} className="p-[16px_22px] [&_h3]:text-[22px] [&_h3]:mb-[6px]"><CardTitle icon={Globe}>Четвёртое окно: расширение для браузера</CardTitle><CardText className="text-[18px]">Claude in Chrome и ChatGPT для Chrome ставятся как обычное расширение <Term>browser extension</Term> и включаются одной кнопкой. ИИ видит открытые вкладки и действует на сайтах за вас: заполняет формы, собирает данные, сравнивает. Так эта презентация снимала скриншоты в моём браузере.</CardText><Item className="mt-[10px]"><LogoRow items={[[logoClaude, "Claude in Chrome"], [logoOpenAI, "ChatGPT для Chrome"], [logoOpenAI, "Atlas, браузер OpenAI"]]} /></Item></Card>
+        </div>
       </Group>
     </Pad>
   ) },
@@ -221,15 +218,15 @@ export const slides: Slide[] = [
       <Group>
         <Kicker>Правило номер ноль, с него начинается всё остальное</Kicker>
         <H tail="Понимание приходит в процессе">Не бойтесь с ним разговаривать.</H>
-        <Two cols="1fr 1.05fr" className="mt-[36px] gap-[50px]">
-          <div className="grid gap-[10px] [&_h3]:text-[23px] [&_h3]:mb-[6px] [&_p]:text-[18px]">
+        <Two cols="1fr 1.35fr" className="mt-[32px] gap-[44px]">
+          <div className="grid gap-[10px] [&_h3]:text-[22px] [&_h3]:mb-[6px] [&_p]:text-[17px]">
             <Card v={fromLeft} className="p-[18px_22px]"><CardTitle icon={MessageCircle}>Говорите как с человеком</CardTitle><CardText>Не ищите «правильный промпт» <Term>запрос</Term>. Опишите ситуацию словами, как коллеге: что случилось, что нужно, к какому сроку. Переспросите, если непонятно. Это нормально.</CardText></Card>
             <Card v={fromLeft} className="p-[18px_22px]"><CardTitle icon={HelpCircle}>Глупых вопросов нет</CardTitle><CardText>«Что такое токен?», «Почему ты так ответил?», «Объясни проще». ИИ не устанет и не осудит. Половина из вас написала в опроснике «нет времени разбираться». Разбираться не нужно, нужно спрашивать.</CardText></Card>
             <Card v={fromLeft} hi className="p-[18px_22px]"><CardTitle icon={BookOpen}>Заведите чат «Объясни мне»</CardTitle><CardText>Отдельный чат для всего непонятного: термин из письма, кнопка в программе, фраза из этой презентации. Через месяц это ваш личный учебник.</CardText></Card>
           </div>
           <div className="grid gap-[12px]">
-            <Shot src={shotContext} h={290} caption="Настоящий ответ ChatGPT на вопрос «что значит контекст», объясни просто. Временный чат, 18 октября 2026" />
-            <Sub className="text-[19px]">Один вопрос, одно простое объяснение. Так работает чат «Объясни мне»: спросить проще, чем разбираться самому.</Sub>
+            <Shot src={shotContext} h={340} caption="ChatGPT, временный чат: «что значит контекст, объясни просто»" />
+            <Sub className="text-[18px]">Один вопрос, одно простое объяснение. Так работает чат «Объясни мне»: спросить проще, чем разбираться самому.</Sub>
           </div>
         </Two>
       </Group>
@@ -238,7 +235,7 @@ export const slides: Slide[] = [
 
   /* 8. Раздел: вводное */
   { mood: "section", notes: "Вводное: одна страница о том, кто вы и как у вас принято. Пишется один раз, читается перед каждым ответом. Это первый шаг к агенту.", render: () => (
-    <Section n="Часть первая" title="Вводное" tail="для ИИ" lead="Без вводного ИИ отвечает «вообще», как любому человеку в мире. Одна страница о том, кто вы и как у вас принято, пишется один раз и читается перед каждым ответом. С неё начинается любой агент." steps={[["Один запрос, два ответа", "3 мин"], ["Шесть строк вводного", "3 мин"], ["Вводное пишет сам ИИ", "в настройках, через 10 минут"]]} shots={[[shotBefore, "Ответ без вводного: шаблон «[Название компании]»"], [shotInstrFilled, "Вводное в поле инструкций ChatGPT"]]} />
+    <Section n="Часть первая" title="Вводное" tail="для ИИ" lead="Без вводного ИИ отвечает «вообще», как любому человеку в мире. Одна страница о том, кто вы и как у вас принято, пишется один раз и читается перед каждым ответом. С неё начинается любой агент." steps={[["Один запрос, два ответа", "3 мин"], ["Шесть строк вводного", "3 мин"], ["Вводное пишет сам ИИ", "в настройках, через 10 минут"]]} />
   ) },
 
   /* 9. До / после */
@@ -247,17 +244,15 @@ export const slides: Slide[] = [
       <Group>
         <Kicker>Один и тот же запрос</Kicker>
         <H tail="что ИИ знает о вас">Один запрос, два ответа. Разница только в том,</H>
-        <div className="grid grid-cols-2 gap-[28px] mt-[48px]">
-          <Card v={fromLeft} bad className="p-[20px_22px]">
-            <CardTitle icon={Ban}>Без вводного</CardTitle>
-            <Shot src={shotBefore} h={330} v={fromLeft} caption="Настоящий ответ ChatGPT, временный чат без персонализации, 18 октября 2026" />
-            <CardText className="mt-[14px] text-[18px]">Шаблон «для всех»: «[Название компании]», «Уважаемые партнёры!», ассортимент из воздуха. Так отвечает любой ИИ любому человеку без настроек.</CardText>
-          </Card>
-          <Card v={fromRight} hi className="p-[20px_22px]">
-            <CardTitle icon={ClipboardList}>С вводным</CardTitle>
-            <Shot src={shotAfter} h={330} caption="Тот же запрос плюс шесть строк вводного. Настоящий ответ, 18 октября 2026" />
-            <CardText className="mt-[14px] text-[18px]">Знает, кто вы и как у вас принято: ваша структура, валюта, вопросы о недостающем вместо выдумки. Вводное в настройках работает так в каждом ответе.</CardText>
-          </Card>
+        <div className="grid grid-cols-2 gap-[28px] mt-[30px]">
+          <div>
+            <Shot src={shotBefore} h={430} v={fromLeft} caption="Без вводного: временный чат без персонализации" />
+            <Sub className="mt-[12px] text-[18px]">Шаблон «для всех»: «[Название компании]», «Уважаемые партнёры!», ассортимент из воздуха. Так отвечает любой ИИ любому человеку без настроек.</Sub>
+          </div>
+          <div>
+            <Shot src={shotAfter} h={430} caption="С вводным: тот же запрос плюс шесть строк о себе" />
+            <Sub className="mt-[12px] text-[18px]">Три варианта, коротко, НДС отдельно, вопросы о недостающем вместо выдумки. Вводное в настройках работает так в каждом ответе.</Sub>
+          </div>
         </div>
       </Group>
     </Pad>
@@ -281,7 +276,7 @@ export const slides: Slide[] = [
             </ol>
             <Sub className="mt-[10px] text-[17px]">Короче — лучше. Каждое слово вводного ИИ перечитывает перед каждым ответом: чем больше текста, тем больше токенов <Term>единица оплаты и объёма</Term> и тем легче ему запутаться. 400–600 знаков помещаются в поле и работают.</Sub>
           </div>
-          <Shot src={shotInstrFilled} h={320} caption="Так вводное выглядит в поле ChatGPT → Настройки → Персонализация → Пользовательские инструкции. Реальный экран, 18 октября 2026" />
+          <Shot src={shotInstrFilled} h={360} caption="ChatGPT → Настройки → Персонализация → Пользовательские инструкции" />
         </Two>
         <Ask className="mt-[8px] text-[19px]">Что из шести строк вы объяснили бы новому коллеге в первый день? Это и есть ваше вводное</Ask>
       </Group>
@@ -290,7 +285,7 @@ export const slides: Slide[] = [
 
   /* 11. Раздел: настройки */
   { mood: "section", notes: "Переключиться в браузер с учебным аккаунтом. Возвращаться к слайду после каждой настройки. Названия пунктов меню по состоянию на 18 октября, могут меняться.", render: () => (
-    <Section n="Часть вторая, 25 минут живого экрана" title="Пять" tail="настроек" lead="Каждую включаем вместе на учебном аккаунте и возвращаемся к слайду. После пятой ИИ знает ваш принцип работы, а между четвёртой и пятой запустим агента." steps={[["Модель и уровень рассуждения", "3 мин"], ["Личные инструкции", "6 мин"], ["Память", "4 мин"], ["Проекты", "4 мин"], ["Запуск демо «две папки»", "6 мин"], ["Гигиена чатов", "2 мин"]]} shots={[[shotModels, "Выбор модели"], [shotMemory, "Память"], [shotProject, "Проект"]]} />
+    <Section n="Часть вторая, 25 минут живого экрана" title="Пять" tail="настроек" lead="Каждую включаем вместе на учебном аккаунте и возвращаемся к слайду. После пятой ИИ знает ваш принцип работы, а между четвёртой и пятой запустим агента." steps={[["Модель и уровень рассуждения", "3 мин"], ["Личные инструкции", "6 мин"], ["Память", "4 мин"], ["Проекты", "4 мин"], ["Запуск демо «две папки»", "6 мин"], ["Гигиена чатов", "2 мин"]]} />
   ) },
 
   /* 12. Модель */
@@ -307,8 +302,8 @@ export const slides: Slide[] = [
             <Item className="mt-[6px]"><LogoRow items={[[logoOpenAI, "ChatGPT"], [logoClaude, "Claude"]]} /></Item>
           </div>
           <div className="grid gap-[14px]">
-            <Shot src={shotModels} h={150} caption="ChatGPT: меню моделей под полем ввода. Реальный экран, 18 октября 2026" />
-            <Shot src={shotReasoning} h={150} caption="Там же: «Уровень усилий рассуждения», ползунок до Extra High" />
+            <Shot src={shotModels} h={200} caption="ChatGPT: меню моделей под полем ввода" />
+            <Shot src={shotReasoning} h={200} caption="Там же: уровень усилий рассуждения" />
           </div>
         </Two>
       </Group>
@@ -329,8 +324,8 @@ export const slides: Slide[] = [
             <Prompt v={fromLeft} className="text-[17px] px-[20px] py-[14px]" text="Помоги составить мои личные инструкции для ИИ. Задай мне по одному вопросу: роль, компания, страна и правила, для кого я пишу, стиль ответов, что мне не нужно, как критиковать мои тексты, «ты» или «вы», любимый формат ответа, типовые задачи. Дождись ответа на каждый. Потом собери текст от первого лица на 400–600 знаков, без воды." note="Промпт есть в конспекте после встречи. Переписывать с экрана не нужно." />
           </div>
           <div className="grid gap-[12px]">
-            <Shot src={shotInstrForm} h={300} caption="ChatGPT → Настройки → Персонализация → Пользовательские инструкции. Реальный экран, 18 октября 2026" />
-            <Shot src={shotClaudeInstr} h={118} caption="Claude → Settings → Account → Instructions for Claude: то же поле, другое название" />
+            <Shot src={shotInstrForm} h={330} caption="ChatGPT → Настройки → Персонализация → Пользовательские инструкции" />
+            <Shot src={shotClaudeInstr} h={130} caption="Claude → Settings → Account → Instructions for Claude" />
           </div>
         </Two>
       </Group>
@@ -351,11 +346,8 @@ export const slides: Slide[] = [
             <Item className="mt-[8px] rounded-[12px] px-[18px] py-[14px] border border-warn/40 bg-white text-[18px] leading-[1.4] text-body"><b className="font-semibold text-warn">Сноска.</b> Переписка с ИИ не защищена как тайна переписки. Паспортные данные, договоры с реквизитами и зарплаты в облачный чат не вставляем: обезличиваем («Арендатор А», «объект на улице Б»). Для таких документов есть локальные модели, которые работают на вашем компьютере и ничего не отправляют наружу.</Item>
           </div>
           <div className="grid gap-[12px]">
-            <Shot src={shotMemory} h={250} caption="ChatGPT → Настройки → Персонализация: «Включить память», «Сводка памяти → Управление», «Учитывать мой стиль письма». Реальный экран, 18 октября 2026" />
-            <div className="grid grid-cols-2 gap-[12px]">
-              <Shot src={shotClaudeMemory} h={150} caption="Claude → Settings → Memory: те же два переключателя" />
-              <Shot src={shotTempChat} h={150} caption="ChatGPT: временный чат, не попадает в историю и память" />
-            </div>
+            <Shot src={shotMemory} h={290} caption="ChatGPT → Настройки → Персонализация → Память" />
+            <Shot src={shotClaudeMemory} h={190} caption="Claude → Settings → Memory" />
           </div>
         </Two>
       </Group>
@@ -368,18 +360,18 @@ export const slides: Slide[] = [
       <Group>
         <Kicker>Настройка 4 из 5 · Проекты</Kicker>
         <H tail="а не разговор">Проект — это рабочее место: ИИ помнит задачу,</H>
-        <Two cols="1fr 1fr">
-          <div className="grid gap-[12px]">
+        <Two cols="1fr 1.15fr" className="mt-[28px]">
+          <div className="grid gap-[10px] [&_p]:text-[21px]">
             <Sub>В веб-версии <Term>ChatGPT и Claude: «Проекты»</Term> это папка с файлами и инструкцией: любой чат внутри неё видит их без напоминаний. Хватит для писем, отзывов и КП.</Sub>
             <Sub>На компьютере <Term>desktop-приложение, Codex, Claude Code</Term> проект это обычная папка. Заводите одну папку «Проекты», в ней подпапку на каждую тему и в каждой файл правил <Term>AGENTS.md или CLAUDE.md</Term>: что это за задача, как у вас принято, что проверить.</Sub>
             <Sub>Для большой задачи файл правил задаёт этапы: сначала ТЗ, потом дизайн, потом безопасность, потом сборка. На каждом этапе можно звать разную модель: сильную с поиском для ТЗ, модель для кода для сборки.</Sub>
           </div>
           <div className="grid gap-[12px]">
           <div className="grid grid-cols-2 gap-[12px]">
-            <Shot src={shotProject} h={128} caption="ChatGPT → Проекты → «Отзывы гостей»: «Чаты» и «Источники»" />
-            <Shot src={shotClaudeProjects} h={128} caption="Claude → Projects: материалы, инструкции и чаты в одном месте" />
+            <Shot src={shotProject} h={170} caption="ChatGPT → Проекты → Отзывы гостей" />
+            <Shot src={shotClaudeProjects} h={170} caption="Claude → Projects" />
           </div>
-          <Shot light src={shotExplorerProjects} h={200} caption="Та же папка «Проекты» в Проводнике: подпапки на темы, в каждой свой AGENTS.md. Реальный экран, 18 октября 2026" />
+          <Shot light src={shotExplorerProjects} h={230} caption="Проводник → Проекты: подпапки по темам, в каждой AGENTS.md" />
           </div>
         </Two>
         <Ask>Какая задача у вас повторяется каждую неделю? Это ваша первая подпапка</Ask>
@@ -395,7 +387,7 @@ export const slides: Slide[] = [
         <H tail="Разница — в одном файле с правилами">Одна задача, две пустые папки.</H>
         <div className="grid gap-[20px] mt-[18px] items-start" style={{ gridTemplateColumns: "1fr 440px" }}>
           <Prompt v={rise} className="text-[19px] px-[22px] py-[14px]" text="Подготовь HTML-презентацию земельного участка 2,4 га под коттеджный посёлок для инвестора: расположение, коммуникации, экономика, этапы. Данные вымышленные, 8 слайдов." delay={.5} speed={12} />
-          <Shot light src={shotExplorerDemo} h={108} caption="Папки demo-A и demo-B в Проводнике, 18 октября 2026" />
+          <Shot light src={shotExplorerDemo} h={130} caption="Проводник: demo-A и demo-B" />
         </div>
         <div className="grid grid-cols-2 gap-[28px] mt-[18px] [&_[data-id]]:py-[11px] [&_[data-id]]:text-[19px]">
           <Win v={fromLeft} title="Папка «А»: пустая" rows={[{ id: "a1", label: "Агент читает задачу", meta: "правил нет, берёт свои шаблоны" }, { id: "a2", label: "Через 10 минут: index.html", meta: "8 слайдов, стандартный вид" }]} steps={[{ sel: "a1", t: 3200, on: true }, { sel: "a2", t: 1200, on: true }]} />
@@ -578,8 +570,8 @@ export const slides: Slide[] = [
             <Item className="mt-[6px]"><LogoRow items={[[logoGithub, "github.com/Zakrasava/ai-training-deck"], [logoGithub, "GitHub Pages"]]} /></Item>
           </div>
           <div className="grid gap-[12px]">
-            <Shot light src={shotGithub} caption="Репозиторий этой презентации: файлы, история изменений, 18 октября 2026" />
-            <Shot light src={shotPages} caption="Опубликованная страница: открывается по адресу у любого участника" />
+            <Shot light src={shotGithub} h={250} caption="github.com/Zakrasava/ai-training-deck" />
+            <Shot light src={shotPages} h={210} caption="GitHub Pages: опубликованная страница" />
           </div>
         </Two>
       </Group>
