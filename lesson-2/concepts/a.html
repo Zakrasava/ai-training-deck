@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Концепт А · Ночной рейс · Как устроен помощник ТЗ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#070B14; --haze:#0F1B33; --ink:#F3EFE4; --ink-2:rgba(243,239,228,.62);
+  --signal:#88DECC; --glass:rgba(255,255,255,.045);
+  --display:'Prata',Georgia,serif; --text:'Golos Text',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--ground);color:var(--ink);font-family:var(--text);overflow:hidden}
+body{display:grid;place-items:center}
+.stage{position:relative;width:1600px;height:900px;overflow:hidden;transform-origin:center;background:var(--ground)}
+/* night ground: haze low, sparse sodium lights, grain */
+.sky{position:absolute;inset:0;
+  background:
+    radial-gradient(1200px 520px at 68% 118%, rgba(31,58,110,.55), transparent 70%),
+    radial-gradient(900px 400px at 18% 112%, rgba(20,40,80,.45), transparent 70%),
+    radial-gradient(3px 3px at 71% 86%, rgba(255,196,120,.9), transparent 70%),
+    radial-gradient(2px 2px at 63% 91%, rgba(255,196,120,.7), transparent 70%),
+    radial-gradient(2px 2px at 84% 80%, rgba(255,196,120,.6), transparent 70%),
+    radial-gradient(3px 3px at 90% 92%, rgba(255,210,150,.8), transparent 70%),
+    radial-gradient(2px 2px at 54% 95%, rgba(255,196,120,.5), transparent 70%),
+    linear-gradient(180deg,#070B14 0%,#0A1120 60%,#0D1628 100%);}
+.grain{position:absolute;inset:0;opacity:.35;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");}
+/* title */
+.title{position:absolute;left:96px;top:92px;width:760px}
+.kicker{font:400 20px/1.3 var(--text);color:var(--ink-2);margin:0 0 18px}
+h1{font:400 76px/1.04 var(--display);margin:0;letter-spacing:-.005em;text-shadow:0 10px 40px rgba(0,0,0,.5)}
+h1 .line{display:block;overflow:hidden}
+h1 .line span{display:block;transform:translateY(112%);animation:rise 1000ms cubic-bezier(.16,1,.3,1) forwards}
+h1 .line:nth-child(2) span{animation-delay:90ms}
+.lead{position:absolute;left:96px;top:330px;width:560px;font:400 22px/1.45 var(--text);color:var(--ink-2);margin:0;opacity:0;animation:fade 700ms ease-out 700ms forwards}
+/* route */
+svg.route{position:absolute;inset:0;width:1600px;height:900px;overflow:visible}
+.path{fill:none;stroke:var(--signal);stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 0 12px rgba(136,222,204,.65));
+  stroke-dasharray:1900;stroke-dashoffset:1900;animation:draw 2200ms cubic-bezier(.45,.05,.55,.95) 500ms forwards}
+.path.ghost{stroke:rgba(136,222,204,.18);filter:none;stroke-dasharray:none;stroke-dashoffset:0;animation:none}
+/* nodes */
+.node{position:absolute;width:236px;padding:18px 20px 16px;border-radius:18px;background:var(--glass);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 24px 60px rgba(0,0,0,.45);
+  opacity:0;transform:translateY(18px);animation:up 800ms cubic-bezier(.16,1,.3,1) forwards}
+.node::before{content:"";position:absolute;left:20px;top:-7px;width:13px;height:13px;border-radius:50%;background:var(--signal);box-shadow:0 0 18px rgba(136,222,204,.9)}
+.node h2{margin:0 0 6px;font:600 23px/1.15 var(--text);letter-spacing:-.01em}
+.node p{margin:0;font:400 17px/1.35 var(--text);color:var(--ink-2)}
+.node .tag{display:inline-block;margin-top:10px;padding:5px 10px;border-radius:999px;font:500 14px/1 var(--mono);color:var(--signal);background:rgba(136,222,204,.1)}
+.n1{left:96px;top:620px;animation-delay:900ms}
+.n2{left:396px;top:548px;animation-delay:1250ms}
+.n3{left:696px;top:470px;animation-delay:1600ms}
+.n4{left:996px;top:398px;animation-delay:1950ms}
+.n5{left:1296px;top:330px;width:220px;animation-delay:2300ms}
+/* facts */
+.facts{position:absolute;left:96px;bottom:40px;display:flex;gap:40px;font:400 17px/1.3 var(--text);color:var(--ink-2);opacity:0;animation:fade 700ms ease-out 2900ms forwards}
+.facts b{font:500 17px/1 var(--mono);color:var(--ink);letter-spacing:0}
+.facts span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--signal);margin-right:10px;vertical-align:middle}
+.ret{position:absolute;right:96px;top:120px;font:400 17px/1.4 var(--text);color:var(--ink-2);text-align:right;width:220px;opacity:0;animation:fade 700ms ease-out 2600ms forwards}
+.ret em{font-style:normal;color:var(--signal)}
+@keyframes rise{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+@keyframes up{to{opacity:1;transform:none}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:1ms!important;animation-delay:0ms!important}}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="sky"></div><div class="grain"></div>
+
+  <svg class="route" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="path ghost" d="M118 614 C 230 640, 300 560, 420 544 S 640 500, 718 466 S 940 420, 1018 394 S 1240 350, 1318 326 S 1480 300, 1540 240"/>
+    <path class="path" d="M118 614 C 230 640, 300 560, 420 544 S 640 500, 718 466 S 940 420, 1018 394 S 1240 350, 1318 326 S 1480 300, 1540 240"/>
+  </svg>
+
+  <header class="title">
+    <p class="kicker">Один помощник целиком</p>
+    <h1><span class="line"><span>Как устроен</span></span><span class="line"><span>помощник ТЗ</span></span></h1>
+  </header>
+  <p class="lead">Вы пишете в Telegram. Скрипт на моём домашнем компьютере ведёт разговор, думать ходит к модели через ключ. Обратно приходит пакет документов.</p>
+
+  <p class="ret">Пакет уходит <em>обратно в Telegram</em>: ТЗ, правила, «Как запустить», образец</p>
+
+  <section class="node n1"><h2>Вы и телефон</h2><p>Telegram, кнопки, ответы, файлы</p></section>
+  <section class="node n2"><h2>Бот на домашнем ПК</h2><p>Скрипт на Python: восемь шагов интервью, память разговора, сторож перезапуска</p></section>
+  <section class="node n3"><h2>OpenRouter</h2><p>Одна дверь ко многим моделям. Провайдерам с обучением на данных запрос запрещён</p><span class="tag">ключ API</span></section>
+  <section class="node n4"><h2>Модель</h2><p>Читает ответ, спрашивает дальше, в конце пишет ТЗ</p></section>
+  <section class="node n5"><h2>Пакет</h2><p>ТЗ.docx, файл правил, «Как запустить», образец результата</p></section>
+
+  <footer class="facts">
+    <span><b>187</b> обращений к моделям за неделю</span>
+    <span><b>3,85 $</b> на восемь человек</span>
+    <span>Имена и Telegram ID к модели не уходят</span>
+  </footer>
+</div>
+<script>
+(function(){var s=document.getElementById('stage');function fit(){var k=Math.min(innerWidth/1600,innerHeight/900);s.style.transform='scale('+k+')';}fit();addEventListener('resize',fit);})();
+</script>
+</body>
+</html>
