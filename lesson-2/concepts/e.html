@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#03080B">
+<title>Концепт Д · Дельта · Как устроен помощник ТЗ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600&family=Golos+Text:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--u:max(0.62px,min(100vw/1280,100dvh/960));--shade:3,8,11;--ink:#F5FAF6;--ink2:#ECF1EF;--teal:#88DECC;--chev:#7CCBBA;--cream:#EEF1EA;--pine:#122B2A;--disc:#030909}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#03080B;color:var(--ink);font-family:'Golos Text',system-ui,sans-serif}
+.stage{position:relative;height:100dvh;overflow:hidden}
+video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;pointer-events:none}
+@media (min-aspect-ratio:16/9){video{object-position:50% 24%}}
+.sh{position:absolute;inset:0;pointer-events:none}
+.sh1{background:linear-gradient(90deg,rgba(var(--shade),.683) 0%,rgba(var(--shade),.595) 20%,rgba(var(--shade),.458) 40%,rgba(var(--shade),.221) 60%,rgba(var(--shade),.039) 80%,rgba(var(--shade),.054) 100%)}
+.sh2{background:linear-gradient(180deg,rgba(var(--shade),.06) 0%,rgba(var(--shade),.023) 20%,rgba(var(--shade),.152) 40%,rgba(var(--shade),.30) 60%,rgba(var(--shade),.394) 80%,rgba(var(--shade),.632) 100%)}
+.sh3{background:radial-gradient(93.8% 41.3% at 0% 100%,rgba(var(--shade),1),rgba(var(--shade),0))}
+.brand{position:absolute;left:calc(64*var(--u));top:calc(52*var(--u));display:flex;align-items:center;gap:14px;height:calc(46*var(--u));padding:0 calc(16*var(--u)) 0 0;border-radius:999px;background:rgba(150,220,130,.035);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:600 calc(15*var(--u))/1 'Manrope',sans-serif;color:var(--teal);letter-spacing:.02em}
+.brand .disc{width:calc(46*var(--u));height:calc(46*var(--u));border-radius:50%;background:var(--disc);display:grid;place-items:center}
+.brand svg{width:calc(28*var(--u));height:calc(28*var(--u))}
+.hero{position:absolute;left:calc(64*var(--u));bottom:calc(96*var(--u));max-width:calc(820*var(--u))}
+.hero h1{margin:0 0 calc(22*var(--u));font:300 calc(74*var(--u))/1.02 'Manrope',sans-serif;letter-spacing:-.025em;color:var(--ink)}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln span{display:block;transform:translateY(115%);animation:rise 1050ms cubic-bezier(.16,1,.3,1) forwards}
+.hero h1 .ln:nth-child(1) span{animation-delay:380ms}.hero h1 .ln:nth-child(2) span{animation-delay:470ms}.hero h1 .ln:nth-child(3) span{animation-delay:560ms}
+.lede{margin:0 0 calc(30*var(--u));font:400 calc(19*var(--u))/1.45 'Golos Text',sans-serif;color:var(--ink2)}
+.lede span{display:block;opacity:0;animation:lift 800ms cubic-bezier(.16,1,.3,1) forwards}
+.lede span:nth-child(1){animation-delay:800ms}.lede span:nth-child(2){animation-delay:860ms}
+.actions{display:flex;align-items:center;gap:calc(26*var(--u));opacity:0;animation:lift 800ms cubic-bezier(.16,1,.3,1) 1000ms forwards}
+.cta{display:inline-flex;align-items:center;gap:calc(12*var(--u));height:calc(50*var(--u));padding:0 calc(6*var(--u)) 0 calc(22*var(--u));border-radius:999px;background:var(--cream);color:var(--pine);font:500 calc(15*var(--u))/1 'Golos Text',sans-serif;text-decoration:none}
+.cta i{width:calc(38*var(--u));height:calc(38*var(--u));border-radius:50%;background:var(--pine);display:grid;place-items:center}
+.cta i svg{width:calc(8*var(--u));height:calc(12*var(--u))}
+.link{color:var(--ink);text-decoration:none;font:400 calc(15*var(--u))/1 'Golos Text',sans-serif}
+/* the five steps as a column on the right, each a line of the river */
+.steps{position:absolute;right:calc(64*var(--u));bottom:calc(96*var(--u));width:calc(360*var(--u));display:grid;gap:calc(14*var(--u))}
+.step{display:grid;grid-template-columns:calc(28*var(--u)) 1fr;gap:calc(14*var(--u));align-items:start;opacity:0;animation:lift 700ms cubic-bezier(.16,1,.3,1) forwards}
+.step:nth-child(1){animation-delay:1100ms}.step:nth-child(2){animation-delay:1180ms}.step:nth-child(3){animation-delay:1260ms}.step:nth-child(4){animation-delay:1340ms}.step:nth-child(5){animation-delay:1420ms}
+.step .n{width:calc(28*var(--u));height:calc(28*var(--u));border-radius:50%;border:1px solid var(--teal);color:var(--teal);display:grid;place-items:center;font:600 calc(12*var(--u))/1 'Manrope',sans-serif}
+.step h2{margin:0 0 calc(4*var(--u));font:600 calc(17*var(--u))/1.2 'Manrope',sans-serif;color:var(--ink)}
+.step p{margin:0;font:400 calc(14*var(--u))/1.4 'Golos Text',sans-serif;color:rgba(245,250,246,.78)}
+.step.live h2{color:var(--teal)}
+.cue{position:absolute;right:calc(64*var(--u));top:calc(60*var(--u));font:400 calc(14*var(--u))/1 'Golos Text',sans-serif;color:var(--ink2);display:flex;align-items:center;gap:10px;opacity:0;animation:lift 700ms ease 1250ms forwards}
+.cue svg{width:calc(11*var(--u));height:calc(6*var(--u))}
+@keyframes rise{to{transform:none}}
+@keyframes lift{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:1ms!important;animation-delay:0ms!important}}
+@media (max-width:649.98px),(max-height:500px){:root{--u:clamp(0.94px,100vw/390,1.2px)}.steps{display:none}.hero{max-width:calc(100vw - 44px);left:22px;bottom:48px}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <video autoplay muted loop playsinline src="../assets/delta.mp4"></video>
+  <div class="sh sh1"></div><div class="sh sh2"></div><div class="sh sh3"></div>
+
+  <a class="brand" href="#" aria-label="помощник ТЗ, главная"><span class="disc"><svg viewBox="0 0 46 46" fill="none" stroke="#7CC6B5" stroke-width="1.6" stroke-linecap="round"><path d="M24.2 37V24"/><path d="M19.8 39.3c1.2-1.9 2.8-2.7 4.4-2.7s3.2.8 4.4 2.7"/><path d="M23.8 30.2c-2.8-.6-5.5-2.6-7.2-5-2-1.8-5.2-2-7-4.2-1.4-1.8-1.4-4.2 0-6 2-3 5.8-5.2 8.8-6.2 1.4-.5 2.8-1 4.2-1.3"/><path d="M14.8 23V13.2c0-1.4.8-2.6 2.4-3.4"/><path d="M24 24.2c-1.8-1.8-3.2-3.8-3.7-6.4-.5-2.6-.6-5.2-.3-7.2"/><path d="M24.3 23.2c1.5-3 3.5-6.4 4.3-10.2.4-2.6 1.2-4.1 2.8-4.3H35"/><path d="M24.6 25.7c3-.7 5.8-2.1 7.4-4.5 1.2-1.8 1.4-3.8 2.8-5.2 1.4-1.4 3.2-2.1 5.2-2.4"/></svg></span>помощник ТЗ</a>
+
+  <div class="cue"><span>Слайд 4 из 24</span><svg viewBox="0 0 11 6" fill="none" stroke="#7CCBBA" stroke-width="1.4"><path d="M.7.7 5.5 5.3 10.3.7"/></svg></div>
+
+  <section class="hero">
+    <h1><span class="ln"><span>Как устроен</span></span><span class="ln"><span>помощник,</span></span><span class="ln"><span>которому вы писали</span></span></h1>
+    <p class="lede"><span>Скрипт на домашнем компьютере ведёт разговор, думать ходит к модели по ключу.</span><span>Имена и Telegram ID за пределы компьютера не выходят.</span></p>
+    <div class="actions">
+      <a class="cta" href="#path">Пройти путь ответа<i><svg viewBox="0 0 8 12" fill="none" stroke="#fff" stroke-width="1.4"><path d="M.6.6 4 4 .6 7.4" transform="translate(1.5 2)"/></svg></i></a>
+      <a class="link" href="#cost">Сколько это стоило</a>
+    </div>
+  </section>
+
+  <aside class="steps" id="path">
+    <div class="step"><span class="n">1</span><div><h2>Вы и телефон</h2><p>Telegram, кнопки, ответы, файлы</p></div></div>
+    <div class="step"><span class="n">2</span><div><h2>Бот на домашнем ПК</h2><p>Python, восемь шагов, память, сторож</p></div></div>
+    <div class="step live"><span class="n">3</span><div><h2>OpenRouter, ключ API</h2><p>Одна дверь ко многим моделям, без обучения на данных</p></div></div>
+    <div class="step"><span class="n">4</span><div><h2>Модель</h2><p>Читает, спрашивает, в конце пишет ТЗ</p></div></div>
+    <div class="step"><span class="n">5</span><div><h2>Пакет обратно в Telegram</h2><p>ТЗ.docx, правила, «Как запустить», образец</p></div></div>
+  </aside>
+</div>
+</body>
+</html>

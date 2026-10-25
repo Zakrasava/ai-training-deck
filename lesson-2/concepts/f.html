@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Концепт Е · Тёплая ночь · Как устроен помощник ТЗ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Golos+Text:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:hsl(201 100% 13%);--fg:#fff;--muted:hsl(240 4% 66%)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:'Golos Text',system-ui,sans-serif}
+.stage{position:relative;min-height:100vh;overflow:hidden;display:flex;flex-direction:column}
+video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,20,36,.15),rgba(2,20,36,.35) 60%,rgba(2,20,36,.75));z-index:1}
+nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;max-width:80rem;margin:0 auto;width:100%;padding:24px 32px}
+.logo{font:400 30px/1 'Prata',serif;letter-spacing:-.01em}
+.logo sup{font-size:12px}
+.links{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+.links b{font-weight:400;color:var(--fg)}
+.glass{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:10px 24px;font-size:14px;color:var(--fg);text-decoration:none;
+  background:rgba(255,255,255,.01);background-blend-mode:luminosity;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-shadow:inset 0 1px 1px rgba(255,255,255,.1);position:relative;overflow:hidden;transition:transform .2s}
+.glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.4px;background:linear-gradient(180deg,rgba(255,255,255,.45) 0%,rgba(255,255,255,.15) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,.15) 80%,rgba(255,255,255,.45) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.glass:hover{transform:scale(1.03)}
+.hero{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px 120px}
+h1{margin:0;font:400 clamp(44px,7.2vw,104px)/0.95 'Prata',serif;letter-spacing:-.02em;max-width:80rem;animation:fr .8s ease-out both}
+h1 em{font-style:normal;color:var(--muted)}
+.sub{margin:32px 0 0;max-width:42rem;font:400 clamp(16px,1.3vw,19px)/1.6 'Golos Text',sans-serif;color:var(--muted);animation:fr .8s ease-out .2s both}
+.cta{margin-top:44px;padding:20px 56px;font-size:16px;animation:fr .8s ease-out .4s both}
+.path{position:relative;z-index:2;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:0 24px 44px;animation:fr .8s ease-out .6s both}
+.path .glass{padding:12px 18px;font-size:15px;gap:10px}
+.path .glass small{color:var(--muted);font-size:13px}
+@keyframes fr{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+@media (max-width:760px){.links{display:none}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <video autoplay loop muted playsinline src="../assets/night-desk.mp4"></video>
+  <div class="veil"></div>
+  <nav>
+    <div class="logo">Помощник ТЗ<sup>®</sup></div>
+    <div class="links"><b>Встреча 2</b><span>Сценарий</span><span>Тетрадь</span><span>Бот</span></div>
+    <a class="glass" href="#">Слайд 4 из 24</a>
+  </nav>
+  <main class="hero">
+    <h1>Где слова <em>становятся</em><br>работающим <em>помощником.</em></h1>
+    <p class="sub">Вы пишете боту в Telegram. Скрипт на домашнем компьютере держит разговор, думать ходит к модели по ключу API. Обратно приходит пакет: ТЗ, правила, «Как запустить».</p>
+    <a class="glass cta" href="#">Пройти путь одного ответа</a>
+  </main>
+  <div class="path">
+    <span class="glass">Вы и телефон<small>Telegram</small></span>
+    <span class="glass">Бот на домашнем ПК<small>Python</small></span>
+    <span class="glass">OpenRouter<small>ключ API</small></span>
+    <span class="glass">Модель<small>пишет ТЗ</small></span>
+    <span class="glass">Пакет<small>обратно в Telegram</small></span>
+  </div>
+</div>
+</body>
+</html>
