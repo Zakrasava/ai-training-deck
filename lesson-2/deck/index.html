@@ -361,7 +361,7 @@
 <section class="slide" id="s2" data-n="2" data-block="Вход" data-steps="1">
   <h2 class="h-m fx"><span data-k="participants"></span> начали · <em><span data-k="packs"></span> пакета</em> · <span data-k="halfway"></span> на полпути</h2>
   <div class="rows" id="s2-rows"></div>
-  <aside class="notes">Восемь задач, все про данные и файлы, ни одной «напиши текст». → — три готовых пакета получают точку.</aside>
+  <aside class="notes">Шесть задач, все про данные и файлы, ни одной «напиши текст». Десять начали, трое дошли до пакета; кто не ответил на первый вопрос, на слайде не показан. → — три готовых пакета получают точку.</aside>
 </section>
 
 <!-- 3 ─────────────────────────────────────────── -->
@@ -383,7 +383,7 @@
   <h2 class="h-l"><span class="mask"><span>Как устроен</span></span><span class="mask" data-d="110"><span>помощник ТЗ</span></span></h2>
   <div class="stats">
     <div class="stat fx" data-on="5"><b class="mono" data-k="calls"></b><span>обращений к моделям за неделю</span></div>
-    <div class="stat fx" data-on="5" data-d="90"><b class="mono" data-k="cost"></b><span>на восемь человек</span></div>
+    <div class="stat fx" data-on="5" data-d="90"><b class="mono" data-k="cost"></b><span data-k="perPeople"></span></div>
     <div class="stat fx" data-on="5" data-d="180"><b class="mono">0</b><span>имён и Telegram ID уходит к модели</span></div>
   </div>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
@@ -466,13 +466,13 @@
   <h2 class="h-m ttl"><span class="mask"><span>Почему бот ходит через ключ</span></span></h2>
   <div class="big">
     <div class="fx" data-d="250"><b id="s7-a" data-k="calls"></b><span>обращений за неделю</span></div>
-    <div class="fx" data-d="350"><b id="s7-b" data-k="cost"></b><span>на восемь человек</span></div>
+    <div class="fx" data-d="350"><b id="s7-b" data-k="cost"></b><span data-k="perPeople"></span></div>
   </div>
   <div class="cols">
     <div class="col fx" data-on="1"><h3>Подписка</h3><ul><li>фиксированная сумма</li><li>один человек</li><li>окно чата</li></ul></div>
     <div class="col key fx" data-on="1" data-d="120"><h3>Ключ API</h3><ul><li>платите за потраченное</li><li>любое число людей</li><li>через программу</li></ul></div>
   </div>
-  <p class="foot fx fade" data-on="1" data-d="400"><b data-k="costPerHead"></b> на участника</p>
+  <p class="foot fx fade" data-on="1" data-d="400"><b data-k="costPerCall"></b> за обращение · <b data-k="costPerHead"></b> на участника · посчитано ещё на тестах</p>
   <aside class="notes">Цифры набираются за секунду. → — сравнение подписки и ключа.</aside>
 </section>
 
@@ -496,9 +496,9 @@
 
 <!-- 9 ─────────────────────────────────────────── -->
 <section class="slide" id="s9" data-n="9" data-block="Ваши ТЗ" data-steps="6">
-  <h2 class="h-m ttl"><span class="mask"><span>Одна из восьми — по щелчку</span></span></h2>
+  <h2 class="h-m ttl"><span class="mask"><span>Одна из шести — по щелчку</span></span></h2>
   <div class="rows" id="s9-rows"></div>
-  <aside class="notes">Сначала задача Александра — она по щелчку и уже крутится. Каждый → — следующая задача: что нужно, где упирается в доступ, как решаем. Последний шаг — двое не ответили на первый вопрос.</aside>
+  <aside class="notes">Сначала задача Александра — она по щелчку и уже крутится. Каждый → — следующая задача: что нужно, где упирается в доступ, как решаем. Тех, кто не ответил на первый вопрос, на слайде нет.</aside>
 </section>
 
 <!-- 10 ────────────────────────────────────────── -->
@@ -742,17 +742,17 @@
 <section class="slide" id="s23" data-n="23" data-block="Выход" data-steps="0">
   <h1 class="h-xl thanks"><span class="mask"><span>Спасибо</span></span></h1>
   <div class="lines">
-    <span class="fx" data-d="300">Пишите боту<em>вопросы и правки ТЗ</em></span>
+    <span class="fx" data-d="300">Пишите мне<em>вопросы и правки ТЗ</em></span>
     <span class="fx" data-d="400">Тетрадь — сегодня</span>
   </div>
-  <div class="qr fx" data-d="500" id="s23-qr"><div class="code" id="s23-code"></div><b>Помощник ТЗ</b><span class="mono" id="s23-link"></span></div>
+  <div class="qr fx" data-d="500" id="s23-qr"><div class="code" id="s23-code"></div><b data-k="qrLabel"></b><span class="mono" id="s23-link"></span></div>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <defs><linearGradient id="g23" x1="1600" x2="160" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#18191B" stop-opacity="0"/><stop offset=".45" stop-color="#18191B"/><stop offset="1" stop-color="#18191B"/></linearGradient></defs>
     <path class="ln-main" id="s23-ln" d="M1600 690 H160" style="stroke:url(#g23)"/>
     <circle class="st me" id="s23-me" cx="160" cy="690" r="22"/>
   </svg>
   <div class="me23 fx" data-d="1100">вы</div>
-  <aside class="notes">Маршрут возвращается в точку «вы». QR ведёт на бота (ссылка — data.js → botLink; пока ссылки нет, QR не показывается).</aside>
+  <aside class="notes">Маршрут возвращается в точку «вы». QR ведёт в Telegram ведущего (ссылка — data.js → botLink; без ссылки вида https://t.me/… карточки с QR нет).</aside>
 </section>
 
 </div>
