@@ -255,6 +255,20 @@
 #s26 .where{position:absolute;left:96px;top:640px;font-size:20px;color:var(--muted)}
 #s26 .warn{position:absolute;left:96px;top:690px;width:1408px;font-weight:700;font-size:34px;letter-spacing:-.03em;line-height:1.15}
 
+/* ── что нужно, чтобы собрать помощника ── */
+#s27 .base{position:absolute;left:96px;top:226px;width:880px}
+#s27 .row{display:grid;grid-template-columns:70px 1fr;align-items:start;padding:14px 0;border-top:1px solid var(--hair)}
+#s27 .row:last-child{border-bottom:1px solid var(--hair)}
+#s27 .row i{font:400 22px "JB Mono",monospace;font-style:normal;color:var(--signal);padding-top:6px}
+#s27 .row b{display:block;font-weight:600;font-size:28px;letter-spacing:-.02em;line-height:1.1}
+#s27 .row span{display:block;font-size:19px;line-height:1.25;color:var(--muted);margin-top:4px}
+#s27 .way{position:absolute;left:1040px;width:464px;border:2px solid var(--ink);border-radius:18px;padding:22px 24px;background:var(--paper)}
+#s27 .way.w1{top:226px}
+#s27 .way.w2{top:500px;border-color:var(--signal)}
+#s27 .way b{display:block;font-weight:700;font-size:30px;letter-spacing:-.02em}
+#s27 .way.w2 b{color:var(--signal)}
+#s27 .way p{font-size:21px;line-height:1.3;margin-top:10px;color:#3A3B3D}
+
 /* ── 18 · рейсы для руководителя ── */
 #s18 .cond{position:absolute;left:96px;top:236px;width:900px;font-size:22px;color:var(--muted);line-height:1.5}
 #s18 .cond b{color:var(--ink);font-weight:400}
@@ -824,7 +838,21 @@
 </section>
 
 <!-- 25 ─────────────────────────────────────────── -->
-<section class="slide" id="s23" data-n="25" data-block="Выход" data-steps="0">
+<section class="slide" id="s27" data-n="25" data-block="Куда растёт" data-steps="2">
+  <h2 class="h-m ttl"><span class="mask"><span>Что нужно, чтобы начать</span></span></h2>
+  <div class="base">
+    <div class="row fx" data-d="250"><i>01</i><div><b>Машина, которая работает всегда</b><span>домашний ПК, Mac mini или арендованный сервер</span></div></div>
+    <div class="row fx" data-d="350"><i>02</i><div><b>Аккаунты</b><span>Google — один вход везде · GitHub — код и история · Telegram — токен от BotFather</span></div></div>
+    <div class="row fx" data-d="450"><i>03</i><div><b>Агент на компьютере</b><span>Claude Code или Codex по подписке, рядом VS Code</span></div></div>
+    <div class="row fx" data-d="550"><i>04</i><div><b>Оплата и доступ</b><span>зарубежная карта или крипта, российские карты не проходят; VPN для регистрации</span></div></div>
+    <div class="row fx" data-d="650"><i>05</i><div><b>Секреты в .env</b><span>ключи и токены не в чат и не в GitHub</span></div></div>
+  </div>
+  <div class="way w1 fx" data-on="1" data-d="200"><b>Для себя</b><p>готовый агент, например Hermes Agent: ставится на вашу машину, подключается к Telegram, расширяется просьбами словами</p></div>
+  <div class="way w2 fx" data-on="2" data-d="200"><b>На многих</b><p>свой бот через Telegram Bot API и ключ OpenRouter: вход через Google, оплата картой в долларах или USDC</p></div>
+</section>
+
+<!-- 26 ─────────────────────────────────────────── -->
+<section class="slide" id="s23" data-n="26" data-block="Выход" data-steps="0">
   <h1 class="h-xl thanks"><span class="mask"><span>Спасибо</span></span></h1>
   <div class="lines">
     <span class="fx" data-d="300">Описать<em>вход, выход, проверки</em></span>
