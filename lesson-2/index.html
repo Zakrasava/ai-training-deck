@@ -32,7 +32,20 @@
 #s2.ready .row .stt .ok{opacity:1}
 #s2.ready .row .stt .wait{display:none}
 
-/* ── 3 · главная мысль ── */
+/* ── 3 · вопросы бота — карта задачи ── */
+#s25 .steps{position:absolute;left:160px;top:236px;width:600px}
+#s25 .step{height:64px;display:flex;flex-direction:column;justify-content:center}
+#s25 .step b{display:block;font-weight:600;font-size:24px;letter-spacing:-.015em;line-height:1.1}
+#s25 .step span{display:block;font:400 18px "JB Mono",monospace;color:var(--muted);margin-top:3px}
+#s25 .facts{position:absolute;left:860px;top:236px;width:644px}
+#s25 .fact{padding:16px 0;border-top:1px solid var(--hair)}
+#s25 .fact:last-child{border-bottom:1px solid var(--hair)}
+#s25 .fact b{display:block;font-weight:700;font-size:34px;letter-spacing:-.03em;line-height:1.05}
+#s25 .fact b.sig{color:var(--signal)}
+#s25 .fact span{display:block;font-size:20px;color:var(--muted);margin-top:6px}
+#s25 .moral{position:absolute;left:860px;top:690px;width:644px;font-weight:700;font-size:30px;letter-spacing:-.03em;line-height:1.15}
+
+/* ── 4 · главная мысль ── */
 #s3 .p1{position:absolute;left:96px;top:110px}
 #s3 .p2{position:absolute;left:96px;top:560px;width:1060px}
 #s3 .p2 u{text-decoration:none;background:linear-gradient(var(--signal),var(--signal)) 0 100%/0 6px no-repeat;transition:background-size .8s var(--ease) .3s}
@@ -372,7 +385,34 @@
 </section>
 
 <!-- 3 ─────────────────────────────────────────── -->
-<section class="slide" id="s3" data-n="3" data-block="Вход" data-steps="1">
+<section class="slide" id="s25" data-n="3" data-block="Вход" data-steps="2">
+  <h2 class="h-m ttl"><span class="mask"><span>Вопросы бота — это карта задачи</span></span></h2>
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="ln-main" id="s25-ln" d="M124 236 V748"/>
+    <circle class="st" data-on="0" data-d="150" cx="124" cy="268" r="12"/><circle class="st" data-on="0" data-d="250" cx="124" cy="332" r="12"/>
+    <circle class="st" data-on="0" data-d="350" cx="124" cy="396" r="12"/><circle class="st" data-on="0" data-d="450" cx="124" cy="460" r="12"/>
+    <circle class="st" data-on="0" data-d="550" cx="124" cy="524" r="12"/><circle class="st" data-on="0" data-d="650" cx="124" cy="588" r="12"/>
+    <circle class="st" data-on="0" data-d="750" cx="124" cy="652" r="12"/><circle class="st lit" data-on="0" data-d="850" cx="124" cy="716" r="12"/>
+  </svg>
+  <div class="steps">
+    <div class="step fx" data-d="150"><b>Задача в двух словах</b><span>цель: что и для кого</span></div>
+    <div class="step fx" data-d="250"><b>Где будет работать</b><span>проект, скрипт или агент</span></div>
+    <div class="step fx" data-d="350"><b>С чем работаем</b><span>старт: вводные, инструменты, доступ</span></div>
+    <div class="step fx" data-d="450"><b>Порядок действий</b><span>у каждого шага вход и выход</span></div>
+    <div class="step fx" data-d="550"><b>Правила результата</b><span>финал: что получить на выходе</span></div>
+    <div class="step fx" data-d="650"><b>Проверки</b><span>как понять, что верно</span></div>
+    <div class="step fx" data-d="750"><b>Запуск и границы</b><span>когда, куда, что нельзя</span></div>
+    <div class="step fx" data-d="850"><b>Черновик и финал</b><span>ТЗ, правила, «как запустить», образец</span></div>
+  </div>
+  <div class="facts">
+    <div class="fact fx" data-on="1" data-d="100"><b data-k="qPacks"></b><span data-k="qAnswers"></span></div>
+    <div class="fact fx" data-on="1" data-d="250"><b data-k="qMinutes"></b><span>чистого диалога на один пакет</span></div>
+    <div class="fact fx" data-on="1" data-d="400"><b data-k="qGapsDone"></b><span>у тех, кто дошёл: там бот решил сам</span></div>
+    <div class="fact fx" data-on="1" data-d="550"><b class="sig" data-k="qGapsStuck"></b><span>у того, кто застрял на последнем шаге</span></div>
+  </div>
+  <p class="moral fx" data-on="2" data-d="200">Кажется, вопросы дурацкие? Это пробелы в задаче. Всё из головы собирается, если пройти по шагам</p>
+</section>
+<section class="slide" id="s3" data-n="4" data-block="Вход" data-steps="1">
   <h2 class="h-l p1"><span class="mask"><span>Писать код не нужно.</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <path class="ln-main" id="s3-ln" d="M-30 460 H1630"/>
@@ -393,7 +433,7 @@
 </section>
 
 <!-- 4 ─────────────────────────────────────────── -->
-<section class="slide" id="s4" data-n="4" data-block="Кейс бота" data-steps="5">
+<section class="slide" id="s4" data-n="5" data-block="Кейс бота" data-steps="5">
   <h2 class="h-l"><span class="mask"><span>Как устроен</span></span><span class="mask" data-d="110"><span>помощник ТЗ</span></span></h2>
   <div class="stats">
     <div class="stat fx" data-on="5"><b class="mono" data-k="calls"></b><span>обращений к моделям за неделю</span></div>
@@ -425,7 +465,7 @@
 </section>
 
 <!-- 5 ─────────────────────────────────────────── -->
-<section class="slide" id="s5" data-n="5" data-block="Кейс бота" data-steps="4">
+<section class="slide" id="s5" data-n="6" data-block="Кейс бота" data-steps="4">
   <h2 class="h-m ttl"><span class="mask"><span>В каком порядке</span></span><span class="mask" data-d="90"><span>я его делал</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <path class="ln-main" id="s5-ln" d="M-30 720 H200 H370 L430 640 H480 H650 L710 560 H760 H930 L990 480 H1040 H1210 L1270 400 H1320 H1490 L1550 320 H1640"/>
@@ -450,7 +490,7 @@
 </section>
 
 <!-- 6 ─────────────────────────────────────────── -->
-<section class="slide" id="s6" data-n="6" data-block="Кейс бота" data-steps="2">
+<section class="slide" id="s6" data-n="7" data-block="Кейс бота" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Как я с ним разговаривал</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <path class="ln-main" id="s6-ln" d="M-30 280 H1640"/>
@@ -473,7 +513,7 @@
 </section>
 
 <!-- 7 ─────────────────────────────────────────── -->
-<section class="slide" id="s7" data-n="7" data-block="Кейс бота" data-steps="1">
+<section class="slide" id="s7" data-n="8" data-block="Кейс бота" data-steps="1">
   <h2 class="h-m ttl"><span class="mask"><span>Почему бот ходит через ключ</span></span></h2>
   <div class="big">
     <div class="fx" data-d="250"><b id="s7-a" data-k="calls"></b><span>обращений за неделю</span></div>
@@ -492,7 +532,7 @@
 </section>
 
 <!-- 8 ─────────────────────────────────────────── -->
-<section class="slide" id="s8" data-n="8" data-block="Ваши ТЗ" data-steps="2">
+<section class="slide" id="s8" data-n="9" data-block="Ваши ТЗ" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Три ТЗ, три пути</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <path class="ln-main" id="s8-t" d="M-30 520 H360"/>
@@ -509,13 +549,13 @@
 </section>
 
 <!-- 9 ─────────────────────────────────────────── -->
-<section class="slide" id="s9" data-n="9" data-block="Ваши ТЗ" data-steps="6">
+<section class="slide" id="s9" data-n="10" data-block="Ваши ТЗ" data-steps="6">
   <h2 class="h-m ttl"><span class="mask"><span>Одна из восьми — по щелчку</span></span></h2>
   <div class="rows" id="s9-rows"></div>
 </section>
 
 <!-- 10 ────────────────────────────────────────── -->
-<section class="slide" id="s10" data-n="10" data-block="Ваши ТЗ" data-steps="7">
+<section class="slide" id="s10" data-n="11" data-block="Ваши ТЗ" data-steps="7">
   <h2 class="h-m ttl"><span class="mask"><span>Карта подключений</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <path class="ln-main" id="s10-t" d="M-30 490 H120"/>
@@ -528,7 +568,7 @@
 </section>
 
 <!-- 11 ────────────────────────────────────────── -->
-<section class="slide" id="s11" data-n="11" data-block="Ваши ТЗ" data-steps="8">
+<section class="slide" id="s11" data-n="12" data-block="Ваши ТЗ" data-steps="8">
   <h2 class="h-m ttl"><span class="mask"><span>Чем помощник думает</span></span></h2>
   <div class="tbl fx" data-d="250" id="s11-t">
     <div class="tr th mono"><span>слово</span><span>что это</span><span>когда нужно</span></div>
@@ -544,7 +584,7 @@
 </section>
 
 <!-- 12 ────────────────────────────────────────── -->
-<section class="slide" id="s12" data-n="12" data-block="Ваши ТЗ" data-steps="2">
+<section class="slide" id="s12" data-n="13" data-block="Ваши ТЗ" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Данные и безопасность</span></span></h2>
   <div class="rule fx" data-on="0" data-d="300" style="top:226px"><i>01</i><p>Персональные данные и договоры в облако не отправлять без решения руководства и ИТ</p></div>
   <div class="rule fx" data-on="1" style="top:410px"><i>02</i><p>Провайдер живёт по своим законам и правилам: решаем, что отдаём, до запуска</p></div>
@@ -565,7 +605,7 @@
 </section>
 
 <!-- 13 ────────────────────────────────────────── -->
-<section class="slide" id="s13" data-n="13" data-block="Ваши ТЗ" data-steps="0">
+<section class="slide" id="s13" data-n="14" data-block="Ваши ТЗ" data-steps="0">
   <h2 class="h-m ttl"><span class="mask"><span>Обсуждение · 3 минуты</span></span></h2>
   <div class="tpl">
     <div class="fx" data-d="250">Моя задача:</div>
@@ -576,7 +616,7 @@
 </section>
 
 <!-- 14 ────────────────────────────────────────── -->
-<section class="slide" id="s14" data-n="14" data-block="Демо" data-steps="0">
+<section class="slide" id="s14" data-n="15" data-block="Демо" data-steps="0">
   <h2 class="h-m ttl"><span class="mask"><span>Демо: результат</span></span></h2>
   <div class="chkwrap">
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
@@ -596,7 +636,7 @@
 </section>
 
 <!-- 15 ────────────────────────────────────────── -->
-<section class="slide" id="s15" data-n="15" data-block="Демо" data-steps="2">
+<section class="slide" id="s15" data-n="16" data-block="Демо" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Что сделал агент</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <path class="ln-main" id="s15-ln" d="M-30 520 H1640"/>
@@ -622,7 +662,7 @@
 </section>
 
 <!-- 16 ────────────────────────────────────────── -->
-<section class="slide" id="s16" data-n="16" data-block="Демо" data-steps="3">
+<section class="slide" id="s16" data-n="17" data-block="Демо" data-steps="3">
   <h2 class="h-m ttl"><span class="mask"><span>Как повторить самим</span></span></h2>
   <div class="files">
     <div class="file fx" data-d="250"><i></i><span>ТЗ<small>что и как, с проверками</small></span></div>
@@ -645,7 +685,7 @@
 </section>
 
 <!-- 17 ────────────────────────────────────────── -->
-<section class="slide" id="s17" data-n="17" data-block="Демо" data-steps="3">
+<section class="slide" id="s17" data-n="18" data-block="Демо" data-steps="3">
   <h2 class="h-m ttl"><span class="mask"><span>Разово или регулярно</span></span></h2>
   <div class="scale fx fade" data-d="250"><i class="tick" style="left:111px"></i><i class="tick" style="left:505px"></i><i class="tick" style="left:899px"></i><i class="tick" style="left:1293px"></i><b class="knob" id="s17-k"></b></div>
   <div class="zone up" style="left:96px"><b>Раз</b></div>
@@ -660,7 +700,7 @@
 </section>
 
 <!-- 18 ────────────────────────────────────────── -->
-<section class="slide" id="s18" data-n="18" data-block="Кейсы" data-steps="2">
+<section class="slide" id="s18" data-n="19" data-block="Кейсы" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Рейсы для руководителя</span></span></h2>
   <p class="cond mono fx fade" data-d="300"><b>условия постоянные:</b> бизнес · вылет после 10:00 · стыковка до 3 ч · в Лондоне Хитроу · 4 сайта поиска</p>
   <p class="thought fx" data-on="2" data-d="700">Под каждую преграду — своё решение, оно записано в ТЗ</p>
@@ -678,7 +718,7 @@
 </section>
 
 <!-- 19 ────────────────────────────────────────── -->
-<section class="slide" id="s24" data-n="19" data-block="Кейсы" data-steps="3">
+<section class="slide" id="s24" data-n="20" data-block="Кейсы" data-steps="3">
   <h2 class="h-m ttl"><span class="mask"><span>Одно ТЗ — два решения</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <path class="ln-main" id="s24-t" d="M-30 460 H300"/>
@@ -703,7 +743,7 @@
   <div class="verdict dn fx" data-on="2" data-d="950"><span class="stamp mono sig">руками ничего</span></div>
   <p class="moral fx" data-on="3" data-d="200">Бот знает только то, что ему сказали. Опыт добавляет человек — задачей агенту</p>
 </section>
-<section class="slide" id="s19" data-n="20" data-block="Кейсы" data-steps="3">
+<section class="slide" id="s19" data-n="21" data-block="Кейсы" data-steps="3">
   <h2 class="h-m ttl"><span class="mask"><span>Справка по объекту</span></span></h2>
   <p class="rule fx" data-on="1" data-d="300" style="top:250px">Источник — документ со ссылкой<small>подсказка DeepSeek или Алисы источником быть не может</small></p>
   <p class="rule fx" data-on="2" data-d="300" style="top:450px">Нет данных — «не найдено» и где искали<small>домыслы запрещены словами в ТЗ</small></p>
@@ -720,7 +760,7 @@
 </section>
 
 <!-- 20 ────────────────────────────────────────── -->
-<section class="slide" id="s20" data-n="21" data-block="Кейсы" data-steps="1">
+<section class="slide" id="s20" data-n="22" data-block="Кейсы" data-steps="1">
   <h2 class="h-m ttl"><span class="mask"><span>Куда это растёт</span></span></h2>
   <span class="cap20 mono fx fade" data-d="300" style="left:96px">личный</span>
   <span class="cap20 mono fx fade" data-d="300" style="left:944px">корпоративный</span>
@@ -734,7 +774,7 @@
 </section>
 
 <!-- 21 ────────────────────────────────────────── -->
-<section class="slide" id="s21" data-n="22" data-block="Кейсы" data-steps="1">
+<section class="slide" id="s21" data-n="23" data-block="Кейсы" data-steps="1">
   <h2 class="h-m ttl"><span class="mask"><span>Как устроено у меня</span></span></h2>
   <div class="pc fx fade" data-d="200"><span class="pcl mono">домашний ПК · Windows · включён всегда</span>
     <div class="bot" style="left:30px"><b>Omnerio</b><span class="f mono">AGENTS.md</span><span class="stk mono">Python · Telegram · кабинет</span><span class="s mono"><i></i>работает</span></div>
@@ -761,7 +801,7 @@
 <!-- 22 ────────────────────────────────────────── -->
 
 <!-- 23 ────────────────────────────────────────── -->
-<section class="slide" id="s23" data-n="23" data-block="Выход" data-steps="0">
+<section class="slide" id="s23" data-n="24" data-block="Выход" data-steps="0">
   <h1 class="h-xl thanks"><span class="mask"><span>Спасибо</span></span></h1>
   <div class="lines">
     <span class="fx" data-d="300">Пишите мне<em>вопросы и правки ТЗ</em></span>
@@ -804,6 +844,7 @@ window.SLIDE_HOOKS = {
     el.querySelector('.st').classList.toggle('on', s >= 0);
   },
   s2(el, s) { el.classList.toggle('ready', s >= 1); },
+  s25(el, s) { draw(el.querySelector('#s25-ln'), s < 0 ? 0 : 9999); },
   s3(el, s) {
     const p = el.querySelector('#s3-ln'), L = p.getTotalLength();
     p.style.strokeDasharray = L; p.style.strokeDashoffset = s < 0 ? L : 0;
