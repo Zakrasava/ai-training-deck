@@ -224,7 +224,7 @@
 
 /* ── 23 · финал ── */
 #s23 .thanks{position:absolute;left:96px;top:170px}
-#s23 .lines{position:absolute;left:96px;top:430px;display:flex;flex-direction:column;gap:10px}
+#s23 .lines{position:absolute;left:96px;top:392px;display:flex;flex-direction:column;gap:8px}
 #s23 .lines span{font-weight:600;font-size:40px;letter-spacing:-.03em}
 #s23 .lines span em{font-style:normal;color:var(--muted);font-weight:400;font-size:24px;letter-spacing:0;margin-left:14px}
 #s23 .qr{position:absolute;left:1124px;top:150px;width:380px;padding:28px;background:var(--paper);border:2px solid var(--ink);border-radius:26px;text-align:center}
@@ -585,7 +585,7 @@
 <section class="slide" id="s18" data-n="12" data-block="Ваши ТЗ" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Рейсы для руководителя</span></span></h2>
   <p class="cond mono fx fade" data-d="300"><b>условия постоянные:</b> бизнес · вылет лучше после 10:00 · стыковка до 3 ч · в Лондоне Хитроу, в Милане Линате · 8 сайтов поиска</p>
-  <p class="thought fx" data-on="2" data-d="700">Под каждую преграду — своё решение, оно записано в ТЗ</p>
+  <p class="thought fx" data-on="2" data-d="700">Под каждую преграду — своё решение, и его место — в ТЗ</p>
   <div class="acc fx" data-on="2" data-d="100" style="top:500px"><span class="stamp mono">WhatsApp закрыт</span><p>запросы шефа приходят в Telegram‑бота, без ручной пересылки</p></div>
   <div class="acc fx" data-on="2" data-d="350" style="top:620px"><span class="stamp mono">сайты блокируют</span><p>робот‑браузер ходит по сайтам авиакомпаний через прокси; готовых API цен для частных лиц почти нет</p></div>
   <div class="phone fx" data-d="200">
@@ -657,7 +657,18 @@
 </section>
 
 <!-- 16 ─────────────────────────────────────────── -->
-<section class="slide" id="s11" data-n="16" data-block="Ваши ТЗ" data-steps="8">
+<section class="slide" id="s13" data-n="16" data-block="Ваши ТЗ" data-steps="0">
+  <h2 class="h-m ttl"><span class="mask"><span>Обсуждение · 3 минуты</span></span></h2>
+  <div class="tpl">
+    <div class="fx" data-d="250">Моя задача:</div>
+    <div class="fx" data-d="350">Помощнику нужен доступ к:</div>
+    <div class="fx" data-d="450">Доступ даёт:</div>
+  </div>
+  <p class="ex fx fade" data-d="700"><b>Одной строкой в чат встречи.</b> Пример: «сводка расходов, доступ к папке с PDF и к фото чеков». Не знаете, к чему нужен доступ, — так и пишите</p>
+</section>
+
+<!-- 17 ─────────────────────────────────────────── -->
+<section class="slide" id="s11" data-n="17" data-block="Ваши ТЗ" data-steps="8">
   <h2 class="h-m ttl"><span class="mask"><span>Чем помощник думает</span></span></h2>
   <div class="tbl fx" data-d="250" id="s11-t">
     <div class="tr th mono"><span>слово</span><span>что это</span><span>когда нужно</span></div>
@@ -672,8 +683,8 @@
   </div>
 </section>
 
-<!-- 17 ─────────────────────────────────────────── -->
-<section class="slide" id="s12" data-n="17" data-block="Ваши ТЗ" data-steps="2">
+<!-- 18 ─────────────────────────────────────────── -->
+<section class="slide" id="s12" data-n="18" data-block="Ваши ТЗ" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Данные и безопасность</span></span></h2>
   <div class="rule fx" data-on="0" data-d="300" style="top:226px"><i>01</i><p>Персональные данные и договоры в облако не отправлять без решения руководства и ИТ</p></div>
   <div class="rule fx" data-on="1" style="top:410px"><i>02</i><p>Провайдер живёт по своим законам и правилам: решаем, что отдаём, до запуска</p></div>
@@ -691,17 +702,6 @@
   <div class="lbl fx" data-on="2" data-d="600" style="top:600px">Кабинет<span class="mono">Nginx, HTTPS</span></div>
   <div class="nocloud mono fx fade" data-on="2" data-d="800">облачные модели запрещены</div>
   </div>
-</section>
-
-<!-- 18 ─────────────────────────────────────────── -->
-<section class="slide" id="s13" data-n="18" data-block="Ваши ТЗ" data-steps="0">
-  <h2 class="h-m ttl"><span class="mask"><span>Обсуждение · 3 минуты</span></span></h2>
-  <div class="tpl">
-    <div class="fx" data-d="250">Моя задача:</div>
-    <div class="fx" data-d="350">Помощнику нужен доступ к:</div>
-    <div class="fx" data-d="450">Доступ даёт:</div>
-  </div>
-  <p class="ex fx fade" data-d="700"><b>Одной строкой в чат встречи.</b> Пример: «сводка расходов, доступ к папке с PDF и к фото чеков». Не знаете, к чему нужен доступ, — так и пишите</p>
 </section>
 
 <!-- 19 ─────────────────────────────────────────── -->
@@ -770,7 +770,7 @@
   <div class="way fx" data-on="1" data-d="450" style="top:258px"><b>Проект в ChatGPT или Claude</b><ol><li><span>1</span>создать</li><li><span>2</span>вставить инструкцию</li><li><span>3</span>загрузить файлы</li><li><span>4</span>первый запрос</li></ol></div>
   <div class="way fx" data-on="2" data-d="450" style="top:398px"><b>Папка и агент на компьютере</b><ol><li><span>1</span>распаковать</li><li><span>2</span>открыть агента в папке</li><li><span>3</span>«работай по ТЗ»</li></ol></div>
   <div class="way fx" data-on="3" data-d="450" style="top:538px"><b>Бот</b><ol><li><span>1</span>отдать пакет агенту</li><li><span>2</span>«собери бота для Telegram; токен и ключ впишу в .env сам»</li></ol></div>
-  <div class="fixline fx" data-on="3" data-d="800"><span class="pill mono">ТЗ.md</span><span>Не тот результат — правьте ТЗ: вход, выход, проверки, и пересоберите из него инструкцию агентом</span></div>
+  <div class="fixline fx" data-on="3" data-d="800"><span class="pill mono">ТЗ.md</span><span>Не сошлось — не принимайте: покажите агенту ожидаемое и полученное. ТЗ правьте, только если ошиблись в нём</span></div>
 </section>
 
 <!-- 22 ─────────────────────────────────────────── -->
@@ -826,8 +826,10 @@
 <section class="slide" id="s23" data-n="25" data-block="Выход" data-steps="0">
   <h1 class="h-xl thanks"><span class="mask"><span>Спасибо</span></span></h1>
   <div class="lines">
-    <span class="fx" data-d="300">Пишите мне<em>вопросы и правки ТЗ</em></span>
-    <span class="fx" data-d="400">Тетрадь — сегодня</span>
+    <span class="fx" data-d="300">Описать<em>вход, выход, проверки</em></span>
+    <span class="fx" data-d="400">Доступ и данные<em>выяснить до запуска</em></span>
+    <span class="fx" data-d="500">Запустить просто<em>и проверить самим</em></span>
+    <span class="fx" data-d="650">Пишите мне<em>тетрадь — сегодня</em></span>
   </div>
   <div class="qr fx" data-d="500" id="s23-qr"><div class="code" id="s23-code"></div><b data-k="qrLabel"></b><span class="mono" id="s23-link"></span></div>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
