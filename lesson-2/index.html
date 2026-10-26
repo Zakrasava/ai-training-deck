@@ -455,7 +455,7 @@
   <div class="label up fx" data-on="1" data-d="400" style="left:446px"><b>Бот<br>на моём ПК</b></div>
   <div class="label dn fx" data-on="1" data-d="500" style="left:446px"><span class="mono">Python · 8 шагов<br>память SQLite</span></div>
   <div class="label up fx" data-on="2" data-d="400" style="left:770px"><b>Одна дверь<br>ко всем моделям</b></div>
-  <div class="label dn fx" data-on="2" data-d="500" style="left:776px;top:666px"><span class="mono">без обучения<br>на ваших данных</span></div>
+  <div class="label dn fx" data-on="2" data-d="500" style="left:776px;top:666px"><span class="mono">запрос с запретом<br>обучения на данных</span></div>
   <div class="label up fx" data-on="3" data-d="400" style="left:1066px"><b>Модель<br>спрашивает</b></div>
   <div class="label dn fx" data-on="3" data-d="500" style="left:1066px"><span class="mono">в конце<br>пишет ТЗ</span></div>
   <div class="label up fx" data-on="4" data-d="400" style="left:1376px;width:200px"><b>Пакет</b></div>
@@ -525,8 +525,8 @@
     <div>подписки на всех стоили бы <span data-k="subsMonthly"></span> в месяц</div>
   </div>
   <div class="cols">
-    <div class="col fx" data-on="1"><h3>Подписка</h3><ul><li>фиксированная сумма</li><li>один человек</li><li>окно чата</li></ul></div>
-    <div class="col key fx" data-on="1" data-d="120"><h3>Ключ API</h3><ul><li>платите за потраченное</li><li>любое число людей</li><li>через программу</li></ul></div>
+    <div class="col fx" data-on="1"><h3>Подписка</h3><ul><li>фиксированная сумма</li><li>один человек</li><li>только свои приложения: чат, Claude Code</li></ul></div>
+    <div class="col key fx" data-on="1" data-d="120"><h3>Ключ API</h3><ul><li>платите за потраченное</li><li>любое число людей</li><li>из вашей программы</li></ul></div>
   </div>
   <p class="foot fx fade" data-on="1" data-d="400"><b data-k="costPerCall"></b> за обращение · <b data-k="costPerHead"></b> на участника за неделю</p>
 </section>
@@ -579,7 +579,7 @@
     <div class="tr"><span>Telegram Bot API</span><span>токен от BotFather</span><span>любой бот; токен за 5 минут</span></div>
     <div class="tr"><span>GitHub</span><span>код и история правок</span><span>когда помощник собран</span></div>
     <div class="tr"><span>Домашний ПК или сервер</span><span>где помощник живёт</span><span>нужно круглосуточно</span></div>
-    <div class="tr"><span>Подписка</span><span>один человек в одном окне</span><span>ничего из этого не нужно</span></div>
+    <div class="tr"><span>Подписка</span><span>один человек, свои приложения</span><span>личная работа, свой бот не нужен</span></div>
   </div>
 </section>
 
@@ -680,8 +680,8 @@
   </svg>
   <div class="way fx" data-on="1" data-d="450" style="top:258px"><b>Проект в ChatGPT или Claude</b><ol><li><span>1</span>создать</li><li><span>2</span>вставить инструкцию</li><li><span>3</span>загрузить файлы</li><li><span>4</span>первый запрос</li></ol></div>
   <div class="way fx" data-on="2" data-d="450" style="top:398px"><b>Папка и агент на компьютере</b><ol><li><span>1</span>распаковать</li><li><span>2</span>открыть агента в папке</li><li><span>3</span>«работай по ТЗ»</li></ol></div>
-  <div class="way fx" data-on="3" data-d="450" style="top:538px"><b>Бот</b><ol><li><span>1</span>отдать пакет агенту</li><li><span>2</span>«собери бота для Telegram, спроси токен и ключ»</li></ol></div>
-  <div class="fixline fx" data-on="3" data-d="800"><span class="pill mono">ТЗ.md</span><span>Не тот результат — правьте ТЗ: вход, выход, проверки. Бот показал структуру, дальше пишете сами</span></div>
+  <div class="way fx" data-on="3" data-d="450" style="top:538px"><b>Бот</b><ol><li><span>1</span>отдать пакет агенту</li><li><span>2</span>«собери бота для Telegram; токен и ключ впишу в .env сам»</li></ol></div>
+  <div class="fixline fx" data-on="3" data-d="800"><span class="pill mono">ТЗ.md</span><span>Не тот результат — правьте ТЗ: вход, выход, проверки, и пересоберите из него инструкцию агентом</span></div>
 </section>
 
 <!-- 17 ────────────────────────────────────────── -->
@@ -693,16 +693,16 @@
   <div class="zone up" style="left:350px;text-align:center"><b>Иногда</b></div>
   <div class="zone dn" style="left:350px;text-align:center"><span>проект: открыли, запустили</span><small>вечер</small></div>
   <div class="zone up" style="left:744px;text-align:center"><b>Каждый день сами</b></div>
-  <div class="zone dn" style="left:744px;text-align:center"><span>приложение или скрипт, одна кнопка</span><small>день</small></div>
+  <div class="zone dn" style="left:744px;text-align:center"><span>скрипт или приложение, запуск одной кнопкой</span><small>день</small></div>
   <div class="zone up" style="left:1174px;text-align:right"><b>Само, по расписанию</b></div>
-  <div class="zone dn" style="left:1174px;text-align:right"><span>агент или бот, результат приходит сам</span><small>неделя</small></div>
+  <div class="zone dn" style="left:1174px;text-align:right"><span>тот же скрипт или агент в планировщике, результат приходит сам</span><small>неделя</small></div>
   <p class="moral fx" data-on="3" data-d="700">Не делайте агента там, где хватит проекта или приложения</p>
 </section>
 
 <!-- 18 ────────────────────────────────────────── -->
 <section class="slide" id="s18" data-n="19" data-block="Кейсы" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Рейсы для руководителя</span></span></h2>
-  <p class="cond mono fx fade" data-d="300"><b>условия постоянные:</b> бизнес · вылет после 10:00 · стыковка до 3 ч · в Лондоне Хитроу, в Милане Линате · 8 сайтов поиска</p>
+  <p class="cond mono fx fade" data-d="300"><b>условия постоянные:</b> бизнес · вылет лучше после 10:00 · стыковка до 3 ч · в Лондоне Хитроу, в Милане Линате · 8 сайтов поиска</p>
   <p class="thought fx" data-on="2" data-d="700">Под каждую преграду — своё решение, оно записано в ТЗ</p>
   <div class="acc fx" data-on="2" data-d="100" style="top:500px"><span class="stamp mono">WhatsApp закрыт</span><p>запросы шефа приходят в Telegram‑бота, без ручной пересылки</p></div>
   <div class="acc fx" data-on="2" data-d="350" style="top:620px"><span class="stamp mono">сайты блокируют</span><p>робот‑браузер ходит по сайтам авиакомпаний через прокси, где есть — API; страницы смотрит модель</p></div>
@@ -719,7 +719,7 @@
 
 <!-- 19 ────────────────────────────────────────── -->
 <section class="slide" id="s24" data-n="20" data-block="Кейсы" data-steps="3">
-  <h2 class="h-m ttl"><span class="mask"><span>Одно ТЗ — два решения</span></span></h2>
+  <h2 class="h-m ttl"><span class="mask"><span>Одна задача — два процесса</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <path class="ln-main" id="s24-t" d="M-30 460 H300"/>
     <path class="ln-main" id="s24-a" d="M300 460 C360 460 360 300 420 300 H1270"/>
@@ -735,12 +735,12 @@
   <div class="stp up fx" data-on="1" data-d="600" style="left:910px">бот ищет на агрегаторах билетов</div>
   <div class="stp up fx" data-on="1" data-d="750" style="left:1150px">сайты блокируют — снимки с телефона</div>
   <div class="verdict up fx" data-on="1" data-d="950"><span class="stamp mono">три действия руками</span></div>
-  <div class="who fx fade" data-on="2" style="top:644px">как с опытом</div>
+  <div class="who fx fade" data-on="2" style="top:644px">как с опытом · проект</div>
   <div class="stp dn fx" data-on="2" data-d="300" style="left:430px">шеф пишет в Telegram‑бота</div>
   <div class="stp dn fx" data-on="2" data-d="450" style="left:670px">робот‑браузер ходит по сайтам авиакомпаний</div>
   <div class="stp dn fx" data-on="2" data-d="600" style="left:910px">где у сайта есть API — берём через API</div>
   <div class="stp dn fx" data-on="2" data-d="750" style="left:1150px">страницы читает модель, варианты приходят в Telegram</div>
-  <div class="verdict dn fx" data-on="2" data-d="950"><span class="stamp mono sig">руками ничего</span></div>
+  <div class="verdict dn fx" data-on="2" data-d="950"><span class="stamp mono sig">руками ничего · проект</span></div>
   <p class="moral fx" data-on="3" data-d="200">Бот знает только то, что ему сказали. Опыт добавляет человек — задачей агенту</p>
 </section>
 <section class="slide" id="s19" data-n="21" data-block="Кейсы" data-steps="3">
@@ -970,7 +970,7 @@ document.querySelectorAll('img[data-shot]').forEach(img => {
 // ── слайд 10: веер из шести случаев ──
 const S10 = [
   ['Открытый сайт без входа', 'агент заходит сам; из РФ может понадобиться прокси'],
-  ['Сайт с вашим входом', 'вы отдаёте файл или снимок; официальный ключ API; расширение в вашей сессии. Пароль не отдаётся'],
+  ['Сайт с вашим входом', 'вы отдаёте файл или снимок; официальный ключ API; расширение в вашей сессии: только нужные сайты, отправку подтверждаете вы. Пароль не отдаётся'],
   ['Система компании: 1С, CRM, панель', 'выгрузка или ключ системы, по согласованию с ИТ'],
   ['Мессенджер', 'WhatsApp закрыт, Telegram открыт: бот и есть вход'],
   ['Файлы', 'загрузить в проект или положить в папку агента'],
