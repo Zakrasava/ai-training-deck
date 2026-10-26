@@ -15,8 +15,15 @@
   // данные в текст: <b data-k="calls"></b>
   document.querySelectorAll('[data-k]').forEach(el => { el.textContent = D[el.dataset.k]; });
 
-  function fit() { stage.style.setProperty('--k', Math.min(innerWidth / 1600, innerHeight / 900)); }
-  addEventListener('resize', fit); fit();
+  // масштаб сцены по меньшему из визуального и layout-вьюпорта: на телефоне они расходятся (панели браузера, вырез),
+  // а сцена центрируется в layout-боксе; повторный fit после загрузки и поворота — вьюпорт телефона оседает не сразу
+  function fit() {
+    const de = document.documentElement, w = Math.min(innerWidth, de.clientWidth || innerWidth), h = Math.min(innerHeight, de.clientHeight || innerHeight);
+    stage.style.setProperty('--k', Math.min(w / 1600, h / 900));
+  }
+  addEventListener('resize', fit); addEventListener('orientationchange', fit); addEventListener('load', fit);
+  if (window.visualViewport) visualViewport.addEventListener('resize', fit);
+  fit(); setTimeout(fit, 300); setTimeout(fit, 1000);
 
   // ── полоса внизу ──
   const ICON_MENU = '<svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
