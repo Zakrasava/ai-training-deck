@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>И · Маршрутный лист · слайд 4</title>
+<style>
+@font-face{font-family:Geologica;src:url(../fonts/geologica-cyr.woff2) format("woff2");font-weight:300 800;font-display:block;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Geologica;src:url(../fonts/geologica-lat.woff2) format("woff2");font-weight:300 800;font-display:block;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"JB Mono";src:url(../fonts/jbmono-cyr.woff2) format("woff2");font-weight:400 600;font-display:block;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"JB Mono";src:url(../fonts/jbmono-lat.woff2) format("woff2");font-weight:400 600;font-display:block;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--bg:#EEEBE4;--ink:#18191B;--muted:#6B675F;--hair:#D3CEC3;--signal:#E0482F;--paper:#F7F5F0}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:#E4E0D7;overflow:hidden}
+body{font-family:Geologica,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform:translate(-50%,-50%) scale(var(--k,1));overflow:hidden;background:var(--bg)}
+.mono{font-family:"JB Mono",ui-monospace,monospace}
+h1{position:absolute;left:96px;top:84px;font-weight:700;font-size:112px;line-height:.98;letter-spacing:-.05em}
+h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+h1 .ln span{display:block}
+.stats{position:absolute;right:96px;top:96px;width:420px;display:flex;flex-direction:column;gap:22px}
+.stat{display:grid;grid-template-columns:170px 1fr;align-items:baseline;gap:18px;border-top:1px solid var(--hair);padding-top:14px}
+.stat b{font-weight:600;font-size:48px;letter-spacing:-.03em;line-height:1}
+.stat span{font-size:20px;color:var(--muted);line-height:1.25}
+svg.map{position:absolute;inset:0;width:1600px;height:900px;overflow:visible}
+.ln-main{fill:none;stroke:var(--ink);stroke-width:12;stroke-linecap:round;stroke-linejoin:round}
+.ln-back{fill:none;stroke:var(--signal);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.st{fill:var(--paper);stroke:var(--ink);stroke-width:6}
+.st.me{stroke:var(--signal)}
+.label{position:absolute;width:260px}
+.label b{display:block;font-weight:600;font-size:30px;letter-spacing:-.02em;line-height:1.05}
+.label span{display:block;font-size:18px;color:var(--muted);margin-top:8px;line-height:1.35}
+.label.up{top:470px}
+.label.dn{top:660px}
+.keypill{position:absolute;left:772px;top:598px;height:44px;padding:0 18px;border-radius:22px;background:var(--ink);color:var(--paper);display:flex;align-items:center;font-size:20px;white-space:nowrap;overflow:hidden}
+.back{position:absolute;left:470px;top:772px;padding:0 14px;background:var(--bg);font-size:20px;color:var(--signal)}
+.tok{position:absolute;left:0;top:0;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 6px rgba(224,72,47,.18)}
+.num{position:absolute;right:96px;bottom:56px;font-size:18px;color:var(--muted)}
+.rot{position:absolute;inset:0;display:none;place-items:center;background:var(--bg);font-size:20px;z-index:9}
+@media (orientation:portrait) and (max-width:700px){.rot{display:grid}}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <h1><span class="ln"><span>Как устроен</span></span><span class="ln"><span>помощник ТЗ</span></span></h1>
+
+  <div class="stats">
+    <div class="stat"><b class="mono" data-to="187">187</b><span>обращений к моделям за неделю</span></div>
+    <div class="stat"><b class="mono" data-to="3.85" data-suf=" $">3,85 $</b><span>на восемь человек</span></div>
+    <div class="stat"><b class="mono">0</b><span>имён и Telegram ID уходит к модели</span></div>
+  </div>
+
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path id="main" class="ln-main" d="M-30 620 H1400"/>
+    <path id="back" class="ln-back" d="M1400 620 C1400 700 1400 784 1320 784 H240 C160 784 160 700 160 620"/>
+    <g id="sts">
+      <circle class="st me" cx="160" cy="620" r="20"/>
+      <circle class="st" cx="470" cy="620" r="20"/>
+      <circle class="st" cx="1090" cy="620" r="20"/>
+      <circle class="st" cx="1400" cy="620" r="20"/>
+    </g>
+  </svg>
+  <div class="keypill mono" id="key">ключ API · OpenRouter</div>
+
+  <div class="label up" style="left:136px"><b>Вы<br>и телефон</b></div>
+  <div class="label dn" style="left:192px"><span class="mono">Telegram,<br>кнопки, файлы</span></div>
+  <div class="label up" style="left:446px"><b>Бот<br>на моём ПК</b></div>
+  <div class="label dn" style="left:446px"><span class="mono">Python · 8 шагов<br>память SQLite</span></div>
+  <div class="label up" style="left:770px"><b>Одна дверь<br>ко всем моделям</b></div>
+  <div class="label dn" style="left:776px;top:666px"><span class="mono">без обучения<br>на ваших данных</span></div>
+  <div class="label up" style="left:1066px"><b>Модель<br>спрашивает</b></div>
+  <div class="label dn" style="left:1066px"><span class="mono">в конце<br>пишет ТЗ</span></div>
+  <div class="label up" style="left:1376px;width:200px"><b>Пакет</b></div>
+  <div class="label dn" style="left:1166px;width:206px;text-align:right"><span class="mono">ТЗ · правила<br>запуск · образец</span></div>
+  <div class="back mono" id="backlbl">пакет возвращается в Telegram</div>
+
+  <div class="tok" id="tok"></div>
+  <div class="num mono">04 / 24</div>
+  <div class="rot">Поверните телефон</div>
+</div>
+<script>
+const stage=document.getElementById('stage');
+function fit(){stage.style.setProperty('--k',Math.min(innerWidth/1600,innerHeight/900))}
+addEventListener('resize',fit);fit();
+const Q=new URLSearchParams(location.search),T=Q.has('t')?parseFloat(Q.get('t')):null;
+const EXPO='cubic-bezier(.16,1,.3,1)',INOUT='cubic-bezier(.45,.05,.55,.95)';
+const A=(el,kf,o)=>el.animate(kf,Object.assign({fill:'both',easing:EXPO},o));
+document.fonts.ready.then(()=>{
+  document.querySelectorAll('h1 .ln span').forEach((s,i)=>A(s,[{transform:'translateY(110%)'},{transform:'none'}],{duration:1000,delay:100+i*110}));
+  document.querySelectorAll('.stat').forEach((s,i)=>A(s,[{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'none'}],{duration:700,delay:450+i*90}));
+  const main=document.getElementById('main'),Lm=main.getTotalLength();
+  main.style.strokeDasharray=Lm;
+  const D0=600,DM=2000;
+  A(main,[{strokeDashoffset:Lm},{strokeDashoffset:0}],{duration:DM,delay:D0,easing:INOUT});
+  const back=document.getElementById('back'),Lb=back.getTotalLength();
+  back.style.strokeDasharray=Lb;
+  A(back,[{strokeDashoffset:Lb},{strokeDashoffset:0}],{duration:1300,delay:D0+DM+100,easing:INOUT});
+  // stations: pop when the line reaches them (inverse of the in-out ease, approximated)
+  const xs=[160,470,1090,1400],inv=f=>f<.5?Math.sqrt(f/2)*1.0:1-Math.sqrt((1-f)/2);
+  document.querySelectorAll('#sts circle').forEach((c,i)=>{
+    const f=(xs[i]+30)/1430, d=D0+DM*inv(f);
+    c.style.transformOrigin=xs[i]+'px 620px';
+    A(c,[{transform:'scale(0)'},{transform:'scale(1)'}],{duration:500,delay:d});
+  });
+  document.querySelectorAll('.label').forEach(l=>{
+    const x=parseFloat(l.style.left)+24,f=(x+30)/1430,d=D0+DM*inv(f);
+    A(l,[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:600,delay:d+80});
+  });
+  const key=document.getElementById('key');
+  A(key,[{maxWidth:'0px',paddingLeft:'0px',paddingRight:'0px'},{maxWidth:'360px',paddingLeft:'18px',paddingRight:'18px'}],{duration:700,delay:D0+DM*inv(.56)});
+  A(document.getElementById('backlbl'),[{opacity:0},{opacity:1}],{duration:500,delay:D0+DM+800});
+  // one answer token rides the whole loop once, then rests at "Вы"
+  const tok=document.getElementById('tok'),pts=[];
+  for(let i=0;i<=40;i++){const p=main.getPointAtLength(Lm*(i/40));if(p.x>=160)pts.push(p)}
+  for(let i=0;i<=40;i++){pts.push(back.getPointAtLength(Lb*(i/40)))}
+  A(tok,pts.map(p=>({transform:`translate(${p.x}px,${p.y}px)`})),{duration:2600,delay:D0+DM+200,easing:'cubic-bezier(.6,0,.4,1)'});
+  A(tok,[{opacity:0},{opacity:1}],{duration:200,delay:D0+DM+200});
+
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(T!==null||reduce){document.getAnimations().forEach(a=>{a.pause();a.currentTime=reduce?99999:T*1000})}
+  document.documentElement.dataset.ready=1;
+});
+</script>
+</body>
+</html>
