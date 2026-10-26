@@ -247,6 +247,14 @@
 #s24 .verdict .stamp.sig{border-color:var(--signal);color:var(--signal)}
 #s24 .moral{position:absolute;left:96px;top:776px;width:1408px;font-weight:700;font-size:34px;letter-spacing:-.03em;line-height:1.1}
 
+/* ── не понимаете — спросите ── */
+#s26 .ask{position:absolute;left:96px;width:1408px;display:grid;grid-template-columns:90px 1fr;align-items:center;padding:24px 0;border-top:1px solid var(--hair)}
+#s26 .ask.last{border-bottom:1px solid var(--hair)}
+#s26 .ask i{font:400 24px "JB Mono",monospace;font-style:normal;color:var(--signal)}
+#s26 .ask p{font-weight:600;font-size:38px;letter-spacing:-.025em;line-height:1.1}
+#s26 .where{position:absolute;left:96px;top:628px;font-size:20px;color:var(--muted)}
+#s26 .warn{position:absolute;left:96px;top:690px;width:1408px;font-weight:700;font-size:34px;letter-spacing:-.03em;line-height:1.15}
+
 /* ── 18 · рейсы для руководителя ── */
 #s18 .cond{position:absolute;left:96px;top:236px;width:900px;font-size:22px;color:var(--muted);line-height:1.5}
 #s18 .cond b{color:var(--ink);font-weight:400}
@@ -366,6 +374,7 @@
 <div class="stage" id="stage">
 
 <!-- 1 ─────────────────────────────────────────── -->
+<!-- 1 ─────────────────────────────────────────── -->
 <section class="slide" id="s1" data-n="1" data-block="Вход" data-steps="1">
   <h1 class="h-xl"><span class="mask"><span>Свой помощник:</span></span><span class="mask" data-d="110"><span>от ТЗ до запуска</span></span></h1>
   <p class="lead fx" data-d="400">Встреча 2 · 90 минут · смотреть можно с телефона</p>
@@ -413,6 +422,8 @@
   </div>
   <p class="moral fx" data-on="2" data-d="200">Кажется, вопросы дурацкие? Это пробелы в задаче. Всё из головы собирается, если пройти по шагам</p>
 </section>
+
+<!-- 4 ─────────────────────────────────────────── -->
 <section class="slide" id="s3" data-n="4" data-block="Вход" data-steps="1">
   <h2 class="h-l p1"><span class="mask"><span>Писать код не нужно.</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
@@ -433,7 +444,7 @@
   <p class="h-m p2 fx" data-d="500">Нужно описать задачу и знать, <u>до чего помощник дотянется.</u></p>
 </section>
 
-<!-- 4 ─────────────────────────────────────────── -->
+<!-- 5 ─────────────────────────────────────────── -->
 <section class="slide" id="s4" data-n="5" data-block="Кейс бота" data-steps="5">
   <h2 class="h-l"><span class="mask"><span>Как устроен</span></span><span class="mask" data-d="110"><span>помощник ТЗ</span></span></h2>
   <div class="stats">
@@ -465,7 +476,7 @@
   <div class="tok" id="s4-tok"></div>
 </section>
 
-<!-- 5 ─────────────────────────────────────────── -->
+<!-- 6 ─────────────────────────────────────────── -->
 <section class="slide" id="s5" data-n="6" data-block="Кейс бота" data-steps="4">
   <h2 class="h-m ttl"><span class="mask"><span>В каком порядке</span></span><span class="mask" data-d="90"><span>я его делал</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
@@ -490,7 +501,7 @@
   </div>
 </section>
 
-<!-- 6 ─────────────────────────────────────────── -->
+<!-- 7 ─────────────────────────────────────────── -->
 <section class="slide" id="s6" data-n="7" data-block="Кейс бота" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Как я с ним разговаривал</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
@@ -513,7 +524,7 @@
   <p class="moral fx" data-on="2" data-d="900">Не бояться: говорить словами и уточнять</p>
 </section>
 
-<!-- 7 ─────────────────────────────────────────── -->
+<!-- 8 ─────────────────────────────────────────── -->
 <section class="slide" id="s7" data-n="8" data-block="Кейс бота" data-steps="1">
   <h2 class="h-m ttl"><span class="mask"><span>Почему бот ходит через ключ</span></span></h2>
   <div class="big">
@@ -532,7 +543,7 @@
   <p class="foot fx fade" data-on="1" data-d="400"><b data-k="costPerCall"></b> за обращение · <b data-k="costPerHead"></b> на участника за неделю</p>
 </section>
 
-<!-- 8 ─────────────────────────────────────────── -->
+<!-- 9 ─────────────────────────────────────────── -->
 <section class="slide" id="s8" data-n="9" data-block="Ваши ТЗ" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Три ТЗ, три пути</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
@@ -549,144 +560,8 @@
   <div class="br fx" data-on="2" data-d="600" style="top:656px"><b>Агент на компьютере</b><span class="how">много шагов по сайтам и файлам</span><span class="who mono">коллега из земли: справка по объекту</span></div>
 </section>
 
-<!-- 9 ─────────────────────────────────────────── -->
-<section class="slide" id="s9" data-n="10" data-block="Ваши ТЗ" data-steps="6">
-  <h2 class="h-m ttl"><span class="mask"><span>Одна из восьми — по щелчку</span></span></h2>
-  <div class="rows" id="s9-rows"></div>
-</section>
-
-<!-- 10 ────────────────────────────────────────── -->
-<section class="slide" id="s10" data-n="11" data-block="Ваши ТЗ" data-steps="7">
-  <h2 class="h-m ttl"><span class="mask"><span>Карта подключений</span></span></h2>
-  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
-    <path class="ln-main" id="s10-t" d="M-30 490 H120"/>
-    <g id="s10-fan"></g><g id="s10-in"></g>
-    <circle class="st hubst" cx="1090" cy="490" r="24"/>
-  </svg>
-  <div id="s10-cases"></div>
-  <div class="hub fx" data-on="7" data-d="700"><span class="k mono">вставка В2 · скажите агенту</span>
-    <p>Прежде чем делать: перечисли, к каким файлам, сайтам, программам и учётным записям тебе нужен доступ для этой задачи, и чего у тебя сейчас нет. Предложи для каждого случая, как получить доступ без передачи моих паролей.</p></div>
-</section>
-
-<!-- 11 ────────────────────────────────────────── -->
-<section class="slide" id="s11" data-n="12" data-block="Ваши ТЗ" data-steps="8">
-  <h2 class="h-m ttl"><span class="mask"><span>Чем помощник думает</span></span></h2>
-  <div class="tbl fx" data-d="250" id="s11-t">
-    <div class="tr th mono"><span>слово</span><span>что это</span><span>когда нужно</span></div>
-    <div class="tr"><span>OpenRouter</span><span>одна дверь ко многим моделям</span><span>бот на многих людей</span></div>
-    <div class="tr"><span>Ключ API OpenAI, Anthropic, Google</span><span>прямая дверь к одной компании</span><span>важна конкретная модель</span></div>
-    <div class="tr"><span>YandexGPT, GigaChat</span><span>модели на серверах в России</span><span>когда это требование</span></div>
-    <div class="tr"><span>Ollama</span><span>модель на своём компьютере или сервере</span><span>документы нельзя выпускать</span></div>
-    <div class="tr"><span>Telegram Bot API</span><span>токен от BotFather</span><span>любой бот; токен за 5 минут</span></div>
-    <div class="tr"><span>GitHub</span><span>код и история правок</span><span>когда помощник собран</span></div>
-    <div class="tr"><span>Домашний ПК или сервер</span><span>где помощник живёт</span><span>нужно круглосуточно</span></div>
-    <div class="tr"><span>Подписка</span><span>один человек, свои приложения</span><span>личная работа, свой бот не нужен</span></div>
-  </div>
-</section>
-
-<!-- 12 ────────────────────────────────────────── -->
-<section class="slide" id="s12" data-n="13" data-block="Ваши ТЗ" data-steps="2">
-  <h2 class="h-m ttl"><span class="mask"><span>Данные и безопасность</span></span></h2>
-  <div class="rule fx" data-on="0" data-d="300" style="top:226px"><i>01</i><p>Персональные данные и договоры в облако не отправлять без решения руководства и ИТ</p></div>
-  <div class="rule fx" data-on="1" style="top:410px"><i>02</i><p>Провайдер живёт по своим законам и правилам: решаем, что отдаём, до запуска</p></div>
-  <div class="rule fx" data-on="2" style="top:600px"><i>03</i><div><p>Можно отдавать — облако: Claude, Codex, любая модель. Нельзя — своя модель на сервере</p><small class="mono">ГСП: Qwen3 через Ollama, в облако ничего</small></div></div>
-  <figure class="gsp need-shot fx" data-on="2" data-d="300"><img data-shot="12-gsp-cabinet" alt="Кабинет ГСП-помощника, обезличенно"></figure>
-  <div class="no-shot">
-  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
-    <path class="ln-main" id="s12-ln" d="M1200 320 V620"/>
-    <circle class="st" data-on="2" cx="1200" cy="320" r="18"/>
-    <circle class="st" data-on="2" cx="1200" cy="470" r="18"/>
-    <circle class="st" data-on="2" cx="1200" cy="620" r="18"/>
-  </svg>
-  <div class="lbl fx" data-on="2" data-d="300" style="top:300px">Сервер в РФ<span class="mono">FastAPI, PostgreSQL</span></div>
-  <div class="lbl fx" data-on="2" data-d="450" style="top:450px">Модель Qwen3<span class="mono">через Ollama</span></div>
-  <div class="lbl fx" data-on="2" data-d="600" style="top:600px">Кабинет<span class="mono">Nginx, HTTPS</span></div>
-  <div class="nocloud mono fx fade" data-on="2" data-d="800">облачные модели запрещены</div>
-  </div>
-</section>
-
-<!-- 13 ────────────────────────────────────────── -->
-<section class="slide" id="s13" data-n="14" data-block="Ваши ТЗ" data-steps="0">
-  <h2 class="h-m ttl"><span class="mask"><span>Обсуждение · 3 минуты</span></span></h2>
-  <div class="tpl">
-    <div class="fx" data-d="250">Моя задача:</div>
-    <div class="fx" data-d="350">Помощнику нужен доступ к:</div>
-    <div class="fx" data-d="450">Доступ даёт:</div>
-  </div>
-  <p class="ex fx fade" data-d="700"><b>Одной строкой в чат встречи.</b> Пример: «сводка расходов, доступ к папке с PDF и к фото чеков». Не знаете, к чему нужен доступ, — так и пишите</p>
-</section>
-
-<!-- 14 ────────────────────────────────────────── -->
-<section class="slide" id="s14" data-n="15" data-block="Демо" data-steps="0">
-  <h2 class="h-m ttl"><span class="mask"><span>Демо: результат</span></span></h2>
-  <div class="chkwrap">
-  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
-    <path class="ln-main" id="s14-ln" d="M-30 238 H1164" style="stroke-width:8"/>
-    <path class="ln-back" id="s14-loop" d="M1164 238 C1164 330 1164 362 1124 362 H148 C108 362 108 330 108 238"/>
-    <circle class="st on" cx="108" cy="238" r="16"/>
-    <circle class="st on" cx="460" cy="238" r="16"/>
-    <circle class="st on" cx="812" cy="238" r="16"/>
-    <circle class="st on" cx="1164" cy="238" r="16"/>
-  </svg>
-  <button class="chk fx" data-d="250" style="left:96px" data-i="0"><i>1</i><p>Вложения = покупка + ремонт + перегородки</p></button>
-  <button class="chk fx" data-d="340" style="left:448px" data-i="1"><i>2</i><p>Срок возврата не короче срока ремонта</p></button>
-  <button class="chk fx" data-d="430" style="left:800px" data-i="2"><i>3</i><p>Вводные стоят на листе «Предпосылки»</p></button>
-  <button class="chk fx" data-d="520" style="left:1152px" data-i="3"><i>4</i><p>Каждое число совпадает с листом «Итоги»</p></button>
-  </div>
-  <div class="frame fx" data-d="500"><img data-shot="14-result" alt="Таблица сравнения двух вариантов из папки агента"></div>
-</section>
-
-<!-- 15 ────────────────────────────────────────── -->
-<section class="slide" id="s15" data-n="16" data-block="Демо" data-steps="2">
-  <h2 class="h-m ttl"><span class="mask"><span>Что сделал агент</span></span></h2>
-  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
-    <path class="ln-main" id="s15-ln" d="M-30 520 H1640"/>
-    <circle class="st" data-on="0" cx="150.0" cy="520" r="16"/>
-    <circle class="st" data-on="0" cx="312.5" cy="520" r="16"/>
-    <circle class="st" data-on="0" cx="475.0" cy="520" r="16"/>
-    <circle class="st" data-on="1" cx="637.5" cy="520" r="16"/>
-    <circle class="st" data-on="1" cx="800.0" cy="520" r="16"/>
-    <circle class="st me" data-on="1" cx="962.5" cy="520" r="16"/>
-    <circle class="st" data-on="2" cx="1125.0" cy="520" r="16"/>
-    <circle class="st" data-on="2" cx="1287.5" cy="520" r="16"/>
-    <circle class="st" data-on="2" cx="1450.0" cy="520" r="16"/>
-  </svg>
-  <div class="lb up fx" data-on="0" data-d="350" style="left:136px"><span class="tm" data-t="0"></span>прочитал ТЗ</div>
-  <div class="lb dn fx" data-on="0" data-d="510" style="left:298px"><span class="tm" data-t="1"></span>скопировал файл, оригинал не тронул</div>
-  <div class="lb up fx" data-on="0" data-d="670" style="left:461px"><span class="tm" data-t="2"></span>внёс четыре вводные, проверил пересчёт</div>
-  <div class="lb dn fx" data-on="1" data-d="350" style="left:624px"><span class="tm" data-t="3"></span>выписал показатели первого варианта</div>
-  <div class="lb up fx" data-on="1" data-d="510" style="left:786px"><span class="tm" data-t="4"></span>нашёл цену перегородок, три источника</div>
-  <div class="lb dn ask fx" data-on="1" data-d="670" style="left:948px"><span class="tm" data-t="5"></span>остановился спросить</div>
-  <div class="lb up fx" data-on="2" data-d="350" style="left:1111px"><span class="tm" data-t="6"></span>досчитал второй вариант на новых листах</div>
-  <div class="lb dn fx" data-on="2" data-d="510" style="left:1274px"><span class="tm" data-t="7"></span>собрал таблицу</div>
-  <div class="lb up fx" data-on="2" data-d="670" style="left:1290px;width:180px;text-align:right"><span class="tm" data-t="8"></span>провёл проверки, отдал</div>
-</section>
-
-<!-- 16 ────────────────────────────────────────── -->
-<section class="slide" id="s16" data-n="17" data-block="Демо" data-steps="3">
-  <h2 class="h-m ttl"><span class="mask"><span>Как повторить самим</span></span></h2>
-  <div class="files">
-    <div class="file fx" data-d="250"><i></i><span>ТЗ<small>что и как, с проверками</small></span></div>
-    <div class="file fx" data-d="330"><i></i><span>Файл правил<small>или инструкция проекта</small></span></div>
-    <div class="file fx" data-d="410"><i></i><span>«Как запустить»<small>шаги по порядку</small></span></div>
-    <div class="file fx" data-d="490"><i></i><span>Образец результата<small>как должен выглядеть итог</small></span></div>
-  </div>
-  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
-    <path class="ln-main" id="s16-b0" d="M470 380 C560 380 560 280 660 280"/>
-    <path class="ln-main" id="s16-b1" d="M470 380 C560 380 560 420 660 420"/>
-    <path class="ln-main" id="s16-b2" d="M470 380 C560 380 560 560 660 560"/>
-    <circle class="st" data-on="1" cx="660" cy="280" r="16"/>
-    <circle class="st" data-on="2" cx="660" cy="420" r="16"/>
-    <circle class="st" data-on="3" cx="660" cy="560" r="16"/>
-  </svg>
-  <div class="way fx" data-on="1" data-d="450" style="top:258px"><b>Проект в ChatGPT или Claude</b><ol><li><span>1</span>создать</li><li><span>2</span>вставить инструкцию</li><li><span>3</span>загрузить файлы</li><li><span>4</span>первый запрос</li></ol></div>
-  <div class="way fx" data-on="2" data-d="450" style="top:398px"><b>Папка и агент на компьютере</b><ol><li><span>1</span>распаковать</li><li><span>2</span>открыть агента в папке</li><li><span>3</span>«работай по ТЗ»</li></ol></div>
-  <div class="way fx" data-on="3" data-d="450" style="top:538px"><b>Бот</b><ol><li><span>1</span>отдать пакет агенту</li><li><span>2</span>«собери бота для Telegram; токен и ключ впишу в .env сам»</li></ol></div>
-  <div class="fixline fx" data-on="3" data-d="800"><span class="pill mono">ТЗ.md</span><span>Не тот результат — правьте ТЗ: вход, выход, проверки, и пересоберите из него инструкцию агентом</span></div>
-</section>
-
-<!-- 17 ────────────────────────────────────────── -->
-<section class="slide" id="s17" data-n="18" data-block="Демо" data-steps="3">
+<!-- 10 ─────────────────────────────────────────── -->
+<section class="slide" id="s17" data-n="10" data-block="Ваши ТЗ" data-steps="3">
   <h2 class="h-m ttl"><span class="mask"><span>Разово или регулярно</span></span></h2>
   <div class="scale fx fade" data-d="250"><i class="tick" style="left:111px"></i><i class="tick" style="left:505px"></i><i class="tick" style="left:899px"></i><i class="tick" style="left:1293px"></i><b class="knob" id="s17-k"></b></div>
   <div class="zone up" style="left:96px"><b>Раз</b></div>
@@ -700,8 +575,14 @@
   <p class="moral fx" data-on="3" data-d="700">Не делайте агента там, где хватит проекта или приложения</p>
 </section>
 
-<!-- 18 ────────────────────────────────────────── -->
-<section class="slide" id="s18" data-n="19" data-block="Кейсы" data-steps="2">
+<!-- 11 ─────────────────────────────────────────── -->
+<section class="slide" id="s9" data-n="11" data-block="Ваши ТЗ" data-steps="6">
+  <h2 class="h-m ttl"><span class="mask"><span>Одна из восьми — по щелчку</span></span></h2>
+  <div class="rows" id="s9-rows"></div>
+</section>
+
+<!-- 12 ─────────────────────────────────────────── -->
+<section class="slide" id="s18" data-n="12" data-block="Ваши ТЗ" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Рейсы для руководителя</span></span></h2>
   <p class="cond mono fx fade" data-d="300"><b>условия постоянные:</b> бизнес · вылет лучше после 10:00 · стыковка до 3 ч · в Лондоне Хитроу, в Милане Линате · 8 сайтов поиска</p>
   <p class="thought fx" data-on="2" data-d="700">Под каждую преграду — своё решение, оно записано в ТЗ</p>
@@ -718,8 +599,8 @@
   </div>
 </section>
 
-<!-- 19 ────────────────────────────────────────── -->
-<section class="slide" id="s24" data-n="20" data-block="Кейсы" data-steps="3">
+<!-- 13 ─────────────────────────────────────────── -->
+<section class="slide" id="s24" data-n="13" data-block="Ваши ТЗ" data-steps="3">
   <h2 class="h-m ttl"><span class="mask"><span>Одна задача — два процесса</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <path class="ln-main" id="s24-t" d="M-30 460 H300"/>
@@ -744,7 +625,9 @@
   <div class="verdict dn fx" data-on="2" data-d="950"><span class="stamp mono sig">руками ничего · проект</span></div>
   <p class="moral fx" data-on="3" data-d="200">Бот знает только то, что ему сказали. Опыт добавляет человек — задачей агенту</p>
 </section>
-<section class="slide" id="s19" data-n="21" data-block="Кейсы" data-steps="3">
+
+<!-- 14 ─────────────────────────────────────────── -->
+<section class="slide" id="s19" data-n="14" data-block="Ваши ТЗ" data-steps="3">
   <h2 class="h-m ttl"><span class="mask"><span>Справка по объекту</span></span></h2>
   <p class="rule fx" data-on="1" data-d="300" style="top:250px">Источник — документ со ссылкой<small>подсказка DeepSeek или Алисы источником быть не может</small></p>
   <p class="rule fx" data-on="2" data-d="300" style="top:450px">Нет данных — «не найдено» и где искали<small>домыслы запрещены словами в ТЗ</small></p>
@@ -760,8 +643,148 @@
   </div>
 </section>
 
-<!-- 20 ────────────────────────────────────────── -->
-<section class="slide" id="s20" data-n="22" data-block="Кейсы" data-steps="1">
+<!-- 15 ─────────────────────────────────────────── -->
+<section class="slide" id="s10" data-n="15" data-block="Ваши ТЗ" data-steps="7">
+  <h2 class="h-m ttl"><span class="mask"><span>Карта подключений</span></span></h2>
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="ln-main" id="s10-t" d="M-30 490 H120"/>
+    <g id="s10-fan"></g><g id="s10-in"></g>
+    <circle class="st hubst" cx="1090" cy="490" r="24"/>
+  </svg>
+  <div id="s10-cases"></div>
+  <div class="hub fx" data-on="7" data-d="700"><span class="k mono">вставка В2 · скажите агенту</span>
+    <p>Прежде чем делать: перечисли, к каким файлам, сайтам, программам и учётным записям тебе нужен доступ для этой задачи, и чего у тебя сейчас нет. Предложи для каждого случая, как получить доступ без передачи моих паролей.</p></div>
+</section>
+
+<!-- 16 ─────────────────────────────────────────── -->
+<section class="slide" id="s11" data-n="16" data-block="Ваши ТЗ" data-steps="8">
+  <h2 class="h-m ttl"><span class="mask"><span>Чем помощник думает</span></span></h2>
+  <div class="tbl fx" data-d="250" id="s11-t">
+    <div class="tr th mono"><span>слово</span><span>что это</span><span>когда нужно</span></div>
+    <div class="tr"><span>OpenRouter</span><span>одна дверь ко многим моделям</span><span>бот на многих людей</span></div>
+    <div class="tr"><span>Ключ API OpenAI, Anthropic, Google</span><span>прямая дверь к одной компании</span><span>важна конкретная модель</span></div>
+    <div class="tr"><span>YandexGPT, GigaChat</span><span>модели на серверах в России</span><span>когда это требование</span></div>
+    <div class="tr"><span>Ollama</span><span>модель на своём компьютере или сервере</span><span>документы нельзя выпускать</span></div>
+    <div class="tr"><span>Telegram Bot API</span><span>токен от BotFather</span><span>любой бот; токен за 5 минут</span></div>
+    <div class="tr"><span>GitHub</span><span>код и история правок</span><span>когда помощник собран</span></div>
+    <div class="tr"><span>Домашний ПК или сервер</span><span>где помощник живёт</span><span>нужно круглосуточно</span></div>
+    <div class="tr"><span>Подписка</span><span>один человек, свои приложения</span><span>личная работа, свой бот не нужен</span></div>
+  </div>
+</section>
+
+<!-- 17 ─────────────────────────────────────────── -->
+<section class="slide" id="s12" data-n="17" data-block="Ваши ТЗ" data-steps="2">
+  <h2 class="h-m ttl"><span class="mask"><span>Данные и безопасность</span></span></h2>
+  <div class="rule fx" data-on="0" data-d="300" style="top:226px"><i>01</i><p>Персональные данные и договоры в облако не отправлять без решения руководства и ИТ</p></div>
+  <div class="rule fx" data-on="1" style="top:410px"><i>02</i><p>Провайдер живёт по своим законам и правилам: решаем, что отдаём, до запуска</p></div>
+  <div class="rule fx" data-on="2" style="top:600px"><i>03</i><div><p>Можно отдавать — облако: Claude, Codex, любая модель. Нельзя — своя модель на сервере</p><small class="mono">ГСП: Qwen3 через Ollama, в облако ничего</small></div></div>
+  <figure class="gsp need-shot fx" data-on="2" data-d="300"><img data-shot="12-gsp-cabinet" alt="Кабинет ГСП-помощника, обезличенно"></figure>
+  <div class="no-shot">
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="ln-main" id="s12-ln" d="M1200 320 V620"/>
+    <circle class="st" data-on="2" cx="1200" cy="320" r="18"/>
+    <circle class="st" data-on="2" cx="1200" cy="470" r="18"/>
+    <circle class="st" data-on="2" cx="1200" cy="620" r="18"/>
+  </svg>
+  <div class="lbl fx" data-on="2" data-d="300" style="top:300px">Сервер в РФ<span class="mono">FastAPI, PostgreSQL</span></div>
+  <div class="lbl fx" data-on="2" data-d="450" style="top:450px">Модель Qwen3<span class="mono">через Ollama</span></div>
+  <div class="lbl fx" data-on="2" data-d="600" style="top:600px">Кабинет<span class="mono">Nginx, HTTPS</span></div>
+  <div class="nocloud mono fx fade" data-on="2" data-d="800">облачные модели запрещены</div>
+  </div>
+</section>
+
+<!-- 18 ─────────────────────────────────────────── -->
+<section class="slide" id="s13" data-n="18" data-block="Ваши ТЗ" data-steps="0">
+  <h2 class="h-m ttl"><span class="mask"><span>Обсуждение · 3 минуты</span></span></h2>
+  <div class="tpl">
+    <div class="fx" data-d="250">Моя задача:</div>
+    <div class="fx" data-d="350">Помощнику нужен доступ к:</div>
+    <div class="fx" data-d="450">Доступ даёт:</div>
+  </div>
+  <p class="ex fx fade" data-d="700"><b>Одной строкой в чат встречи.</b> Пример: «сводка расходов, доступ к папке с PDF и к фото чеков». Не знаете, к чему нужен доступ, — так и пишите</p>
+</section>
+
+<!-- 19 ─────────────────────────────────────────── -->
+<section class="slide" id="s14" data-n="19" data-block="Демо" data-steps="0">
+  <h2 class="h-m ttl"><span class="mask"><span>Демо: результат</span></span></h2>
+  <div class="chkwrap">
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="ln-main" id="s14-ln" d="M-30 238 H1164" style="stroke-width:8"/>
+    <path class="ln-back" id="s14-loop" d="M1164 238 C1164 330 1164 362 1124 362 H148 C108 362 108 330 108 238"/>
+    <circle class="st on" cx="108" cy="238" r="16"/>
+    <circle class="st on" cx="460" cy="238" r="16"/>
+    <circle class="st on" cx="812" cy="238" r="16"/>
+    <circle class="st on" cx="1164" cy="238" r="16"/>
+  </svg>
+  <button class="chk fx" data-d="250" style="left:96px" data-i="0"><i>1</i><p>Вложения = покупка + ремонт + перегородки</p></button>
+  <button class="chk fx" data-d="340" style="left:448px" data-i="1"><i>2</i><p>Срок возврата не короче срока ремонта</p></button>
+  <button class="chk fx" data-d="430" style="left:800px" data-i="2"><i>3</i><p>Вводные стоят на листе «Предпосылки»</p></button>
+  <button class="chk fx" data-d="520" style="left:1152px" data-i="3"><i>4</i><p>Каждое число совпадает с листом «Итоги»</p></button>
+  </div>
+  <div class="frame fx" data-d="500"><img data-shot="14-result" alt="Таблица сравнения двух вариантов из папки агента"></div>
+</section>
+
+<!-- 20 ─────────────────────────────────────────── -->
+<section class="slide" id="s15" data-n="20" data-block="Демо" data-steps="2">
+  <h2 class="h-m ttl"><span class="mask"><span>Что сделал агент</span></span></h2>
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="ln-main" id="s15-ln" d="M-30 520 H1640"/>
+    <circle class="st" data-on="0" cx="150.0" cy="520" r="16"/>
+    <circle class="st" data-on="0" cx="312.5" cy="520" r="16"/>
+    <circle class="st" data-on="0" cx="475.0" cy="520" r="16"/>
+    <circle class="st" data-on="1" cx="637.5" cy="520" r="16"/>
+    <circle class="st" data-on="1" cx="800.0" cy="520" r="16"/>
+    <circle class="st me" data-on="1" cx="962.5" cy="520" r="16"/>
+    <circle class="st" data-on="2" cx="1125.0" cy="520" r="16"/>
+    <circle class="st" data-on="2" cx="1287.5" cy="520" r="16"/>
+    <circle class="st" data-on="2" cx="1450.0" cy="520" r="16"/>
+  </svg>
+  <div class="lb up fx" data-on="0" data-d="350" style="left:136px"><span class="tm" data-t="0"></span>прочитал ТЗ</div>
+  <div class="lb dn fx" data-on="0" data-d="510" style="left:298px"><span class="tm" data-t="1"></span>скопировал файл, оригинал не тронул</div>
+  <div class="lb up fx" data-on="0" data-d="670" style="left:461px"><span class="tm" data-t="2"></span>внёс четыре вводные, проверил пересчёт</div>
+  <div class="lb dn fx" data-on="1" data-d="350" style="left:624px"><span class="tm" data-t="3"></span>выписал показатели первого варианта</div>
+  <div class="lb up fx" data-on="1" data-d="510" style="left:786px"><span class="tm" data-t="4"></span>нашёл цену перегородок, три источника</div>
+  <div class="lb dn ask fx" data-on="1" data-d="670" style="left:948px"><span class="tm" data-t="5"></span>остановился спросить</div>
+  <div class="lb up fx" data-on="2" data-d="350" style="left:1111px"><span class="tm" data-t="6"></span>досчитал второй вариант на новых листах</div>
+  <div class="lb dn fx" data-on="2" data-d="510" style="left:1274px"><span class="tm" data-t="7"></span>собрал таблицу</div>
+  <div class="lb up fx" data-on="2" data-d="670" style="left:1290px;width:180px;text-align:right"><span class="tm" data-t="8"></span>провёл проверки, отдал</div>
+</section>
+
+<!-- 21 ─────────────────────────────────────────── -->
+<section class="slide" id="s16" data-n="21" data-block="Демо" data-steps="3">
+  <h2 class="h-m ttl"><span class="mask"><span>Как повторить самим</span></span></h2>
+  <div class="files">
+    <div class="file fx" data-d="250"><i></i><span>ТЗ<small>что и как, с проверками</small></span></div>
+    <div class="file fx" data-d="330"><i></i><span>Файл правил<small>или инструкция проекта</small></span></div>
+    <div class="file fx" data-d="410"><i></i><span>«Как запустить»<small>шаги по порядку</small></span></div>
+    <div class="file fx" data-d="490"><i></i><span>Образец результата<small>как должен выглядеть итог</small></span></div>
+  </div>
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="ln-main" id="s16-b0" d="M470 380 C560 380 560 280 660 280"/>
+    <path class="ln-main" id="s16-b1" d="M470 380 C560 380 560 420 660 420"/>
+    <path class="ln-main" id="s16-b2" d="M470 380 C560 380 560 560 660 560"/>
+    <circle class="st" data-on="1" cx="660" cy="280" r="16"/>
+    <circle class="st" data-on="2" cx="660" cy="420" r="16"/>
+    <circle class="st" data-on="3" cx="660" cy="560" r="16"/>
+  </svg>
+  <div class="way fx" data-on="1" data-d="450" style="top:258px"><b>Проект в ChatGPT или Claude</b><ol><li><span>1</span>создать</li><li><span>2</span>вставить инструкцию</li><li><span>3</span>загрузить файлы</li><li><span>4</span>первый запрос</li></ol></div>
+  <div class="way fx" data-on="2" data-d="450" style="top:398px"><b>Папка и агент на компьютере</b><ol><li><span>1</span>распаковать</li><li><span>2</span>открыть агента в папке</li><li><span>3</span>«работай по ТЗ»</li></ol></div>
+  <div class="way fx" data-on="3" data-d="450" style="top:538px"><b>Бот</b><ol><li><span>1</span>отдать пакет агенту</li><li><span>2</span>«собери бота для Telegram; токен и ключ впишу в .env сам»</li></ol></div>
+  <div class="fixline fx" data-on="3" data-d="800"><span class="pill mono">ТЗ.md</span><span>Не тот результат — правьте ТЗ: вход, выход, проверки, и пересоберите из него инструкцию агентом</span></div>
+</section>
+
+<!-- 22 ─────────────────────────────────────────── -->
+<section class="slide" id="s26" data-n="22" data-block="Демо" data-steps="1">
+  <h2 class="h-m ttl"><span class="mask"><span>Не понимаете — спросите</span></span></h2>
+  <div class="ask fx" data-d="250" style="top:236px"><i>01</i><p>«Как открыть сервер? Дай пошаговую инструкцию»</p></div>
+  <div class="ask fx" data-d="400" style="top:356px"><i>02</i><p>«Где взять ключ API и куда его вставить?»</p></div>
+  <div class="ask last fx" data-d="550" style="top:476px"><i>03</i><p>«Что нужно от меня, чтобы это заработало?»</p></div>
+  <p class="where mono fx fade" data-d="750">новый чат в том же проекте · агент ответит инструкцией под вашу задачу</p>
+  <p class="warn fx" data-on="1" data-d="200">Агент мыслит прямо: кажется, что всё учтено, но нет. Спросите заранее, что нужно с вашей стороны, и прочитайте план сами</p>
+</section>
+
+<!-- 23 ─────────────────────────────────────────── -->
+<section class="slide" id="s20" data-n="23" data-block="Куда растёт" data-steps="1">
   <h2 class="h-m ttl"><span class="mask"><span>Куда это растёт</span></span></h2>
   <span class="cap20 mono fx fade" data-d="300" style="left:96px">личный</span>
   <span class="cap20 mono fx fade" data-d="300" style="left:944px">корпоративный</span>
@@ -774,8 +797,8 @@
   <div class="words"><span>роли</span><span>права</span><span>память</span><span>журнал</span></div>
 </section>
 
-<!-- 21 ────────────────────────────────────────── -->
-<section class="slide" id="s21" data-n="23" data-block="Кейсы" data-steps="1">
+<!-- 24 ─────────────────────────────────────────── -->
+<section class="slide" id="s21" data-n="24" data-block="Куда растёт" data-steps="1">
   <h2 class="h-m ttl"><span class="mask"><span>Как устроено у меня</span></span></h2>
   <div class="pc fx fade" data-d="200"><span class="pcl mono">домашний ПК · Windows · включён всегда</span>
     <div class="bot" style="left:30px"><b>Omnerio</b><span class="f mono">AGENTS.md</span><span class="stk mono">Python · Telegram · кабинет</span><span class="s mono"><i></i>работает</span></div>
@@ -799,10 +822,8 @@
   <p class="moral21 fx fade" data-d="900">GitHub хранит код; работает помощник там, где есть включённая машина</p>
 </section>
 
-<!-- 22 ────────────────────────────────────────── -->
-
-<!-- 23 ────────────────────────────────────────── -->
-<section class="slide" id="s23" data-n="24" data-block="Выход" data-steps="0">
+<!-- 25 ─────────────────────────────────────────── -->
+<section class="slide" id="s23" data-n="25" data-block="Выход" data-steps="0">
   <h1 class="h-xl thanks"><span class="mask"><span>Спасибо</span></span></h1>
   <div class="lines">
     <span class="fx" data-d="300">Пишите мне<em>вопросы и правки ТЗ</em></span>
