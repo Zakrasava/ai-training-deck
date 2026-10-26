@@ -33,10 +33,13 @@
 
 /* ── 3 · главная мысль ── */
 #s3 .p1{position:absolute;left:96px;top:110px}
-#s3 .p2{position:absolute;left:96px;top:600px;width:1380px}
+#s3 .p2{position:absolute;left:96px;top:560px;width:1060px}
 #s3 .p2 u{text-decoration:none;background:linear-gradient(var(--signal),var(--signal)) 0 100%/0 6px no-repeat;transition:background-size .8s var(--ease) .3s}
 #s3.reach .p2 u{background-size:100% 6px}
 #s3 .lbl{position:absolute;top:350px;font-weight:600;font-size:34px;letter-spacing:-.02em}
+#s3 .bar{position:absolute;left:1252px;width:252px}
+#s3 .bar .stamp{display:inline-flex;align-items:center;height:40px;padding:0 14px;border:2.5px solid var(--ink);border-radius:8px;font-size:20px;white-space:nowrap;transform:rotate(-2deg);background:var(--paper)}
+#s3 .bar span:not(.stamp){display:block;font-size:18px;line-height:1.2;color:var(--muted);margin-top:8px}
 #s3.reach .st.acc{fill:var(--signal);stroke:var(--signal);animation:blink .9s var(--ease) .3s 1}
 @keyframes blink{0%{opacity:1}35%{opacity:.25}70%{opacity:1}}
 
@@ -100,6 +103,10 @@
 #s7 .col li{font-size:26px;line-height:1.2;padding:12px 0;border-bottom:1px solid var(--hair);color:var(--muted)}
 #s7 .col.key li{color:var(--ink)}
 #s7 .foot{position:absolute;left:96px;top:772px;font-size:26px}
+#s7 .tests{position:absolute;left:1000px;top:258px;width:504px;border-top:2px solid var(--ink);padding-top:12px}
+#s7 .tests b{display:block;font-weight:600;font-size:24px;letter-spacing:-.01em;margin-bottom:6px}
+#s7 .tests div{font-size:20px;line-height:1.3;color:#3A3B3D;padding:9px 0;border-bottom:1px solid var(--hair)}
+#s7 .tests div span{font-weight:600;color:var(--ink)}
 #s7 .foot b{font-weight:600}
 
 /* ── 8 · три ТЗ, три пути ── */
@@ -168,16 +175,11 @@
 #s12 .nocloud{position:absolute;left:1176px;top:700px;font-size:20px;color:var(--signal)}
 
 /* ── 13 · обсуждение ── */
-#s13 .tpl{position:absolute;left:96px;top:250px;width:900px;display:flex;flex-direction:column;gap:42px}
+#s13 .tpl{position:absolute;left:96px;top:250px;width:1408px;display:flex;flex-direction:column;gap:42px}
 #s13 .tpl div{font-weight:600;font-size:44px;letter-spacing:-.025em;line-height:1.1;display:flex;align-items:baseline;gap:18px}
 #s13 .tpl div::after{content:"";flex:1;border-bottom:3px dotted var(--muted);transform:translateY(-6px)}
-#s13 .timer{position:absolute;left:1110px;top:250px;width:360px;height:360px}
-#s13 .timer svg{width:360px;height:360px;overflow:visible}
-#s13 .ring-bg{fill:none;stroke:var(--hair);stroke-width:10}
-#s13 .ring{fill:none;stroke:var(--signal);stroke-width:10;stroke-linecap:round;transform:rotate(-90deg);transform-origin:180px 180px}
-#s13 .clock{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
-#s13 .clock b{display:block;font-weight:700;font-size:96px;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1}
-#s13 .clock span{display:block;font-size:20px;color:var(--muted);margin-top:8px}
+#s13 .ex{position:absolute;left:96px;top:580px;width:1300px;font-size:26px;line-height:1.35;color:#3A3B3D}
+#s13 .ex b{font-weight:600;color:var(--ink)}
 
 /* ── 14 · демо: результат ── */
 #s14 .chk{position:absolute;top:226px;width:330px;padding:0 0 0 44px;cursor:pointer;background:none;border:0;text-align:left;font:inherit;color:#8F8A80;-webkit-tap-highlight-color:transparent}
@@ -205,15 +207,6 @@
 .has-shot > .contour{display:none}
 
 
-/* ── 22 · задание ── */
-#s22 .task{position:absolute;left:96px;width:1408px;display:grid;grid-template-columns:90px 1fr auto;align-items:center;padding:30px 0;border-top:1px solid var(--hair)}
-#s22 .task:last-of-type{border-bottom:1px solid var(--hair)}
-#s22 .task i{font:400 24px "JB Mono",monospace;font-style:normal;color:var(--muted)}
-#s22 .task p{font-weight:600;font-size:46px;letter-spacing:-.03em;line-height:1.08}
-#s22 .task p small{display:block;font-weight:400;font-size:22px;color:var(--muted);letter-spacing:0;margin-top:6px}
-#s22 .task.main p{color:var(--signal)}
-#s22 .task.main i{color:var(--signal)}
-#s22 .pill{display:inline-flex;align-items:center;height:56px;padding:0 28px;border-radius:28px;border:2px solid var(--ink);font-size:24px;white-space:nowrap;background:var(--paper)}
 
 /* ── 23 · финал ── */
 #s23 .thanks{position:absolute;left:96px;top:170px}
@@ -286,6 +279,8 @@
 #s21 .bot b{display:block;font-weight:700;font-size:28px;letter-spacing:-.02em}
 #s21 .bot .f{display:inline-block;margin-top:14px;font-size:18px;padding:4px 10px;border:1.5px solid var(--hair);border-radius:6px}
 #s21 .bot .s{position:absolute;left:22px;bottom:18px;font-size:18px;color:var(--muted);display:flex;align-items:center;gap:8px}
+#s21 .bot .stk{display:block;font-size:17px;color:var(--muted);margin-top:8px}
+#s21 .run{position:absolute;left:30px;top:482px;font-size:17px;color:var(--muted)}
 #s21 .bot .s i{width:12px;height:12px;border-radius:50%;background:var(--ink);display:block}
 #s21 .bot.fall{animation:fall 2.4s var(--ease) .2s 1 both}
 #s21 .bot.fall .s i{animation:dotfall 2.4s .2s 1 both}
@@ -329,10 +324,10 @@
 #s17 .scale{position:absolute;left:96px;width:1408px;top:470px;height:12px;border-radius:6px;background:var(--ink)}
 #s17 .tick{position:absolute;top:-10px;width:4px;height:32px;background:var(--ink);border-radius:2px}
 #s17 .knob{position:absolute;top:-24px;width:60px;height:60px;margin-left:-30px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 10px rgba(224,72,47,.16);transition:left .8s var(--inout)}
-#s17 .zone{position:absolute;width:420px;transition:color .4s}
+#s17 .zone{position:absolute;width:330px;transition:color .4s}
 #s17 .zone.up{bottom:calc(900px - 430px)}
 #s17 .zone.dn{top:520px}
-#s17 .zone b{display:block;font-weight:700;font-size:44px;letter-spacing:-.035em;line-height:1}
+#s17 .zone b{display:block;font-weight:700;font-size:36px;letter-spacing:-.03em;line-height:1}
 #s17 .zone span{display:block;font-size:24px;line-height:1.25;margin-top:6px}
 #s17 .zone small{display:block;font:400 18px "JB Mono",monospace;color:var(--muted);margin-top:4px}
 #s17 .zone.dim{color:#A9A49A}
@@ -369,13 +364,21 @@
   <h2 class="h-l p1"><span class="mask"><span>Писать код не нужно.</span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
     <path class="ln-main" id="s3-ln" d="M-30 460 H1630"/>
+    <path class="ln-main s3-br" d="M1180 460 C1222 460 1200 250 1236 250"/>
+    <path class="ln-main s3-br" d="M1180 460 C1222 460 1200 390 1236 390"/>
+    <path class="ln-main s3-br" d="M1180 460 C1222 460 1200 530 1236 530"/>
+    <path class="ln-main s3-br" d="M1180 460 C1222 460 1200 670 1236 670"/>
     <circle class="st me fx-st" cx="560" cy="460" r="22"/>
     <circle class="st acc fx-st" cx="1180" cy="460" r="22"/>
   </svg>
-  <div class="lbl fx" data-d="700" style="left:500px">описать</div>
-  <div class="lbl fx" data-d="900" style="left:1120px">доступ</div>
+  <div class="lbl fx" data-d="700" style="left:470px">описать задачу</div>
+  <div class="lbl fx" data-d="900" style="left:1000px">доступ</div>
+  <div class="bar fx" data-on="1" data-d="250" style="top:226px"><span class="stamp mono">сайт с входом</span><span>пароль не отдаём: файл, ключ или расширение</span></div>
+  <div class="bar fx" data-on="1" data-d="400" style="top:366px"><span class="stamp mono">закрытый мессенджер</span><span>в WhatsApp входа нет, в Telegram есть</span></div>
+  <div class="bar fx" data-on="1" data-d="550" style="top:506px"><span class="stamp mono">система компании</span><span>1С, CRM, панель: ключ по согласованию с ИТ</span></div>
+  <div class="bar fx" data-on="1" data-d="700" style="top:646px"><span class="stamp mono">бумага</span><span>фото и распознавание, цифры сверяет человек</span></div>
   <p class="h-m p2 fx" data-d="500">Нужно описать задачу и знать, <u>до чего помощник дотянется.</u></p>
-  <aside class="notes">Главная мысль урока. → — загорается узел «доступ».</aside>
+  <aside class="notes">Главная мысль урока. → — загорается узел «доступ» и четыре преграды, в которые упирается почти каждая задача: сайт с входом, закрытый мессенджер, система компании, бумага. Подробно — на карте подключений.</aside>
 </section>
 
 <!-- 4 ─────────────────────────────────────────── -->
@@ -468,12 +471,17 @@
     <div class="fx" data-d="250"><b id="s7-a" data-k="calls"></b><span>обращений за неделю</span></div>
     <div class="fx" data-d="350"><b id="s7-b" data-k="cost"></b><span data-k="perPeople"></span></div>
   </div>
+  <div class="tests fx" data-d="500"><b>Посчитано ещё на тестах</b>
+    <div><span data-k="callsPerInterview"></span> обращения на одно интервью, <span data-k="costPerInterview"></span> на человека</div>
+    <div>Sonnet <span data-k="sonnetPerCall"></span>, Opus <span data-k="opusPerCall"></span> за обращение: Opus только на черновик ТЗ</div>
+    <div>подписки на всех стоили бы <span data-k="subsMonthly"></span> в месяц</div>
+  </div>
   <div class="cols">
     <div class="col fx" data-on="1"><h3>Подписка</h3><ul><li>фиксированная сумма</li><li>один человек</li><li>окно чата</li></ul></div>
     <div class="col key fx" data-on="1" data-d="120"><h3>Ключ API</h3><ul><li>платите за потраченное</li><li>любое число людей</li><li>через программу</li></ul></div>
   </div>
-  <p class="foot fx fade" data-on="1" data-d="400"><b data-k="costPerCall"></b> за обращение · <b data-k="costPerHead"></b> на участника · посчитано ещё на тестах</p>
-  <aside class="notes">Цифры набираются за секунду. → — сравнение подписки и ключа.</aside>
+  <p class="foot fx fade" data-on="1" data-d="400"><b data-k="costPerCall"></b> за обращение · <b data-k="costPerHead"></b> на участника за неделю</p>
+  <aside class="notes">Цифры набираются за секунду. Справа — что посчитали на тестах до запуска: сколько обращений и денег уходит на одно интервью, почему Opus только на ТЗ, сколько стоили бы подписки. Из этого и выбран ключ. → — сравнение подписки и ключа.</aside>
 </section>
 
 <!-- 8 ─────────────────────────────────────────── -->
@@ -535,9 +543,9 @@
 <!-- 12 ────────────────────────────────────────── -->
 <section class="slide" id="s12" data-n="12" data-block="Ваши ТЗ" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Данные и безопасность</span></span></h2>
-  <div class="rule fx" data-on="0" data-d="300" style="top:240px"><i>01</i><p>Персональные данные и договоры в облако не отправлять без решения руководства и ИТ</p></div>
-  <div class="rule fx" data-on="1" style="top:430px"><i>02</i><p>Провайдер живёт по своим законам и правилам: решаем, что отдаём, до запуска</p></div>
-  <div class="rule fx" data-on="2" style="top:620px"><i>03</i><div><p>Нельзя выпускать совсем — модель на своём сервере</p><small class="mono">ГСП: Qwen3 через Ollama, в облако ничего</small></div></div>
+  <div class="rule fx" data-on="0" data-d="300" style="top:226px"><i>01</i><p>Персональные данные и договоры в облако не отправлять без решения руководства и ИТ</p></div>
+  <div class="rule fx" data-on="1" style="top:410px"><i>02</i><p>Провайдер живёт по своим законам и правилам: решаем, что отдаём, до запуска</p></div>
+  <div class="rule fx" data-on="2" style="top:600px"><i>03</i><div><p>Можно отдавать — облако: Claude, Codex, любая модель. Нельзя — своя модель на сервере</p><small class="mono">ГСП: Qwen3 через Ollama, в облако ничего</small></div></div>
   <figure class="gsp need-shot fx" data-on="2" data-d="300"><img data-shot="12-gsp-cabinet" alt="Кабинет ГСП-помощника, обезличенно"></figure>
   <div class="no-shot">
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
@@ -551,23 +559,19 @@
   <div class="lbl fx" data-on="2" data-d="600" style="top:600px">Кабинет<span class="mono">Nginx, HTTPS</span></div>
   <div class="nocloud mono fx fade" data-on="2" data-d="800">облачные модели запрещены</div>
   </div>
-  <aside class="notes">Три правила, каждый → — следующее. На третьем справа контур ГСП-помощника (заменить на обезличенный скриншот кабинета, если будет).</aside>
+  <aside class="notes">Три правила, каждый → — следующее. Третье — развилка: данные можно отдавать — подключаем облако (Claude, Codex, OpenRouter, любая модель); нельзя — своя модель на сервере, как в ГСП. Справа кабинет ГСП‑помощника.</aside>
 </section>
 
 <!-- 13 ────────────────────────────────────────── -->
-<section class="slide" id="s13" data-n="13" data-block="Ваши ТЗ" data-steps="1">
+<section class="slide" id="s13" data-n="13" data-block="Ваши ТЗ" data-steps="0">
   <h2 class="h-m ttl"><span class="mask"><span>Обсуждение · 3 минуты</span></span></h2>
   <div class="tpl">
     <div class="fx" data-d="250">Моя задача:</div>
     <div class="fx" data-d="350">Помощнику нужен доступ к:</div>
     <div class="fx" data-d="450">Доступ даёт:</div>
   </div>
-  <div class="timer fx fade" data-d="500">
-    <svg viewBox="0 0 360 360" aria-hidden="true"><circle class="ring-bg" cx="180" cy="180" r="160"/><circle class="ring" id="s13-ring" cx="180" cy="180" r="160"/>
-      <circle class="st on me" cx="180" cy="20" r="14"/></svg>
-    <div class="clock"><div><b id="s13-t">3:00</b><span id="s13-h">на обсуждение</span></div></div>
-  </div>
-  <aside class="notes">Шаблон на экране. → — запускает таймер на 3 минуты, ← — сбрасывает.</aside>
+  <p class="ex fx fade" data-d="700"><b>Одной строкой в чат встречи.</b> Пример: «сводка расходов, доступ к папке с PDF и к фото чеков». Не знаете, к чему нужен доступ, — так и пишите</p>
+  <aside class="notes">Шаблон на экране, три минуты без таймера. Кто не знает, к чему нужен доступ, пишет «не знаю» — тоже ответ, разберём.</aside>
 </section>
 
 <!-- 14 ────────────────────────────────────────── -->
@@ -638,31 +642,33 @@
   <div class="way fx" data-on="1" data-d="450" style="top:258px"><b>Проект в ChatGPT или Claude</b><ol><li><span>1</span>создать</li><li><span>2</span>вставить инструкцию</li><li><span>3</span>загрузить файлы</li><li><span>4</span>первый запрос</li></ol></div>
   <div class="way fx" data-on="2" data-d="450" style="top:398px"><b>Папка и агент на компьютере</b><ol><li><span>1</span>распаковать</li><li><span>2</span>открыть агента в папке</li><li><span>3</span>«работай по ТЗ»</li></ol></div>
   <div class="way fx" data-on="3" data-d="450" style="top:538px"><b>Бот</b><ol><li><span>1</span>отдать пакет агенту</li><li><span>2</span>«собери бота для Telegram, спроси токен и ключ»</li></ol></div>
-  <div class="fixline fx" data-on="3" data-d="800"><span class="pill">Изменить ответ</span><span>Не тот результат — эта кнопка в боте. Руками инструкцию не править</span></div>
-  <aside class="notes">Сначала четыре файла пакета, затем каждый → — один из трёх путей. В конце — кнопка «Изменить ответ».</aside>
+  <div class="fixline fx" data-on="3" data-d="800"><span class="pill mono">ТЗ.md</span><span>Не тот результат — правьте ТЗ: вход, выход, проверки. Бот показал структуру, дальше пишете сами</span></div>
+  <aside class="notes">Сначала четыре файла пакета, затем каждый → — один из трёх путей. В конце: не тот результат — правим ТЗ, а не инструкцию. Бот больше не используется: он показал, как устроено ТЗ (направление, с чем работает система, какой итог), дальше ТЗ пишут сами по этой структуре.</aside>
 </section>
 
 <!-- 17 ────────────────────────────────────────── -->
-<section class="slide" id="s17" data-n="17" data-block="Демо" data-steps="2">
+<section class="slide" id="s17" data-n="17" data-block="Демо" data-steps="3">
   <h2 class="h-m ttl"><span class="mask"><span>Разово или регулярно</span></span></h2>
-  <div class="scale fx fade" data-d="250"><i class="tick" style="left:111px"></i><i class="tick" style="left:702px"></i><i class="tick" style="left:1293px"></i><b class="knob" id="s17-k"></b></div>
+  <div class="scale fx fade" data-d="250"><i class="tick" style="left:111px"></i><i class="tick" style="left:505px"></i><i class="tick" style="left:899px"></i><i class="tick" style="left:1293px"></i><b class="knob" id="s17-k"></b></div>
   <div class="zone up" style="left:96px"><b>Раз</b></div>
-  <div class="zone dn" style="left:96px"><span>спросить в чате</span></div>
-  <div class="zone up" style="left:590px;text-align:center"><b>Раз в месяц</b></div>
-  <div class="zone dn" style="left:590px;text-align:center"><span>проект</span><small>вечер</small></div>
-  <div class="zone up" style="left:1084px;text-align:right"><b>Пять раз в неделю</b></div>
-  <div class="zone dn" style="left:1084px;text-align:right"><span>инструмент: скрипт или агент</span><small>день или неделя</small></div>
-  <p class="moral fx" data-on="2" data-d="700">Не делайте агента там, где хватит проекта</p>
-  <aside class="notes">Ползунок по шагам: раз — раз в месяц — пять раз в неделю. На последнем — вывод.</aside>
+  <div class="zone dn" style="left:96px"><span>спросить в чате</span><small>минуты</small></div>
+  <div class="zone up" style="left:350px;text-align:center"><b>Иногда</b></div>
+  <div class="zone dn" style="left:350px;text-align:center"><span>проект: открыли, запустили</span><small>вечер</small></div>
+  <div class="zone up" style="left:744px;text-align:center"><b>Каждый день сами</b></div>
+  <div class="zone dn" style="left:744px;text-align:center"><span>приложение или скрипт, одна кнопка</span><small>день</small></div>
+  <div class="zone up" style="left:1174px;text-align:right"><b>Само, по расписанию</b></div>
+  <div class="zone dn" style="left:1174px;text-align:right"><span>агент или бот, результат приходит сам</span><small>неделя</small></div>
+  <p class="moral fx" data-on="3" data-d="700">Не делайте агента там, где хватит проекта или приложения</p>
+  <aside class="notes">Ползунок по шагам: раз — иногда — каждый день сами — само по расписанию. Проект можно запускать и несколько раз; приложение или скрипт — когда каждый день руками; агент — когда результат должен приходить сам. На последнем — вывод.</aside>
 </section>
 
 <!-- 18 ────────────────────────────────────────── -->
 <section class="slide" id="s18" data-n="18" data-block="Кейсы" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Рейсы для руководителя</span></span></h2>
   <p class="cond mono fx fade" data-d="300"><b>условия постоянные:</b> бизнес · вылет после 10:00 · стыковка до 3 ч · в Лондоне Хитроу · 4 сайта поиска</p>
-  <p class="thought fx" data-on="2" data-d="700">Запасной путь записан в ТЗ заранее</p>
-  <div class="acc fx" data-on="2" data-d="100" style="top:500px"><span class="stamp mono">WhatsApp закрыт</span><p>текст запроса пересылается боту вручную, одно действие</p></div>
-  <div class="acc fx" data-on="2" data-d="350" style="top:610px"><span class="stamp mono">сайты блокируют</span><p>помощник делает снимки с телефона, бот пишет по ним текст</p></div>
+  <p class="thought fx" data-on="2" data-d="700">Под каждую преграду — своё решение, оно записано в ТЗ</p>
+  <div class="acc fx" data-on="2" data-d="100" style="top:500px"><span class="stamp mono">WhatsApp закрыт</span><p>VPN на машине помощника, или запросы шефа приходят в Telegram</p></div>
+  <div class="acc fx" data-on="2" data-d="350" style="top:620px"><span class="stamp mono">сайты блокируют</span><p>робот‑браузер заходит сам через прокси, или выгрузка с сайта: API, файл</p></div>
   <div class="phone fx" data-d="200">
     <div class="hd"><i></i><span>Рейсы<small>бот помощника</small></span></div>
     <div class="fw mono fx fade" data-d="500">переслано · руководитель</div>
@@ -672,7 +678,7 @@
       <span class="fx fade" data-on="1" data-d="500">прибытие в Хитроу 17:45</span>
       <span class="fx fade" data-on="1" data-d="750">Royal Air Maroc · бизнес 181&nbsp;700&nbsp;₽</span></div>
   </div>
-  <aside class="notes">Запрос руководителя. → — черновик ответа в формате, который помощник уже пишет руками. → — что решает доступ: два штампа и вывод.</aside>
+  <aside class="notes">Запрос руководителя. → — черновик ответа в формате, который помощник уже пишет руками. → — две преграды и решение под каждую: WhatsApp закрыт — VPN на машине помощника или перевод запросов в Telegram; сайты блокируют роботов — браузер через прокси или выгрузка через API и файлы. Решение подбирается под преграду, а не «снимки с телефона».</aside>
 </section>
 
 <!-- 19 ────────────────────────────────────────── -->
@@ -680,6 +686,7 @@
   <h2 class="h-m ttl"><span class="mask"><span>Справка по объекту</span></span></h2>
   <p class="rule fx" data-on="1" data-d="300" style="top:250px">Источник — документ со ссылкой<small>подсказка DeepSeek или Алисы источником быть не может</small></p>
   <p class="rule fx" data-on="2" data-d="300" style="top:450px">Нет данных — «не найдено» и где искали<small>домыслы запрещены словами в ТЗ</small></p>
+  <p class="rule gap fx" data-on="3" data-d="300" style="top:640px">В ТЗ не хватило — бот принял допущения<small>к чему нет доступа · сколько магазинов и как мерить · область объектов</small></p>
   <div class="page fx" data-d="250">
     <h3>Справка по объекту</h3><div class="sub mono">для инвестиционного комитета · по адресу или кадастровому номеру</div>
     <div class="sec s1 fx fade" data-d="450"><i>1</i><div><b>Кадастровый номер и зона ПЗЗ</b><span class="mono"><u>источник: ПЗЗ, статья, ссылка</u></span></div></div>
@@ -689,7 +696,7 @@
     <div class="sec fx fade" data-d="850"><i>5</i><div><b>Ближайшие магазины трёх сетей</b><span class="mono">источник: Яндекс Карты, ссылка</span></div></div>
     <div class="check fx" data-on="3" data-d="150"><b>Требует проверки</b><span>всё, что не подтверждено документом</span></div>
   </div>
-  <aside class="notes">Страница справки из ТЗ: пять разделов. → — у каждого факта источник со ссылкой. → — «не найдено» вместо догадки. → — блок «Требует проверки» в конце. Адрес объекта не показываем.</aside>
+  <aside class="notes">Страница справки из ТЗ: пять разделов. → — у каждого факта источник со ссылкой. → — «не найдено» вместо догадки. → — блок «Требует проверки» в конце и то, чего в ТЗ не хватило: участник не сказал, к чему нет доступа, сколько магазинов указывать и как мерить расстояние, в какой области объекты; бот записал допущения, их нужно подтвердить. Адрес объекта не показываем.</aside>
 </section>
 
 <!-- 20 ────────────────────────────────────────── -->
@@ -710,36 +717,33 @@
 <!-- 21 ────────────────────────────────────────── -->
 <section class="slide" id="s21" data-n="21" data-block="Кейсы" data-steps="1">
   <h2 class="h-m ttl"><span class="mask"><span>Как устроено у меня</span></span></h2>
-  <div class="pc fx fade" data-d="200"><span class="pcl mono">домашний ПК · включён всегда</span>
-    <div class="bot" style="left:30px"><b>Omnerio</b><span class="f mono">AGENTS.md</span><span class="s mono"><i></i>работает</span></div>
-    <div class="bot" style="left:334px" id="s21-fall"><b>Hermes</b><span class="f mono">AGENTS.md</span><span class="s mono"><i></i>работает</span></div>
-    <div class="bot" style="left:638px"><b>Помощник ТЗ</b><span class="f mono">AGENTS.md</span><span class="s mono"><i></i>работает</span></div>
-    <div class="tool watch" style="left:30px;width:410px"><b>Сторож</b><span>раз в 5 минут: упал — поднимет и напишет в Telegram</span></div>
+  <div class="pc fx fade" data-d="200"><span class="pcl mono">домашний ПК · Windows · включён всегда</span>
+    <div class="bot" style="left:30px"><b>Omnerio</b><span class="f mono">AGENTS.md</span><span class="stk mono">Python · Telegram · кабинет</span><span class="s mono"><i></i>работает</span></div>
+    <div class="bot" style="left:334px" id="s21-fall"><b>Hermes</b><span class="f mono">AGENTS.md</span><span class="stk mono">агент · пульт в Telegram</span><span class="s mono"><i></i>работает</span></div>
+    <div class="bot" style="left:638px"><b>Помощник ТЗ</b><span class="f mono">AGENTS.md</span><span class="stk mono">Python · Telegram · SQLite</span><span class="s mono"><i></i>работает</span></div>
+    <div class="tool watch" style="left:30px;width:410px"><b>Сторож</b><span>задача в планировщике Windows, раз в 5 минут: упал — поднимет и напишет в Telegram</span></div>
     <div class="tool" style="left:470px;width:430px"><b>Файл‑флажок</b><span class="mono" style="font-size:18px">stop.flag</span><span>остановка намеренно: сторож понимает, что это я</span></div>
+    <span class="run mono">start.bat — запуск и автоперезапуск · ключи в .env, в код не попадают</span>
   </div>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
-    <path class="ln-main" id="s21-tg" d="M1026 380 H1150" style="stroke-width:8"/>
-    <path class="ln-main" id="s21-gh" d="M1026 620 H1150" style="stroke-width:8"/>
-    <circle class="st on" cx="1150" cy="380" r="16"/>
-    <circle class="st on" cx="1150" cy="620" r="16"/>
+    <path class="ln-main" id="s21-tg" d="M1026 320 H1150" style="stroke-width:8"/>
+    <path class="ln-main" id="s21-or" d="M1026 500 H1150" style="stroke-width:8"/>
+    <path class="ln-main" id="s21-gh" d="M1026 680 H1150" style="stroke-width:8"/>
+    <circle class="st on" cx="1150" cy="320" r="16"/>
+    <circle class="st on" cx="1150" cy="500" r="16"/>
+    <circle class="st on" cx="1150" cy="680" r="16"/>
   </svg>
-  <div class="ext fx" data-d="600" style="top:350px"><b>Telegram</b><span>пульт: команды и сообщения от сторожа</span></div>
-  <div class="ext fx" data-d="700" style="top:590px"><b>GitHub</b><span>код и история каждой правки</span></div>
+  <div class="ext fx" data-d="600" style="top:290px"><b>Telegram</b><span>пульт: команды и сообщения от сторожа</span></div>
+  <div class="ext fx" data-d="700" style="top:470px"><b>OpenRouter</b><span>модели по ключу, платим за потраченное</span></div>
+  <div class="ext fx" data-d="800" style="top:650px"><b>GitHub</b><span>код и история каждой правки</span></div>
   <p class="moral21 fx fade" data-d="900">GitHub хранит код; работает помощник там, где есть включённая машина</p>
-  <aside class="notes">Схема домашнего ПК. → — бот падает и через секунду встаёт: это сторож. Ничего из этого не писал руками — настроил агент по моим словам за два вечера.</aside>
+  <aside class="notes">Схема домашнего ПК: три бота, у каждого папка и файл правил; сторож в планировщике Windows; файл‑флажок для намеренной остановки; start.bat запускает и перезапускает; ключи в .env. Наружу три нити: Telegram — пульт, OpenRouter — модели по ключу, GitHub — код и история. → — бот падает и через секунду встаёт: это сторож. Ничего из этого не писал руками — настроил агент по моим словам за два вечера.</aside>
 </section>
 
 <!-- 22 ────────────────────────────────────────── -->
-<section class="slide" id="s22" data-n="22" data-block="Выход" data-steps="0">
-  <h2 class="h-m ttl"><span class="mask"><span>Задание</span></span></h2>
-  <div class="task fx" data-d="250" style="top:250px"><i>01</i><p>Дойти до конца в боте</p><span class="pill">Продолжить</span></div>
-  <div class="task fx" data-d="400" style="top:420px"><i>02</i><p>Шаги 1–4 из «Как запустить»<small>файл из вашего пакета</small></p><span class="pill">Показать документы</span></div>
-  <div class="task main fx" data-d="550" style="top:590px"><i>03</i><p>Одна строка: к чему нужен доступ и кто его даёт</p></div>
-  <aside class="notes">Три добровольных шага. Главный — третий: строка про доступ. Кнопки — настоящие кнопки бота.</aside>
-</section>
 
 <!-- 23 ────────────────────────────────────────── -->
-<section class="slide" id="s23" data-n="23" data-block="Выход" data-steps="0">
+<section class="slide" id="s23" data-n="22" data-block="Выход" data-steps="0">
   <h1 class="h-xl thanks"><span class="mask"><span>Спасибо</span></span></h1>
   <div class="lines">
     <span class="fx" data-d="300">Пишите мне<em>вопросы и правки ТЗ</em></span>
@@ -788,6 +792,7 @@ window.SLIDE_HOOKS = {
     p.style.strokeDasharray = L; p.style.strokeDashoffset = s < 0 ? L : 0;
     el.querySelectorAll('.st').forEach(c => c.classList.toggle('on', s >= 0));
     el.classList.toggle('reach', s >= 1);
+    el.querySelectorAll('.s3-br').forEach((b, i) => { b.style.transitionDelay = (s >= 1 ? 0.25 + i * 0.15 : 0) + 's'; draw(b, s >= 1 ? 9999 : 0); });
   },
   s4(el, s) {
     const m = el.querySelector('#s4-main'), Lm = m.getTotalLength();
@@ -924,18 +929,6 @@ const S10 = [
   });
 })();
 
-// ── слайд 13: таймер на 3 минуты ──
-const TIMER = { len: 180, t0: 0, id: 0 };
-function timerPaint() {
-  const ring = document.getElementById('s13-ring'), C = 2 * Math.PI * 160;
-  const left = TIMER.t0 ? Math.max(0, TIMER.len - (Date.now() - TIMER.t0) / 1000) : TIMER.len;
-  ring.style.strokeDasharray = C; ring.style.strokeDashoffset = C * (1 - left / TIMER.len);
-  const m = Math.floor(Math.ceil(left) / 60), s = Math.ceil(left) % 60;
-  document.getElementById('s13-t').textContent = `${m}:${String(s).padStart(2, '0')}`;
-  document.getElementById('s13-h').textContent = TIMER.t0 && left === 0 ? 'время' : 'на обсуждение';
-  if (TIMER.t0 && left === 0) { clearInterval(TIMER.id); TIMER.id = 0; }
-}
-
 // ── слайд 14: четыре проверки (клавиши 1–4) ──
 const CHK = [0, 0, 0, 0];               // 0 — не проверено, 1 — сошлось, 2 — не сошлось
 function chkPaint() {
@@ -958,7 +951,7 @@ Object.assign(window.SLIDE_HOOKS, {
     el.querySelectorAll('.words span').forEach((w, i) => { w.style.transitionDelay = (s >= 1 && !instant ? i * 0.35 : 0) + 's'; w.classList.toggle('lit', s >= 1); });
   },
   s21(el, s, instant) {
-    draw(el.querySelector('#s21-tg'), s < 0 ? 0 : 9999); draw(el.querySelector('#s21-gh'), s < 0 ? 0 : 9999);
+    ['#s21-tg', '#s21-or', '#s21-gh'].forEach(q => draw(el.querySelector(q), s < 0 ? 0 : 9999));
     const b = el.querySelector('#s21-fall'), w = el.querySelector('.tool.watch');
     b.classList.remove('fall'); w.classList.remove('act');
     if (s >= 1 && !instant) { void b.offsetWidth; b.classList.add('fall'); w.classList.add('act'); setTimeout(() => w.classList.remove('act'), 2600); }
@@ -972,7 +965,7 @@ Object.assign(window.SLIDE_HOOKS, {
   },
   s16(el, s) { [0, 1, 2].forEach(i => { const b = el.querySelector('#s16-b' + i); b.style.transitionDelay = s === i + 1 ? '.15s' : '0s'; draw(b, s >= i + 1 ? 9999 : 0); }); },
   s17(el, s) {
-    const xs = [113, 704, 1295]; el.querySelector('#s17-k').style.left = xs[Math.max(0, s)] + 'px';
+    const xs = [113, 507, 901, 1295]; el.querySelector('#s17-k').style.left = xs[Math.max(0, s)] + 'px';
     el.querySelectorAll('.zone').forEach((z, i) => z.classList.toggle('dim', Math.floor(i / 2) !== Math.max(0, s)));
   },
   s9(el, s) {
@@ -994,11 +987,6 @@ Object.assign(window.SLIDE_HOOKS, {
     el.querySelectorAll('.tr:not(.th)').forEach((r, i) => r.classList.toggle('act', s === i + 1));
   },
   s12(el, s) { draw(el.querySelector('#s12-ln'), s >= 2 ? 9999 : 0); },
-  s13(el, s, instant) {
-    if (s >= 1 && !TIMER.t0 && !instant) { TIMER.t0 = Date.now(); TIMER.id = setInterval(timerPaint, 250); }
-    if (s <= 0) { TIMER.t0 = 0; clearInterval(TIMER.id); TIMER.id = 0; }
-    timerPaint();
-  },
 });
 </script>
 <script src="deck.js"></script>
