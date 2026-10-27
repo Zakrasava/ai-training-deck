@@ -18,10 +18,10 @@
 #s2 h2{position:absolute;left:96px;top:96px}
 #s2 h2 em{font-style:normal;color:var(--signal)}
 #s2 .rows{position:absolute;left:96px;right:96px;top:250px}
-#s2 .row{display:grid;grid-template-columns:44px 1fr 160px 220px;align-items:center;height:60px;border-top:1px solid var(--hair)}
+#s2 .row{display:grid;grid-template-columns:44px 1fr 160px 220px;align-items:center;height:52px;border-top:1px solid var(--hair)}
 #s2 .row:last-child{border-bottom:1px solid var(--hair)}
 #s2 .row .d{width:20px;height:20px;border-radius:50%;border:3px solid var(--ink);transition:background .4s,border-color .4s}
-#s2 .row .tx{font-size:26px;letter-spacing:-.01em}
+#s2 .row .tx{font-size:24px;letter-spacing:-.01em}
 #s2 .row .tg,#s2 .row .stt{font-size:18px;color:var(--muted)}
 #s2 .row .stt{text-align:right}
 #s2 .row.none .tx{color:var(--muted)}
@@ -130,13 +130,13 @@
 
 /* ── 9 · одна из восьми по щелчку: список слева, разбор задачи справа ── */
 #s9 .rows{position:absolute;left:96px;top:226px;width:640px}
-#s9 .row{position:relative;display:grid;grid-template-columns:36px 1fr;align-items:center;height:62px;border-top:1px solid var(--hair);transition:color .3s}
+#s9 .row{position:relative;display:grid;grid-template-columns:36px 1fr;align-items:center;height:54px;border-top:1px solid var(--hair);transition:color .3s}
 #s9 .row:last-child{border-bottom:1px solid var(--hair)}
 #s9 .row .d{width:18px;height:18px;border-radius:50%;border:3px solid var(--ink);transition:background .3s,border-color .3s}
 #s9 .row.none .d{border-style:dashed;border-color:var(--muted)}
 #s9 .row.pick .d{background:var(--signal);border-color:var(--signal)}
-#s9 .row .tx{font-size:23px;letter-spacing:-.01em;line-height:1.15}
-#s9 .row .sm{display:block;font-size:18px;color:var(--muted);margin-top:2px;opacity:0;transition:opacity .4s}
+#s9 .row .tx{font-size:21px;letter-spacing:-.01em;line-height:1.15}
+#s9 .row .sm{display:block;font-size:16px;color:var(--muted);margin-top:1px;opacity:0;transition:opacity .4s}
 #s9 .row.seen .sm{opacity:1}
 #s9 .row.pick .sm{color:var(--signal)}
 #s9 .rows.focus .row:not(.act) .tx{color:#8F8A80}
@@ -403,9 +403,9 @@
 
 <!-- 2 ─────────────────────────────────────────── -->
 <section class="slide" id="s2" data-n="2" data-block="Вход" data-steps="1">
-  <h2 class="h-m fx"><span data-k="participants"></span> начали · <em><span data-k="packs"></span> пакета</em> · <span data-k="halfway"></span> на полпути</h2>
+  <h2 class="h-m fx"><span data-k="participants"></span> начали · <em><span data-k="packs"></span> <span data-k="packsWord"></span></em> · <span data-k="halfway"></span> на полпути</h2>
   <div class="rows" id="s2-rows"></div>
-  <aside class="notes">Восемь задач, все про данные и файлы, ни одной «напиши текст». Двенадцать начали, четверо дошли до пакета (четвёртый пакет — таблица изменений законодательства, пришёл вечером 26.10); кто не ответил на первый вопрос, на слайде не показан. → — три готовых пакета получают точку.</aside>
+  <aside class="notes">Десять задач, все про данные и файлы, ни одной «напиши текст». Тринадцать начали, пятеро дошли до пакета (пятый — идеи акций для ресторана, пришёл днём 27.10); кто не ответил на первый вопрос, на слайде не показан. → — пять готовых пакетов получают точку.</aside>
 </section>
 
 <!-- 3 ─────────────────────────────────────────── -->
@@ -454,8 +454,8 @@
   <div class="lbl fx" data-d="700" style="left:470px">описать задачу</div>
   <div class="lbl fx" data-d="900" style="left:1000px">доступ</div>
   <div class="bar fx" data-on="1" data-d="250" style="top:226px"><span class="stamp mono">сайт с входом</span><span>пароль не отдаём: файл, ключ или расширение</span></div>
-  <div class="bar fx" data-on="1" data-d="400" style="top:366px"><span class="stamp mono">закрытый мессенджер</span><span>WhatsApp заблокирован; Telegram замедлен</span></div>
-  <div class="bar fx" data-on="1" data-d="550" style="top:506px"><span class="stamp mono">система компании</span><span>1С, CRM, панель: ключ по согласованию с ИТ</span></div>
+  <div class="bar fx" data-on="1" data-d="400" style="top:346px"><span class="stamp mono">закрытый мессенджер</span><span>WhatsApp заблокирован; Telegram замедлен</span></div>
+  <div class="bar fx" data-on="1" data-d="550" style="top:516px"><span class="stamp mono">система компании</span><span>1С, CRM, панель: ключ по согласованию с ИТ</span></div>
   <div class="bar fx" data-on="1" data-d="700" style="top:646px"><span class="stamp mono">бумага</span><span>фото и распознавание, цифры сверяет человек</span></div>
   <p class="h-m p2 fx" data-d="500">Нужно описать задачу и знать, <u>до чего помощник дотянется.</u></p>
   <aside class="notes">Главная мысль урока. Про расширение в сессии: агент действует от вашего имени в открытом кабинете, поэтому разрешаем конкретные сайты и действия, а отправку, изменение и удаление подтверждает человек; в компании — согласовать с ИТ. Про мессенджер точнее: WhatsApp в России заблокирован с февраля 2026 (домены исключены из НСДИ, доступ через VPN), у личного аккаунта входа для программ нет; у Telegram открытый Bot API, но с 10.02.2026 его замедляют — наш бот работает, запасной канал держать. → — загорается узел «доступ» и четыре преграды, в которые упирается почти каждая задача: сайт с входом, закрытый мессенджер, система компании, бумага. Подробно — на карте подключений.</aside>
@@ -600,9 +600,9 @@
 
 <!-- 11 ─────────────────────────────────────────── -->
 <section class="slide" id="s9" data-n="11" data-block="Ваши ТЗ" data-steps="6">
-  <h2 class="h-m ttl"><span class="mask"><span>Одна из восьми — по щелчку</span></span></h2>
+  <h2 class="h-m ttl"><span class="mask"><span>Две из десяти — по щелчку</span></span></h2>
   <div class="rows" id="s9-rows"></div>
-  <aside class="notes">Сначала задача Александра — она по щелчку и уже крутится. Каждый → — следующая задача: что нужно, где упирается в доступ, как решаем. На рейсах — главная мысль: ко всему даёшь задачу агенту, и процесс он придумывает сам: Telegram вместо WhatsApp, робот‑браузер по сайтам авиакомпаний, API где есть, страницы читает модель. Тех, кто не ответил на первый вопрос, на слайде нет.</aside>
+  <aside class="notes">Сначала задача Александра — она по щелчку и уже крутится; вторая «по щелчку» — идеи акций для ресторана: файлы приносит сам участник, проект. Каждый → — следующая задача: что нужно, где упирается в доступ, как решаем. На рейсах: бот работал в рамках названных инструментов, другие не искал — об этом два следующих слайда. Тех, кто не ответил на первый вопрос, на слайде нет.</aside>
 </section>
 
 <!-- 12 ─────────────────────────────────────────── -->
