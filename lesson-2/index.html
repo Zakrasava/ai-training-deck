@@ -380,6 +380,13 @@
 #s16 .cmd{position:absolute;left:900px;top:226px;width:604px;border:2.5px solid var(--ink);border-radius:18px;padding:22px 26px;background:var(--paper)}
 #s16 .cmd .k{display:block;font-size:17px;color:var(--signal);margin-bottom:10px}
 #s16 .cmd p{font-size:22px;line-height:1.35}
+#s28 .lead28{position:absolute;left:96px;top:236px;width:1300px;font-size:30px;line-height:1.3;letter-spacing:-.01em}
+#s28 .node{position:absolute;top:560px;width:330px}
+#s28 .node b{display:block;font-weight:600;font-size:25px;letter-spacing:-.02em;line-height:1.1}
+#s28 .node span{display:block;font-size:18px;color:var(--muted);margin-top:6px;line-height:1.3}
+#s28 .live28{position:absolute;left:96px;top:740px;display:flex;align-items:center;gap:22px;font-size:22px;color:#3A3B3D}
+#s28 .live28 .stamp{display:inline-flex;align-items:center;height:44px;padding:0 16px;border:2.5px solid var(--signal);color:var(--signal);border-radius:8px;font-size:20px;white-space:nowrap;transform:rotate(-2deg)}
+
 #s16 .pill{display:inline-flex;align-items:center;height:50px;padding:0 24px;border-radius:25px;border:2px solid var(--ink);font-size:22px;white-space:nowrap}
 
 /* ── 17 · разово или регулярно ── */
@@ -771,7 +778,25 @@
 </section>
 
 <!-- 20 ─────────────────────────────────────────── -->
-<section class="slide" id="s16" data-n="20" data-block="Демо" data-steps="2">
+<section class="slide" id="s28" data-n="20" data-block="Демо" data-steps="2">
+  <h2 class="h-m ttl"><span class="mask"><span>Из задачи — в помощника</span></span></h2>
+  <p class="lead28 fx" data-d="250">Та же папка, тот же агент, одна команда: «сделай из этого Telegram‑бота». Через 10–15 минут задачу можно присылать боту файлом.</p>
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="ln-main" id="s28-ln" d="M-30 520 H1630"/>
+    <circle class="st on" cx="240" cy="520" r="16"/>
+    <circle class="st fx" data-on="1" data-d="100" cx="600" cy="520" r="16"/>
+    <circle class="st fx" data-on="1" data-d="250" cx="960" cy="520" r="16"/>
+    <circle class="st fx" data-on="1" data-d="400" cx="1320" cy="520" r="16"/>
+  </svg>
+  <div class="node fx" data-d="300" style="left:96px"><b>Токен от BotFather</b><span>две минуты в Telegram; агенту в чат, он кладёт в .env</span></div>
+  <div class="node fx" data-on="1" data-d="150" style="left:456px"><b>Ключ OpenRouter</b><span>чем бот думает; тоже в .env, платим за потраченное</span></div>
+  <div class="node fx" data-on="1" data-d="300" style="left:816px"><b>Бот принимает файл и вводные</b><span>тот же расчёт по ТЗ, что агент делал в папке</span></div>
+  <div class="node fx" data-on="1" data-d="450" style="left:1176px"><b>Отвечает таблицей</b><span>лист «Сравнение» в Telegram, остановка на цене — вопросом</span></div>
+  <div class="live28 fx" data-on="2" data-d="200"><span class="stamp mono">живой показ в Telegram</span><span>бот работает на этом компьютере, пока он включён</span></div>
+</section>
+
+<!-- 21 ─────────────────────────────────────────── -->
+<section class="slide" id="s16" data-n="21" data-block="Демо" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Как повторить самим</span></span></h2>
   <div class="steps">
     <div class="row fx" data-d="250"><i>01</i><div><b>Папка</b><span>ваше ТЗ и ваши файлы для задачи</span></div></div>
@@ -784,8 +809,8 @@
   <div class="fixline fx" data-on="2" data-d="300"><span class="pill mono">ТЗ.md</span><span>Не сошлось — не принимайте: покажите агенту ожидаемое и полученное. ТЗ правьте, только если ошиблись в нём</span></div>
 </section>
 
-<!-- 21 ─────────────────────────────────────────── -->
-<section class="slide" id="s26" data-n="21" data-block="Демо" data-steps="1">
+<!-- 22 ─────────────────────────────────────────── -->
+<section class="slide" id="s26" data-n="22" data-block="Демо" data-steps="1">
   <h2 class="h-m ttl"><span class="mask"><span>Не понимаете — спросите</span></span></h2>
   <div class="ask fx" data-d="250" style="top:226px"><i>01</i><p>«Упёрлись: сайты блокируют робота. Какие ещё есть инструменты?»</p></div>
   <div class="ask fx" data-d="400" style="top:326px"><i>02</i><p>«Как открыть сервер? Дай пошаговую инструкцию»</p></div>
@@ -795,8 +820,8 @@
   <p class="warn fx" data-on="1" data-d="200">Агент мыслит прямо: кажется, что всё учтено, но нет. Спросите заранее, что нужно с вашей стороны, и прочитайте план сами</p>
 </section>
 
-<!-- 22 ─────────────────────────────────────────── -->
-<section class="slide" id="s20" data-n="22" data-block="Куда растёт" data-steps="1">
+<!-- 23 ─────────────────────────────────────────── -->
+<section class="slide" id="s20" data-n="23" data-block="Куда растёт" data-steps="1">
   <h2 class="h-m ttl"><span class="mask"><span>Куда это растёт</span></span></h2>
   <span class="cap20 mono fx fade" data-d="300" style="left:96px">личный</span>
   <span class="cap20 mono fx fade" data-d="300" style="left:944px">корпоративный</span>
@@ -809,8 +834,8 @@
   <div class="words"><span>роли</span><span>права</span><span>память</span><span>журнал</span></div>
 </section>
 
-<!-- 23 ─────────────────────────────────────────── -->
-<section class="slide" id="s21" data-n="23" data-block="Куда растёт" data-steps="1">
+<!-- 24 ─────────────────────────────────────────── -->
+<section class="slide" id="s21" data-n="24" data-block="Куда растёт" data-steps="1">
   <h2 class="h-m ttl"><span class="mask"><span>Как устроено у меня</span></span></h2>
   <div class="pc fx fade" data-d="200"><span class="pcl mono">домашний ПК · Windows · включён всегда</span>
     <div class="bot" style="left:30px"><b>Omnerio</b><span class="f mono">AGENTS.md</span><span class="stk mono">Python · Telegram · кабинет</span><span class="s mono"><i></i>работает</span></div>
@@ -834,8 +859,8 @@
   <p class="moral21 fx fade" data-d="900">GitHub хранит код; работает помощник там, где есть включённая машина</p>
 </section>
 
-<!-- 24 ─────────────────────────────────────────── -->
-<section class="slide" id="s27" data-n="24" data-block="Куда растёт" data-steps="2">
+<!-- 25 ─────────────────────────────────────────── -->
+<section class="slide" id="s27" data-n="25" data-block="Куда растёт" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Что нужно, чтобы начать</span></span></h2>
   <div class="base">
     <div class="row fx" data-d="250"><i>01</i><div><b>Машина, которая работает всегда</b><span>домашний ПК, Mac mini или арендованный сервер</span></div></div>
@@ -848,8 +873,8 @@
   <div class="way w2 fx" data-on="2" data-d="200"><b>На многих</b><p>свой бот через Telegram Bot API и ключ OpenRouter: вход через Google, оплата картой в долларах или USDC</p></div>
 </section>
 
-<!-- 25 ─────────────────────────────────────────── -->
-<section class="slide" id="s23" data-n="25" data-block="Выход" data-steps="0">
+<!-- 26 ─────────────────────────────────────────── -->
+<section class="slide" id="s23" data-n="26" data-block="Выход" data-steps="0">
   <h1 class="h-xl thanks"><span class="mask"><span>Спасибо</span></span></h1>
   <div class="lines">
     <span class="fx" data-d="300">Описать<em>вход, выход, проверки</em></span>
