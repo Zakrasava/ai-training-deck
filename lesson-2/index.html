@@ -131,7 +131,7 @@
 
 /* ── 9 · одна из восьми по щелчку: список слева, разбор задачи справа ── */
 #s9 .rows{position:absolute;left:96px;top:226px;width:640px}
-#s9 .row{position:relative;display:grid;grid-template-columns:36px 1fr;align-items:center;height:54px;border-top:1px solid var(--hair);transition:color .3s}
+#s9 .row{position:relative;display:grid;grid-template-columns:36px 1fr;align-items:center;height:52px;border-top:1px solid var(--hair);transition:color .3s}
 #s9 .row:last-child{border-bottom:1px solid var(--hair)}
 #s9 .row .d{width:18px;height:18px;border-radius:50%;border:3px solid var(--ink);transition:background .3s,border-color .3s}
 #s9 .row.none .d{border-style:dashed;border-color:var(--muted)}
@@ -452,7 +452,7 @@
   <div class="lbl fx" data-d="700" style="left:470px">описать задачу</div>
   <div class="lbl fx" data-d="900" style="left:1000px">доступ</div>
   <div class="bar fx" data-on="1" data-d="250" style="top:226px"><span class="stamp mono">сайт с входом</span><span>пароль не отдаём: файл, ключ или расширение</span></div>
-  <div class="bar fx" data-on="1" data-d="400" style="top:346px"><span class="stamp mono">закрытый мессенджер</span><span>WhatsApp заблокирован; Telegram замедлен</span></div>
+  <div class="bar fx" data-on="1" data-d="400" style="top:346px"><span class="stamp mono">закрытый мессенджер</span><span>WhatsApp заблокирован; Telegram: VPN</span></div>
   <div class="bar fx" data-on="1" data-d="550" style="top:516px"><span class="stamp mono">система компании</span><span>1С, CRM, панель: ключ по согласованию с ИТ</span></div>
   <div class="bar fx" data-on="1" data-d="700" style="top:646px"><span class="stamp mono">бумага</span><span>фото и распознавание, цифры сверяет человек</span></div>
   <p class="h-m p2 fx" data-d="500">Нужно описать задачу и знать, <u>до чего помощник дотянется.</u></p>
@@ -591,7 +591,7 @@
 
 <!-- 11 ─────────────────────────────────────────── -->
 <section class="slide" id="s9" data-n="11" data-block="Ваши ТЗ" data-steps="6">
-  <h2 class="h-m ttl"><span class="mask"><span>Две из десяти — по щелчку</span></span></h2>
+  <h2 class="h-m ttl"><span class="mask"><span>Три из одиннадцати — по щелчку</span></span></h2>
   <div class="rows" id="s9-rows"></div>
 </section>
 
@@ -599,9 +599,9 @@
 <section class="slide" id="s18" data-n="12" data-block="Ваши ТЗ" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Рейсы для руководителя</span></span></h2>
   <p class="cond mono fx fade" data-d="300"><b>условия постоянные:</b> бизнес · вылет лучше после 10:00 · стыковка до 3 ч · в Лондоне Хитроу, в Милане Линате · 8 сайтов поиска</p>
-  <p class="thought fx" data-on="2" data-d="700">Инструменты выбраны заранее. Упёрлись — надо знать, что ещё есть</p>
-  <div class="acc fx" data-on="2" data-d="100" style="top:500px"><span class="stamp mono">WhatsApp закрыт</span><p>так в её ТЗ: текст пересылает помощник, руками</p></div>
-  <div class="acc fx" data-on="2" data-d="350" style="top:620px"><span class="stamp mono">сайты блокируют</span><p>так в её ТЗ: снимки с телефона, руками; других инструментов бот не искал</p></div>
+  <p class="thought fx" data-on="2" data-d="700">ТЗ от бота: инструменты со слов участницы. Упёрлись — закрыто руками</p>
+  <div class="acc fx" data-on="2" data-d="100" style="top:500px"><span class="stamp mono">WhatsApp закрыт</span><p>в ТЗ, составленном ботом: текст пересылает помощник, руками</p></div>
+  <div class="acc fx" data-on="2" data-d="350" style="top:620px"><span class="stamp mono">сайты блокируют</span><p>в ТЗ, составленном ботом: снимки с телефона, руками; других инструментов бот не искал</p></div>
   <div class="phone fx" data-d="200">
     <div class="hd"><i></i><span>Рейсы<small>бот помощника</small></span></div>
     <div class="fw mono fx fade" data-d="500">переслано · руководитель</div>
@@ -625,7 +625,7 @@
     <circle class="st" data-on="2" data-d="300" cx="540" cy="620" r="13"/><circle class="st" data-on="2" data-d="450" cx="780" cy="620" r="13"/><circle class="st" data-on="2" data-d="600" cx="1020" cy="620" r="13"/><circle class="st lit" data-on="2" data-d="750" cx="1260" cy="620" r="13"/>
   </svg>
   <div class="tz fx" data-d="300">ТЗ: рейсы<br>для руководителя</div>
-  <div class="who fx fade" data-on="1" style="top:262px">как написал бот</div>
+  <div class="who fx fade" data-on="1" style="top:262px">ТЗ, составленное ботом</div>
   <div class="stp up fx" data-on="1" data-d="300" style="left:430px">шеф пишет в WhatsApp</div>
   <div class="stp up fx" data-on="1" data-d="450" style="left:670px">помощник пересылает текст боту — руками</div>
   <div class="stp up fx" data-on="1" data-d="600" style="left:910px">бот ищет; блокируют — снимки с телефона, руками</div>
@@ -690,7 +690,7 @@
     <div class="tr"><span>Ключ API OpenAI, Anthropic, Google</span><span>прямая дверь к одной компании</span><span>важна конкретная модель</span></div>
     <div class="tr"><span>YandexGPT, GigaChat</span><span>модели на серверах в России</span><span>когда это требование</span></div>
     <div class="tr"><span>Ollama</span><span>модель на своём компьютере или сервере</span><span>документы нельзя выпускать</span></div>
-    <div class="tr"><span>Telegram Bot API</span><span>токен от BotFather</span><span>любой бот; токен за 5 минут</span></div>
+    <div class="tr"><span>Telegram Bot API</span><span>токен от BotFather</span><span>любой бот; токен за 5 минут; при ограничениях — VPN</span></div>
     <div class="tr"><span>GitHub</span><span>код и история правок</span><span>когда помощник собран</span></div>
     <div class="tr"><span>Домашний ПК или сервер</span><span>где помощник живёт</span><span>нужно круглосуточно</span></div>
     <div class="tr"><span>Подписка</span><span>один человек, свои приложения</span><span>личная работа, свой бот не нужен</span></div>
@@ -844,7 +844,7 @@
     <div class="row fx" data-d="250"><i>01</i><div><b>Машина, которая работает всегда</b><span>домашний ПК, Mac mini или арендованный сервер</span></div></div>
     <div class="row fx" data-d="350"><i>02</i><div><b>Аккаунты</b><span>Google — один вход везде · GitHub — код и история · Telegram — токен от BotFather</span></div></div>
     <div class="row fx" data-d="450"><i>03</i><div><b>Агент на компьютере</b><span>Claude Code или Codex по подписке, рядом VS Code</span></div></div>
-    <div class="row fx" data-d="550"><i>04</i><div><b>Оплата и доступ</b><span>зарубежная карта или крипта, российские карты не проходят; VPN для регистрации</span></div></div>
+    <div class="row fx" data-d="550"><i>04</i><div><b>Оплата и доступ</b><span>зарубежная карта или крипта, российские карты не проходят; VPN для регистрации и для мессенджеров</span></div></div>
     <div class="row fx" data-d="650"><i>05</i><div><b>Секреты в .env</b><span>ключи и токены не в чат и не в GitHub</span></div></div>
   </div>
   <div class="way w1 fx" data-on="1" data-d="200"><b>Для себя</b><p>готовый агент, например Hermes Agent: ставится на вашу машину, подключается к Telegram, расширяется просьбами словами</p></div>
@@ -1025,7 +1025,7 @@ const S10 = [
   ['Открытый сайт без входа', 'агент заходит сам; из РФ может понадобиться прокси'],
   ['Сайт с вашим входом', 'вы отдаёте файл или снимок; официальный ключ API; расширение в вашей сессии с ограничениями. Пароль не отдаётся'],
   ['Система компании: 1С, CRM, панель', 'выгрузка или ключ системы, по согласованию с ИТ'],
-  ['Мессенджер', 'WhatsApp в России заблокирован; Telegram: бот и есть вход, но его замедляют — держите запасной канал'],
+  ['Мессенджер', 'WhatsApp заблокирован, бот из России закрыт; Telegram ограничивают, но бот работает: VPN и Max'],
   ['Файлы', 'загрузить в проект или положить в папку агента'],
   ['Бумага', 'фото, распознавание, проверка человеком'],
 ];
