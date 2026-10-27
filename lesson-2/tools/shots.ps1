@@ -6,7 +6,7 @@ $deck = ((Resolve-Path "$PSScriptRoot\..\deck\index.html").Path) -replace '\\', 
 $out = "$PSScriptRoot\..\deck\shots"
 New-Item -ItemType Directory -Force -Path $out | Out-Null
 # слайд → число шагов (data-steps); при изменении слайдов поправить здесь
-$steps = @{1=1;2=1;3=2;4=1;5=5;6=4;7=2;8=1;9=2;10=3;11=10;12=2;13=3;14=7;15=1;16=8;17=2;18=0;19=2;20=2;21=2;22=1;23=1;24=1;25=2;26=0}
+$steps = @{1=1;2=1;3=2;4=1;5=5;6=4;7=2;8=1;9=2;10=3;11=10;12=2;13=3;14=7;15=1;16=8;17=2;18=4;19=2;20=2;21=2;22=1;23=1;24=1;25=2;26=0}
 function Shot($w, $h, $n, $s, $file) {
   & $chrome --headless=new --hide-scrollbars --window-size=$w,$h --virtual-time-budget=4000 --screenshot="$file" "file:///$deck`?static#$n.$s" 2>$null | Out-Null
 }
