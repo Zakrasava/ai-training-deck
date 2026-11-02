@@ -5,18 +5,27 @@
   const paras = s => s.split(/\n{2,}/).map(p => `<p>${esc(p)}</p>`).join('');
   const stage = document.getElementById('stage');
 
+  // сообщение цепочки «одно окно — один бот»: полоса 1…6 вверху, текущее выделено
+  const rail = k => P.chain.map((c, i) =>
+    `<span class="${i + 1 === k ? 'on' : i + 1 < k ? 'done' : ''}"><b>${i + 1}</b>${esc(c.title)}</span>`).join('');
+
   document.querySelectorAll('section.cmd').forEach(el => {
-    const t = el.dataset.task === 'second' ? null : P.tasks.find(x => x.n === +el.dataset.task);
-    el._text = t ? t.cmd : P.second;
-    const exp = t && t.expect.length;
+    const k = +el.dataset.chain || 0, c = k ? P.chain[k - 1] : null;
+    const t = c || el.dataset.task === 'second' ? null : P.tasks.find(x => x.n === +el.dataset.task);
+    el._text = c ? c.cmd : t ? t.cmd : P.second;
+    const list = c ? c.expect : t ? t.expect : [];
+    const top = c ? `<div class="top rail fx fade">${rail(k)}</div>`
+      : `<div class="top fx fade">${t ? `<b>${t.n}</b>${esc(t.title)}` : 'Любая готовая задача · новое окно, другой агент'}</div>`;
+    const head = c ? `<em>Сообщение ${k}</em> · ${esc(c.title)}` : t ? `<em>Команда</em> · ${esc(t.title)}` : '<em>Второй взгляд</em>';
+    const hint = c ? 'одно окно агента · папка встреча-3-один-бот' : t ? 'окно агента в папке задачи, без --chrome' : 'новое окно, другой агент';
     el.insertAdjacentHTML('afterbegin', `
-      <div class="top fx fade">${t ? `<b>${t.n}</b>${esc(t.title)}` : 'Любая готовая задача · новое окно, другой агент'}</div>
-      <h2 class="ct"><span class="mask"><span><em>${t ? 'Команда' : 'Второй взгляд'}</em>${t ? ' · ' + esc(t.title) : ''}</span></span></h2>
+      ${top}
+      <h2 class="ct"><span class="mask"><span>${head}</span></span></h2>
       <div class="card fx" data-d="200"><div class="txt">${paras(el._text)}</div></div>
-      ${exp ? `<div class="expect" aria-hidden="true"><h3>Что агент должен найти сам</h3><ol>${t.expect.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div>` : ''}
+      ${list.length ? `<div class="expect" aria-hidden="true"><h3>${c && c.expectTitle ? esc(c.expectTitle) : 'Что агент должен найти сам'}</h3><ol>${list.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div>` : ''}
       <div class="act fx" data-d="350"><button class="copy" type="button">Копировать <kbd>C</kbd></button>
-        ${exp ? '<button class="ghost exp" type="button" aria-pressed="false">Что ждём <kbd>E</kbd></button>' : ''}
-        <span class="hint">${t ? 'окно агента в папке задачи, без --chrome' : 'новое окно, другой агент'}</span></div>`);
+        ${list.length ? '<button class="ghost exp" type="button" aria-pressed="false">Что ждём <kbd>E</kbd></button>' : ''}
+        <span class="hint">${hint}</span></div>`);
   });
 
   const toast = document.createElement('div');
@@ -43,10 +52,10 @@
     v = v ?? !x.classList.contains('open');
     x.classList.toggle('open', v); x.setAttribute('aria-hidden', String(!v)); b.setAttribute('aria-pressed', String(v));
   }
-  // текст ужимается, пока не влезет в карточку (28 → 18 px)
+  // текст ужимается, пока не влезет в карточку (28 → 18 px; короткие сообщения цепочки — от 36)
   function fitText(el) {
     const box = el.querySelector('.card .txt');
-    for (let f = 28; f >= 18; f--) { box.style.fontSize = f + 'px'; if (box.scrollHeight <= box.clientHeight + 1) break; }
+    for (let f = el.dataset.chain ? 36 : 28; f >= 18; f--) { box.style.fontSize = f + 'px'; if (box.scrollHeight <= box.clientHeight + 1) break; }
   }
 
   document.querySelectorAll('section.cmd').forEach(el => {
