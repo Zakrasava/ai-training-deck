@@ -1,0 +1,222 @@
+/* ══ встреча 3: слайды поверх движка встречи 2 (deck.css). Те же роли цвета: --ink — программа, --signal — человек ══ */
+.ttl{position:absolute;left:96px;top:96px}
+.ttl em{font-style:normal;color:var(--signal)}
+.kick{position:absolute;left:96px;top:58px;font:500 18px "JB Mono",monospace;color:var(--muted)}
+.moral{position:absolute;left:96px;font-weight:700;font-size:36px;letter-spacing:-.03em;line-height:1.12}
+.moral em{font-style:normal;color:var(--signal)}
+.st.gone{fill:var(--bg);stroke:var(--muted);stroke-dasharray:6 6}
+.lg{position:absolute;right:96px;top:122px;display:flex;gap:30px;font-size:19px;color:var(--muted)}
+.lg span{display:flex;align-items:center;gap:10px}
+.lg i{width:18px;height:18px;border-radius:50%;border:5px solid var(--ink);background:var(--paper)}
+.lg i.h{border-color:var(--signal);background:var(--signal)}
+.lbl{position:absolute;width:250px;margin-left:-125px;text-align:center;font-size:21px;line-height:1.2;letter-spacing:-.01em}
+.lbl small{display:block;font-size:17px;color:var(--muted);margin-top:5px;line-height:1.25}
+.lbl.h small{color:var(--signal)}
+.lbl.g{color:var(--muted)}
+.tm{position:absolute;width:200px;margin-left:-100px;text-align:center;font:500 18px "JB Mono",monospace;color:var(--muted)}
+.tm.h{color:var(--signal)}
+
+/* 1 · титул */
+#s1 h1{position:absolute;left:96px;top:170px}
+#s1 h1 em{font-style:normal;color:var(--signal)}
+#s1 .lead{position:absolute;left:96px;top:450px}
+#s1 .me-lbl{position:absolute;left:136px;top:730px;font-weight:600;font-size:30px;letter-spacing:-.02em}
+#s1 .tl{position:absolute;top:728px;width:200px;margin-left:-100px;text-align:center;font:500 19px "JB Mono",monospace;color:var(--muted)}
+#s1 .live{position:absolute;right:96px;top:96px;height:56px;padding:0 24px;border-radius:28px;background:var(--ink);color:var(--paper);display:flex;align-items:center;gap:14px;font-size:20px;white-space:nowrap}
+#s1 .live i{width:12px;height:12px;border-radius:50%;background:var(--signal);display:block}
+
+/* 2 · рейсы: по ТЗ и на деле */
+#s2 .rl{position:absolute;left:96px;font:500 18px "JB Mono",monospace;color:var(--muted)}
+#s2 .lim{position:absolute;left:96px;right:96px;top:610px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:28px}
+#s2 .lim div{border-top:4px solid var(--signal);padding-top:10px;font-size:19px;line-height:1.3}
+#s2 .lim b{display:block;font-size:21px;margin-bottom:3px}
+#s2 .moral{top:738px}
+
+/* 3 · файл ТЗ — через час готово */
+#s3 .note{bottom:96px}
+#s3 .q4{position:absolute;left:300px;top:600px;width:560px;font-size:19px;line-height:1.35;color:var(--muted)}
+#s3 .q4 b{color:var(--ink);font-weight:600}
+
+/* команды: карточка, которую ведущий копирует агенту */
+.cmd .top{position:absolute;left:96px;right:96px;top:56px;display:flex;align-items:center;gap:14px;font-size:22px;color:var(--muted)}
+.cmd .top b{font:600 20px "JB Mono",monospace;color:var(--paper);background:var(--ink);width:34px;height:34px;border-radius:17px;display:grid;place-items:center}
+.cmd .ct{position:absolute;left:96px;right:96px;top:112px;font-weight:700;font-size:58px;line-height:1.02;letter-spacing:-.035em}
+.cmd .ct em{font-style:normal;color:var(--signal)}
+.cmd .card{position:absolute;left:96px;right:96px;top:208px;bottom:168px;background:var(--paper);border:1px solid var(--hair);border-radius:22px;padding:34px 40px}
+.cmd .card .txt{height:100%;overflow:hidden;font-size:28px;line-height:1.42;letter-spacing:-.005em;white-space:pre-wrap}
+.cmd .expect{position:absolute;left:96px;right:96px;top:208px;bottom:168px;background:var(--ink);color:var(--paper);border-radius:22px;padding:34px 40px;
+  opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s var(--ease),transform .35s var(--ease),visibility 0s .35s}
+.cmd .expect.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s var(--ease),transform .35s var(--ease),visibility 0s}
+.cmd .expect h3{font-size:24px;font-weight:500;color:#B9B4AA;margin-bottom:18px}
+.cmd .expect ol{list-style:none;counter-reset:e;columns:2;column-gap:56px}
+.cmd .expect li{counter-increment:e;break-inside:avoid;position:relative;padding-left:46px;font-size:23px;line-height:1.33;margin-bottom:14px}
+.cmd .expect li::before{content:counter(e);position:absolute;left:0;top:2px;font:500 17px "JB Mono",monospace;width:30px;height:30px;border-radius:15px;border:2px solid var(--signal);color:var(--signal);display:grid;place-items:center}
+.cmd .act{position:absolute;left:96px;right:96px;bottom:96px;height:56px;display:flex;align-items:center;gap:22px}
+.cmd .copy{height:56px;padding:0 30px;border:0;border-radius:28px;background:var(--signal);color:#fff;font:600 22px Geologica,sans-serif;display:flex;align-items:center;gap:14px;cursor:pointer;transition:background .2s}
+.cmd .copy.ok{background:var(--ink)}
+.cmd .ghost{height:56px;padding:0 26px;border:1px solid var(--hair);border-radius:28px;background:transparent;color:var(--ink);font:500 21px Geologica,sans-serif;display:flex;align-items:center;gap:12px;cursor:pointer}
+.cmd .ghost[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.cmd kbd{font:500 15px "JB Mono",monospace;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,.22)}
+.cmd .ghost kbd{background:var(--bg)}
+.cmd .ghost[aria-pressed="true"] kbd{background:rgba(255,255,255,.18)}
+.cmd .copy:focus-visible,.cmd .ghost:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.cmd .hint{margin-left:auto;font-size:19px;color:var(--muted)}
+.toast{position:absolute;left:50%;bottom:170px;transform:translateX(-50%);background:var(--ink);color:var(--paper);font-size:20px;padding:12px 22px;border-radius:24px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:7}
+.toast.on{opacity:1}
+
+/* 8 · смета: объёмы руками */
+#s8 .qs{position:absolute;left:96px;top:250px;width:690px}
+#s8 .q{padding:18px 0 20px;border-top:1px solid var(--hair)}
+#s8 .q:last-child{border-bottom:1px solid var(--hair)}
+#s8 .q b{display:block;font-size:28px;font-weight:600;letter-spacing:-.015em;line-height:1.2}
+#s8 .q span{display:block;font-size:19px;color:var(--muted);margin-top:6px}
+#s8 .q.bot b{position:relative;width:max-content;max-width:100%}
+#s8 .q.bot b::after{content:"";position:absolute;left:-4px;right:-4px;top:54%;height:4px;background:var(--signal);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+#s8.strike .q.bot b::after{transform:scaleX(1)}
+#s8 .plan{position:absolute;left:848px;top:92px;width:656px;height:696px;background:#fff;border:1px solid var(--hair);border-radius:14px;overflow:hidden}
+#s8 .plan img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+#s8 .hl{position:absolute;border:3px solid var(--signal);border-radius:8px;background:rgba(224,72,47,.08)}
+#s8 .moral{top:680px;width:700px;font-size:32px}
+#s8 .src{position:absolute;left:848px;top:796px;font-size:15px}
+
+/* 9 · как считается смета */
+#s9 .c2{position:absolute;left:96px;right:96px;top:420px;display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+#s9 .c2 h3{font-size:23px;font-weight:600;margin-bottom:8px}
+#s9 .c2 ol{list-style:none}
+#s9 .c2 li{padding:11px 0;border-top:1px solid var(--hair);font-size:21px;line-height:1.3}
+#s9 .c2 li code{font:500 18px "JB Mono",monospace;color:var(--signal)}
+#s9 .c2 li small{display:block;font-size:16px;color:var(--muted);margin-top:2px}
+
+/* последний · спасибо */
+#s25 h1{position:absolute;left:96px;top:150px}
+#s25 .rows{position:absolute;left:96px;right:96px;top:420px}
+#s25 .rows div{display:grid;grid-template-columns:380px 1fr;align-items:baseline;padding:16px 0;border-top:1px solid var(--hair);font-size:30px;font-weight:600;letter-spacing:-.02em}
+#s25 .rows div:last-child{border-bottom:1px solid var(--hair)}
+#s25 .rows em{font-style:normal;font-weight:400;font-size:24px;color:var(--muted);letter-spacing:0}
+
+/* ══ разбор ТЗ: слайды с шагами ══ */
+.rh{position:absolute;left:96px;top:64px;right:96px}
+.rh h2{font-weight:700;font-size:64px;line-height:1.02;letter-spacing:-.04em}
+.rh p{margin-top:14px;font-size:26px;line-height:1.3;color:var(--muted);max-width:1180px}
+.note{position:absolute;left:96px;right:96px;bottom:92px;font-size:26px;line-height:1.3}
+.note b{color:var(--signal);font-weight:600}
+.src{font-size:16px;color:var(--muted)}
+
+/* R1 обложка разбора */
+.r1 .h{position:absolute;left:96px;top:118px;font-weight:700;font-size:112px;line-height:.96;letter-spacing:-.05em}
+.r1 .h i{font-style:normal;color:var(--signal)}
+.r1 .sub{position:absolute;left:96px;top:380px;width:1000px;font-size:30px;line-height:1.32;color:var(--muted)}
+.r1 svg{position:absolute;left:96px;top:560px;width:1432px;height:160px;overflow:visible}
+.r1 .trk{fill:none;stroke:var(--ink);stroke-width:10;stroke-linecap:round;stroke-dasharray:1500;stroke-dashoffset:1500;transition:stroke-dashoffset 1.6s cubic-bezier(.45,.05,.55,.95)}
+.r1 .trk.on{stroke-dashoffset:0}
+.r1 circle{fill:var(--paper);stroke:var(--ink);stroke-width:6}
+.r1 circle.x{fill:var(--signal);stroke:var(--signal)}
+.r1 text{font:500 18px "JB Mono",monospace;fill:var(--muted)}
+
+/* R2 девять задач */
+.tasks9{position:absolute;left:96px;right:96px;top:226px}
+.tasks9 .r{display:grid;grid-template-columns:48px 360px 330px 1fr 150px;align-items:center;height:58px;border-top:1px solid var(--hair);font-size:22px}
+.tasks9 .r:last-child{border-bottom:1px solid var(--hair)}
+.tasks9 .hd{height:40px;border-top:0;font-size:16px;color:var(--muted);font-family:"JB Mono",monospace}
+.tasks9 .n{font:500 17px "JB Mono",monospace;color:var(--muted)}
+.tasks9 .w{color:var(--muted);font-size:20px}
+.tasks9 .why{font-size:20px;line-height:1.2;padding-right:16px}
+.stamp{justify-self:end;font:600 15px "JB Mono",monospace;letter-spacing:.02em;padding:6px 12px;border-radius:8px;border:2px solid var(--signal);color:var(--signal);transform:rotate(-3deg)}
+.stamp.k{border-color:var(--ink);color:var(--ink)}
+
+/* R3 шесть способов */
+.ladder{position:absolute;left:96px;right:96px;top:228px;height:500px}
+.ladder .rail{position:absolute;left:13px;top:17px;bottom:17px;width:8px;background:var(--hair)}
+.ladder .w{position:absolute;left:0;right:0;display:grid;grid-template-columns:76px 440px 1fr;align-items:center;min-height:42px}
+.ladder .w::before{content:"";position:absolute;left:0;top:50%;margin-top:-17px;width:34px;height:34px;border-radius:50%;background:var(--paper);border:7px solid var(--ink);box-sizing:border-box}
+.ladder .w.hl::before{border-color:var(--signal);background:var(--signal)}
+.ladder .w b{grid-column:2;font-size:30px;font-weight:600;letter-spacing:-.015em}
+.ladder .w span{grid-column:3;font-size:22px;line-height:1.25;color:var(--muted)}
+.ladder .w span em{font-style:normal;color:var(--ink)}
+.ladder .end{position:absolute;left:76px;font:500 16px "JB Mono",monospace;color:var(--muted)}
+
+/* R4 матрица капчи */
+.mx{position:absolute;left:96px;right:96px;top:250px;display:grid;grid-template-columns:330px repeat(3,1fr)}
+.mx>div{height:76px;display:flex;align-items:center;border-top:1px solid var(--hair);font-size:24px}
+.mx .ch{height:64px;border-top:0;font-size:19px;line-height:1.2;color:var(--muted);padding-right:20px}
+.mx .ch.me{color:var(--signal)}
+.pill{display:inline-flex;align-items:center;gap:10px;font:600 19px "JB Mono",monospace;padding:8px 16px;border-radius:20px}
+.pill.no{background:rgba(224,72,47,.12);color:var(--signal)}
+.pill.ok{background:var(--ink);color:var(--paper)}
+.pill.na{color:var(--muted);padding-left:0;font-weight:400}
+
+/* R5 сеть */
+.net{position:absolute;left:0;top:0;width:1600px;height:900px;overflow:visible}
+.net .ln{fill:none;stroke:var(--ink);stroke-width:8;stroke-linecap:round;stroke-dasharray:700;stroke-dashoffset:700;transition:stroke-dashoffset 1s cubic-bezier(.45,.05,.55,.95)}
+.net .ln.on{stroke-dashoffset:0}
+.net .ln.s{stroke:var(--signal)}
+.node{position:absolute;margin-left:-170px;text-align:center;width:340px}
+.node .dot{width:46px;height:46px;border-radius:50%;margin:0 auto 12px;border:9px solid var(--ink);background:var(--paper)}
+.node.me .dot{border-color:var(--signal);background:var(--signal)}
+.node b{display:block;font-size:26px;font-weight:600;letter-spacing:-.01em}
+.node small{display:block;font-size:19px;color:var(--muted);margin-top:4px}
+.hits{position:absolute;width:520px}
+.hits div{display:flex;justify-content:space-between;align-items:center;height:52px;border-top:1px solid var(--hair);font-size:23px}
+.hits div:last-child{border-bottom:1px solid var(--hair)}
+
+/* R6 вход по учётке */
+.locks{position:absolute;left:96px;top:250px;width:520px}
+.locks div{height:64px;display:flex;align-items:center;gap:18px;border-top:1px solid var(--hair);font-size:28px}
+.locks div:last-child{border-bottom:1px solid var(--hair)}
+.locks svg{width:26px;height:26px;stroke:var(--signal);stroke-width:2.4;fill:none;stroke-linecap:round}
+.ways{position:absolute;left:700px;right:96px;top:250px}
+.ways .w{display:grid;grid-template-columns:56px 1fr;padding:16px 0;border-top:1px solid var(--hair)}
+.ways .w:last-child{border-bottom:1px solid var(--hair)}
+.ways .w i{font:600 22px "JB Mono",monospace;font-style:normal;color:var(--signal)}
+.ways .w b{display:block;font-size:27px;font-weight:600;letter-spacing:-.01em}
+.ways .w span{display:block;font-size:21px;line-height:1.3;color:var(--muted);margin-top:4px}
+
+/* R7 файл iiko */
+.xl{position:absolute;left:96px;right:96px;top:236px;border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:#fff;font-size:19px}
+.xl .t{position:relative;display:grid;grid-template-columns:196px 286px 120px 226px 176px 200px 1fr}
+.xl .t>div{position:relative;height:44px;padding:0 12px;display:flex;align-items:center;border-right:1px solid #E6E2DA;border-bottom:1px solid #E6E2DA;white-space:nowrap}
+.xl .t>div.num{justify-content:flex-end;font-variant-numeric:tabular-nums}
+.xl .t.hd>div{height:58px;background:#E4E9F2;font-weight:600;font-size:16px;line-height:1.15;white-space:normal}
+.xl .hlc{position:absolute;inset:0;outline:3px solid var(--signal);outline-offset:-3px;background:rgba(224,72,47,.08);opacity:0;transition:opacity .35s;pointer-events:none}
+.xl .hlc.on{opacity:1}
+.xl .hlr{position:absolute;left:0;right:0;top:0;bottom:0;background:rgba(224,72,47,.10);box-shadow:inset 0 0 0 2px var(--signal);opacity:0;transition:opacity .35s;pointer-events:none;z-index:1}
+.xl .hlr.on{opacity:1}
+.calls{position:absolute;left:96px;right:96px;top:648px;display:grid;grid-template-columns:repeat(4,1fr);column-gap:28px}
+.calls div{font-size:20px;line-height:1.3;border-top:4px solid var(--signal);padding-top:12px}
+.calls div b{display:block;font-size:22px;margin-bottom:4px}
+
+/* R8 для себя / для команды */
+.cmp{position:absolute;left:96px;right:96px;top:250px;display:grid;grid-template-columns:300px 1fr 1fr}
+.cmp>div{padding:18px 24px 18px 0;border-top:1px solid var(--hair);font-size:24px;line-height:1.3}
+.cmp .k{font-size:20px;color:var(--muted);padding-top:22px}
+.cmp .c1,.cmp .c2,.cmp .k0{font-size:30px;font-weight:700;letter-spacing:-.02em;border-top:0}
+.cmp .c1{color:var(--signal)}
+
+/* разбор одного ТЗ: что хотел → процесс по ТЗ → где не дотянули → с чем столкнётся → как решаем */
+.tzx .lab{position:absolute;left:96px;top:56px;font:500 18px "JB Mono",monospace;color:var(--muted)}
+.tzx h2{position:absolute;left:96px;right:96px;top:96px;font-weight:700;font-size:58px;line-height:1.02;letter-spacing:-.04em}
+.want{position:absolute;left:96px;right:96px;top:176px;display:grid;grid-template-columns:190px 1fr;align-items:baseline;font-size:25px;line-height:1.32}
+.want b{font:500 18px "JB Mono",monospace;color:var(--muted)}
+.flow{position:absolute;left:96px;right:96px;top:286px;height:170px}
+.flow .bar{position:absolute;left:100px;right:100px;top:13px;height:8px;background:var(--ink);transform-origin:left center}
+.flow .bar.fx{opacity:1;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.45,.05,.55,.95)}
+.flow .bar.fx.on{transform:scaleX(1)}
+.flow .st{position:absolute;top:0;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:var(--paper);border:7px solid var(--ink);box-sizing:border-box}
+.flow .bad{position:absolute;top:0;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 7px rgba(224,72,47,.18)}
+.flow .nm{position:absolute;top:50px;width:230px;margin-left:-115px;text-align:center;font-size:20px;line-height:1.2}
+.flow .tag{position:absolute;top:106px;width:230px;margin-left:-115px;text-align:center}
+.flow .tag .pill{font-size:15px;padding:5px 12px}
+.cols{position:absolute;left:96px;right:96px;top:478px;display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+.cols h3{font-size:22px;font-weight:600;margin-bottom:8px}
+.cols .l h3{color:var(--signal)}
+.cols ol{list-style:none;counter-reset:c}
+.cols li{counter-increment:c;position:relative;padding:11px 0 11px 40px;border-top:1px solid var(--hair);font-size:21px;line-height:1.3}
+.cols li::before{content:counter(c);position:absolute;left:0;top:13px;font:600 17px "JB Mono",monospace;color:var(--muted)}
+.cols .l li::before{color:var(--signal)}
+
+/* R9 проверка */
+.big{position:absolute;left:96px;top:210px;font-weight:700;font-size:250px;line-height:.9;letter-spacing:-.06em}
+.big i{font-style:normal;color:var(--signal)}
+.bigt{position:absolute;left:760px;right:96px;top:240px;font-size:32px;line-height:1.3}
+.bigt p+p{margin-top:28px}
+.bigt .m{color:var(--muted);font-size:26px}

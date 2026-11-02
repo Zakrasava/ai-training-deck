@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<base href="deck/">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#EEEBE4">
+<title>Встреча 3 · Собираем при вас</title>
+<link rel="stylesheet" href="deck.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+<div class="stage" id="stage">
+
+<!-- 1 ─────────────────────────────────────────── -->
+<section class="slide" id="s1" data-n="1" data-block="Вход" data-steps="1">
+  <h1 class="h-xl"><span class="mask"><span>Ваши задачи —</span></span><span class="mask" data-d="110"><span><em>собираем</em> при вас</span></span></h1>
+  <p class="lead fx" data-d="400">Встреча 3 · одна команда агенту — и через час работающий бот</p>
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <defs><linearGradient id="g1" x1="160" x2="1600" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#18191B"/><stop offset=".7" stop-color="#18191B"/><stop offset="1" stop-color="#18191B" stop-opacity="0"/></linearGradient></defs>
+    <path class="ln-main" id="s1-ln" d="M160 690 H1600" style="stroke:url(#g1)"/>
+    <circle class="st me" cx="160" cy="690" r="22"/>
+    <circle class="st" cx="440" cy="690" r="16"/><circle class="st" cx="680" cy="690" r="16"/><circle class="st" cx="920" cy="690" r="16"/>
+    <circle class="st" cx="1160" cy="690" r="16"/><circle class="st" cx="1400" cy="690" r="16"/>
+  </svg>
+  <div class="me-lbl fx" data-d="500">вы</div>
+  <span class="tl fx" data-d="600" style="left:440px">рейсы</span><span class="tl fx" data-d="650" style="left:680px">законы</span>
+  <span class="tl fx" data-d="700" style="left:920px">паркинг</span><span class="tl fx" data-d="750" style="left:1160px">акции</span>
+  <span class="tl fx" data-d="800" style="left:1400px">смета</span>
+  <div class="live mono fx" data-on="1"><i></i><span data-k="startTime"></span> · агентов в работе: <span data-k="agents"></span></div>
+</section>
+
+<!-- 2 ─────────────────────────────────────────── -->
+<section class="slide" id="s2" data-n="2" data-block="Вход" data-steps="3">
+  <h2 class="h-m ttl"><span class="mask"><span>По ТЗ — бот. На деле — <em>человек</em></span></span></h2>
+  <div class="lg fx" data-d="300" style="top:210px"><span><i></i>программа</span><span><i class="h"></i>человек</span></div>
+  <div class="rl fx" data-d="200" style="top:210px">по ТЗ · 21 октября</div>
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="ln-main" id="s2-a" d="M200 260 H1400"/>
+    <circle class="st lit" data-on="0" data-d="300" cx="200" cy="260" r="16"/><circle class="st" data-on="0" data-d="380" cx="500" cy="260" r="16"/><circle class="st" data-on="0" data-d="460" cx="800" cy="260" r="16"/>
+    <circle class="st" data-on="0" data-d="540" cx="1100" cy="260" r="16"/><circle class="st" data-on="0" data-d="620" cx="1400" cy="260" r="16"/>
+    <path class="ln-main" id="s2-b" d="M200 470 H1400"/>
+    <circle class="st lit" data-on="1" data-d="300" cx="200" cy="470" r="16"/><circle class="st lit" data-on="1" data-d="380" cx="500" cy="470" r="16"/><circle class="st lit" data-on="1" data-d="460" cx="800" cy="470" r="16"/>
+    <circle class="st gone" data-on="1" data-d="540" cx="1100" cy="470" r="16"/><circle class="st" data-on="1" data-d="620" cx="1400" cy="470" r="16"/>
+  </svg>
+  <div class="lbl h fx" data-d="300" style="left:200px;top:296px">Запрос шефа<small>пересылает она</small></div>
+  <div class="lbl fx" data-d="380" style="left:500px;top:296px">Поиск<small>Яндекс, Aviasales, Kayak, Trip.com</small></div>
+  <div class="lbl fx" data-d="460" style="left:800px;top:296px">Отбор<small>после 10:00, стыковка до 3 ч, Хитроу</small></div>
+  <div class="lbl fx" data-d="540" style="left:1100px;top:296px">Сверка цены<small>на втором сайте</small></div>
+  <div class="lbl fx" data-d="620" style="left:1400px;top:296px">Снимки и текст<small>черновик шефу</small></div>
+  <div class="rl fx" data-on="1" data-d="100" style="top:420px">через две недели · 2 ноября</div>
+  <div class="lbl h fx" data-on="1" data-d="300" style="left:200px;top:506px">Запрос шефа<small>пересылает она</small></div>
+  <div class="lbl h fx" data-on="1" data-d="380" style="left:500px;top:506px">Поиск<small>сама, на телефоне</small></div>
+  <div class="lbl h fx" data-on="1" data-d="460" style="left:800px;top:506px">Отбор<small>сама, по скриншотам</small></div>
+  <div class="lbl g fx" data-on="1" data-d="540" style="left:1100px;top:506px">Сверка цены<small>нет</small></div>
+  <div class="lbl fx" data-on="1" data-d="620" style="left:1400px;top:506px">Текст по форме<small>ChatGPT переписывает скриншот</small></div>
+  <div class="lim">
+    <div class="fx" data-on="2" data-d="0"><b>Лимит файлов</b>бесплатный ChatGPT — не больше 5 файлов в проекте</div>
+    <div class="fx" data-on="2" data-d="120"><b>Лимит картинок</b>несколько скриншотов в день, потом не загружает</div>
+    <div class="fx" data-on="2" data-d="240"><b>Обход руками</b>копирует текст со скриншота и вставляет в чат</div>
+  </div>
+  <p class="moral fx" data-on="3">ИИ стал переписчиком. Самое долгое — <em>поиск и отбор</em> — снова у человека</p>
+</section>
+
+<!-- 3 ─────────────────────────────────────────── -->
+<section class="slide" id="s3" data-n="3" data-block="Сборка" data-steps="2">
+  <h2 class="h-m ttl"><span class="mask"><span>Файл ТЗ — и через час <em>всё работает</em></span></span></h2>
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="ln-main" id="s3-a" d="M160 420 H587"/>
+    <path class="ln-main" id="s3-b" d="M587 420 H1440"/>
+    <circle class="st me" data-on="0" data-d="300" cx="160" cy="420" r="20"/><circle class="st" data-on="0" data-d="450" cx="373" cy="420" r="16"/><circle class="st lit" data-on="0" data-d="600" cx="587" cy="420" r="20"/>
+    <circle class="st" data-on="1" data-d="300" cx="800" cy="420" r="16"/><circle class="st" data-on="1" data-d="450" cx="1013" cy="420" r="16"/>
+    <circle class="st" data-on="1" data-d="600" cx="1227" cy="420" r="16"/><circle class="st" data-on="1" data-d="750" cx="1440" cy="420" r="20"/>
+  </svg>
+  <span class="tm h fx" data-d="300" style="left:160px;top:360px">старт</span><span class="tm fx" data-d="450" style="left:373px;top:360px">≈ 3 мин</span>
+  <span class="tm h fx" data-d="600" style="left:587px;top:360px">я</span>
+  <span class="tm fx" data-on="1" data-d="300" style="left:800px;top:360px">КТ1</span><span class="tm fx" data-on="1" data-d="450" style="left:1013px;top:360px">КТ2</span>
+  <span class="tm fx" data-on="1" data-d="600" style="left:1227px;top:360px">КТ3</span><span class="tm fx" data-on="1" data-d="750" style="left:1440px;top:360px">КТ4</span>
+  <div class="lbl h fx" data-d="300" style="left:160px;top:456px;width:200px;margin-left:-60px;text-align:left">Файл ТЗ<small>участника + одна фраза</small></div>
+  <div class="lbl fx" data-d="450" style="left:373px;top:456px;width:200px;margin-left:-100px">Разбор<small>агент сам, и ждёт</small></div>
+  <div class="lbl h fx" data-d="600" style="left:587px;top:456px;width:200px;margin-left:-100px">«Делай»<small>моё решение</small></div>
+  <div class="lbl fx" data-on="1" data-d="300" style="left:800px;top:456px;width:200px;margin-left:-100px">Доступы<small>какой сайт пустил и каким путём</small></div>
+  <div class="lbl fx" data-on="1" data-d="450" style="left:1013px;top:456px;width:200px;margin-left:-100px">ТЗ записано<small>что добавлено к ТЗ участника</small></div>
+  <div class="lbl fx" data-on="1" data-d="600" style="left:1227px;top:456px;width:200px;margin-left:-100px">Первый прогон<small>живые данные, проверки</small></div>
+  <div class="lbl fx" data-on="1" data-d="750" style="left:1440px;top:456px;width:200px;margin-left:-140px;text-align:right">В боте<small>новая кнопка в моём Telegram</small></div>
+  <p class="q4 fx" data-d="800" style="left:96px;top:590px;width:760px">Разбор — четыре вопроса: <b>что человек хотел</b> · <b>где по ТЗ работает человек</b> · <b>что соберу вместо этого</b> · <b>какие сайты пустят программу</b></p>
+  <p class="note fx" data-on="2">На репетиции 2 ноября — <b>8–21 минута на задачу</b>, четыре задачи параллельно. Пока агенты работают, разбираем ваши ТЗ; в контрольных точках смотрим, что они сделали.</p>
+</section>
+
+<!-- 4 ─────────────────────────────────────────── -->
+<section class="slide cmd" id="c1" data-n="4" data-block="Сборка" data-steps="0" data-task="1">
+</section>
+
+<!-- 5 ─────────────────────────────────────────── -->
+<section class="slide cmd" id="c2" data-n="5" data-block="Сборка" data-steps="0" data-task="2">
+</section>
+
+<!-- 6 ─────────────────────────────────────────── -->
+<section class="slide cmd" id="c3" data-n="6" data-block="Сборка" data-steps="0" data-task="3">
+</section>
+
+<!-- 7 ─────────────────────────────────────────── -->
+<section class="slide cmd" id="c4" data-n="7" data-block="Сборка" data-steps="0" data-task="4">
+</section>
+
+<!-- 8 ─────────────────────────────────────────── -->
+<section class="slide" id="s8" data-n="8" data-block="Смета" data-steps="3">
+  <h2 class="h-m ttl"><span class="mask"><span>Смета:</span></span><span class="mask" data-d="110"><span>объёмы — <em>руками</em></span></span></h2>
+  <div class="qs">
+    <div class="q fx" data-d="250"><b>«Объёмы работ снимаю с чертежей вручную»</b><span>участник из стройки, интервью в боте 23 октября</span></div>
+    <div class="q fx" data-d="350"><b>«Смета в Excel, в PDF — и клиенту»</b><span>2–3 раза в неделю, иногда чаще</span></div>
+    <div class="q bot fx" data-on="1"><b>«Чертежи сами по себе ИИ не источник цифр»</b><span>наш бот в том же интервью</span></div>
+  </div>
+  <figure class="plan fx fade" data-d="300"><img src="img/plan.png" alt="Обмерный план квартиры: площади комнат, высоты потолков, окна, размеры стен">
+    <span class="hl fx fade" data-on="2" data-d="0" style="left:31.5%;top:50.8%;width:8.2%;height:4%"></span>
+    <span class="hl fx fade" data-on="2" data-d="120" style="left:32.6%;top:41%;width:7%;height:2.2%"></span>
+    <span class="hl fx fade" data-on="2" data-d="240" style="left:31.5%;top:15.2%;width:9.2%;height:3.3%"></span>
+    <span class="hl fx fade" data-on="2" data-d="360" style="left:30.2%;top:29.7%;width:4.4%;height:1.8%"></span>
+    <span class="hl fx fade" data-on="2" data-d="480" style="left:63.6%;top:39.6%;width:7.8%;height:3.6%"></span>
+  </figure>
+  <p class="moral fx" data-on="3">Модель читает чертёж сама: <em>площади, высоты, окна, размеры</em>. Человеку — проверить и утвердить</p>
+  <span class="src fx fade" data-d="400">обмерный план из открытого портфолио студии, ЖК «Сетунь»</span>
+</section>
+
+<!-- 9 ─────────────────────────────────────────── -->
+<section class="slide" id="s9" data-n="9" data-block="Смета" data-steps="2">
+  <h2 class="h-m ttl"><span class="mask"><span>Как считается смета</span></span></h2>
+  <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="ln-main" id="s9-ln" d="M160 250 H1440"/>
+    <circle class="st" data-on="0" data-d="300" cx="160" cy="250" r="16"/><circle class="st" data-on="0" data-d="420" cx="480" cy="250" r="16"/><circle class="st" data-on="0" data-d="540" cx="800" cy="250" r="16"/>
+    <circle class="st" data-on="0" data-d="660" cx="1120" cy="250" r="16"/><circle class="st me" data-on="0" data-d="780" cx="1440" cy="250" r="20"/>
+  </svg>
+  <div class="lbl fx" data-d="300" style="left:160px;top:286px;width:240px;margin-left:-64px;text-align:left">Альбом PDF<small>планы, развёртки, ведомости</small></div>
+  <div class="lbl fx" data-d="420" style="left:480px;top:286px">Ведомость объёмов<small>по помещениям, у каждой цифры — лист</small></div>
+  <div class="lbl fx" data-d="540" style="left:800px;top:286px">Работы<small>объём × цена из прайса</small></div>
+  <div class="lbl fx" data-d="660" style="left:1120px;top:286px">Материалы<small>по нормам расхода и с запасом</small></div>
+  <div class="lbl h fx" data-d="780" style="left:1440px;top:286px;width:240px;margin-left:-176px;text-align:right">Excel и PDF<small>клиенту — после проверки</small></div>
+  <div class="c2">
+    <div class="fx" data-on="1"><h3>Объёмы — по правилам ГЭСН</h3><ol>
+      <li>Стены: <code>периметр × высота − проёмы</code><small>проёмы — по наружному обводу коробок · ГЭСН 15, п. 2.15.11</small></li>
+      <li>Пол: <code>между внутренними гранями стен</code><small>пол в дверных проёмах включается · ГЭСН 11, п. 2.11.2</small></li>
+      <li>Плинтус: <code>периметр − ширина дверей</code><small>отдельной строкой, в погонных метрах</small></li>
+      <li>Откосы: <code>отдельно, по площади</code><small>сверх площади стен · ГЭСН 15, п. 2.15.14</small></li></ol></div>
+    <div class="fx" data-on="2"><h3>Материалы и проверка</h3><ol>
+      <li>Штукатурка Ротбанд: <code>≈ 8,5 кг/м² на 10 мм</code><small>техописание Knauf</small></li>
+      <li>Клей для плитки до 25 см: <code>≈ 3,7 кг/м²</code><small>зуб шпателя 8 мм · Ceresit CM 11</small></li>
+      <li>Запас: <code>плитка 10–15 %, ламинат 5–7 %</code><small>практика бригад, до целой упаковки</small></li>
+      <li>Сверка: <code>ламинат 35 · плитка 11 · потолок 38 м²</code><small>цифры, которые подписал дизайнер, — расхождение не больше 5 %</small></li></ol></div>
+  </div>
+</section>
+
+<!-- 10 ─────────────────────────────────────────── -->
+<section class="slide cmd" id="c5" data-n="10" data-block="Смета" data-steps="0" data-task="5">
+</section>
+
+<!-- 11 ─────────────────────────────────────────── -->
+<section class="slide r1" id="r1" data-n="11" data-block="Разбор ТЗ" data-title="Где упираются" data-steps="0">
+  <div class="h">Где задачи<br><i>упираются</i></div>
+  <div class="sub">Разбор ваших технических заданий: что мешает их выполнить и какими способами это решается. Потом — сборка при вас.</div>
+  <svg viewBox="0 0 1432 160" aria-hidden="true">
+    <path class="fx trk" d="M16 40 H1416"/>
+    <g>
+      <circle cx="16" cy="40" r="14"/><circle cx="191" cy="40" r="14"/><circle cx="366" cy="40" r="14"/><circle cx="541" cy="40" r="14"/><circle cx="716" cy="40" r="14"/>
+      <circle cx="891" cy="40" r="14"/><circle cx="1066" cy="40" r="14"/><circle cx="1241" cy="40" r="14"/><circle cx="1416" cy="40" r="14"/>
+    </g>
+    <g text-anchor="middle">
+      <text x="16" y="96" text-anchor="start">рейсы</text><text x="191" y="96">справка</text><text x="366" y="96">законы</text><text x="541" y="96">акции</text><text x="716" y="96">отчёты iiko</text>
+      <text x="891" y="96">выписки</text><text x="1066" y="96">бюджеты</text><text x="1241" y="96">серверы</text><text x="1416" y="96" text-anchor="end">паркинг</text>
+    </g>
+  </svg>
+</section>
+
+<!-- 12 ─────────────────────────────────────────── -->
+<section class="slide" id="r2" data-n="12" data-block="Разбор ТЗ" data-title="Девять задач" data-steps="3">
+  <div class="rh"><h2>Девять задач — четыре преграды</h2><p>Почти в каждом ТЗ главный вопрос не «как посчитать», а «откуда взять данные».</p></div>
+  <div class="tasks9">
+    <div class="r hd"><span></span><span>задача</span><span>откуда данные</span><span>где упёрлась</span><span></span></div>
+    <div class="r fx" data-on="1"><span class="n">01</span><span>Рейсы для шефа</span><span class="w">сайты билетов</span><span class="why">четыре сайта из пяти не пустили программу</span><span class="stamp">капча</span></div>
+    <div class="r fx" data-on="1"><span class="n">02</span><span>Изменения законодательства</span><span class="w">Гарант, суды, Госдума</span><span class="why">Гарант — по учётке, картотека судов — капча</span><span class="stamp">вход · капча</span></div>
+    <div class="r fx" data-on="1"><span class="n">03</span><span>Справка по объекту</span><span class="w">кадастровая карта</span><span class="why">не отвечает зарубежным адресам</span><span class="stamp">страна</span></div>
+    <div class="r fx" data-on="2"><span class="n">04</span><span>Разнесение выписок</span><span class="w">интернет‑банк</span><span class="why">в банк программа не входит, PDF ненадёжен</span><span class="stamp">вход</span></div>
+    <div class="r fx" data-on="2"><span class="n">05</span><span>Бюджеты подразделений</span><span class="w">почта, 1С</span><span class="why">закрыты — только файлы в папку</span><span class="stamp">вход</span></div>
+    <div class="r fx" data-on="2"><span class="n">06</span><span>Проверка серверов</span><span class="w">панель управления</span><span class="why">вход для программ по токену, смена IP — руками</span><span class="stamp">вход</span></div>
+    <div class="r fx" data-on="3"><span class="n">07</span><span>Паркинг</span><span class="w">модель в Excel</span><span class="why">считает только Excel; срок ремонта ни на что не влиял</span><span class="stamp k">файл</span></div>
+    <div class="r fx" data-on="3"><span class="n">08</span><span>Акции ресторана</span><span class="w">выгрузка iiko</span><span class="why">настоящая выгрузка устроена не так, как в ТЗ</span><span class="stamp k">файл</span></div>
+    <div class="r fx" data-on="3"><span class="n">09</span><span>Анализ отчётов iiko</span><span class="w">отчёты iiko</span><span class="why">суммы по концепциям, уровни статей — пробелами</span><span class="stamp k">файл</span></div>
+  </div>
+</section>
+
+<!-- 13 ─────────────────────────────────────────── -->
+<section class="slide tzx" id="r3" data-n="13" data-block="Разбор ТЗ" data-title="ТЗ: рейсы" data-steps="4">
+  <div class="lab">Разбор ТЗ · 1 из 4</div>
+  <h2>Рейсы для шефа</h2>
+  <div class="want"><b>что хотел</b><span>Переслать боту запрос шефа — получить черновик: 2–3 рейса бизнес‑классом по правилам шефа, снимок и текст по каждому. Шефу отправляет сам.</span></div>
+  <div class="flow">
+    <span class="bar fx" data-on="1"></span>
+    <span class="st fx" data-on="1" style="left:100px"></span><span class="st fx" data-on="1" style="left:346px"></span><span class="st fx" data-on="1" style="left:593px"></span>
+    <span class="st fx" data-on="1" style="left:839px"></span><span class="st fx" data-on="1" style="left:1086px"></span><span class="st fx" data-on="1" style="left:1332px"></span>
+    <span class="bad fx" data-on="2" style="left:346px"></span><span class="bad fx" data-on="2" style="left:839px"></span><span class="bad fx" data-on="2" style="left:1086px"></span>
+    <span class="nm fx" data-on="1" style="left:100px">Запрос шефа</span><span class="nm fx" data-on="1" style="left:346px">Поиск: Яндекс, Aviasales</span><span class="nm fx" data-on="1" style="left:593px">Отбор по правилам</span>
+    <span class="nm fx" data-on="1" style="left:839px">Сверка на другом сайте</span><span class="nm fx" data-on="1" style="left:1086px">Снимки рейсов</span><span class="nm fx" data-on="1" style="left:1332px">Черновик шефу</span>
+    <span class="tag fx" data-on="2" style="left:100px"><span class="pill na">пересылает человек</span></span>
+    <span class="tag fx" data-on="2" style="left:346px"><span class="pill no">капча</span></span>
+    <span class="tag fx" data-on="2" style="left:839px"><span class="pill no">капча</span></span>
+    <span class="tag fx" data-on="2" style="left:1086px"><span class="pill no">запасной путь — руками</span></span>
+  </div>
+  <div class="cols">
+    <div class="l fx" data-on="3"><h3>С чем столкнётся</h3><ol>
+      <li>В ТЗ «подключать ничего не нужно, сайты открываются без входа» — а сайты билетов не пускают программу.</li>
+      <li>Запасной путь в ТЗ — снимки экрана с телефона руками: это уже не автоматизация.</li>
+      <li>«Найти прежнюю низкую цену на Trip.com» — истории цен нет ни в одном источнике.</li></ol></div>
+    <div class="r fx" data-on="4"><h3>Как решаем — без человека</h3><ol>
+      <li>Цепочка путей: Google Flights роботом → Aviasales в настоящем Chrome → Яндекс агентом в браузере.</li>
+      <li>Третий источник — сайт авиакомпании: независимая сверка цены бизнеса и цена эконома.</li>
+      <li>Компьютер или сервер, включённый всегда: бот отвечает, когда вас нет.</li></ol></div>
+  </div>
+</section>
+
+<!-- 14 ─────────────────────────────────────────── -->
+<section class="slide tzx" id="r4" data-n="14" data-block="Разбор ТЗ" data-title="ТЗ: законы" data-steps="4">
+  <div class="lab">Разбор ТЗ · 2 из 4</div>
+  <h2>Изменения законодательства</h2>
+  <div class="want"><b>что хотел</b><span>Раз в месяц к 1‑му числу — таблица изменений по семи налоговым темам: что изменилось, дата, ссылка на первоисточник. Приходит в Telegram сама.</span></div>
+  <div class="flow">
+    <span class="bar fx" data-on="1"></span>
+    <span class="st fx" data-on="1" style="left:100px"></span><span class="st fx" data-on="1" style="left:346px"></span><span class="st fx" data-on="1" style="left:593px"></span>
+    <span class="st fx" data-on="1" style="left:839px"></span><span class="st fx" data-on="1" style="left:1086px"></span><span class="st fx" data-on="1" style="left:1332px"></span>
+    <span class="bad fx" data-on="2" style="left:100px"></span><span class="bad fx" data-on="2" style="left:346px"></span><span class="bad fx" data-on="2" style="left:839px"></span><span class="bad fx" data-on="2" style="left:1332px"></span>
+    <span class="nm fx" data-on="1" style="left:100px">Гарант: сравнение редакций</span><span class="nm fx" data-on="1" style="left:346px">Новости РБК и ДП</span><span class="nm fx" data-on="1" style="left:593px">Госдума, ФНС</span>
+    <span class="nm fx" data-on="1" style="left:839px">Арбитражные суды</span><span class="nm fx" data-on="1" style="left:1086px">Таблица Excel</span><span class="nm fx" data-on="1" style="left:1332px">1‑го числа в Telegram</span>
+    <span class="tag fx" data-on="2" style="left:100px"><span class="pill no">по учётке, руками</span></span>
+    <span class="tag fx" data-on="2" style="left:346px"><span class="pill no">ленты — последние часы</span></span>
+    <span class="tag fx" data-on="2" style="left:839px"><span class="pill no">капча</span></span>
+    <span class="tag fx" data-on="2" style="left:1332px"><span class="pill no">нужен сервер</span></span>
+  </div>
+  <div class="cols">
+    <div class="l fx" data-on="3"><h3>С чем столкнётся</h3><ol>
+      <li>Гарант — только по рабочей учётке: каждый месяц сохранять сравнения в Word руками.</li>
+      <li>Ленты новостей отдают последние часы — за месяц разом их не прочитать.</li>
+      <li>В ТЗ «агент на компьютере участника» — по расписанию без включённого компьютера не сработает.</li></ol></div>
+    <div class="r fx" data-on="4"><h3>Как решаем — без человека</h3><ol>
+      <li>Официальное опубликование — вход для программ; Госдума — поиск; новости копятся каждые 3 часа.</li>
+      <li>Суды — агентом в браузере, по номерам дел из новостей.</li>
+      <li>Гарант — официальный доступ или рассылка изменений: спросить менеджера Гаранта.</li></ol></div>
+  </div>
+</section>
+
+<!-- 15 ─────────────────────────────────────────── -->
+<section class="slide tzx" id="r5" data-n="15" data-block="Разбор ТЗ" data-title="ТЗ: паркинг" data-steps="4">
+  <div class="lab">Разбор ТЗ · 3 из 4</div>
+  <h2>Паркинг: склад или аренда</h2>
+  <div class="want"><b>что хотел</b><span>Есть модель объекта в Excel. Сравнить склад индивидуального хранения и ремонт со сдачей арендаторам: срок возврата и доходность. Потом — по каждому новому объекту.</span></div>
+  <div class="flow">
+    <span class="bar fx" data-on="1"></span>
+    <span class="st fx" data-on="1" style="left:100px"></span><span class="st fx" data-on="1" style="left:346px"></span><span class="st fx" data-on="1" style="left:593px"></span>
+    <span class="st fx" data-on="1" style="left:839px"></span><span class="st fx" data-on="1" style="left:1086px"></span><span class="st fx" data-on="1" style="left:1332px"></span>
+    <span class="bad fx" data-on="2" style="left:593px"></span><span class="bad fx" data-on="2" style="left:1086px"></span><span class="bad fx" data-on="2" style="left:1332px"></span>
+    <span class="nm fx" data-on="1" style="left:100px">Модель и четыре цифры</span><span class="nm fx" data-on="1" style="left:346px">Вводные в копию</span><span class="nm fx" data-on="1" style="left:593px">Пересчёт формул</span>
+    <span class="nm fx" data-on="1" style="left:839px">Цена перегородок</span><span class="nm fx" data-on="1" style="left:1086px">Срок возврата</span><span class="nm fx" data-on="1" style="left:1332px">Каждый новый объект</span>
+    <span class="tag fx" data-on="2" style="left:593px"><span class="pill no">только в Excel</span></span>
+    <span class="tag fx" data-on="2" style="left:839px"><span class="pill na">выбор человека</span></span>
+    <span class="tag fx" data-on="2" style="left:1086px"><span class="pill no">ремонт не учтён</span></span>
+    <span class="tag fx" data-on="2" style="left:1332px"><span class="pill no">заново руками</span></span>
+  </div>
+  <div class="cols">
+    <div class="l fx" data-on="3"><h3>С чем столкнётся</h3><ol>
+      <li>Срок ремонта в модели ни на что не влиял — проверка из ТЗ «возврат не короче ремонта» это не ловит.</li>
+      <li>Формулы модели честно пересчитывает только Excel.</li>
+      <li>В ТЗ — проект в Claude: по каждому объекту всё заново руками.</li></ol></div>
+    <div class="r fx" data-on="4"><h3>Как решаем — без человека</h3><ol>
+      <li>Бот на компьютере с Excel: файл и четыре цифры — таблица и PDF за 10 секунд.</li>
+      <li>Поток денег по месяцам: срок ремонта сдвигает возврат, NPV и IRR.</li>
+      <li>Семь проверок до выдачи; исходный файл не меняется.</li></ol></div>
+  </div>
+</section>
+
+<!-- 16 ─────────────────────────────────────────── -->
+<section class="slide tzx" id="r6" data-n="16" data-block="Разбор ТЗ" data-title="ТЗ: акции" data-steps="4">
+  <div class="lab">Разбор ТЗ · 4 из 4</div>
+  <h2>Идеи акций для ресторана</h2>
+  <div class="want"><b>что хотел</b><span>Каждый месяц по продажам из iiko — 5–10 идей акций: механика, блюдо, сроки, бюджет, ожидаемый эффект. Даты — по маркетинговому календарю.</span></div>
+  <div class="flow">
+    <span class="bar fx" data-on="1"></span>
+    <span class="st fx" data-on="1" style="left:100px"></span><span class="st fx" data-on="1" style="left:346px"></span><span class="st fx" data-on="1" style="left:593px"></span>
+    <span class="st fx" data-on="1" style="left:839px"></span><span class="st fx" data-on="1" style="left:1086px"></span><span class="st fx" data-on="1" style="left:1332px"></span>
+    <span class="bad fx" data-on="2" style="left:100px"></span><span class="bad fx" data-on="2" style="left:346px"></span>
+    <span class="nm fx" data-on="1" style="left:100px">Выгрузка из iiko</span><span class="nm fx" data-on="1" style="left:346px">Блюда и себестоимость</span><span class="nm fx" data-on="1" style="left:593px">Маркетинговый календарь</span>
+    <span class="nm fx" data-on="1" style="left:839px">Маржа, лидеры, отстающие</span><span class="nm fx" data-on="1" style="left:1086px">Идеи акций</span><span class="nm fx" data-on="1" style="left:1332px">Таблица управляющему</span>
+    <span class="tag fx" data-on="2" style="left:100px"><span class="pill no">руками, образца нет</span></span>
+    <span class="tag fx" data-on="2" style="left:346px"><span class="pill no">в отчёте её нет</span></span>
+  </div>
+  <div class="cols">
+    <div class="l fx" data-on="3"><h3>С чем столкнётся</h3><ol>
+      <li>В ТЗ «столбцы: блюдо, кол‑во, выручка, себестоимость» — в отчёте iiko себестоимости нет, блюдо называется иначе.</li>
+      <li>Выгрузку каждый месяц делать руками, а образца в ТЗ не было.</li>
+      <li>Упаковка и модификаторы стоят среди блюд — попадут в акции.</li></ol></div>
+    <div class="r fx" data-on="4"><h3>Как решаем — без человека</h3><ol>
+      <li>Пользователь iiko только на чтение отчётов или рассылка отчёта на почту — без ручной выгрузки.</li>
+      <li>Маячок: программа сначала пересказывает, как прочитала файл.</li>
+      <li>Считает код, ИИ только придумывает механики.</li></ol></div>
+  </div>
+</section>
+
+<!-- 17 ─────────────────────────────────────────── -->
+<section class="slide" id="r7" data-n="17" data-block="Разбор ТЗ" data-title="Шесть способов" data-steps="7">
+  <div class="rh"><h2>Шесть способов достать данные</h2><p>От надёжного к ручному. Подбираются под каждый источник отдельно.</p></div>
+  <div class="ladder">
+    <span class="rail"></span>
+    <div class="w fx" data-on="1" style="top:0"><b>Вход для программ (API)</b><span>Сервис сам отдаёт данные по ключу. <em>Официальное опубликование законов, панель серверов.</em></span></div>
+    <div class="w fx" data-on="2" style="top:86px"><b>Выгрузка</b><span>Файл, который система сохраняет сама. <em>Отчёт iiko, выписка для 1С, рассылка отчёта на почту.</em></span></div>
+    <div class="w fx" data-on="3" style="top:172px"><b>Готовая интеграция</b><span>Подключение уже есть в ChatGPT, Claude или почте. <em>Для сайтов билетов её нет.</em></span></div>
+    <div class="w fx hl" data-on="4" style="top:258px"><b>Агент в вашем браузере</b><span>Агент работает в вашем настоящем Chrome — сайты пускают его как обычного посетителя. <em>Яндекс.Путешествия, сайт авиакомпании, картотека судов.</em></span></div>
+    <div class="w fx" data-on="5" style="top:344px"><b>Робот в браузере</b><span>Программа сама открывает сайт. Ломается, когда сайт меняет вид. <em>Google Flights, поиск Госдумы.</em></span></div>
+    <div class="w fx" data-on="6" style="top:430px"><b>Вручную</b><span>Вы присылаете файл или снимок экрана. <em>Сравнение редакций из Гаранта, снимки выдачи билетов.</em></span></div>
+  </div>
+  <div class="note fx" data-on="7">Правило для всех девяти: <b>капчу не взламываем — ищем путь, где её нет; в чужие кабинеты не входим, пароли не просим.</b></div>
+</section>
+
+<!-- 18 ─────────────────────────────────────────── -->
+<section class="slide" id="r8" data-n="18" data-block="Разбор ТЗ" data-title="Следующий путь" data-steps="4">
+  <div class="rh"><h2>Упёрлись — пробуем следующий путь</h2><p>Программа сама идёт по путям, пока не найдёт открытый. Проверено 2 ноября на моём компьютере, с одного адреса.</p></div>
+  <div class="mx">
+    <div class="ch"></div>
+    <div class="ch fx" data-on="1">Путь 1 · программа во встроенном браузере</div>
+    <div class="ch fx" data-on="2">Путь 2 · программа в настоящем Chrome</div>
+    <div class="ch me fx" data-on="3">Путь 3 · агент в вашем Chrome</div>
+
+    <div>Яндекс.Путешествия</div>
+    <div class="fx" data-on="1"><span class="pill no">капча</span></div>
+    <div class="fx" data-on="2"><span class="pill no">капча</span></div>
+    <div class="fx" data-on="3"><span class="pill ok">выдача, 55 с</span></div>
+
+    <div>Aviasales</div>
+    <div class="fx" data-on="1"><span class="pill no">капча</span></div>
+    <div class="fx" data-on="2"><span class="pill ok">выдача</span></div>
+    <div class="fx" data-on="3"><span class="pill ok">выдача</span></div>
+
+    <div>Google Flights</div>
+    <div class="fx" data-on="1"><span class="pill ok">выдача, 29 с</span></div>
+    <div class="fx" data-on="2"><span class="pill na">не нужно</span></div>
+    <div class="fx" data-on="3"><span class="pill na">не нужно</span></div>
+
+    <div>Сайт Emirates</div>
+    <div class="fx" data-on="1"><span class="pill na">не проверяли</span></div>
+    <div class="fx" data-on="2"><span class="pill na">открывается</span></div>
+    <div class="fx" data-on="3"><span class="pill ok">рейс и цена, 167 с</span></div>
+
+    <div>Картотека судов</div>
+    <div class="fx" data-on="1"><span class="pill no">капча</span></div>
+    <div class="fx" data-on="2"><span class="pill na">открывается</span></div>
+    <div class="fx" data-on="3"><span class="pill ok">поиск дел, 108 с</span></div>
+  </div>
+  <div class="note fx" data-on="4">Человек ничего не нажимает: закрыт путь — <b>программа идёт по следующему</b>. Закрыты все — бот пишет, какой источник недоступен, и собирает результат из остальных.</div>
+</section>
+
+<!-- 19 ─────────────────────────────────────────── -->
+<section class="slide" id="r9" data-n="19" data-block="Разбор ТЗ" data-title="Страна" data-steps="3">
+  <div class="rh"><h2>Страна: откуда вы выходите в интернет</h2><p>Одним сайтам нужен российский адрес, другим — зарубежный. Это решается до покупки сервера.</p></div>
+  <svg class="net" viewBox="0 0 1600 900" aria-hidden="true">
+    <path class="fx ln" data-on="1" d="M776 340 H354"/>
+    <path class="fx ln" data-on="2" d="M824 340 H1246"/>
+  </svg>
+  <div class="node me" style="left:800px;top:317px"><div class="dot"></div><b>Ваш компьютер</b><small>или сервер</small></div>
+  <div class="node fx" data-on="1" style="left:330px;top:317px"><div class="dot"></div><b>Через VPN</b><small>выход за рубежом</small></div>
+  <div class="node fx" data-on="2" style="left:1270px;top:317px"><div class="dot"></div><b>Напрямую</b><small>российский адрес</small></div>
+  <div class="hits fx" data-on="1" style="left:84px;top:470px">
+    <div>Claude, ChatGPT <span class="pill ok">работают</span></div>
+    <div>aeroflot.ru <span class="pill no">ошибка 503</span></div>
+    <div>s7.ru <span class="pill no">Forbidden</span></div>
+    <div>Кадастровая карта <span class="pill no">не отвечает</span></div>
+  </div>
+  <div class="hits fx" data-on="2" style="left:996px;top:470px">
+    <div>Российские сайты <span class="pill ok">открываются</span></div>
+    <div>Claude <span class="pill no">недоступен</span></div>
+  </div>
+  <div class="note fx" data-on="3">Решение — <b>раздельная маршрутизация</b>: российские сайты напрямую, ИИ через VPN. Где будет сервер — решаете с руководителем.</div>
+</section>
+
+<!-- 20 ─────────────────────────────────────────── -->
+<section class="slide" id="r10" data-n="20" data-block="Разбор ТЗ" data-title="Вход по учётке" data-steps="5">
+  <div class="rh"><h2>Пароль от вашей учётки агенту не нужен</h2><p>Нужен отдельный доступ — такой, который можно выдать и забрать.</p></div>
+  <div class="locks">
+    <div><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Гарант</div>
+    <div><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>iiko</div>
+    <div><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Интернет‑банк</div>
+    <div><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>1С</div>
+    <div><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Рабочая почта</div>
+  </div>
+  <div class="ways">
+    <div class="w fx" data-on="1"><i>1</i><div><b>Отдельный пользователь только на чтение</b><span>iiko — пользователь только для отчётов; панель серверов — токен на чтение и перезапуск.</span></div></div>
+    <div class="w fx" data-on="2"><i>2</i><div><b>Рассылка или выгрузка в папку</b><span>Отчёт iiko на почту, выписка банка в формате 1С, вложения писем — правилом в папку.</span></div></div>
+    <div class="w fx" data-on="3"><i>3</i><div><b>Официальный вход для программ</b><span>Спросить менеджера Гаранта, банк, поддержку «Финансиста».</span></div></div>
+    <div class="w fx" data-on="4"><i>4</i><div><b>Агент в вашем браузере</b><span>Вы уже вошли — агент работает рядом. Только если это разрешено договором и согласовано с руководителем.</span></div></div>
+  </div>
+  <div class="note fx" data-on="5" style="left:700px">Выбор доступа — <b>решение руководителя</b>, а не агента.</div>
+</section>
+
+<!-- 21 ─────────────────────────────────────────── -->
+<section class="slide" id="r11" data-n="21" data-block="Разбор ТЗ" data-title="Файл не такой" data-steps="4">
+  <div class="rh"><h2>Файл устроен не так, как вы описали</h2><p>Выгрузка iiko, ресторан выдуман, разметка настоящая. Программа, собранная на удобном примере, на ней остановилась.</p></div>
+  <div class="xl">
+    <div class="t hd"><div>Категория</div><div>Элемент номенклатуры<span class="fx hlc" data-on="1"></span></div><div>Количество</div><div>Выручка без вычета скидок, р.</div><div>Выручка, р.<span class="fx hlc" data-on="2"></span></div><div>Валовая прибыль, р.<span class="fx hlc" data-on="3"></span></div><div>Концепция</div></div>
+    <div class="t"><div>Десерты</div><div>Тирамису</div><div class="num">221</div><div class="num">92 820,00</div><div class="num">92 486,32</div><div class="num">64 570,47</div><div>Маяк Зал</div></div>
+    <div class="t"><div></div><div>Медовик</div><div class="num">112</div><div class="num">42 560,00</div><div class="num">38 473,91</div><div class="num">29 227,68</div><div>Маяк Доставка</div><span class="fx hlr" data-on="4"></span></div>
+    <div class="t"><div>Хозка</div><div>Контейнер 500 мл</div><div class="num">816</div><div class="num">12 240,00</div><div class="num">11 669,41</div><div class="num">4 242,47</div><div>Маяк Доставка</div><span class="fx hlr" data-on="4"></span></div>
+    <div class="t"><div>Модификаторы</div><div>- Без лука</div><div class="num">115</div><div class="num">0,00</div><div class="num">0,00</div><div class="num">0,00</div><div>Маяк Зал</div><span class="fx hlr" data-on="4"></span></div>
+    <div class="t"><div>Пицца</div><div>Пицца Пепперони 30 см</div><div class="num">431</div><div class="num">310 320,00</div><div class="num">288 921,08</div><div class="num">208 278,96</div><div>Маяк Доставка</div></div>
+    <div class="t"><div>Горячие блюда</div><div>Стейк из лосося</div><div class="num">−1</div><div class="num">−1 190,00</div><div class="num">−1 190,00</div><div class="num">−630,00</div><div>Маяк Зал</div><span class="fx hlr" data-on="4"></span></div>
+  </div>
+  <div class="calls">
+    <div class="fx" data-on="1"><b>Блюдо</b>называется «Элемент номенклатуры»</div>
+    <div class="fx" data-on="2"><b>Выручка</b>со скидками — правый столбец, а не левый</div>
+    <div class="fx" data-on="3"><b>Себестоимости нет</b>есть валовая прибыль — считать из неё</div>
+    <div class="fx" data-on="4"><b>Не блюда</b>упаковка, модификаторы, возврат, строка без категории</div>
+  </div>
+</section>
+
+<!-- 22 ─────────────────────────────────────────── -->
+<section class="slide" id="r12" data-n="22" data-block="Разбор ТЗ" data-title="Для себя или команды" data-steps="3">
+  <div class="rh"><h2>Где это будет работать</h2><p>Ответ зависит от того, кто пользуется.</p></div>
+  <div class="cmp">
+    <div class="k0"></div><div class="c1 fx" data-on="1">Только я</div><div class="c2 fx" data-on="2">Команда</div>
+    <div class="k">ИИ</div><div class="fx" data-on="1">Подписка Claude: Claude Code работает как программа. Лимиты общие с вашей обычной работой</div><div class="fx" data-on="2">Ключ API с оплатой за запросы. Подписку отдавать другим нельзя</div>
+    <div class="k">Компьютер</div><div class="fx" data-on="1">Свой, включённый круглосуточно</div><div class="fx" data-on="2">Сервер. Расчёты в Excel — Windows с Office</div>
+    <div class="k">Кто может писать боту</div><div class="fx" data-on="1">Только ваш Telegram ID</div><div class="fx" data-on="2">Список разрешённых, у каждого свои данные</div>
+    <div class="k">Сайты с капчей</div><div class="fx" data-on="1">Агент в вашем браузере</div><div class="fx" data-on="2">Официальный вход или выгрузка: ваш браузер на всех не разделить</div>
+  </div>
+  <div class="note fx" data-on="3">Сегодня соберём вариант <b>«только я»</b> — на моей подписке и моём компьютере.</div>
+</section>
+
+<!-- 23 ─────────────────────────────────────────── -->
+<section class="slide" id="r13" data-n="23" data-block="Разбор ТЗ" data-title="Проверка" data-steps="2">
+  <div class="big">6<i> из </i>9</div>
+  <div class="bigt">
+    <p>В шести задачах из девяти сборщик честно считал работу законченной, а независимый проверяющий нашёл расхождения с ТЗ.</p>
+    <p class="m fx" data-on="1">Потом второй ИИ другой компании за пять кругов нашёл 100 замечаний: 98 подтвердились и исправлены, 2 уже были исправлены раньше.</p>
+    <p class="fx" data-on="2">Отдайте результат второму чату — не похвалить, а сломать: «найди вход, на котором результат неверен».</p>
+  </div>
+</section>
+
+<!-- 24 ─────────────────────────────────────────── -->
+<section class="slide cmd" id="c0" data-n="24" data-block="Проверка" data-steps="0" data-task="second">
+</section>
+
+<!-- 25 ─────────────────────────────────────────── -->
+<section class="slide" id="s25" data-n="25" data-block="Выход" data-steps="0">
+  <h1 class="h-xl"><span class="mask"><span>Спасибо</span></span></h1>
+  <div class="rows">
+    <div class="fx" data-d="300">Задача<em>файл ТЗ → разбор → «делай»</em></div>
+    <div class="fx" data-d="400">Доступ<em>без человека: путь закрыт — следующий</em></div>
+    <div class="fx" data-d="500">Проверка<em>второй взгляд и цифры, которые можно сверить</em></div>
+    <div class="fx" data-d="600">Дальше<em>пишите задачи — соберём так же</em></div>
+  </div>
+</section>
+
+</div>
+<div class="rot">Поверните телефон горизонтально</div>
+<script src="data.js"></script>
+<script src="cmds.js"></script>
+<script>
+// длина линии и дочерчивание — как во встрече 2
+function draw(p, len) { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L - Math.max(0, Math.min(L, len)); }
+// хуки слайдов: s = шаг (−1 — сброс перед входом)
+window.SLIDE_HOOKS = {
+  s1(el, s) { draw(el.querySelector('#s1-ln'), s < 0 ? 0 : 9999); el.querySelectorAll('.st').forEach(c => c.classList.toggle('on', s >= 0)); },
+  s2(el, s) { draw(el.querySelector('#s2-a'), s < 0 ? 0 : 9999); draw(el.querySelector('#s2-b'), s >= 1 ? 9999 : 0); },
+  s3(el, s) { draw(el.querySelector('#s3-a'), s < 0 ? 0 : 9999); draw(el.querySelector('#s3-b'), s >= 1 ? 9999 : 0); },
+  s8(el, s) { el.classList.toggle('strike', s >= 2); },
+  s9(el, s) { draw(el.querySelector('#s9-ln'), s < 0 ? 0 : 9999); },
+};
+</script>
+<script src="cmd.js"></script>
+<script src="deck.js"></script>
+</body>
+</html>
