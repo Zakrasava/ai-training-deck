@@ -128,16 +128,6 @@
 .note b{color:var(--signal);font-weight:600}
 .src{font-size:16px;color:var(--muted)}
 
-/* R1 обложка разбора */
-.r1 .h{position:absolute;left:96px;top:118px;font-weight:700;font-size:112px;line-height:.96;letter-spacing:-.05em}
-.r1 .h i{font-style:normal;color:var(--signal)}
-.r1 .sub{position:absolute;left:96px;top:380px;width:1000px;font-size:30px;line-height:1.32;color:var(--muted)}
-.r1 svg{position:absolute;left:96px;top:560px;width:1432px;height:160px;overflow:visible}
-.r1 .trk{fill:none;stroke:var(--ink);stroke-width:10;stroke-linecap:round;stroke-dasharray:1500;stroke-dashoffset:1500;transition:stroke-dashoffset 1.6s cubic-bezier(.45,.05,.55,.95)}
-.r1 .trk.on{stroke-dashoffset:0}
-.r1 circle{fill:var(--paper);stroke:var(--ink);stroke-width:6}
-.r1 circle.x{fill:var(--signal);stroke:var(--signal)}
-.r1 text{font:500 18px "JB Mono",monospace;fill:var(--muted)}
 
 /* R2 девять задач */
 .tasks9{position:absolute;left:96px;right:96px;top:226px}
@@ -219,7 +209,7 @@
 .cmp .c1{color:var(--signal)}
 
 /* разбор одного ТЗ: что хотел → процесс по ТЗ → где не дотянули → с чем столкнётся → как решаем */
-.tzx .lab{position:absolute;left:96px;top:56px;font:500 18px "JB Mono",monospace;color:var(--muted)}
+.tzx .lab,#s8 .lab{position:absolute;left:96px;top:56px;font:500 18px "JB Mono",monospace;color:var(--muted)}
 .tzx h2{position:absolute;left:96px;right:96px;top:96px;font-weight:700;font-size:58px;line-height:1.02;letter-spacing:-.04em}
 .want{position:absolute;left:96px;right:96px;top:176px;display:grid;grid-template-columns:190px 1fr;align-items:baseline;font-size:25px;line-height:1.32}
 .want b{font:500 18px "JB Mono",monospace;color:var(--muted)}
@@ -246,3 +236,11 @@
 .bigt{position:absolute;left:760px;right:96px;top:240px;font-size:32px;line-height:1.3}
 .bigt p+p{margin-top:28px}
 .bigt .m{color:var(--muted);font-size:26px}
+
+/* R2: задачи, которые сегодня в боте */
+#r2 .tasks9 .r{grid-template-columns:48px 430px 280px 1fr 150px}
+.tasks9 .r.inb > span:nth-child(2)::after{content:"в боте";margin-left:12px;font:500 14px "JB Mono",monospace;color:var(--signal);vertical-align:2px;white-space:nowrap}
+/* RES: что пришло в Telegram */
+#res .tasks9 .r{grid-template-columns:48px 300px 420px 1fr 150px;height:72px}
+#res .tasks9 .hd{height:40px}
+#res .tasks9 .t{justify-self:end;font:500 19px "JB Mono",monospace;color:var(--muted)}
