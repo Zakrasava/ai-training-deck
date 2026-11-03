@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#EEEBE4">
 <title>Встреча 3 · Собираем при вас</title>
-<link rel="stylesheet" href="deck.css">
-<link rel="stylesheet" href="slides.css">
+<link rel="stylesheet" href="deck.css?v=162820">
+<link rel="stylesheet" href="slides.css?v=162820">
 </head>
 <body>
 <div class="stage" id="stage">
@@ -514,8 +514,8 @@
 
 </div>
 <div class="rot">Поверните телефон горизонтально</div>
-<script src="data.js"></script>
-<script src="cmds.js"></script>
+<script src="data.js?v=162820"></script>
+<script src="cmds.js?v=162820"></script>
 <script>
 // длина линии и дочерчивание — как во встрече 2
 function draw(p, len) { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L - Math.max(0, Math.min(L, len)); }
@@ -547,7 +547,7 @@ document.querySelector('#m1 .proj').addEventListener('click', async e => {
   setTimeout(() => { b.classList.remove('ok'); hint.textContent = was; }, 1800);
 });
 </script>
-<script src="cmd.js"></script>
-<script src="deck.js"></script>
+<script src="cmd.js?v=162820"></script>
+<script src="deck.js?v=162820"></script>
 </body>
 </html>
