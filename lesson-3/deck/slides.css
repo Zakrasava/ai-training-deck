@@ -256,12 +256,19 @@
 #rc3 .chat{position:absolute;right:96px;top:420px;width:560px;display:flex;flex-direction:column;align-items:flex-end;gap:14px}
 #rc3 .b{background:var(--signal);color:#fff;padding:14px 22px;border-radius:24px 24px 6px 24px;font-size:24px;line-height:1.25}
 
-/* магия: встреча 1 → встреча 2 → вжух */
-#mag .mg{position:absolute;left:210px;width:560px}
-#mag .mg span{display:block;font:500 17px "JB Mono",monospace;color:var(--muted)}
-#mag .mg b{display:block;font-size:38px;font-weight:700;letter-spacing:-.03em;margin-top:2px}
-#mag .mg small{display:block;font-size:20px;color:var(--muted);margin-top:4px}
+/* магия: встреча 1 → встреча 2 → вжух (горизонтально, кот без фона у правого края) */
+#mag .mg{position:absolute;top:372px;width:280px}
+#mag .mg span{display:block;font:500 16px "JB Mono",monospace;color:var(--muted)}
+#mag .mg b{display:block;font-size:30px;line-height:1.08;font-weight:700;letter-spacing:-.03em;margin-top:6px}
+#mag .mg small{display:block;font-size:18px;line-height:1.3;color:var(--muted);margin-top:8px}
 #mag .mg.h span,#mag .mg.h b{color:var(--signal)}
-#mag .cat{position:absolute;left:820px;top:250px;width:680px;mix-blend-mode:multiply;border-radius:24px}
-#mag .cat.fx{transform:scale(.3) rotate(-16deg);transition:opacity .35s var(--ease),transform .9s cubic-bezier(.34,1.56,.64,1)}
+#mag .cat{position:absolute;right:0;top:232px;width:484px;-webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent 99%);mask-image:linear-gradient(to bottom,#000 82%,transparent 99%)}
+#mag .cat.fx{transform:translateX(40px) scale(.6) rotate(10deg);transform-origin:100% 60%;transition:opacity .35s var(--ease),transform .9s cubic-bezier(.34,1.56,.64,1)}
 #mag .cat.fx.on{transform:none}
+#mag .zap{position:absolute;left:760px;top:560px;font-weight:700;font-size:120px;letter-spacing:-.05em;color:var(--signal)}
+#mag .zap.fx{transform:scale(.4) rotate(-8deg);transition:opacity .3s var(--ease),transform .7s cubic-bezier(.34,1.56,.64,1)}
+#mag .zap.fx.on{transform:none}
+#mag .spark{position:absolute;left:1124px;top:540px;width:0;height:0}
+#mag .spark i{position:absolute;font-style:normal;font-size:30px;color:var(--signal)}
+#mag .spark i.fx{transform:scale(0) rotate(-90deg);transition:opacity .3s,transform .6s cubic-bezier(.34,1.56,.64,1)}
+#mag .spark i.fx.on{transform:none}

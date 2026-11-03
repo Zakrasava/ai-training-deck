@@ -128,15 +128,17 @@
 <section class="slide" id="mag" data-n="5" data-block="Сборка" data-steps="2">
   <h2 class="h-m ttl"><span class="mask"><span>Две встречи — <em>и магия</em></span></span></h2>
   <svg class="map" viewBox="0 0 1600 900" aria-hidden="true">
-    <path class="ln-main" id="mag-ln" d="M160 300 V680"/>
-    <circle class="st" data-on="0" data-d="300" cx="160" cy="300" r="16"/>
-    <circle class="st" data-on="1" data-d="250" cx="160" cy="490" r="16"/>
-    <circle class="st me" data-on="2" data-d="250" cx="160" cy="680" r="20"/>
+    <path class="ln-main" id="mag-ln" d="M160 330 H780"/>
+    <circle class="st" data-on="0" data-d="300" cx="160" cy="330" r="16"/>
+    <circle class="st" data-on="1" data-d="250" cx="470" cy="330" r="16"/>
+    <circle class="st me" data-on="2" data-d="250" cx="780" cy="330" r="20"/>
   </svg>
-  <div class="mg fx" data-d="300" style="top:270px"><span>Встреча 1 · 19 октября</span><b>Настроить под себя</b><small>где работать, какие версии, пять настроек</small></div>
-  <div class="mg fx" data-on="1" data-d="250" style="top:460px"><span>Встреча 2 · 27 октября</span><b>Проект: от ТЗ до запуска</b><small>ТЗ, папка с правилами, агент в папке</small></div>
-  <div class="mg h fx" data-on="2" data-d="250" style="top:650px"><span>Сегодня</span><b>Магия</b><small>семь сообщений — и бот готов</small></div>
-  <img class="cat fx" data-on="2" data-d="450" src="img/vzhuh.png" alt="Кот-волшебник с палочкой: «вжух»">
+  <div class="mg fx" data-d="300" style="left:160px"><span>Встреча 1 · 19 октября</span><b>Настроить под себя</b><small>где работать, какие версии, пять настроек</small></div>
+  <div class="mg fx" data-on="1" data-d="250" style="left:470px"><span>Встреча 2 · 27 октября</span><b>Проект: от ТЗ до запуска</b><small>ТЗ, папка с правилами, агент в папке</small></div>
+  <div class="mg h fx" data-on="2" data-d="250" style="left:780px"><span>Сегодня</span><b>Магия</b><small>семь сообщений — и бот готов</small></div>
+  <img class="cat fx" data-on="2" data-d="350" src="img/vzhuh.png" alt="Кот-волшебник с палочкой">
+  <div class="zap fx" data-on="2" data-d="900">вжух</div>
+  <div class="spark" aria-hidden="true"><i class="fx" data-on="2" data-d="700" style="left:-30px;top:-40px">✦</i><i class="fx" data-on="2" data-d="780" style="left:-70px;top:10px">✦</i><i class="fx" data-on="2" data-d="860" style="left:-20px;top:40px">✦</i><i class="fx" data-on="2" data-d="940" style="left:-110px;top:-20px">✦</i><i class="fx" data-on="2" data-d="1020" style="left:-60px;top:-70px">✦</i></div>
   <aside class="notes">Коротко, что уже умеем. На первой встрече — настроить под себя: где работать, какие версии, пять настроек. → на второй — проект: от ТЗ до запуска, папка с правилами, агент в папке. → а теперь начинается магия: я просто отправляю агенту сообщения — и всё собирается само. Вжух. Дальше — семь сообщений.</aside>
 </section>
 
@@ -576,7 +578,7 @@ window.SLIDE_HOOKS = {
   },
   s8(el, s) { el.classList.toggle('strike', s >= 2); },
   s9(el, s) { draw(el.querySelector('#s9-ln'), s < 0 ? 0 : 9999); },
-  mag(el, s) { draw(el.querySelector('#mag-ln'), s < 1 ? 0 : s < 2 ? 190 : 9999); },
+  mag(el, s) { draw(el.querySelector('#mag-ln'), s < 1 ? 0 : s < 2 ? 310 : 9999); },
   lad(el, s) { draw(el.querySelector('#lad-ln'), s < 1 ? 0 : s < 2 ? 540 : 9999); },
   sys(el, s) { draw(el.querySelector('#sys-ln'), s < 0 ? 0 : 9999); },
 };
