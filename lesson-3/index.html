@@ -101,7 +101,7 @@
   <div class="tz fx" data-d="440" style="top:556px">Смета по чертежам</div>
   <div class="tz h fx" data-d="500" style="top:666px">Ключи<small>токен и ID — в .env</small></div>
   <div class="lbl fx" data-d="700" style="left:620px;top:282px;width:230px;margin-left:-115px">Одно окно агента<small>семь сообщений — и всё</small></div>
-  <div class="lbl fx" data-on="1" data-d="200" style="left:880px;top:208px">Пять помощников<small>собирают одновременно</small></div>
+  <div class="lbl fx" data-on="1" data-d="200" style="left:880px;top:208px">Шесть помощников<small>бот и пять программ</small></div>
   <div class="lbl h fx" data-on="2" data-d="100" style="left:1120px;top:342px;width:200px;margin-left:-100px">Один бот<small>подписка Claude</small></div>
   <div class="phone fx" data-on="2" data-d="250">
     <div class="ph-top"><i></i><span>Omnerio<small>бот</small></span></div>
@@ -226,11 +226,11 @@
     <span class="tag fx" data-on="2" style="left:1086px"><span class="pill no">запасной путь — руками</span></span>
   </div>
   <div class="cols">
-    <div class="l fx" data-on="3"><h3>С чем столкнётся</h3><ol>
+    <div class="l fx" data-on="3"><h3>Где были неточности</h3><ol>
       <li>В ТЗ «подключать ничего не нужно, сайты открываются без входа» — а сайты билетов не пускают программу.</li>
       <li>Запасной путь в ТЗ — снимки экрана с телефона руками: это уже не автоматизация.</li>
       <li>«Найти прежнюю низкую цену на Trip.com» — истории цен нет ни в одном источнике.</li></ol></div>
-    <div class="r fx" data-on="4"><h3>Как решаем — без человека</h3><ol>
+    <div class="r fx" data-on="4"><h3>Как решено в боте</h3><ol>
       <li>Цепочка путей: Aviasales — программой в настоящем Chrome, Яндекс — агентом в вашем браузере.</li>
       <li>Третий источник — сайт авиакомпании: независимая сверка цены бизнеса и цена эконома.</li>
       <li>Компьютер или сервер, включённый всегда: бот отвечает, когда вас нет.</li></ol></div>
@@ -255,11 +255,11 @@
     <span class="tag fx" data-on="2" style="left:1332px"><span class="pill no">нужен сервер</span></span>
   </div>
   <div class="cols">
-    <div class="l fx" data-on="3"><h3>С чем столкнётся</h3><ol>
+    <div class="l fx" data-on="3"><h3>Где были неточности</h3><ol>
       <li>Гарант — только по рабочей учётке: каждый месяц сохранять сравнения в Word руками.</li>
       <li>Ленты новостей отдают последние часы — за месяц разом их не прочитать.</li>
       <li>В ТЗ «агент на компьютере участника» — по расписанию без включённого компьютера не сработает.</li></ol></div>
-    <div class="r fx" data-on="4"><h3>Как решаем — без человека</h3><ol>
+    <div class="r fx" data-on="4"><h3>Как решено в боте</h3><ol>
       <li>Официальное опубликование — вход для программ; акты Москвы и Петербурга, Госдума, ФНС — обычными запросами.</li>
       <li>По кнопке: выбрал период и тему — таблица за любой срок, 1‑го числа ждать не нужно.</li>
       <li>Гарант — официальный доступ или рассылка изменений: спросить менеджера Гаранта.</li></ol></div>
@@ -270,28 +270,26 @@
 <section class="slide tzx" id="r5" data-n="17" data-block="Разбор ТЗ" data-title="ТЗ: паркинг" data-steps="4">
   <div class="lab">ТЗ в боте · 3 из 5 · tasks/паркинг/ТЗ.md</div>
   <h2>Паркинг: склад или аренда</h2>
-  <div class="want"><b>что хотели</b><span>Есть модель объекта в Excel. Сравнить склад индивидуального хранения и ремонт со сдачей арендаторам: срок возврата и доходность. Потом — по каждому новому объекту.</span></div>
+  <div class="want"><b>что хотели</b><span>Есть модель объекта в Excel. Сравнить склад индивидуального хранения и ремонт со сдачей арендаторам: за сколько вернутся деньги и какая доходность.</span></div>
   <div class="flow">
     <span class="bar fx" data-on="1"></span>
     <span class="st fx" data-on="1" style="left:100px"></span><span class="st fx" data-on="1" style="left:346px"></span><span class="st fx" data-on="1" style="left:593px"></span>
     <span class="st fx" data-on="1" style="left:839px"></span><span class="st fx" data-on="1" style="left:1086px"></span><span class="st fx" data-on="1" style="left:1332px"></span>
-    <span class="bad fx" data-on="2" style="left:593px"></span><span class="bad fx" data-on="2" style="left:1086px"></span><span class="bad fx" data-on="2" style="left:1332px"></span>
-    <span class="nm fx" data-on="1" style="left:100px">Модель и вводные</span><span class="nm fx" data-on="1" style="left:346px">Вводные в копию</span><span class="nm fx" data-on="1" style="left:593px">Пересчёт формул</span>
-    <span class="nm fx" data-on="1" style="left:839px">Цена перегородок</span><span class="nm fx" data-on="1" style="left:1086px">Срок возврата</span><span class="nm fx" data-on="1" style="left:1332px">Каждый новый объект</span>
-    <span class="tag fx" data-on="2" style="left:593px"><span class="pill no">только в Excel</span></span>
-    <span class="tag fx" data-on="2" style="left:839px"><span class="pill na">выбор человека</span></span>
-    <span class="tag fx" data-on="2" style="left:1086px"><span class="pill no">ремонт не учтён</span></span>
-    <span class="tag fx" data-on="2" style="left:1332px"><span class="pill no">заново руками</span></span>
+    <span class="bad fx" data-on="2" style="left:346px"></span><span class="bad fx" data-on="2" style="left:839px"></span>
+    <span class="nm fx" data-on="1" style="left:100px">Модель объекта</span><span class="nm fx" data-on="1" style="left:346px">Вводные</span><span class="nm fx" data-on="1" style="left:593px">Пересчёт в Excel</span>
+    <span class="nm fx" data-on="1" style="left:839px">Срок окупаемости</span><span class="nm fx" data-on="1" style="left:1086px">Сравнение вариантов</span><span class="nm fx" data-on="1" style="left:1332px">Вывод комитету</span>
+    <span class="tag fx" data-on="2" style="left:346px"><span class="pill no">для аренды не хватало</span></span>
+    <span class="tag fx" data-on="2" style="left:839px"><span class="pill no">без срока ремонта</span></span>
   </div>
   <div class="cols">
-    <div class="l fx" data-on="3"><h3>С чем столкнётся</h3><ol>
-      <li>Срок ремонта в модели ни на что не влиял — проверка из ТЗ «возврат не короче ремонта» это не ловит.</li>
-      <li>Формулы модели честно пересчитывает только Excel.</li>
-      <li>В ТЗ — проект в Claude: по каждому объекту всё заново руками.</li></ol></div>
-    <div class="r fx" data-on="4"><h3>Как решаем — без человека</h3><ol>
-      <li>Бот сам спрашивает всё, что нужно для расчёта, — у каждого вопроса кнопка со значением из модели. Вывод — в сообщении, расчёт — в PDF и Excel.</li>
-      <li>Поток денег по месяцам: срок ремонта сдвигает возврат, NPV и IRR.</li>
-      <li>Семь проверок до выдачи; исходный файл не меняется.</li></ol></div>
+    <div class="l fx" data-on="3"><h3>Где были неточности</h3><ol>
+      <li>Срок ремонта в модели не влиял на окупаемость — как будто деньги приходят с первого дня.</li>
+      <li>Для варианта с арендой не хватало вводных: какая доля площади сдаётся, заполняемость, расходы.</li>
+      <li>Формулы модели сложные — их честно пересчитывает только сам Excel.</li></ol></div>
+    <div class="r fx" data-on="4"><h3>Как решено в боте</h3><ol>
+      <li>Бот сам спрашивает все вводные по одной, у каждого вопроса кнопка «как в модели».</li>
+      <li>Расчёт по месяцам: деньги идут только после ремонта — срок окупаемости честный.</li>
+      <li>Пересчёт в установленном Excel; исходный файл не меняется.</li></ol></div>
   </div>
 </section>
 
@@ -311,11 +309,11 @@
     <span class="tag fx" data-on="2" style="left:346px"><span class="pill no">в отчёте её нет</span></span>
   </div>
   <div class="cols">
-    <div class="l fx" data-on="3"><h3>С чем столкнётся</h3><ol>
+    <div class="l fx" data-on="3"><h3>Где были неточности</h3><ol>
       <li>В ТЗ «столбцы: блюдо, кол‑во, выручка, себестоимость» — в отчёте iiko себестоимости нет, блюдо называется иначе.</li>
       <li>Выгрузку каждый месяц делать руками, а образца в ТЗ не было.</li>
       <li>Упаковка и модификаторы стоят среди блюд — попадут в акции.</li></ol></div>
-    <div class="r fx" data-on="4"><h3>Как решаем — без человека</h3><ol>
+    <div class="r fx" data-on="4"><h3>Как решено в боте</h3><ol>
       <li>Пользователь iiko только на чтение отчётов или рассылка отчёта на почту — без ручной выгрузки.</li>
       <li>Маячок: программа сначала пересказывает, как прочитала файл.</li>
       <li>Считает код, ИИ только придумывает механики.</li></ol></div>
@@ -468,16 +466,16 @@
     <div class="r"><span class="n">04</span><span>Акции ресторана</span><span class="w">маячок, 5–10 идей, таблица Excel</span><span class="why">в акциях нет упаковки и модификаторов</span><span class="t">46 с</span></div>
     <div class="r"><span class="n">05</span><span>Смета по чертежам</span><span class="w">смета клиенту: Excel и PDF</span><span class="why">объёмы против подписей дизайнера</span><span class="t">≈ 45 с</span></div>
   </div>
-  <div class="note fx" data-on="1">Не сходится — работа для <b>второго взгляда</b>: отдельный агент ищет вход, на котором программа ошибается.</div>
+  <div class="note fx" data-on="1">Что-то не сходится с ТЗ — не спрашиваем того же агента «всё ли хорошо». <b>Даём результат второму</b>, который сборку не видел.</div>
 </section>
 
 <!-- 26 ─────────────────────────────────────────── -->
 <section class="slide" id="r13" data-n="26" data-block="Проверка" data-title="Проверка" data-steps="2">
   <div class="big">6<i> из </i>9</div>
   <div class="bigt">
-    <p>В шести из девяти прошлых сборок сборщик честно считал работу законченной, а независимый проверяющий нашёл расхождения с ТЗ.</p>
-    <p class="m fx" data-on="1">Потом второй ИИ другой компании за пять кругов нашёл 100 замечаний: 98 подтвердились и исправлены, 2 уже были исправлены раньше.</p>
-    <p class="fx" data-on="2">Отдайте результат второму чату — не похвалить, а сломать: «найди вход, на котором результат неверен».</p>
+    <p>В шести из девяти ваших задач, которые я собирал после встречи 2, агент сказал «готово» — а второй агент нашёл, где результат не совпадает с ТЗ.</p>
+    <p class="m fx" data-on="1">Потом ИИ другой компании (Codex) за пять проверок нашёл ещё 100 замечаний — 98 оказались верными и исправлены.</p>
+    <p class="fx" data-on="2">Вывод: дайте результат <b>второму чату</b> — не «проверь», а «найди, где это неверно, и покажи пример».</p>
   </div>
 </section>
 

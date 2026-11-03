@@ -142,7 +142,7 @@
 
 /* R3 шесть способов */
 .ladder{position:absolute;left:96px;right:96px;top:228px;height:500px}
-.ladder .rail{position:absolute;left:13px;top:17px;bottom:17px;width:8px;background:var(--hair)}
+.ladder .rail{position:absolute;left:13px;top:28px;height:430px;width:8px;background:var(--hair)}   /* от центра первого кружка до центра последнего */
 .ladder .w{position:absolute;left:0;right:0;display:grid;grid-template-columns:76px 440px 1fr;align-items:center;min-height:42px}
 .ladder .w::before{content:"";position:absolute;left:0;top:50%;margin-top:-17px;width:34px;height:34px;border-radius:50%;background:var(--paper);border:7px solid var(--ink);box-sizing:border-box}
 .ladder .w.hl::before{border-color:var(--signal);background:var(--signal)}
