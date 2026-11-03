@@ -140,6 +140,7 @@
 
 <!-- 6 ─────────────────────────────────────────── -->
 <section class="slide cmd" id="m1" data-n="6" data-block="Сборка" data-steps="0" data-chain="1">
+  <button class="proj fx" data-d="350" type="button" title="Скопировать путь"><span>папка проекта · VS Code → Open Folder · щелчок — скопировать</span><code>C:\Users\User\Projects\встреча-3-один-бот</code></button>
 </section>
 
 <!-- 7 ─────────────────────────────────────────── -->
@@ -553,6 +554,17 @@ window.SLIDE_HOOKS = {
   lad(el, s) { draw(el.querySelector('#lad-ln'), s < 1 ? 0 : s < 2 ? 540 : 9999); },
   sys(el, s) { draw(el.querySelector('#sys-ln'), s < 0 ? 0 : 9999); },
 };
+// слайд 6: щелчок по плашке копирует путь к папке проекта
+document.querySelector('#m1 .proj').addEventListener('click', async e => {
+  e.stopPropagation();
+  const b = e.currentTarget, path = b.querySelector('code').textContent, hint = b.querySelector('span'), was = hint.textContent;
+  try { await navigator.clipboard.writeText(path); } catch (_) {
+    const ta = document.createElement('textarea'); ta.value = path; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+  }
+  b.classList.add('ok'); hint.textContent = 'путь скопирован — вставьте в Open Folder';
+  setTimeout(() => { b.classList.remove('ok'); hint.textContent = was; }, 1800);
+});
 </script>
 <script src="cmd.js"></script>
 <script src="deck.js"></script>

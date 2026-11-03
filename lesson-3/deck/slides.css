@@ -272,3 +272,10 @@
 #mag .spark i{position:absolute;font-style:normal;font-size:30px;color:var(--signal)}
 #mag .spark i.fx{transform:scale(0) rotate(-90deg);transition:opacity .3s,transform .6s cubic-bezier(.34,1.56,.64,1)}
 #mag .spark i.fx.on{transform:none}
+
+/* слайд 6: путь к папке проекта для VS Code, щелчок копирует */
+#m1 .proj{position:absolute;left:136px;right:136px;top:560px;display:block;text-align:left;cursor:pointer;background:var(--bg);border:1px dashed var(--ink);border-radius:14px;padding:16px 22px;font:inherit;color:var(--ink)}
+#m1 .proj span{display:block;font:500 15px "JB Mono",monospace;color:var(--muted);margin-bottom:6px}
+#m1 .proj code{font:600 26px "JB Mono",monospace;letter-spacing:-.01em}
+#m1 .proj.ok{border-color:var(--signal)}
+#m1 .proj.ok span{color:var(--signal)}
