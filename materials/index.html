@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Материалы трёх встреч с Кириллом: презентации и общая рабочая тетрадь о том, как настроить ИИ и собрать своего помощника.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23a33220%27/%3E%3C/svg%3E">
+  <title>Все материалы · Свой ИИ-помощник</title>
+  <style>
+    @font-face{font-family:Geologica;src:url(../lesson-2/fonts/geologica-cyr.woff2) format('woff2');font-display:swap;font-weight:300 800}
+    @font-face{font-family:Geologica;src:url(../lesson-2/fonts/geologica-lat.woff2) format('woff2');font-display:swap;font-weight:300 800}
+    :root{--ink:#20211e;--muted:#5b5c54;--bg:#eeebe4;--paper:#faf8f2;--line:#c8c7bc;--accent:#a33220}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Geologica,'Segoe UI',sans-serif}
+    a{color:var(--accent);text-underline-offset:4px}a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+    .wrap{width:min(1040px,100% - 56px);margin:auto}header{padding:48px 0 34px;display:grid;grid-template-columns:1fr auto;align-items:start;gap:24px}
+    .name{font-size:14px;margin:0 0 20px;color:var(--muted)}h1{font-size:clamp(37px,5.5vw,65px);letter-spacing:-.055em;line-height:1.08;font-weight:600;margin:0 0 22px;max-width:760px}header p{max-width:610px;margin:0;color:var(--muted)}.contact{font-size:14px;white-space:nowrap}
+    h2{font-size:27px;line-height:1.25;letter-spacing:-.03em;font-weight:600;margin:0 0 24px}h3{font-size:24px;line-height:1.3;font-weight:500;letter-spacing:-.025em;margin:4px 0 8px}
+    .lessons{margin:18px 0 42px}.lesson{display:grid;grid-template-columns:62px 1fr auto;align-items:center;gap:24px;padding:27px 0;border-top:1px solid var(--line)}.lesson:last-child{border-bottom:1px solid var(--line)}.number{font-size:36px;line-height:1;color:var(--accent);font-weight:300}.date{font-size:13px;color:var(--muted)}.lesson p{max-width:630px;margin:0;color:var(--muted);font-size:14px}.button{display:inline-flex;justify-content:center;align-items:center;min-height:46px;border:1px solid var(--accent);color:var(--accent);padding:10px 16px;text-decoration:none;border-radius:3px;font-size:14px}.button:hover{background:#e4ded2}.button.primary{background:var(--accent);color:#fff}.button.primary:hover{background:#872a1c}
+    .workbook{display:grid;grid-template-columns:1fr 280px;gap:38px;padding:34px 38px;background:var(--paper);border:1px solid var(--line);align-items:center}.workbook h2{margin-bottom:15px}.workbook p{font-size:15px;color:var(--muted);margin:0 0 16px;max-width:600px}.actions{display:flex;flex-direction:column;gap:12px}.actions p{font-size:12px;margin:2px 0 0;text-align:center}.note{font-size:13px;color:var(--muted)}
+    .cloud{padding:34px 0 14px}.cloud h2{font-size:24px;margin-bottom:12px}.cloud p{max-width:760px;color:var(--muted);font-size:15px}.cloud .status{border-left:3px solid #aaa898;padding-left:16px;font-size:14px}.cloud-links{display:flex;gap:12px;flex-wrap:wrap}
+    footer{margin-top:26px;border-top:1px solid var(--line);padding:24px 0 40px;display:flex;justify-content:space-between;gap:20px;font-size:13px;color:var(--muted)}footer p{margin:0;max-width:650px}
+    @media(max-width:720px){.wrap{width:calc(100% - 36px)}header{padding:30px 0;grid-template-columns:1fr;gap:18px}.name{margin-bottom:16px}h1{font-size:40px}.lesson{grid-template-columns:40px 1fr;gap:14px;padding:24px 0}.lesson .button{grid-column:2;justify-self:start}.number{font-size:30px;align-self:start;margin-top:5px}h3{font-size:22px}.workbook{grid-template-columns:1fr;padding:26px 22px;gap:15px}.actions{align-items:stretch}footer{flex-direction:column;gap:14px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+    @media print{body{background:white}.wrap{width:100%}.button{color:var(--ink);border-color:#888}.workbook{break-inside:avoid}.lesson{break-inside:avoid}.contact{display:none}}
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div>
+      <p class="name">Три встречи с Кириллом · октябрь - ноябрь 2026</p>
+      <h1>Свой ИИ-помощник<br>вместо рутины</h1>
+      <p>Материалы обучения в одном месте. Вернитесь к нужной встрече или пройдите тетрадь с одной задачей из своей работы.</p>
+    </div>
+    <a class="contact" href="https://t.me/zakrasava">Написать Кириллу ↗</a>
+  </header>
+  <main class="wrap">
+    <section class="lessons" aria-labelledby="presentations">
+      <h2 id="presentations">Презентации</h2>
+      <article class="lesson">
+        <div class="number" aria-hidden="true">1</div>
+        <div><span class="date">Встреча 1 · 19 октября</span><h3>Настроить ИИ под себя</h3><p>Контекст, личные инструкции, проекты и первый полезный результат.</p></div>
+        <a class="button" href="../v12/" aria-label="Открыть презентацию встречи 1">Открыть презентацию ↗</a>
+      </article>
+      <article class="lesson">
+        <div class="number" aria-hidden="true">2</div>
+        <div><span class="date">Встреча 2 · 27 октября</span><h3>От задачи до запуска</h3><p>ТЗ, доступ к данным, выбор инструментов и проверка помощника.</p></div>
+        <a class="button" href="../lesson-2/" aria-label="Открыть презентацию встречи 2">Открыть презентацию ↗</a>
+      </article>
+      <article class="lesson">
+        <div class="number" aria-hidden="true">3</div>
+        <div><span class="date">Встреча 3 · 3 ноября</span><h3>Пять задач - один бот</h3><p>Рейсы, законодательство, паркинг, акции и смета: сборка и второй взгляд.</p></div>
+        <a class="button" href="../lesson-3/" aria-label="Открыть презентацию встречи 3">Открыть презентацию ↗</a>
+      </article>
+      <p class="note">На компьютере листайте стрелками. На телефоне используйте свайпы и меню презентации.</p>
+    </section>
+    <section class="workbook" aria-labelledby="workbook">
+      <div><h2 id="workbook">Теперь - ваша задача</h2><p>Общая тетрадь по всем трём встречам: упражнения, тексты для чата, разбор пяти кейсов и условия приёмки.</p><p>Выберите небольшой процесс, опишите вход и результат, проверьте доступ и соберите первый рабочий вариант.</p></div>
+      <div class="actions"><a class="button primary" href="workbook.html">Заполнить тетрадь</a><a class="button" href="workbook.pdf" download>Скачать PDF · 19 страниц</a><p>Ответы в веб-версии сохраняются только в вашем браузере.</p></div>
+    </section>
+    <section class="cloud" aria-labelledby="recordings">
+      <h2 id="recordings">Записи трёх встреч</h2>
+      <p>Все три видео в MP4. Выберите удобное хранилище.</p>
+      <div class="cloud-links">
+        <a class="button" href="https://disk.yandex.ru/d/RRo7OY7atu_9kw">Смотреть на Яндекс Диске ↗</a>
+        <a class="button" href="https://drive.google.com/drive/folders/1SlxNzD9lz_omjF0p0GgEtT5Xs3trLZut?usp=sharing">Смотреть в Google Drive ↗</a>
+      </div>
+    </section>
+    <section class="cloud" aria-labelledby="examples">
+      <h2 id="examples">Пять ТЗ и материалы для сборки</h2>
+      <p>Рейсы, законодательство, паркинг, акции ресторана и смета: исходные ТЗ, учебные образцы, правила и команды для самостоятельной сборки помощника.</p>
+      <p class="status">Комплект подготовлен. Ссылка появится здесь после добавления файлов в облачную папку.</p>
+    </section>
+  </main>
+  <footer class="wrap"><p>Если застряли, пришлите Кириллу описание задачи, обезличенный пример и место, где возникла трудность.</p><a href="https://t.me/zakrasava">Связаться в Telegram ↗</a></footer>
+</body>
+</html>
